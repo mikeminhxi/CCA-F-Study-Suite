@@ -2,11 +2,11 @@
 
 [🇺🇸 English](README.md) · [🇻🇳 Tiếng Việt](README.vi.md) · **🇯🇵 日本語**
 
-Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対策のために作られた、単一のHTMLファイルだけで完結する学習アプリです。ビルドもサーバーも外部依存も不要 —— ブラウザで `cca-f-study-suite-vn.html` を開くだけで使えます。
+Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対策のために作られた、単一のHTMLファイルだけで完結する学習アプリです。ビルドもサーバーも外部依存も不要 —— ブラウザで `cca-f-study-suite.html` を開くだけで使えます。
 
 ## 開き方
 
-[cca-f-study-suite-vn.html](cca-f-study-suite-vn.html) をダブルクリックするか、任意の静的ファイルサーバーで配信してください。学習の進捗はブラウザの `localStorage` にローカル保存されます（端末・ブラウザごと）。
+[cca-f-study-suite.html](cca-f-study-suite.html) をダブルクリックするか、任意の静的ファイルサーバーで配信してください。学習の進捗はブラウザの `localStorage` にローカル保存されます（端末・ブラウザごと）。
 
 ## 中身
 
@@ -26,7 +26,7 @@ Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対
 
 ## 特徴
 
-- **EN / VN 言語切り替え** —— ランタイムのテキスト置換レイヤーが、再読み込みなしで画面表示を英語⇔ベトナム語に切り替えます。選択した言語は次回訪問時も保持されます。
+- **EN / VN / JA 言語切り替え** —— ランタイムのテキスト置換レイヤーが、再読み込みなしで画面表示を英語⇔ベトナム語⇔日本語に切り替えます。選択した言語は次回訪問時も保持されます。
 - **自動キーワードタグ付け** —— 各問題は数十個の試験頻出キーワード（例：「MCP resource」「stateless」「tool_choice」）と照合され、一致したものがチップとして表示されるので、解説を読む前に決め手となるフレーズが一目でわかります。
 - **ローカル保存** —— 学習の進捗（Known/Reviewのマーク）とプランのチェックリストの状態は `localStorage` に保存され、保存がブロックされている場合はそのタブ限定でメモリ上にフォールバックします。
 - **依存ライブラリなし** —— バニラのJS/CSS/SVGのみで1ファイルに完結。外部通信はGoogle Fonts（Space Grotesk、Inter、JetBrains Mono）のみです。

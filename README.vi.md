@@ -2,11 +2,11 @@
 
 [🇺🇸 English](README.md) · **🇻🇳 Tiếng Việt** · [🇯🇵 日本語](README.ja.md)
 
-Một tệp HTML độc lập (không cần build, không cần server, không phụ thuộc thư viện ngoài) để ôn thi chứng chỉ **Claude Certified Architect — Foundations (CCA-F)** của Anthropic. Chỉ cần mở `cca-f-study-suite-vn.html` bằng trình duyệt là dùng được.
+Một tệp HTML độc lập (không cần build, không cần server, không phụ thuộc thư viện ngoài) để ôn thi chứng chỉ **Claude Certified Architect — Foundations (CCA-F)** của Anthropic. Chỉ cần mở `cca-f-study-suite.html` bằng trình duyệt là dùng được.
 
 ## Cách mở
 
-Nhấp đúp vào [cca-f-study-suite-vn.html](cca-f-study-suite-vn.html), hoặc chạy bằng bất kỳ static file server nào. Tiến độ học được lưu cục bộ ngay trên trình duyệt (`localStorage`), theo từng thiết bị/trình duyệt.
+Nhấp đúp vào [cca-f-study-suite.html](cca-f-study-suite.html), hoặc chạy bằng bất kỳ static file server nào. Tiến độ học được lưu cục bộ ngay trên trình duyệt (`localStorage`), theo từng thiết bị/trình duyệt.
 
 ## Nội dung trang
 
@@ -26,7 +26,7 @@ Trang có dạng shell với 4 tab công cụ. Trên màn hình rộng (từ 900
 
 ## Tính năng
 
-- **Chuyển đổi ngôn ngữ EN / VN** — lớp dịch runtime thay thế nội dung hiển thị sang tiếng Việt và ngược lại mà không cần tải lại trang; ngôn ngữ đã chọn được ghi nhớ cho lần truy cập sau.
+- **Chuyển đổi ngôn ngữ EN / VN / JA** — lớp dịch runtime thay thế nội dung hiển thị sang tiếng Việt hoặc tiếng Nhật và ngược lại mà không cần tải lại trang; ngôn ngữ đã chọn được ghi nhớ cho lần truy cập sau.
 - **Từ khóa tự động gắn thẻ** — mỗi câu hỏi được đối chiếu với danh sách hàng chục từ khóa đặc trưng của đề thi (ví dụ "MCP resource", "stateless", "tool_choice") và hiển thị những từ khớp dưới dạng thẻ, giúp cụm từ mấu chốt nổi bật lên trước khi bạn đọc phần giải thích.
 - **Lưu trữ cục bộ** — tiến độ học (đánh dấu đã thuộc/cần ôn) và trạng thái checklist kế hoạch được lưu qua `localStorage`, có cơ chế dự phòng lưu tạm trong bộ nhớ cho tab hiện tại nếu trình duyệt chặn lưu trữ.
 - **Không phụ thuộc thư viện ngoài** — toàn bộ JS/CSS/SVG thuần nằm trong một tệp; phần gọi ra ngoài duy nhất là Google Fonts (Space Grotesk, Inter, JetBrains Mono).

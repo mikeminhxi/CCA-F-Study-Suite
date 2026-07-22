@@ -2,11 +2,11 @@
 
 **🇺🇸 English** · [🇻🇳 Tiếng Việt](README.vi.md) · [🇯🇵 日本語](README.ja.md)
 
-A single self-contained HTML file for studying Anthropic's **Claude Certified Architect — Foundations (CCA-F)** exam. No build step, no server, no dependencies to install — just open `cca-f-study-suite-vn.html` in a browser.
+A single self-contained HTML file for studying Anthropic's **Claude Certified Architect — Foundations (CCA-F)** exam. No build step, no server, no dependencies to install — just open `cca-f-study-suite.html` in a browser.
 
 ## Open it
 
-Double-click [cca-f-study-suite-vn.html](cca-f-study-suite-vn.html), or serve it with any static file server. Progress is saved locally in the browser (`localStorage`), per device/browser.
+Double-click [cca-f-study-suite.html](cca-f-study-suite.html), or serve it with any static file server. Progress is saved locally in the browser (`localStorage`), per device/browser.
 
 ## What's inside
 
@@ -26,7 +26,7 @@ The page is a tabbed shell with four tools. On desktop-width screens (900px and 
 
 ## Features
 
-- **EN / VN language toggle** — a runtime text-swap layer translates on-screen copy to Vietnamese and back without reloading; the selected language persists across visits.
+- **EN / VN / JA language toggle** — a runtime text-swap layer translates on-screen copy to Vietnamese or Japanese and back without reloading; the selected language persists across visits.
 - **Auto-tagged keywords** — each question is checked against a list of dozens of exam buzzwords (e.g. "MCP resource", "stateless", "tool_choice") and shows the ones it matches as chips, so the giveaway phrase jumps out before you read the explanation.
 - **Local persistence** — study progress (known/review marks) and plan checklist state are saved via `localStorage`, with an in-memory fallback for the current tab if storage is blocked.
 - **Zero dependencies** — vanilla JS/CSS/SVG in one file; the only external calls are Google Fonts (Space Grotesk, Inter, JetBrains Mono).
