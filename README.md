@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-**🇺🇸 English** · [🇻🇳 Tiếng Việt](README.vi.md) · [🇯🇵 日本語](README.ja.md)
+**🇺🇸 English** · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md)
 
 A single self-contained HTML file for studying Anthropic's **Claude Certified Architect — Foundations (CCA-F)** exam. No build step, no server, no dependencies to install — just open `cca-f-study-suite.html` in a browser.
 
@@ -26,7 +26,7 @@ The page is a tabbed shell with four tools. On desktop-width screens (900px and 
 
 ## Features
 
-- **EN / VN / JA language toggle** — a runtime text-swap layer translates on-screen copy to Vietnamese or Japanese and back without reloading; the selected language persists across visits.
+- **EN / ES / VN / 简体中文 / 繁體中文 / JA language toggle** — a runtime text-swap layer translates on-screen copy between English, Spanish, Vietnamese, Simplified Chinese, Traditional Chinese, and Japanese without reloading; the selected language persists across visits.
 - **Auto-tagged keywords** — each question is checked against a list of dozens of exam buzzwords (e.g. "MCP resource", "stateless", "tool_choice") and shows the ones it matches as chips, so the giveaway phrase jumps out before you read the explanation.
 - **Local persistence** — study progress (known/review marks) and plan checklist state are saved via `localStorage`, with an in-memory fallback for the current tab if storage is blocked.
 - **Zero dependencies** — vanilla JS/CSS/SVG in one file; the only external calls are Google Fonts (Space Grotesk, Inter, JetBrains Mono).

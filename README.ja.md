@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇻🇳 Tiếng Việt](README.vi.md) · **🇯🇵 日本語**
+[🇺🇸 English](README.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · **🇯🇵 日本語**
 
 Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対策のために作られた、単一のHTMLファイルだけで完結する学習アプリです。ビルドもサーバーも外部依存も不要 —— ブラウザで `cca-f-study-suite.html` を開くだけで使えます。
 
@@ -26,7 +26,7 @@ Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対
 
 ## 特徴
 
-- **EN / VN / JA 言語切り替え** —— ランタイムのテキスト置換レイヤーが、再読み込みなしで画面表示を英語⇔ベトナム語⇔日本語に切り替えます。選択した言語は次回訪問時も保持されます。
+- **EN / ES / VN / 简体中文 / 繁體中文 / JA 言語切り替え** —— ランタイムのテキスト置換レイヤーが、再読み込みなしで画面表示を英語・スペイン語・ベトナム語・簡体字中国語・繁体字中国語・日本語の間で切り替えます。選択した言語は次回訪問時も保持されます。
 - **自動キーワードタグ付け** —— 各問題は数十個の試験頻出キーワード（例：「MCP resource」「stateless」「tool_choice」）と照合され、一致したものがチップとして表示されるので、解説を読む前に決め手となるフレーズが一目でわかります。
 - **ローカル保存** —— 学習の進捗（Known/Reviewのマーク）とプランのチェックリストの状態は `localStorage` に保存され、保存がブロックされている場合はそのタブ限定でメモリ上にフォールバックします。
 - **依存ライブラリなし** —— バニラのJS/CSS/SVGのみで1ファイルに完結。外部通信はGoogle Fonts（Space Grotesk、Inter、JetBrains Mono）のみです。
