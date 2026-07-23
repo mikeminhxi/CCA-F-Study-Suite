@@ -16,12 +16,12 @@ This plan covers **spec-kit only**. The other two are noted for later, not actio
 
 Things that must already be true before setup starts:
 
-- [ ] **Git repo is clean.** `git status` shows no uncommitted changes worth losing (spec-kit's `init --force` writes into the current directory and should not clobber in-progress work). At the time of writing, the working tree has substantial uncommitted translation/theme/layout work — **commit or stash that first**, independent of this plan.
-- [ ] **Tooling available**: `uv` (Python package/tool manager), Python 3.11+, and Git are installed on this machine. `uv` is not confirmed installed yet — verify with `uv --version` before proceeding; install from https://docs.astral.sh/uv/ if missing.
-- [ ] **Decide the integration target**: this session uses Claude Code, so spec-kit will be initialized with `--integration claude`.
-- [ ] **No existing `.specify/` folder** in this repo (confirmed — none present), so `init --here` will be a clean install rather than a merge.
+- [x] **Git repo is clean.** Committed the pending translation/theme/layout work (commit `4dc8216`) before running `specify init --force`, so it couldn't clobber in-progress work.
+- [x] **Tooling available**: `uv 0.11.28` and `git 2.54.0` confirmed installed.
+- [x] **Decide the integration target**: this session uses Claude Code, so spec-kit was initialized with `--integration claude`.
+- [x] **No existing `.specify/` folder** in this repo (confirmed — none present), so `init --here` was a clean install rather than a merge.
 
-## 2. Preparation steps
+## 2. Preparation steps — done
 
 Run from `D:\Projects\CCA-F-Study-Suite` (this project), not from `D:\Projects\spec-kit` (that's just the upstream source checkout — spec-kit is consumed as an installed CLI, not by copying its repo files in):
 
@@ -31,33 +31,27 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
 # 2. From inside this project's directory, scaffold spec-kit into it
 cd D:\Projects\CCA-F-Study-Suite
-specify init --here --integration claude --force
+specify init --here --integration claude --force --script sh < /dev/null
 ```
 
-This adds to the repo:
-- `.specify/` — templates, memory (constitution lives here once created), scripts.
-- `.claude/commands/speckit.*.md` — the slash commands below become available in Claude Code.
+(The `< /dev/null` matters in a non-interactive shell — the first attempt hung indefinitely on an agent-selection prompt with no stdin attached, even though `--integration claude` was already passed. Closing stdin forces the CLI to fall back to the flag value instead of waiting for a keypress that will never come.)
 
-No existing project files (`cca-f-study-suite.html`, the READMEs, `CHANGELOG.md`) are touched by this step.
+This added to the repo (commit `fc10742`):
 
-**Verify:** re-open Claude Code in this project and confirm `/speckit.constitution`, `/speckit.specify`, `/speckit.plan`, `/speckit.tasks`, and `/speckit.implement` are available.
+- `.specify/` — templates, memory (`constitution.md`), scripts.
+- `.claude/skills/speckit-*/SKILL.md` — **not** `.claude/commands/speckit.*.md` as originally assumed. This installed version of spec-kit (0.14.1) ships its workflow as Claude Code **skills**, invoked as `/speckit-constitution`, `/speckit-specify`, `/speckit-plan`, `/speckit-tasks`, `/speckit-implement` (hyphens, not dots), plus optional `/speckit-clarify`, `/speckit-analyze`, `/speckit-checklist`, `/speckit-converge`, and `/speckit-taskstoissues`.
+
+No existing project files (`cca-f-study-suite.html`, the READMEs, `CHANGELOG.md`) were touched by this step.
+
+**Verify:** confirmed `.specify/` and all `.claude/skills/speckit-*` directories exist; the two pre-existing project skills (`add-language`, `update-readme-languages`) were untouched by the merge.
 
 ## 3. Spec requirement (first workflow run)
 
-Spec-kit needs a **constitution** before its first real spec, and a **spec** before a plan. Recommended first pass:
+Spec-kit needs a **constitution** before its first real spec, and a **spec** before a plan.
 
-### 3a. Constitution
-Run once, capturing constraints this project already lives by (derived from the existing READMEs/CHANGELOG, not invented):
-```
-/speckit.constitution Single self-contained HTML file, no build step, no server, no external
-JS dependencies (only Google Fonts). All UI copy must go through the i18n dictionary system
-(window.__I18N_XX__ + the TreeWalker translation engine) — no hardcoded English strings that
-bypass translation. Every new language addition must cover all six language dictionaries
-(EN implicit, VN, JA, ZH, TW, ES) and update all six READMEs' switch-links. Visual changes
-must be checked in both Light and Dark theme. Large edits to the inline JS dictionaries
-should go through Node scripts (per CLAUDE.md precedent), not manual Edit calls, since several
-lines exceed 30KB in a single line.
-```
+### 3a. Constitution — done
+
+Because the newly-installed `speckit-constitution` skill wasn't indexed yet in the running session (it didn't exist until the `specify init` step above completed), it couldn't be invoked via the normal skill-dispatch path this turn. Its instructions were read directly from `.claude/skills/speckit-constitution/SKILL.md` and followed by hand instead: filled `.specify/memory/constitution.md`'s placeholders, added a Sync Impact Report, checked `plan-template.md`/`spec-template.md`/`tasks-template.md` for alignment (no edits needed — their Constitution Check gates are generic and resolved per-feature), and committed the result (commit `fc10742`) as **v1.0.0**, ratified 2026-07-24. Five principles: Zero-Dependency Single File, i18n-First UI Copy, Theme Parity, Safe Large-Dictionary Edits, Documentation Currency — plus sections on Language & Translation Conventions and the Development Workflow itself. On a fresh Claude Code session (where the skill is indexed), future amendments can go through `/speckit-constitution` directly.
 
 ### 3b. First feature spec — candidate, needs your confirmation
 This plan doesn't invent a feature to build. Pick one (or supply your own) before running `/speckit.specify`:
