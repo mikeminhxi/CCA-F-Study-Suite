@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · **🇪🇸 Español** · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md)
+[🇺🇸 English](README.md) · **🇪🇸 Español** · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md)
 
 Un archivo HTML autocontenido para preparar el examen de certificación de Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Sin proceso de compilación, sin servidor, sin dependencias que instalar — solo abre `cca-f-study-suite.html` en un navegador.
 
@@ -26,7 +26,7 @@ La página es un shell con pestañas que reúne cuatro herramientas. En pantalla
 
 ## Funcionalidades
 
-- **Selector de idioma EN / ES / VN / 简体中文 / 繁體中文 / JA** — una capa de reemplazo de texto en tiempo de ejecución traduce el contenido en pantalla entre inglés, español, vietnamita, chino simplificado, chino tradicional y japonés, sin necesidad de recargar; el idioma elegido se mantiene en visitas futuras.
+- **Selector de idioma EN / ES / VN / 简体中文 / 繁體中文 / JA / 한국어** — una capa de reemplazo de texto en tiempo de ejecución traduce el contenido en pantalla entre inglés, español, vietnamita, chino simplificado, chino tradicional, japonés y coreano, sin necesidad de recargar; el idioma elegido se mantiene en visitas futuras.
 - **Palabras clave etiquetadas automáticamente** — cada pregunta se compara con una lista de docenas de términos frecuentes del examen (p. ej., "MCP resource", "stateless", "tool_choice") y muestra las coincidencias como chips, para que la frase reveladora salte a la vista antes de leer la explicación.
 - **Persistencia local** — el progreso de estudio (marcas de Dominada/Por repasar) y el estado del checklist del plan se guardan mediante `localStorage`, con una alternativa en memoria para la pestaña actual si el almacenamiento está bloqueado.
 - **Cero dependencias** — JS/CSS/SVG puro en un solo archivo; las únicas llamadas externas son a Google Fonts (Space Grotesk, Inter, JetBrains Mono).
