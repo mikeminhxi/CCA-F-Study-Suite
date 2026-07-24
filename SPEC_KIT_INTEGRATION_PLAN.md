@@ -95,6 +95,14 @@ scratch, the staged JSON is reviewable on its own before anything touches
 the 600KB app file, and it rides along in the language's PR as a clean diff
 of just the translations.
 
+`translations/{vn,ja,zh,tw,es}.json` were backfilled (mechanical extraction
+from the app, no translation) so all six already-shipped languages now have
+a staged file too — the schema isn't just for new languages going forward.
+For a derived-script pair added together from scratch (e.g. a hypothetical
+fresh Simplified+Traditional Chinese addition), run `fetch-language-dictionary`
+for the base script first, then again for the derived script sourced from
+that just-staged file — see the skill's script-conversion section.
+
 **Tier 1 — next up, no new engineering lift** (Latin or CJK script, same
 mechanics as the six already done):
 
