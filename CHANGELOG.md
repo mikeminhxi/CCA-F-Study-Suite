@@ -2,6 +2,19 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Blueprint taxonomy restructure
+
+- Restructured the Study Console around the **official CCA-F blueprint** (from [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn)): **5 domains → 30 task statements → 59 concepts**, replacing the previous 7-phase / 14-module organization as the app's primary navigation.
+- **Re-tagged all 157 questions** to a task statement; a question's domain is now derived from its tag (one source of truth), which fixed the old module→domain mismatches (e.g. Grep/Glob "codebase search" questions now sit under Tool Design & MCP, not Claude Code; session-resumption questions under Agentic Architecture, not Context). 94 questions stayed in their original domain, 63 moved as blueprint corrections.
+- **Learning Path**: now lists the 5 domains in blueprint weight order (D1 27% → D5 15%), each expanding to its task statements with per-domain and per-task-statement progress.
+- **Study mode**: filter by domain → task statement, plus a non-domain "Mixed / Applied" set for cross-cutting, exam-style practice (the 14 originally-mixed questions).
+- **Exam by Domain**: chips are now task statements grouped under their domains; the in-quiz meta line shows each question's task statement.
+- **New Concepts tab**: all 59 blueprint concepts grouped by domain → task statement, each with its one-line core insight and a Foundation / Intermediate / Advanced level chip.
+- **Neuron Map**: domain labels updated to the official blueprint names.
+- Retired the synthetic "Mixed / Applied" 6th domain, the `PHASES`/module structure, and the `MODULE_DOMAIN` map.
+- Verified end-to-end in a real browser (Playwright): all five domains / 30 task statements / 59 concepts render, the quiz pools all 157 questions by task statement, zero console errors, both light and dark themes.
+- **English-first** delivery, with two outstanding follow-ups: (1) the ~150 new UI strings (task-statement titles, concept titles + insights, new labels) currently fall back to English under Vietnamese/Japanese/Chinese/Traditional-Chinese/Spanish/Korean — to be translated via the `fetch-language-dictionary` pipeline; (2) the six localized READMEs still describe the old 14-module structure and will be refreshed in the same translation pass. Spec-kit round for this change is under `specs/002-blueprint-taxonomy/`.
+
 ## Languages
 
 - Added full Chinese (ZH) and Spanish (ES) translations, bringing the app to five languages: English, Vietnamese, Japanese, Chinese, Spanish.

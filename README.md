@@ -14,15 +14,15 @@ The page is a tabbed shell with four tools. On desktop-width screens (900px and 
 
 | Tab | Purpose |
 |---|---|
-| **Study Console** | The main trainer. A 7-phase learning path (Foundations → Applied Scenarios) built from 14 topic modules tagged by exam domain, a cheat sheet of core principles plus an "IF trigger → THEN pattern" decision table, a flashcard-style Study mode (mark questions Known/Review, reveal explanations, see auto-tagged keyword chips per question), and a domain-grouped Quiz mode — the "Exam by Domain" tab — where you toggle whole domains or individual modules, pick a question count, and get a scored run with every miss explained. |
+| **Study Console** | The main trainer. A learning path organized by the 5 official exam domains (in blueprint weight order), each broken into its **task statements**; a cheat sheet of core principles plus an "IF trigger → THEN pattern" decision table; a flashcard-style Study mode (filter by task statement or the cross-cutting "Mixed / Applied" set, mark questions Known/Review, reveal explanations, see auto-tagged keyword chips); an "Exam by Domain" Quiz mode where you toggle whole domains or individual task statements, pick a question count, and get a scored run with every miss explained; and a **Concepts** tab listing all 59 blueprint concepts by domain → task statement, each with its core insight and a Foundation/Intermediate/Advanced level. |
 | **Study Hub** | A reference view organized by the 5 official exam domains (weighted D1–D5), with per-domain decision rules, traps to avoid, and keyword triggers, plus a searchable rapid-decoder table. |
 | **Neuron Map** | An interactive SVG concept map linking exam domains to their sub-topics, with cross-domain "synapse" connections you can click through. |
 | **2-Week Plan** | A day-by-day checklist study plan with its own progress bar; includes a manual JSON export/import fallback for contexts where `localStorage` is unavailable (e.g. some `file://` setups). |
 
 ## Content
 
-- **157 unique questions**, sourced from `CCA-F_Study_Guide.md` — 67 duplicates between the guide's Section 1 (Q1–77) and Section 2 (Q1–148) were merged (the Section 1 copy is kept, since it carries the written explanation). One pair with a genuinely conflicting source answer is flagged with a ⚠ badge in Study mode.
-- Questions are tagged into **14 modules** grouped under **7 learning-path phases**, and mapped to **5 exam domains**: Agentic Architecture & Orchestration (27%), Claude Code Configuration & Workflows (20%), Prompt Engineering & Structured Output (20%), Tool Design & MCP Integration (18%), and Context Management & Reliability (15%).
+- **157 practice questions**, sourced from `CCA-F_Study_Guide.md`. One pair with a genuinely conflicting source answer is flagged with a ⚠ badge in Study mode.
+- The app is organized around the **official CCA-F blueprint**: **5 domains → 30 task statements → 59 concepts**. Every question is tagged to one task statement, and its domain follows from that tag. The five domains, in exam-weight order: Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%), and Context & Reliability (15%). (Blueprint taxonomy from [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Features
 
