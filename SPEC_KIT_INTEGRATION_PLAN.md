@@ -137,7 +137,8 @@ The maintainer wants each future language addition done on its own branch
 with its own pull request (not committed straight to `main`, unlike the six
 languages already shipped this way in earlier sessions). When running
 `/speckit-plan` / `/speckit-tasks` for `specs/001-add-language/`, or the
-`add-language` skill directly, create a branch named e.g.
-`add-language-<code>` (matching the two-letter dictionary key, e.g.
-`add-language-ko` for Korean) before starting the dictionary work, and open
-a PR instead of pushing to `main` once it's done and verified.
+`fetch-language-dictionary` / `add-language` skills directly, create a
+branch named `feat/add-<language>-language` (spelled-out language name, not
+the two-letter code — e.g. `feat/add-korean-language`) before starting the
+dictionary work, and open a PR instead of pushing to `main` once it's done
+and verified.
