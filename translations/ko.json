@@ -4,7 +4,7 @@
   "sortHint": "cjk",
   "qsUnit": "문항",
   "noSpaceBeforeUnit": true,
-  "questionFmt": "function(a,b){return a+' / '+b+'문항 중';}",
+  "questionFmt": "function(a,b){return '문항 '+a+' / '+b;}",
   "i18n": {
     "Study Console": "학습 콘솔",
     "Learning Path": "학습 경로",

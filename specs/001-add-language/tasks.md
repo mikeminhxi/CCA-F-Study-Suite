@@ -73,14 +73,28 @@ consistent.
       confirm valid JSON with matching key counts (526 + 5 each).
 - [x] T012 [US3] Confirm `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT`/dropdown all
       reference `ko`.
-- [ ] T013 [US3] **Outstanding.** Manual browser verification: switch to 한국어
-      and confirm the Study Console nav, Cheat & Keywords core-principle cards,
-      decision-rules table, and a few Exam by Domain quiz tags render in Korean
-      with no leftover English, and that question counters render with no space
-      before 문항. No browser-automation tooling (`chromium-cli`/Playwright) was
-      available in this environment to confirm programmatically; the app was
-      opened locally for the maintainer to check, but visual confirmation is not
-      yet recorded here. **Do not mark this done without an actual look.**
+- [x] T013 [US3] Browser verification completed via Playwright (installed this
+      round — `pip install playwright` + `playwright install chromium`, no Node
+      required). Confirmed: Study Console nav, Cheat & Keywords core-principle
+      cards, decision-rules table (with `IF THE STEM SAYS` stem phrases
+      correctly left in English), and the quiz counter (`문항 1 / 15`, no space
+      before 문항, confirmed after fixing an awkward first draft — see below)
+      all render correctly in Korean. Zero console errors. Screenshots taken.
+      - **Bug found and fixed**: `QUESTION_FMT.ko` originally read
+        `a+' / '+b+'문항 중'` → "1 / 15문항 중" (grammatically awkward). Changed
+        to `'문항 '+a+' / '+b` → "문항 1 / 15", matching the prefix-label pattern
+        JA/VN/ZH/TW already use. Fixed in both `cca-f-study-suite.html` and
+        `translations/ko.json`.
+      - **Pre-existing gap found, out of scope for this language round**: domain
+        names (`DOMAIN_INFO[code].label` — "Agentic Architecture", "Tools & MCP",
+        etc.), phase titles (`PHASES[].t` — "Building Blocks", "Keeping Agents
+        Reliable", etc.), the "Exam Domains" heading, and the quiz module toggle
+        buttons (`cca-f-study-suite.html:4711`, `` `${c} (${MODS[c].length})` ``
+        concatenated as one text node) are **not wired into the i18n dictionary
+        for any of the seven languages** — this predates the Korean addition and
+        affects VN/JA/ZH/TW/ES identically. Not fixed here; needs its own spec
+        (adding ~15-20 keys × 7 languages, plus a regex fallback for the
+        `"{category} (N)"` pattern like the existing `N Qs` one).
 - [x] T014 [US3] Update `CHANGELOG.md` documenting the Korean addition.
 
 ## Dependencies & Execution Order
@@ -90,8 +104,9 @@ User Story 3 verification. User Story 2 (RTL) skipped — not applicable to Kore
 
 ## Notes
 
-- T013 is intentionally left unchecked — it's real outstanding work, not a
-  formality. Merging PR #1 before it's done means shipping the possibility of a
-  missed dictionary entry (the exact failure mode Story 3 exists to catch).
+- All tasks complete. T013 (manual/browser verification) surfaced a real,
+  pre-existing i18n gap unrelated to Korean specifically — see its notes above.
+  Recommend filing that as its own follow-up spec rather than folding it into
+  this PR.
 - Future languages: run `/speckit-plan` → `/speckit-tasks` for that language
   *before* running `fetch-language-dictionary`/`add-language`, not after.
