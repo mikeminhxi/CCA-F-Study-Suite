@@ -21,6 +21,19 @@ these as two separate skills means:
 **This skill never edits `cca-f-study-suite.html`.** Its only output is
 `translations/<code>.json`.
 
+## Step 0 — Confirm spec-kit has run for this language
+
+Per `specs/001-add-language/spec.md` (FR-009), every language addition MUST
+go through one round of `/speckit-plan` → `/speckit-tasks` scoped to that
+specific language before either this skill or `add-language` runs. Check
+that `specs/001-add-language/plan.md` and `tasks.md` exist **on this
+language's own branch** (`feat/add-<language>-language`) and are actually
+about this language, not leftover from a previous one.
+
+**If they don't exist yet, stop.** Tell the user to run `/speckit-plan` then
+`/speckit-tasks` for this language first — don't translate anyway as a
+convenience; that's exactly the ad-hoc shortcut FR-009 exists to close off.
+
 ## Step 1 — Extract the canonical key set
 
 The baseline is the existing `window.__I18N__` (Vietnamese) + `window.__SHELL__`
