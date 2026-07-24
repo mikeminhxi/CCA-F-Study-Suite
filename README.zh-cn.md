@@ -14,15 +14,15 @@
 
 | 标签页 | 说明 |
 |---|---|
-| **Study Console**(学习控制台) | 主训练工具。包含一条按7个阶段划分的学习路径(从基础 → 应用场景),由14个按考试领域打标签的主题模块构成;一张核心原则速查表,配合「IF 触发词 → THEN 模式」判断表;一个类似闪卡的 Study 模式(将题目标记为已掌握/待复习、查看解释、查看每题自动打标的关键词标签);以及按领域分组的 Quiz 模式——即「Exam by Domain」标签页——你可以整体或按模块切换开关、选择题量,完成一轮计分测试,每道错题都会给出解释。|
+| **Study Console**(学习控制台) | 主训练工具。一条按 5 个官方考试领域(按 blueprint 权重排序)组织的学习路径,每个领域再拆分为其 task statement;一张核心原则速查表,配合「IF 触发词 → THEN 模式」判断表;一个类似闪卡的 Study 模式(按 task statement 或跨领域的「Mixed / Applied」集合筛选,将题目标记为已掌握/待复习、查看解释、查看自动打标的关键词标签);「Exam by Domain」Quiz 模式(整体或按 task statement 切换开关、选择题量,完成一轮计分测试并解释每道错题);以及一个 Concepts 标签页,按领域 → task statement 列出全部 59 个 blueprint 概念,每个都附有核心 insight 和 Foundation/Intermediate/Advanced 难度。|
 | **Study Hub**(学习中心) | 按官方5大考试领域(加权 D1–D5)组织的参考视图,包含各领域的判断规则、需规避的陷阱与关键词触发点,以及一张可搜索的快速解码表。|
 | **Neuron Map**(神经元地图) | 一张交互式 SVG 概念图,将考试领域与其子主题相连,还包含可点击的跨领域「突触」连接。|
 | **2-Week Plan**(两周计划) | 一份按天列出的清单式学习计划,自带独立进度条;在 `localStorage` 不可用的场景(例如某些 `file://` 打开方式)下,提供手动 JSON 导出/导入的备用方案。|
 
 ## 内容构成
 
-- **157道独特题目**,来源于 `CCA-F_Study_Guide.md`——原资料 Section 1(Q1–77)与 Section 2(Q1–148)之间重复的67题已被合并(保留 Section 1 版本,因其附有书面解释)。有一对题目在原资料中的正确答案确实相互矛盾,会在 Study 模式中以 ⚠ 徽章标出。
-- 题目被打上**14个模块**标签,归入**7个学习阶段**,并映射到**5大考试领域**:Agentic Architecture & Orchestration(27%)、Claude Code Configuration & Workflows(20%)、Prompt Engineering & Structured Output(20%)、Tool Design & MCP Integration(18%)、Context Management & Reliability(15%)。
+- **157 道练习题**,来源于 `CCA-F_Study_Guide.md`。有一对题目在原资料中的正确答案确实相互矛盾,会在 Study 模式中以 ⚠ 徽章标出。
+- 应用围绕官方 **CCA-F blueprint** 组织:**5 个领域 → 30 个 task statement → 59 个概念**。每道题都标记到一个 task statement,其领域由该标记推导得出。按考试权重排序的五个领域:Agentic Architecture(27%)、Tool Design & MCP(18%)、Claude Code & Workflows(20%)、Prompt Engineering & Output(20%)、Context & Reliability(15%)。(blueprint 分类来自 [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn)。)
 
 ## 功能特性
 
