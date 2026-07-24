@@ -76,12 +76,24 @@ Candidates below, in recommended order — rationale is developer/tech-market si
 for a technical certification exam, weighed against added engineering effort
 (not just translation volume). Check one off when you decide to pursue it;
 run it through `specs/001-add-language/` — `/speckit-plan` → `/speckit-tasks` →
-`/speckit-implement` — which in turn draws on the `add-language` skill
-(`.claude/skills/add-language/SKILL.md`) for the mechanical steps.
+`/speckit-implement` — which in turn draws on the `fetch-language-dictionary`
+(`.claude/skills/fetch-language-dictionary/SKILL.md`) and `add-language`
+(`.claude/skills/add-language/SKILL.md`) skills, run in that order, for the
+translation and mechanical-wiring steps respectively.
 
 Each language addition should be done on its own feature branch with its own
 pull request, not committed straight to `main` — see [Workflow note](#workflow-note-branch--pr-per-language)
 below.
+
+Translation generation and app-wiring are now two separate skills, run in
+sequence: `fetch-language-dictionary` (translates the full 531-key set,
+stages it at `translations/<code>.json`, never touches the app file) →
+`add-language` (mechanical injection into `cca-f-study-suite.html`, the
+dropdown, and the READMEs, sourced from that staged file). Splitting them
+means a failed or reworked injection never forces re-translating from
+scratch, the staged JSON is reviewable on its own before anything touches
+the 600KB app file, and it rides along in the language's PR as a clean diff
+of just the translations.
 
 **Tier 1 — next up, no new engineering lift** (Latin or CJK script, same
 mechanics as the six already done):

@@ -103,7 +103,9 @@ check, both run as a task before the feature is marked complete.
   language not on that list.
 - **FR-002**: Generated tasks MUST include full dictionary translation covering the exact
   key set already present in the existing dictionaries (526 `__I18N_XX__` entries + 5
-  `__SHELL_XX__` entries), never a partial subset.
+  `__SHELL_XX__` entries), never a partial subset, staged to `translations/<code>.json`
+  before any change to `cca-f-study-suite.html` is made — translation and app-wiring are
+  distinct tasks, not one combined step, so a wiring retry never forces re-translation.
 - **FR-003**: Generated tasks MUST include adding the new language's entries to `QS_UNIT`
   and `QUESTION_FMT` for its dynamic (runtime-number-containing) strings.
 - **FR-004**: Generated tasks MUST include adding the new language's `<option>` to
@@ -159,6 +161,8 @@ check, both run as a task before the feature is marked complete.
 - RTL layout support (needed for Arabic/Hebrew) is out of scope for this spec's own
   implementation; this spec only requires the generated *plan* to flag RTL as a distinct
   workstream, not to build RTL support.
-- The existing `.claude/skills/add-language/SKILL.md` is the authoritative source of
-  current tribal knowledge for this process and is treated as input to the plan, not
-  superseded by it.
+- The existing `.claude/skills/fetch-language-dictionary/SKILL.md` (translation,
+  staged to `translations/<code>.json`) and `.claude/skills/add-language/SKILL.md`
+  (mechanical wiring, consuming that staged file) are the authoritative source of
+  current tribal knowledge for this process and are treated as input to the plan,
+  not superseded by it.
