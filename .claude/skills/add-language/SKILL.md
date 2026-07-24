@@ -29,6 +29,16 @@ it, then verify with another script. This is not optional; manual edits
 risk corrupting the file, and even a working manual edit reintroduces the
 one-language-per-single-line format this app has been moving away from.
 
+## Step 0 — Confirm spec-kit has run for this language
+
+Same gate as [fetch-language-dictionary](../fetch-language-dictionary/SKILL.md)
+Step 0, checked again here in case this skill is invoked on its own: per
+`specs/001-add-language/spec.md` (FR-009), `specs/001-add-language/plan.md`
+and `tasks.md` for this language MUST already exist on its own branch
+(`feat/add-<language>-language`) before wiring anything into the app. If
+they're missing, stop and tell the user to run `/speckit-plan` →
+`/speckit-tasks` first — don't wire the dictionary in anyway as a shortcut.
+
 ## Step 1 — Load the staged dictionary
 
 Check for `translations/<code>.json`. **If it doesn't exist, stop and run

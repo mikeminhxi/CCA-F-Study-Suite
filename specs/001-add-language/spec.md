@@ -125,6 +125,14 @@ check, both run as a task before the feature is marked complete.
   constitution's Node-script/brace-depth-boundary-detection rule (see
   `.specify/memory/constitution.md`, Principle IV), never manual `Edit` calls on raw
   single-line dictionary objects.
+- **FR-009**: Every individual language addition MUST go through at least one round of
+  `/speckit-plan` → `/speckit-tasks` scoped to that language — producing
+  `specs/001-add-language/plan.md` and `tasks.md` on that language's own feature branch
+  (`feat/add-<language>-language`) — before `fetch-language-dictionary` or `add-language`
+  are invoked. Neither skill may be run ad hoc, straight from a conversational request,
+  without a corresponding plan/tasks pair already committed for that language; both skills
+  MUST check for this and stop with instructions to run `/speckit-plan` → `/speckit-tasks`
+  first if it's missing.
 
 ### Key Entities
 
@@ -140,10 +148,12 @@ check, both run as a task before the feature is marked complete.
 
 ### Measurable Outcomes
 
-- **SC-001**: A maintainer can go from "pick a language from the priority list" to a fully
-  shipped language (dictionaries, dropdown, all six READMEs, changelog) using only
-  `/speckit-specify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-implement`, without
-  needing ad-hoc conversational back-and-forth to rediscover the steps.
+- **SC-001**: Every language addition goes from "pick a language from the priority list" to
+  a fully shipped language (dictionaries, dropdown, all six READMEs, changelog) via
+  `/speckit-specify` (once, already done for this feature) → `/speckit-plan` →
+  `/speckit-tasks` → `/speckit-implement` for that language, without ad-hoc conversational
+  back-and-forth to rediscover the steps — and with no language ever wired into the app via
+  a direct skill invocation that skipped its own plan/tasks round.
 - **SC-002**: 100% of the 531 dictionary keys (526 + 5 shell) are present for every newly
   added language before it is considered shipped.
 - **SC-003**: Zero language-ordering mismatches between the app's dropdown and any of the
@@ -166,3 +176,9 @@ check, both run as a task before the feature is marked complete.
   (mechanical wiring, consuming that staged file) are the authoritative source of
   current tribal knowledge for this process and are treated as input to the plan,
   not superseded by it.
+- `specs/001-add-language/` is one reused feature (the workflow itself), not one spec
+  per language — so `plan.md`/`tasks.md` are regenerated per language rather than
+  accumulated. This works cleanly because each language already lives on its own
+  branch (`feat/add-<language>-language`): that language's `plan.md`/`tasks.md` are
+  generated and committed on its own branch, never colliding with another language's
+  in-flight plan/tasks on a different branch.
