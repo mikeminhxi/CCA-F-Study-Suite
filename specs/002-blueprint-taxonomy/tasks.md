@@ -133,17 +133,17 @@ per-domain distribution matches expectation; formerly mis-domained questions
       Path lede, footer, any "N modules / phases" strings) to the new taxonomy,
       as English source keys flowing through the i18n engine, in
       `cca-f-study-suite.html`.
-- [ ] T021 [P] Update all seven READMEs (`README.md` + 6 localized) — "What's
+- [x] T021 [P] Update all seven READMEs (`README.md` + 6 localized) — "What's
       inside" table and Content bullets — to the domain → task-statement →
       concept taxonomy.
-- [ ] T022 [P] Update `CHANGELOG.md` with the restructure and record the
+- [x] T022 [P] Update `CHANGELOG.md` with the restructure and record the
       "translate ~150 new keys × 6 languages via fetch-language-dictionary"
       follow-up as an explicit outstanding item.
-- [ ] T023 End-to-end verification (Playwright): switch through all 7 languages
+- [x] T023 End-to-end verification (Playwright): switch through all 7 languages
       — zero console errors, new content falls back to English under the 6
       non-English languages, no layout breakage; capture screenshots of Learning
       Path, Concepts tab, and Neuron Map in both Light and Dark themes.
-- [ ] T024 Confirm saved progress persists: mark a question known, reload, verify
+- [x] T024 Confirm saved progress persists: mark a question known, reload, verify
       the mark survives (question ids unchanged).
 
 ## Dependencies & Execution Order
