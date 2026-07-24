@@ -44,6 +44,13 @@
   #tool-console,#tool-hub,#tool-map,#tool-plan{height:auto!important;min-height:0!important;
     overflow:visible!important;max-height:none!important}
 
+@media (max-width: 640px) {
+  #shell-nav .brand{flex-basis:100%;margin-right:0}
+  #shell-nav .shell-tab{flex:1 1 calc(50% - 4px)}
+  #shell-nav #nav-controls{flex-basis:100%;margin-left:0;justify-content:space-between}
+  #tool-console .top-in{padding:12px 16px}
+  #tool-console .wrap{padding:22px 16px 80px}
+}
 @media (min-width: 900px) {
   html, body { height: 100%; }
   body { display:flex; flex-direction:column; height:100vh; overflow:hidden; }
@@ -106,7 +113,7 @@
 #tool-console ::selection{background:var(--amber);color:#241a05}
 #tool-console .top{position:static;background:rgba(13,17,32,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 #tool-console .top-in{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-#tool-console .brand{display:flex;align-items:baseline;gap:10px;margin-right:auto}
+#tool-console .brand{display:flex;align-items:baseline;gap:10px;flex-basis:100%}
 #tool-console .brand .mk{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--paper);background:var(--amber);padding:3px 7px;border-radius:5px;font-weight:700}
 #tool-console .brand h1{font-family:var(--disp);font-size:17px;font-weight:700;margin:0;letter-spacing:-.01em;color:var(--ink)}
 #tool-console .brand .src{font-family:var(--mono);font-size:11px;color:var(--ink3)}
@@ -138,14 +145,14 @@
 #tool-console .conc-dhead{display:flex;align-items:center;gap:10px;padding:8px 0 10px;border-bottom:2px solid;margin-bottom:14px}
 #tool-console .conc-ts{margin:0 0 18px}
 #tool-console .conc-tshead{font-weight:600;font-size:13.5px;color:var(--ink2);margin:12px 0 8px}
-#tool-console .conc-card{background:rgba(127,127,127,.06);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin-bottom:8px}
+#tool-console .conc-card{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin-bottom:8px}
 #tool-console .conc-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 #tool-console .conc-title{font-weight:600;font-size:14px}
 #tool-console .conc-insight{color:var(--ink2);font-size:13px;margin-top:5px;line-height:1.5}
 #tool-console .lvl{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:20px;white-space:nowrap}
-#tool-console .lvl-foundation{color:#5fd0a8;border:1px solid #5fd0a8}
-#tool-console .lvl-intermediate{color:#f7a072;border:1px solid #f7a072}
-#tool-console .lvl-advanced{color:#e56b9e;border:1px solid #e56b9e}
+#tool-console .lvl-foundation{color:var(--teal);border:1px solid var(--teal)}
+#tool-console .lvl-intermediate{color:var(--amber);border:1px solid var(--amber)}
+#tool-console .lvl-advanced{color:var(--rose);border:1px solid var(--rose)}
 #tool-console .mod{display:flex;align-items:center;gap:12px;background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-left:3px solid var(--indigo);border-radius:11px;padding:12px 14px;text-align:left;width:100%;transition:.15s}
 #tool-console .phase:nth-of-type(5n+1) .mod{border-left-color:var(--d1)}
 #tool-console .phase:nth-of-type(5n+2) .mod{border-left-color:var(--d2)}
@@ -578,6 +585,10 @@
 :root[data-theme="light"] #tool-map .synapse{opacity:.8;stroke-width:2}
 :root[data-theme="light"] #tool-map .synapse.dim{opacity:.12}
 :root[data-theme="light"] #tool-map .synapse.lit{opacity:1;stroke-width:2.6}
+:root[data-theme="light"] #tool-console .top{background:rgba(246,247,251,.95)}
+:root[data-theme="light"] #tool-hub nav.jump{background:rgba(246,247,251,.85)}
+:root[data-theme="light"] #tool-map .stage{background:linear-gradient(180deg,#eef1f8,#e4e8f2)}
+:root[data-theme="light"] #tool-map .edge{stroke:#b9c2d8;opacity:.7}
 </style>
 </head>
 <body>
@@ -596,7 +607,7 @@
         <button data-theme="dark" class="on" onclick="window.__setTheme__('dark')" title="Dark" aria-label="Dark theme">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <button data-theme="system" onclick="window.__setTheme__('system')" title="Windows Default" aria-label="System default theme">
+        <button data-theme="system" onclick="window.__setTheme__('system')" title="System" aria-label="System theme">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </button>
       </div>
@@ -651,12 +662,9 @@
     <p class="lede">The exam is a pattern-matching game. First the six principles that decide most questions — then a decision table: spot the <b>trigger</b> in the stem, apply the <b>pattern</b>, dodge the <b>trap</b> answer.</p>
     <div class="core" id="core"></div>
     <div class="rgroup" style="background:var(--amber-soft);border:1px solid #4a3a1c;border-left:3px solid var(--amber);margin-bottom:26px">
-      <h4 style="color:var(--amber);margin-bottom:8px">Duplicates found in the source</h4>
+      <h4 style="color:var(--amber);margin-bottom:8px">Answer conflict flagged</h4>
       <p style="margin:0;font-size:13px;color:var(--ink2);line-height:1.55">
-        Section 1 (Q1–77) and Section 2 (Q1–148) share <b style="color:var(--ink)">67 duplicate questions</b> — same stem and options
-        (a few appear three times), just relettered A/B/C/D and occasionally reworded. This console keeps the
-        cleanest copy of each — usually the Section&nbsp;1 version, since it has the written explanation. One pair
-        has genuinely conflicting correct answers in the source
+        One question pair has a genuinely conflicting correct answer in the source
         (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged
         with a <b style="color:var(--rose)">⚠ answer conflict</b> badge when you study it, so you can judge it yourself.
       </p>
@@ -1236,12 +1244,10 @@
   "Your learning path": "Lộ trình học của bạn",
   "The shortcuts": "Các lối tắt",
   "Cheat sheet, tricks & keyword tells": "Bảng mẹo, thủ thuật & từ khóa nhận biết",
-  "Duplicates found in the source": "Câu trùng lặp trong nguồn",
   "answer conflict": "xung đột đáp án",
   "⚠ answer conflict": "⚠ xung đột đáp án",
-  "Section 1 (Q1–77) and Section 2 (Q1–148) share": "Section 1 (Q1–77) và Section 2 (Q1–148) có chung",
-  "67 duplicate questions": "67 câu trùng lặp",
-  "— same stem and options (a few appear three times), just relettered A/B/C/D and occasionally reworded. This console keeps the cleanest copy of each — usually the Section 1 version, since it has the written explanation. One pair has genuinely conflicting correct answers in the source (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged with a": "— cùng đề bài và đáp án (một vài câu xuất hiện tới ba lần), chỉ đổi lại thứ tự A/B/C/D và đôi khi diễn đạt lại. Công cụ này giữ lại bản sạch nhất của mỗi câu — thường là bản ở Section 1, vì có kèm giải thích. Một cặp câu có đáp án đúng mâu thuẫn thật sự trong tài liệu gốc (tóm tắt tường thuật so với trích xuất dữ liệu có cấu trúc khi khôi phục một phiên bị crash); cặp này được đánh dấu bằng",
+  "Answer conflict flagged": "Phát hiện đáp án mâu thuẫn",
+  "One question pair has a genuinely conflicting correct answer in the source (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged with a": "Một cặp câu hỏi có đáp án đúng mâu thuẫn thật sự trong tài liệu gốc (tóm tắt tường thuật so với trích xuất dữ liệu có cấu trúc khi khôi phục một phiên bị crash); cặp này được đánh dấu bằng",
   "badge when you study it, so you can judge it yourself.": "khi bạn học tới, để bạn tự đánh giá.",
   "IF trigger → THEN pattern": "NẾU dấu hiệu → THÌ mẫu hình",
   "Modules": "Học phần",
@@ -1274,7 +1280,6 @@
   "trigger": "dấu hiệu",
   "trap": "bẫy",
   "answer.": "đáp án.",
-  "Seven phases, easiest foundations first. All 157 unique questions from the source are filed into one module below (67 exact duplicates across Sections 1 & 2 were merged — see the Cheat tab for details). Tap any module to study it — your progress fills the bars and lights up phases as you mark questions known.": "Bảy giai đoạn, bắt đầu từ nền tảng dễ nhất. Toàn bộ 157 câu hỏi từ nguồn được gom vào các học phần bên dưới (67 câu trùng khớp giữa Phần 1 & 2 đã được gộp — xem tab Mẹo để biết chi tiết). Chạm vào học phần bất kỳ để học — tiến độ sẽ lấp đầy thanh và làm sáng các giai đoạn khi bạn đánh dấu đã thuộc.",
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "Không có gì với bộ lọc này. Đổi bộ lọc, hoặc bạn đã học hết học phần này — tuyệt!",
   "When is an agent even the right tool, and which workflow shape fits.": "Khi nào agent là công cụ phù hợp, và dạng workflow nào hợp lý.",
   "The primitives every agent is assembled from: tools, integrations, and search.": "Các thành phần cơ bản tạo nên mọi agent: tools, integrations và search.",
@@ -1653,7 +1658,6 @@
   "Assumes ~1–2 hrs/day with the exam at the end of week 2. Heavier days (mocks) sit on days you likely have more time — shuffle them to fit your week. Progress saves automatically to this browser on this device — no buttons, no codes. Keep this exact HTML file in one place and reopen it from there each time.": "Giả định ~1–2 giờ/ngày với kỳ thi cuối tuần 2. Ngày nặng (thi thử) đặt vào hôm bạn rảnh hơn — xáo lại cho vừa lịch. Tiến độ tự lưu vào trình duyệt này trên thiết bị này — không nút bấm, không mã. Giữ đúng tệp HTML này một chỗ và mở lại từ đó mỗi lần.",
   "Auto-save is on. Check things off and this browser will remember them next time.": "Tự động lưu đang bật. Đánh dấu xong và trình duyệt sẽ nhớ cho lần sau.",
   "Built from CCA-F_Study_Guide.md · progress saved on this device · not affiliated with Anthropic's official exam": "Xây dựng từ CCA-F_Study_Guide.md · tiến độ được lưu trên thiết bị này · không liên kết với đề thi chính thức của Anthropic",
-  "Built from your two study guides — CCA Foundations Quiz 1 (77 Q) and the Interactive Quiz (147 Q), 224 questions total before 67 duplicates across the two sources were merged, leaving 157 unique questions. Rules and traps are distilled from the answer explanations in those files.": "Xây dựng từ hai tài liệu ôn thi của bạn — CCA Foundations Quiz 1 (77 câu) và Interactive Quiz (147 câu), tổng cộng 224 câu trước khi 67 câu trùng lặp giữa hai nguồn được gộp lại, còn lại 157 câu duy nhất. Quy tắc và bẫy được chắt lọc từ phần giải thích đáp án trong các tài liệu đó.",
   "Exam facts verified against Anthropic's certification program (Pearson VUE, 5-domain blueprint) · not affiliated with Anthropic · verify current exam details before you register.": "Thông tin kỳ thi được đối chiếu với chương trình chứng chỉ của Anthropic (Pearson VUE, khung 5 domain) · không liên kết với Anthropic · hãy kiểm tra lại thông tin kỳ thi mới nhất trước khi đăng ký.",
   "Agents vs. workflows": "Agent so với workflow",
   "Use the simplest thing that works. Workflows = predictable, orchestrated LLM calls. Agents = the model drives its own loop with tools. Reach for an agent only when the path can't be hardcoded.": "Dùng thứ đơn giản nhất mà vẫn chạy được. Workflow = các lệnh gọi LLM có thể dự đoán, được sắp đặt sẵn. Agent = model tự điều khiển vòng lặp của nó bằng tools. Chỉ dùng agent khi đường đi không thể mã hóa cứng.",
@@ -1740,7 +1744,6 @@
   "Over-engineered plumbing": "Hạ tầng thiết kế thừa",
   "Usually a distractor": "Thường là phương án gây nhiễu",
   "Model-swap as the architectural answer": "Đổi model như một đáp án về kiến trúc",
-  "source · CCA-F_Study_Guide.md · 157 unique questions": "nguồn · CCA-F_Study_Guide.md · 157 câu hỏi duy nhất",
   "Prompting Techniques": "Kỹ thuật Prompting",
   "Codebase Search (Glob/Grep)": "Tìm kiếm Codebase (Glob/Grep)",
   "Agent vs. Workflow Design": "Thiết kế Agent và Workflow",
@@ -1941,12 +1944,10 @@ window.__I18N_JA__={
   "Your learning path": "あなたの学習パス",
   "The shortcuts": "攻略のコツ",
   "Cheat sheet, tricks & keyword tells": "攻略シート、コツ、キーワードの合図",
-  "Duplicates found in the source": "元資料に見つかった重複問題",
   "answer conflict": "解答の矛盾",
   "⚠ answer conflict": "⚠ 解答の矛盾",
-  "Section 1 (Q1–77) and Section 2 (Q1–148) share": "Section 1 (Q1〜77) と Section 2 (Q1〜148) には共通して",
-  "67 duplicate questions": "67問の重複問題",
-  "— same stem and options (a few appear three times), just relettered A/B/C/D and occasionally reworded. This console keeps the cleanest copy of each — usually the Section 1 version, since it has the written explanation. One pair has genuinely conflicting correct answers in the source (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged with a": "— 設問と選択肢が同じで(中には3回登場するものもある)、A/B/C/Dの記号が振り直され、表現が少し変えられているだけだ。このコンソールはそれぞれの一番きれいな版 — たいてい解説付きのSection 1側 — を採用している。1組だけ元資料の中で正解が本当に矛盾しているものがあり(要約で答えるか、クラッシュしたセッションを再開するための構造化データ抽出で答えるか)、これは",
+  "Answer conflict flagged": "解答の矛盾を検出",
+  "One question pair has a genuinely conflicting correct answer in the source (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged with a": "元資料の中で正答が本当に矛盾している問題が1組あり（要約で答えるか、クラッシュしたセッションを再開するための構造化データ抽出で答えるか）、これは",
   "badge when you study it, so you can judge it yourself.": "というバッジ付きで表示されるので、学習中は自分で判断してほしい。",
   "IF trigger → THEN pattern": "「IF トリガー → THEN パターン」",
   "Modules": "モジュール",
@@ -1979,7 +1980,6 @@ window.__I18N_JA__={
   "trigger": "トリガー",
   "trap": "罠",
   "answer.": "を避けて答える。",
-  "Seven phases, easiest foundations first. All 157 unique questions from the source are filed into one module below (67 exact duplicates across Sections 1 & 2 were merged — see the Cheat tab for details). Tap any module to study it — your progress fills the bars and lights up phases as you mark questions known.": "7つの学習フェーズ、まずは易しい基礎から。157問すべての問題が下のモジュールに整理されている(Section 1と2の間で完全に一致する67問は統合済み — 詳細はCheatタブ参照)。任意のモジュールをタップして学習しよう — 進捗バーが伸び、問題をKnownにマークするたびにフェーズが点灯する。",
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "このフィルタに該当するものはない。フィルタを変えるか、このモジュールはもう終わっている — お見事!",
   "When is an agent even the right tool, and which workflow shape fits.": "そもそもagentが適切なツールなのか、どのworkflowの形が合うのか。",
   "The primitives every agent is assembled from: tools, integrations, and search.": "あらゆるagentを組み立てる基本部品:tools、integrations、search。",
@@ -2358,7 +2358,6 @@ window.__I18N_JA__={
   "Assumes ~1–2 hrs/day with the exam at the end of week 2. Heavier days (mocks) sit on days you likely have more time — shuffle them to fit your week. Progress saves automatically to this browser on this device — no buttons, no codes. Keep this exact HTML file in one place and reopen it from there each time.": "1日〜1〜2時間、Week 2の終わりに試験があることを想定している。負荷の重い日(模試)は時間が取りやすい日に置いてあるので、自分の週に合わせて入れ替えてよい。進捗はこのブラウザ・この端末に自動保存される — ボタンもコードも不要。このHTMLファイルを同じ場所に置いて、毎回そこから開き直そう。",
   "Auto-save is on. Check things off and this browser will remember them next time.": "自動保存はオンだ。チェックを入れれば、次回このブラウザが覚えている。",
   "Built from CCA-F_Study_Guide.md · progress saved on this device · not affiliated with Anthropic's official exam": "CCA-F_Study_Guide.mdから構築 · 進捗はこの端末に保存 · Anthropicの公式試験とは無関係",
-  "Built from your two study guides — CCA Foundations Quiz 1 (77 Q) and the Interactive Quiz (147 Q), 224 questions total before 67 duplicates across the two sources were merged, leaving 157 unique questions. Rules and traps are distilled from the answer explanations in those files.": "あなたの2つの学習ガイド — CCA Foundations Quiz 1 (77問)とInteractive Quiz (147問)から構築。2つの資料の間で重複していた67問を統合する前は合計224問、統合後は157問のユニークな問題が残った。ルールと罠は、それらの資料内の解答解説から抽出したものだ。",
   "Exam facts verified against Anthropic's certification program (Pearson VUE, 5-domain blueprint) · not affiliated with Anthropic · verify current exam details before you register.": "試験情報はAnthropicの認定プログラム(Pearson VUE、5ドメイン構成)と照合済み · Anthropicとは無関係 · 登録前に最新の試験情報を必ず確認すること。",
   "Agents vs. workflows": "Agentとworkflowの違い",
   "Use the simplest thing that works. Workflows = predictable, orchestrated LLM calls. Agents = the model drives its own loop with tools. Reach for an agent only when the path can't be hardcoded.": "うまくいく最もシンプルな方法を使う。Workflow = 予測可能で、あらかじめ組まれたLLM呼び出し。Agent = modelがtoolsを使って自分でループを回す。パスをハードコードできないときだけagentに手を伸ばそう。",
@@ -2445,7 +2444,6 @@ window.__I18N_JA__={
   "Over-engineered plumbing": "過剰設計された配管(仕組み)",
   "Usually a distractor": "たいていdistractor(ひっかけの誤答)",
   "Model-swap as the architectural answer": "modelを差し替えることをアーキテクチャ上の答えにする",
-  "source · CCA-F_Study_Guide.md · 157 unique questions": "出典 · CCA-F_Study_Guide.md · 157問のユニークな問題",
   "Prompting Techniques": "プロンプト技法",
   "Codebase Search (Glob/Grep)": "コードベース検索(Glob/Grep)",
   "Agent vs. Workflow Design": "AgentとWorkflowの設計",
@@ -2646,12 +2644,10 @@ window.__I18N_ZH__={
   "Your learning path": "你的学习路径",
   "The shortcuts": "捷径",
   "Cheat sheet, tricks & keyword tells": "速查表、技巧与关键词提示",
-  "Duplicates found in the source": "原始资料中发现的重复题",
   "answer conflict": "答案冲突",
   "⚠ answer conflict": "⚠ 答案冲突",
-  "Section 1 (Q1–77) and Section 2 (Q1–148) share": "Section 1(Q1–77)与Section 2(Q1–148)之间共有",
-  "67 duplicate questions": "67道重复题",
-  "— same stem and options (a few appear three times), just relettered A/B/C/D and occasionally reworded. This console keeps the cleanest copy of each — usually the Section 1 version, since it has the written explanation. One pair has genuinely conflicting correct answers in the source (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged with a": "——题干和选项相同(个别甚至出现三次),只是重新排列了A/B/C/D并偶尔改写措辞。本控制台为每题保留最干净的版本——通常是有书面解释的Section 1版本。有一对题目在原始资料中的正确答案确实相互矛盾(叙述性摘要 vs. 用于恢复崩溃会话的结构化数据提取);它会被标上",
+  "Answer conflict flagged": "已标出答案冲突",
+  "One question pair has a genuinely conflicting correct answer in the source (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged with a": "有一对题目在原始资料中的正确答案确实相互矛盾（叙述性摘要 vs. 用于恢复崩溃会话的结构化数据提取）；它会被标上",
   "badge when you study it, so you can judge it yourself.": "徽章,学习到时你可以自行判断。",
   "IF trigger → THEN pattern": "IF 触发词 → THEN 模式",
   "Modules": "模块",
@@ -2684,7 +2680,6 @@ window.__I18N_ZH__={
   "trigger": "触发词",
   "trap": "陷阱",
   "answer.": "作答。",
-  "Seven phases, easiest foundations first. All 157 unique questions from the source are filed into one module below (67 exact duplicates across Sections 1 & 2 were merged — see the Cheat tab for details). Tap any module to study it — your progress fills the bars and lights up phases as you mark questions known.": "七个阶段,从最简单的基础开始。原始资料中全部157道独特题目已归入下方各模块(Section 1与2之间完全重复的67题已合并——详见速查标签页)。点击任意模块进行学习——每当你将题目标记为已掌握,进度条就会填满,阶段也会随之点亮。",
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "这个筛选条件下没有内容了。换个筛选条件试试,或者——你已经清空了这个模块,真棒!",
   "When is an agent even the right tool, and which workflow shape fits.": "什么时候agent才是正确的工具,哪种workflow形态更合适。",
   "The primitives every agent is assembled from: tools, integrations, and search.": "组成每个agent的基本组件:tools、integrations与search。",
@@ -3063,7 +3058,6 @@ window.__I18N_ZH__={
   "Assumes ~1–2 hrs/day with the exam at the end of week 2. Heavier days (mocks) sit on days you likely have more time — shuffle them to fit your week. Progress saves automatically to this browser on this device — no buttons, no codes. Keep this exact HTML file in one place and reopen it from there each time.": "假设每天投入约1–2小时,考试安排在第2周结束时。较重的日子(模拟考)被放在你可能时间更充裕的那几天——可自行调整顺序以适配你的一周。进度会在这台设备的这个浏览器中自动保存——不需要按钮,也不需要代码。请把这份HTML文件固定放在同一个位置,每次都从那里打开。",
   "Auto-save is on. Check things off and this browser will remember them next time.": "自动保存已开启。勾选完成项后,这个浏览器下次会记住它们。",
   "Built from CCA-F_Study_Guide.md · progress saved on this device · not affiliated with Anthropic's official exam": "基于CCA-F_Study_Guide.md构建 · 进度保存在本设备上 · 与Anthropic官方考试无关联",
-  "Built from your two study guides — CCA Foundations Quiz 1 (77 Q) and the Interactive Quiz (147 Q), 224 questions total before 67 duplicates across the two sources were merged, leaving 157 unique questions. Rules and traps are distilled from the answer explanations in those files.": "基于你的两份学习指南构建——CCA Foundations Quiz 1(77题)与Interactive Quiz(147题),两份资料合并前共224题,合并67道跨资料的重复题后,剩下157道独特题目。规则与陷阱均从这些文件中的答案解释里提炼而来。",
   "Exam facts verified against Anthropic's certification program (Pearson VUE, 5-domain blueprint) · not affiliated with Anthropic · verify current exam details before you register.": "考试相关信息已对照Anthropic认证项目核实(Pearson VUE、5大领域蓝图) · 与Anthropic无关联 · 报名前请自行核实最新的考试细节。",
   "Agents vs. workflows": "Agent 与 workflow 的取舍",
   "Use the simplest thing that works. Workflows = predictable, orchestrated LLM calls. Agents = the model drives its own loop with tools. Reach for an agent only when the path can't be hardcoded.": "用能奏效的最简单方案。Workflow = 可预测的、按编排顺序调用的LLM;Agent = model用tools自行驱动自己的循环。只有当路径无法硬编码时才该选agent。",
@@ -3150,7 +3144,6 @@ window.__I18N_ZH__={
   "Over-engineered plumbing": "过度设计的底层管道",
   "Usually a distractor": "通常是干扰项",
   "Model-swap as the architectural answer": "把换model当作架构层面的答案",
-  "source · CCA-F_Study_Guide.md · 157 unique questions": "来源 · CCA-F_Study_Guide.md · 157道独特题目",
   "Prompting Techniques": "Prompt 技巧",
   "Codebase Search (Glob/Grep)": "代码库搜索(Glob/Grep)",
   "Agent vs. Workflow Design": "Agent 与 Workflow 设计",
@@ -3351,12 +3344,10 @@ window.__I18N_TW__={
   "Your learning path": "你的學習路徑",
   "The shortcuts": "捷徑",
   "Cheat sheet, tricks & keyword tells": "速查表、技巧與關鍵詞提示",
-  "Duplicates found in the source": "原始資料中發現的重複題",
   "answer conflict": "答案衝突",
   "⚠ answer conflict": "⚠ 答案衝突",
-  "Section 1 (Q1–77) and Section 2 (Q1–148) share": "Section 1(Q1–77)與Section 2(Q1–148)之間共有",
-  "67 duplicate questions": "67道重複題",
-  "— same stem and options (a few appear three times), just relettered A/B/C/D and occasionally reworded. This console keeps the cleanest copy of each — usually the Section 1 version, since it has the written explanation. One pair has genuinely conflicting correct answers in the source (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged with a": "——題幹和選項相同(個別甚至出現三次),只是重新排列了A/B/C/D並偶爾改寫措辭。本控制台為每題保留最乾淨的版本——通常是有書面解釋的Section 1版本。有一對題目在原始資料中的正確答案確實相互矛盾(敘述性摘要 vs. 用於恢復崩潰會話的結構化數據提取);它會被標上",
+  "Answer conflict flagged": "已標出答案衝突",
+  "One question pair has a genuinely conflicting correct answer in the source (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged with a": "有一對題目在原始資料中的正確答案確實相互矛盾（敍述性摘要 vs. 用於恢復崩潰會話的結構化數據提取）；它會被標上",
   "badge when you study it, so you can judge it yourself.": "徽章,學習到時你可以自行判斷。",
   "IF trigger → THEN pattern": "IF 觸發詞 → THEN 模式",
   "Modules": "模塊",
@@ -3389,7 +3380,6 @@ window.__I18N_TW__={
   "trigger": "觸發詞",
   "trap": "陷阱",
   "answer.": "作答。",
-  "Seven phases, easiest foundations first. All 157 unique questions from the source are filed into one module below (67 exact duplicates across Sections 1 & 2 were merged — see the Cheat tab for details). Tap any module to study it — your progress fills the bars and lights up phases as you mark questions known.": "七個階段,從最簡單的基礎開始。原始資料中全部157道獨特題目已歸入下方各模塊(Section 1與2之間完全重複的67題已合並——詳見速查標籤頁)。點擊任意模塊進行學習——每當你將題目標記為已掌握,進度條就會填滿,階段也會隨之點亮。",
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "這個篩選條件下没有內容了。換個篩選條件試試,或者——你已經清空了這個模塊,真棒!",
   "When is an agent even the right tool, and which workflow shape fits.": "什麼時候agent才是正確的工具,哪種workflow形態更合適。",
   "The primitives every agent is assembled from: tools, integrations, and search.": "組成每個agent的基本組件:tools、integrations與search。",
@@ -3768,7 +3758,6 @@ window.__I18N_TW__={
   "Assumes ~1–2 hrs/day with the exam at the end of week 2. Heavier days (mocks) sit on days you likely have more time — shuffle them to fit your week. Progress saves automatically to this browser on this device — no buttons, no codes. Keep this exact HTML file in one place and reopen it from there each time.": "假設每天投入約1–2小時,考試安排在第2周結束時。較重的日子(模擬考)被放在你可能時間更充裕的那幾天——可自行調整順序以適配你的一周。進度會在這台設備的這個瀏覽器中自動保存——不需要按鈕,也不需要代碼。請把這份HTML文件固定放在同一個位置,每次都從那裡打開。",
   "Auto-save is on. Check things off and this browser will remember them next time.": "自動保存已開啟。勾選完成項後,這個瀏覽器下次會記住它們。",
   "Built from CCA-F_Study_Guide.md · progress saved on this device · not affiliated with Anthropic's official exam": "基於CCA-F_Study_Guide.md構建 · 進度保存在本設備上 · 與Anthropic官方考試無關聯",
-  "Built from your two study guides — CCA Foundations Quiz 1 (77 Q) and the Interactive Quiz (147 Q), 224 questions total before 67 duplicates across the two sources were merged, leaving 157 unique questions. Rules and traps are distilled from the answer explanations in those files.": "基於你的兩份學習指南構建——CCA Foundations Quiz 1(77題)與Interactive Quiz(147題),兩份資料合並前共224題,合並67道跨資料的重複題後,剩下157道獨特題目。規則與陷阱均從這些文件中的答案解釋裡提煉而來。",
   "Exam facts verified against Anthropic's certification program (Pearson VUE, 5-domain blueprint) · not affiliated with Anthropic · verify current exam details before you register.": "考試相關信息已對照Anthropic認證項目核實(Pearson VUE、5大領域藍圖) · 與Anthropic無關聯 · 報名前請自行核實最新的考試細節。",
   "Agents vs. workflows": "Agent 與 workflow 的取捨",
   "Use the simplest thing that works. Workflows = predictable, orchestrated LLM calls. Agents = the model drives its own loop with tools. Reach for an agent only when the path can't be hardcoded.": "用能奏效的最簡單方案。Workflow = 可預測的、按編排順序調用的LLM;Agent = model用tools自行驅動自己的循環。只有當路徑無法硬編碼時才該選agent。",
@@ -3855,7 +3844,6 @@ window.__I18N_TW__={
   "Over-engineered plumbing": "過度設計的底層管道",
   "Usually a distractor": "通常是干擾項",
   "Model-swap as the architectural answer": "把換model當作架構層面的答案",
-  "source · CCA-F_Study_Guide.md · 157 unique questions": "來源 · CCA-F_Study_Guide.md · 157道獨特題目",
   "Prompting Techniques": "Prompt 技巧",
   "Codebase Search (Glob/Grep)": "代碼庫搜索(Glob/Grep)",
   "Agent vs. Workflow Design": "Agent 與 Workflow 設計",
@@ -4056,12 +4044,10 @@ window.__I18N_ES__={
   "Your learning path": "Tu ruta de aprendizaje",
   "The shortcuts": "Los atajos",
   "Cheat sheet, tricks & keyword tells": "Hoja de trucos, consejos y pistas de palabras clave",
-  "Duplicates found in the source": "Duplicados encontrados en la fuente",
   "answer conflict": "conflicto de respuesta",
   "⚠ answer conflict": "⚠ conflicto de respuesta",
-  "Section 1 (Q1–77) and Section 2 (Q1–148) share": "La Sección 1 (Q1–77) y la Sección 2 (Q1–148) comparten",
-  "67 duplicate questions": "67 preguntas duplicadas",
-  "— same stem and options (a few appear three times), just relettered A/B/C/D and occasionally reworded. This console keeps the cleanest copy of each — usually the Section 1 version, since it has the written explanation. One pair has genuinely conflicting correct answers in the source (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged with a": "— el mismo enunciado y opciones (algunas aparecen hasta tres veces), solo con las letras A/B/C/D reordenadas y a veces redactadas de otra forma. Esta consola conserva la copia más limpia de cada una — normalmente la versión de la Sección 1, ya que incluye la explicación escrita. Un par tiene respuestas correctas realmente contradictorias en la fuente (resumen narrativo vs. extracción de datos estructurados para reanudar una sesión bloqueada); está marcado con una",
+  "Answer conflict flagged": "Conflicto de respuesta detectado",
+  "One question pair has a genuinely conflicting correct answer in the source (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged with a": "Un par de preguntas tiene una respuesta correcta realmente contradictoria en la fuente (resumen narrativo vs. extracción de datos estructurados para reanudar una sesión bloqueada); está marcado con una",
   "badge when you study it, so you can judge it yourself.": "insignia cuando la estudies, para que lo juzgues tú mismo.",
   "IF trigger → THEN pattern": "SI hay disparador → ENTONCES patrón",
   "Modules": "Módulos",
@@ -4094,7 +4080,6 @@ window.__I18N_ES__={
   "trigger": "disparador",
   "trap": "trampa",
   "answer.": "responde.",
-  "Seven phases, easiest foundations first. All 157 unique questions from the source are filed into one module below (67 exact duplicates across Sections 1 & 2 were merged — see the Cheat tab for details). Tap any module to study it — your progress fills the bars and lights up phases as you mark questions known.": "Siete fases, empezando por los fundamentos más sencillos. Las 157 preguntas únicas de la fuente están clasificadas en los módulos de abajo (las 67 duplicadas exactas entre las Secciones 1 y 2 se fusionaron — ver la pestaña de Trucos para más detalles). Toca cualquier módulo para estudiarlo — tu progreso llena las barras e ilumina las fases a medida que marcas preguntas como dominadas.",
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "No hay nada con este filtro. Cambia el filtro, o ya terminaste este módulo — ¡genial!",
   "When is an agent even the right tool, and which workflow shape fits.": "Cuándo un agent es realmente la herramienta correcta, y qué forma de workflow encaja.",
   "The primitives every agent is assembled from: tools, integrations, and search.": "Las piezas básicas con las que se arma todo agent: tools, integrations y search.",
@@ -4473,7 +4458,6 @@ window.__I18N_ES__={
   "Assumes ~1–2 hrs/day with the exam at the end of week 2. Heavier days (mocks) sit on days you likely have more time — shuffle them to fit your week. Progress saves automatically to this browser on this device — no buttons, no codes. Keep this exact HTML file in one place and reopen it from there each time.": "Se asume ~1–2 h/día con el examen al final de la semana 2. Los días más cargados (simulacros) están colocados en días donde probablemente tengas más tiempo — reorganízalos según tu semana. El progreso se guarda automáticamente en este navegador y en este dispositivo — sin botones ni códigos. Guarda este archivo HTML exacto en un solo lugar y ábrelo siempre desde ahí.",
   "Auto-save is on. Check things off and this browser will remember them next time.": "El autoguardado está activado. Marca las tareas y este navegador las recordará la próxima vez.",
   "Built from CCA-F_Study_Guide.md · progress saved on this device · not affiliated with Anthropic's official exam": "Creado a partir de CCA-F_Study_Guide.md · progreso guardado en este dispositivo · sin afiliación con el examen oficial de Anthropic",
-  "Built from your two study guides — CCA Foundations Quiz 1 (77 Q) and the Interactive Quiz (147 Q), 224 questions total before 67 duplicates across the two sources were merged, leaving 157 unique questions. Rules and traps are distilled from the answer explanations in those files.": "Creado a partir de tus dos guías de estudio — CCA Foundations Quiz 1 (77 preguntas) y el Interactive Quiz (147 preguntas), 224 preguntas en total antes de fusionar las 67 duplicadas entre ambas fuentes, quedando 157 preguntas únicas. Las reglas y trampas se destilaron de las explicaciones de respuesta en esos archivos.",
   "Exam facts verified against Anthropic's certification program (Pearson VUE, 5-domain blueprint) · not affiliated with Anthropic · verify current exam details before you register.": "Los datos del examen fueron verificados contra el programa de certificación de Anthropic (Pearson VUE, esquema de 5 dominios) · sin afiliación con Anthropic · verifica los detalles actuales del examen antes de inscribirte.",
   "Agents vs. workflows": "Agents frente a workflows",
   "Use the simplest thing that works. Workflows = predictable, orchestrated LLM calls. Agents = the model drives its own loop with tools. Reach for an agent only when the path can't be hardcoded.": "Usa lo más simple que funcione. Workflows = llamadas al LLM predecibles y orquestadas. Agents = el model conduce su propio bucle con tools. Recurre a un agent solo cuando el camino no se pueda codificar de antemano.",
@@ -4560,7 +4544,6 @@ window.__I18N_ES__={
   "Over-engineered plumbing": "Infraestructura sobrediseñada",
   "Usually a distractor": "Normalmente es un distractor",
   "Model-swap as the architectural answer": "Cambiar de model como si fuera la respuesta arquitectónica",
-  "source · CCA-F_Study_Guide.md · 157 unique questions": "fuente · CCA-F_Study_Guide.md · 157 preguntas únicas",
   "Prompting Techniques": "Técnicas de prompting",
   "Codebase Search (Glob/Grep)": "Búsqueda en el codebase (Glob/Grep)",
   "Agent vs. Workflow Design": "Diseño de Agent frente a Workflow",
@@ -4761,12 +4744,10 @@ window.__I18N_KO__={
   "Your learning path": "나의 학습 경로",
   "The shortcuts": "핵심 요령",
   "Cheat sheet, tricks & keyword tells": "공략 시트, 요령 & 키워드 신호",
-  "Duplicates found in the source": "원본 자료에서 발견된 중복 문제",
   "answer conflict": "정답 충돌",
   "⚠ answer conflict": "⚠ 정답 충돌",
-  "Section 1 (Q1–77) and Section 2 (Q1–148) share": "Section 1 (Q1–77)과 Section 2 (Q1–148)에는 공통으로",
-  "67 duplicate questions": "67개의 중복 문제",
-  "— same stem and options (a few appear three times), just relettered A/B/C/D and occasionally reworded. This console keeps the cleanest copy of each — usually the Section 1 version, since it has the written explanation. One pair has genuinely conflicting correct answers in the source (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged with a": "— 동일한 문제와 선택지를 가지며(일부는 세 번 등장), A/B/C/D 순서만 바뀌거나 표현이 약간 다를 뿐이다. 이 콘솔은 각 문제의 가장 깔끔한 버전 — 대개 해설이 포함된 Section 1 버전 — 을 사용한다. 한 쌍은 원본 자료에서 정답이 실제로 서로 다른데(크래시된 세션을 재개할 때 서술 요약 방식 대 구조화된 데이터 추출 방식), 이 문제에는",
+  "Answer conflict flagged": "정답 충돌 발견",
+  "One question pair has a genuinely conflicting correct answer in the source (narrative summary vs. structured data extraction for resuming a crashed session); it's flagged with a": "한 쌍의 문제는 원본 자료에서 정답이 실제로 서로 다른데(크래시된 세션을 재개할 때 서술 요약 방식 대 구조화된 데이터 추출 방식), 이 문제에는",
   "badge when you study it, so you can judge it yourself.": "배지가 표시되므로, 학습할 때 직접 판단하면 된다.",
   "IF trigger → THEN pattern": "IF 트리거 → THEN 패턴",
   "Modules": "모듈",
@@ -4799,7 +4780,6 @@ window.__I18N_KO__={
   "trigger": "트리거",
   "trap": "함정",
   "answer.": "을 피해 답하라.",
-  "Seven phases, easiest foundations first. All 157 unique questions from the source are filed into one module below (67 exact duplicates across Sections 1 & 2 were merged — see the Cheat tab for details). Tap any module to study it — your progress fills the bars and lights up phases as you mark questions known.": "일곱 단계, 가장 쉬운 기초부터 시작한다. 원본의 157개 고유 문제가 모두 아래 모듈에 정리되어 있다(Section 1과 2 사이의 완전히 일치하는 67개 중복 문제는 통합됨 — 자세한 내용은 Cheat 탭 참고). 아무 모듈이나 눌러서 학습하라 — 문제를 Known으로 표시할 때마다 진행률 막대가 채워지고 단계가 밝아진다.",
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "이 필터에 해당하는 항목이 없다. 필터를 바꾸거나, 이 모듈을 이미 다 학습한 것이다 — 훌륭하다!",
   "When is an agent even the right tool, and which workflow shape fits.": "애초에 agent가 적합한 도구인지, 어떤 workflow 형태가 맞는지.",
   "The primitives every agent is assembled from: tools, integrations, and search.": "모든 agent를 구성하는 기본 요소: tools, integrations, search.",
@@ -5178,7 +5158,6 @@ window.__I18N_KO__={
   "Assumes ~1–2 hrs/day with the exam at the end of week 2. Heavier days (mocks) sit on days you likely have more time — shuffle them to fit your week. Progress saves automatically to this browser on this device — no buttons, no codes. Keep this exact HTML file in one place and reopen it from there each time.": "2주차 끝에 시험이 있다고 가정하고 하루 ~1–2시간을 기준으로 짰다. 부담이 큰 날(모의고사)은 시간이 더 있을 법한 날에 배치되어 있다 — 본인의 주간 일정에 맞게 옮겨도 된다. 진행 상황은 이 기기의 이 브라우저에 자동으로 저장된다 — 버튼도, 코드도 필요 없다. 이 HTML 파일을 한 곳에 두고 매번 그곳에서 다시 열어라.",
   "Auto-save is on. Check things off and this browser will remember them next time.": "자동 저장이 켜져 있다. 항목을 체크하면 이 브라우저가 다음에도 기억한다.",
   "Built from CCA-F_Study_Guide.md · progress saved on this device · not affiliated with Anthropic's official exam": "CCA-F_Study_Guide.md 기반으로 제작 · 진행 상황은 이 기기에 저장됨 · Anthropic 공식 시험과 무관",
-  "Built from your two study guides — CCA Foundations Quiz 1 (77 Q) and the Interactive Quiz (147 Q), 224 questions total before 67 duplicates across the two sources were merged, leaving 157 unique questions. Rules and traps are distilled from the answer explanations in those files.": "두 학습 가이드 — CCA Foundations Quiz 1(77문항)과 Interactive Quiz(147문항) — 를 바탕으로 만들었다. 두 자료 간 중복된 67문항을 통합하기 전 총 224문항이었고, 통합 후 157개의 고유 문항이 남았다. 규칙과 함정은 해당 자료의 정답 해설에서 추출한 것이다.",
   "Exam facts verified against Anthropic's certification program (Pearson VUE, 5-domain blueprint) · not affiliated with Anthropic · verify current exam details before you register.": "시험 정보는 Anthropic의 인증 프로그램(Pearson VUE, 5개 도메인 구성)과 대조하여 확인함 · Anthropic과 무관 · 등록 전에 최신 시험 정보를 반드시 확인할 것.",
   "Agents vs. workflows": "Agent 대 workflow",
   "Use the simplest thing that works. Workflows = predictable, orchestrated LLM calls. Agents = the model drives its own loop with tools. Reach for an agent only when the path can't be hardcoded.": "동작하는 가장 단순한 방법을 써라. Workflow = 예측 가능하고 미리 짜인 LLM 호출. Agent = model이 tool을 이용해 스스로 루프를 이끈다. 경로를 하드코딩할 수 없을 때만 agent를 선택하라.",
@@ -5265,7 +5244,6 @@ window.__I18N_KO__={
   "Over-engineered plumbing": "과잉 설계된 연결 구조",
   "Usually a distractor": "대개 오답 유도용 선택지",
   "Model-swap as the architectural answer": "model 교체를 아키텍처 수준의 답으로 삼기",
-  "source · CCA-F_Study_Guide.md · 157 unique questions": "출처 · CCA-F_Study_Guide.md · 157개의 고유 문항",
   "Prompting Techniques": "프롬프트 기법",
   "Codebase Search (Glob/Grep)": "코드베이스 검색 (Glob/Grep)",
   "Agent vs. Workflow Design": "Agent 대 Workflow 설계",
