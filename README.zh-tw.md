@@ -14,15 +14,15 @@
 
 | 標籤頁 | 說明 |
 |---|---|
-| **Study Console**(學習控制台) | 主訓練工具。包含一條按7個階段劃分的學習路徑(從基礎 → 應用場景),由14個按考試領域打標籤的主題模塊構成;一張核心原則速查表,配合「IF 觸發詞 → THEN 模式」判斷表;一個類似閃卡的 Study 模式(將題目標記為已掌握/待複習、查看解釋、查看每題自動打標的關鍵詞標籤);以及按領域分組的 Quiz 模式——即「Exam by Domain」標籤頁——你可以整體或按模塊切換開關、選擇題量,完成一輪計分測試,每道錯題都會給出解釋。|
+| **Study Console**(學習控制台) | 主訓練工具。一條按 5 個官方考試領域(按 blueprint 權重排序)組織的學習路徑,每個領域再拆分為其 task statement;一張核心原則速查表,配合「IF 觸發詞 → THEN 模式」判斷表;一個類似閃卡的 Study 模式(按 task statement 或跨領域的「Mixed / Applied」集合篩選,將題目標記為已掌握/待複習、查看解釋、查看自動打標的關鍵詞標籤);「Exam by Domain」Quiz 模式(整體或按 task statement 切換開關、選擇題量,完成一輪計分測試並解釋每道錯題);以及一個 Concepts 標籤頁,按領域 → task statement 列出全部 59 個 blueprint 概念,每個都附有核心 insight 和 Foundation/Intermediate/Advanced 難度。|
 | **Study Hub**(學習中心) | 按官方5大考試領域(加權 D1–D5)組織的參考視圖,包含各領域的判斷規則、需規避的陷阱與關鍵詞觸發點,以及一張可搜索的快速解碼表。|
 | **Neuron Map**(神經元地圖) | 一張交互式 SVG 概念圖,將考試領域與其子主題相連,還包含可點擊的跨領域「突觸」連接。|
 | **2-Week Plan**(兩周計劃) | 一份按天列出的清單式學習計劃,自帶獨立進度條;在 `localStorage` 不可用的場景(例如某些 `file://` 打開方式)下,提供手動 JSON 導出/導入的備用方案。|
 
 ## 內容構成
 
-- **157道獨特題目**,來源於 `CCA-F_Study_Guide.md`——原資料 Section 1(Q1–77)與 Section 2(Q1–148)之間重複的67題已被合並(保留 Section 1 版本,因其附有書面解釋)。有一對題目在原資料中的正確答案確實相互矛盾,會在 Study 模式中以 ⚠ 徽章標出。
-- 題目被打上**14個模塊**標籤,歸入**7個學習階段**,並映射到**5大考試領域**:Agentic Architecture & Orchestration(27%)、Claude Code Configuration & Workflows(20%)、Prompt Engineering & Structured Output(20%)、Tool Design & MCP Integration(18%)、Context Management & Reliability(15%)。
+- **157 道練習題**,來源於 `CCA-F_Study_Guide.md`。有一對題目在原資料中的正確答案確實相互矛盾,會在 Study 模式中以 ⚠ 徽章標出。
+- 應用圍繞官方 **CCA-F blueprint** 組織:**5 個領域 → 30 個 task statement → 59 個概念**。每道題都標記到一個 task statement,其領域由該標記推導得出。按考試權重排序的五個領域:Agentic Architecture(27%)、Tool Design & MCP(18%)、Claude Code & Workflows(20%)、Prompt Engineering & Output(20%)、Context & Reliability(15%)。(blueprint 分類來自 [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn)。)
 
 ## 功能特性
 

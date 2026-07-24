@@ -14,15 +14,15 @@ Anthropic의 **Claude Certified Architect — Foundations (CCA-F)** 시험 대�
 
 | 탭 | 설명 |
 |---|---|
-| **Study Console**(학습 콘솔) | 메인 학습 도구입니다. 14개의 주제별 모듈(시험 도메인으로 태그됨)로 구성된 7단계 학습 경로(기초 → 응용 시나리오), 핵심 원칙 치트 시트와 "IF 트리거 → THEN 패턴" 판단표, 플래시카드 형식의 Study 모드(문제를 Known/Review로 표시, 해설 확인, 문제별 자동 태그된 키워드 칩 확인), 그리고 도메인별로 그룹화된 Quiz 모드 — "Exam by Domain" 탭 — 에서는 도메인이나 개별 모듈을 켜고 끄고, 문항 수를 선택해 채점된 결과와 모든 오답 해설을 확인할 수 있습니다. |
+| **Study Console**(학습 콘솔) | 메인 학습 도구입니다. 공식 5개 시험 도메인(blueprint 비중 순)으로 구성된 학습 경로 — 각 도메인은 task statement로 나뉩니다 —, 핵심 원칙 치트 시트와 "IF 트리거 → THEN 패턴" 판단표, 플래시카드 형식의 Study 모드(task statement별 또는 교차 영역 "Mixed / Applied" 세트로 필터링, 문제를 Known/Review로 표시, 해설 확인, 자동 태그된 키워드 칩 확인), "Exam by Domain" Quiz 모드(도메인 전체 또는 개별 task statement를 켜고 끄고, 문항 수를 선택해 채점 결과와 모든 오답 해설 확인), 그리고 59개 blueprint 개념을 도메인 → task statement별로 정리한 Concepts 탭(각 개념의 핵심 insight와 Foundation/Intermediate/Advanced 난이도 포함)을 제공합니다. |
 | **Study Hub**(스터디 허브) | 공식 5개 시험 도메인(D1–D5, 가중치 포함)별로 정리된 참고 화면입니다. 도메인별 판단 규칙, 피해야 할 함정, 키워드 트리거와 함께 검색 가능한 빠른 디코더 표를 포함합니다. |
 | **Neuron Map**(뉴런 맵) | 시험 도메인과 그 하위 주제를 연결한 인터랙티브 SVG 개념도입니다. 도메인을 넘나드는 "시냅스" 연결을 클릭해 따라갈 수 있습니다. |
 | **2-Week Plan**(2주 계획) | 자체 진행률 표시줄이 있는 일별 체크리스트 학습 계획입니다. `localStorage`를 사용할 수 없는 환경(일부 `file://` 설정 등)을 위한 수동 JSON 내보내기/가져오기 대체 수단도 포함되어 있습니다. |
 
 ## 콘텐츠
 
-- `CCA-F_Study_Guide.md`에서 가져온 **157개의 고유 문항** — 원본 자료의 Section 1(Q1–77)과 Section 2(Q1–148) 사이에 중복되던 67문항은 통합되었습니다(설명이 포함된 Section 1 버전을 사용). 원본 자료에서 정답이 실제로 서로 다른 한 쌍은 Study 모드에서 ⚠ 배지로 표시됩니다.
-- 문항은 **14개 모듈**로 태그되고 **7개 학습 단계**로 그룹화되며 **5개 시험 도메인**에 매핑됩니다: Agentic Architecture & Orchestration(27%), Claude Code Configuration & Workflows(20%), Prompt Engineering & Structured Output(20%), Tool Design & MCP Integration(18%), Context Management & Reliability(15%).
+- `CCA-F_Study_Guide.md`에서 가져온 **157개 연습 문항**. 원본 자료에서 정답이 실제로 서로 다른 한 쌍은 Study 모드에서 ⚠ 배지로 표시됩니다.
+- 이 앱은 공식 **CCA-F blueprint**를 중심으로 구성됩니다: **5개 도메인 → 30개 task statement → 59개 개념**. 모든 문항은 하나의 task statement에 태깅되며, 도메인은 그 태그에서 파생됩니다. 시험 비중 순의 다섯 도메인: Agentic Architecture(27%), Tool Design & MCP(18%), Claude Code & Workflows(20%), Prompt Engineering & Output(20%), Context & Reliability(15%). (blueprint 분류 출처: [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## 기능
 

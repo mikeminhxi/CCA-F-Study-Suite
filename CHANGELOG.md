@@ -13,7 +13,7 @@ All notable changes to the CCA-F Study Suite are recorded here.
 - **Neuron Map**: domain labels updated to the official blueprint names.
 - Retired the synthetic "Mixed / Applied" 6th domain, the `PHASES`/module structure, and the `MODULE_DOMAIN` map.
 - Verified end-to-end in a real browser (Playwright): all five domains / 30 task statements / 59 concepts render, the quiz pools all 157 questions by task statement, zero console errors, both light and dark themes.
-- **English-first** delivery, with two outstanding follow-ups: (1) the ~150 new UI strings (task-statement titles, concept titles + insights, new labels) currently fall back to English under Vietnamese/Japanese/Chinese/Traditional-Chinese/Spanish/Korean — to be translated via the `fetch-language-dictionary` pipeline; (2) the six localized READMEs still describe the old 14-module structure and will be refreshed in the same translation pass. Spec-kit round for this change is under `specs/002-blueprint-taxonomy/`.
+- Built **English-first**, then fully localized: all 170 new UI strings (30 task-statement titles, 59 concept titles + 59 insights, 5 domain labels + descriptions, the 3 level words, and the new copy) were translated into Vietnamese, Japanese, Simplified & Traditional Chinese, Spanish, and Korean — in the app dictionaries (696 keys each) and the staged `translations/*.json` files — with technical/code terms kept in English. All seven READMEs were refreshed to the new taxonomy. Spec-kit round for this change is under `specs/002-blueprint-taxonomy/`.
 
 ## Languages
 

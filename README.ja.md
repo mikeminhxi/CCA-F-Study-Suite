@@ -14,15 +14,15 @@ Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対
 
 | タブ | 内容 |
 |---|---|
-| **Study Console**（学習コンソール） | メインのトレーニングツール。14のトピック別モジュール（試験ドメインでタグ付け）から組み立てた7段階の学習パス（基礎 → 応用シナリオ）、コア原則のチートシートと「IFトリガー → THENパターン」の判断表、フラッシュカード形式のStudyモード（問題をKnown/Reviewでマークし、解説を表示、問題ごとに自動タグ付けされたキーワードチップを確認）、そしてドメイン別にグループ化されたQuizモード ——「Exam by Domain」タブ —— ドメイン単位・モジュール単位で選択をオン/オフし、出題数を選んで、間違えた問題の解説付きで採点結果を確認できます。|
+| **Study Console**（学習コンソール） | メインのトレーニングツール。公式の5試験ドメイン（blueprintの配点順）で構成された学習パス（各ドメインはtask statementに分割）、コア原則のチートシートと「IFトリガー → THENパターン」の判断表、フラッシュカード形式のStudyモード（task statementまたは分野横断の「Mixed / Applied」セットでフィルタ、問題をKnown/Reviewでマーク、解説を表示、自動タグ付けキーワードチップを確認）、「Exam by Domain」Quizモード（ドメイン単位・task statement単位でオン/オフ、出題数を選び、間違えた問題の解説付きで採点）、そして59のblueprintコンセプトをドメイン → task statementごとに一覧するConceptsタブ（各コンセプトの核心insightとFoundation/Intermediate/Advancedの難易度付き）を提供します。|
 | **Study Hub**（学習ハブ） | 試験の公式5ドメイン（D1〜D5、重み付き）ごとに整理されたリファレンス画面。ドメインごとの判断ルール、避けるべき罠、キーワードのトリガーに加え、検索可能な早見デコーダー表を収録。|
 | **Neuron Map**（概念マップ） | 試験ドメインとそのサブトピックを結ぶインタラクティブなSVG概念図。ドメインをまたぐ「シナプス」接続をクリックしてたどれます。|
 | **2-Week Plan**（2週間プラン） | 独自の進捗バー付きの日次チェックリスト学習計画。`localStorage` が使えない環境（一部の `file://` での利用など）向けに、手動のJSONエクスポート/インポートのフォールバックも備えています。|
 
 ## 収録内容
 
-- **157問のユニークな問題**を `CCA-F_Study_Guide.md` から収録 —— 元資料のSection 1（Q1〜77）とSection 2（Q1〜148）で重複していた67問は統合済み（解説が付いているSection 1側を採用）。元資料の中で正答が本当に矛盾していた1組は、Studyモードで⚠バッジ付きで表示されます。
-- 問題は**14モジュール**にタグ付けされ、**7つの学習フェーズ**にグループ化され、**5つの試験ドメイン**にマッピングされています： Agentic Architecture & Orchestration（27%）、Claude Code Configuration & Workflows（20%）、Prompt Engineering & Structured Output（20%）、Tool Design & MCP Integration（18%）、Context Management & Reliability（15%）。
+- **157問の練習問題**を `CCA-F_Study_Guide.md` から収録。元資料の中で正答が本当に矛盾していた1組は、Studyモードで⚠バッジ付きで表示されます。
+- このアプリは公式の**CCA-F blueprint**を中心に構成されています：**5ドメイン → 30 task statement → 59コンセプト**。すべての問題は1つのtask statementにタグ付けされ、そのドメインはタグから導かれます。配点順の5ドメイン：Agentic Architecture（27%）、Tool Design & MCP（18%）、Claude Code & Workflows（20%）、Prompt Engineering & Output（20%）、Context & Reliability（15%）。（blueprintの分類は [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn) より。）
 
 ## 特徴
 
