@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · **🇹🇼 繁體中文** · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md)
+[🇺🇸 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · **🇹🇼 繁體中文** · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md)
 
 一個用於備考 Anthropic **Claude Certified Architect — Foundations（CCA-F）** 認證考試的單文件 HTML 學習應用。無需構建、無需服務器、無需安裝任何依賴——只需在瀏覽器中打開 `cca-f-study-suite.html` 即可使用。
 
@@ -26,7 +26,7 @@
 
 ## 功能特性
 
-- **EN / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 語言切換**——一層運行時文本替換機制,可將界面文案在英語、西班牙語、越南語、簡體中文、繁體中文、日語與韓語之間無需刷新即可切換;所選語言會在下次訪問時保留。
+- **EN / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 語言切換**——一層運行時文本替換機制,可將界面文案在英語、葡萄牙語、西班牙語、越南語、簡體中文、繁體中文、日語與韓語之間無需刷新即可切換;所選語言會在下次訪問時保留。
 - **自動標注關鍵詞**——每道題都會與數十個考試高頻詞(例如「MCP resource」「stateless」「tool_choice」)進行比對,匹配到的會以標籤形式顯示,讓關鍵提示詞在你閱讀解釋之前就先跳出來。
 - **本地持久化**——學習進度(已掌握/待複習標記)與計劃清單狀態均通過 `localStorage` 保存;若存儲被阻止,則為當前標籤頁提供內存中的臨時回退方案。
 - **零外部依賴**——純原生 JS/CSS/SVG 集於一個文件;唯一的外部請求是 Google Fonts(Space Grotesk、Inter、JetBrains Mono)。

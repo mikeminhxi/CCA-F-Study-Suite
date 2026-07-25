@@ -14,13 +14,13 @@ per FR-009 — this round runs `/speckit-plan` → `/speckit-tasks` *before*
 
 ## Phase 1: Setup
 
-- [ ] T001 Confirm `translations/` schema and the `fetch-language-dictionary`/
+- [x] T001 Confirm `translations/` schema and the `fetch-language-dictionary`/
       `add-language` skills are in place (already established; used for all seven
       prior languages).
 
 ## Phase 2: Foundational
 
-- [ ] T002 Extract the canonical current-baseline key set from `window.__I18N__`/
+- [x] T002 Extract the canonical current-baseline key set from `window.__I18N__`/
       `window.__SHELL__` in `cca-f-study-suite.html` (691 `i18n` + 5 `shell` keys as
       of this round — re-verify at implementation time, since the baseline has grown
       since Korean's round due to the blueprint-taxonomy restructure: `TASK_STATEMENTS`
@@ -36,28 +36,28 @@ script, no new layout mechanics).
 against the current baseline, and all seven existing READMEs plus the dropdown
 reflect Portuguese in the correct order.
 
-- [ ] T003 [US1] Translate all current `i18n` + `shell` keys into Portuguese (Brazil)
+- [x] T003 [US1] Translate all current `i18n` + `shell` keys into Portuguese (Brazil)
       via `fetch-language-dictionary`, following established conventions (keep
       technical terms in English — `agentic loop`, `stop_reason`, `tool_choice`, MCP,
       CLAUDE.md, Grep/Glob, etc.; leave `IF THE STEM SAYS` stem phrases untranslated).
-- [ ] T004 [US1] Determine dynamic-string metadata: `qsUnit` (Portuguese unit word for
+- [x] T004 [US1] Determine dynamic-string metadata: `qsUnit` (Portuguese unit word for
       "questions", e.g. `'perguntas'`), `noSpaceBeforeUnit: false` (Latin script, same
       as Spanish/Vietnamese), `questionFmt`, `nativeName: 'Português'`,
       `sortHint: 'latin'`.
-- [ ] T005 [US1] Validate the staged dictionary for exact key-set parity against the
+- [x] T005 [US1] Validate the staged dictionary for exact key-set parity against the
       current baseline (case-sensitive check) before writing `translations/pt.json`.
-- [ ] T006 [US1] Inject `window.__I18N_PT__` / `window.__SHELL_PT__` into
+- [x] T006 [US1] Inject `window.__I18N_PT__` / `window.__SHELL_PT__` into
       `cca-f-study-suite.html` via a brace-depth-aware scripted JSON edit,
       pretty-printed multi-line to match the app's existing dictionary format.
-- [ ] T007 [US1] Wire `pt` into `MAPS`, `SHELLS`, `QS_UNIT`, `QUESTION_FMT` (no
+- [x] T007 [US1] Wire `pt` into `MAPS`, `SHELLS`, `QS_UNIT`, `QUESTION_FMT` (no
       no-space-before-unit rule change needed — Latin script, spaced like ES/VN).
-- [ ] T008 [US1] Add `<option value="pt">Português</option>` to `#lang-select` in the
+- [x] T008 [US1] Add `<option value="pt">Português</option>` to `#lang-select` in the
       correct sort position — **between English and Español**, per alphabetical-by-
       English-name ordering (English, Portuguese, Spanish, Vietnamese, then the CJK
       group unchanged).
-- [ ] T009 [US1] Update all seven existing READMEs' switch-link row and Features
+- [x] T009 [US1] Update all seven existing READMEs' switch-link row and Features
       bullet to include Portuguese, in dropdown order.
-- [ ] T010 [US1] Create `README.pt.md` (full translation, mirroring the structure of
+- [x] T010 [US1] Create `README.pt.md` (full translation, mirroring the structure of
       the other seven READMEs).
 
 **Checkpoint**: Portuguese is fully wired and documented; not yet merged to `main`.
@@ -74,17 +74,24 @@ considered shipped.
 dropdown/README ordering is consistent; Learning Path, Study, Exam by Domain, and
 Concepts tab all render correctly in Portuguese.
 
-- [ ] T011 [US3] Re-parse all seven `__I18N_*__`/`__SHELL_*__` dicts from the HTML
+- [x] T011 [US3] Re-parse all seven `__I18N_*__`/`__SHELL_*__` dicts from the HTML
       (including `pt`); confirm valid JSON with matching key counts.
-- [ ] T012 [US3] Confirm `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT`/dropdown all
+- [x] T012 [US3] Confirm `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT`/dropdown all
       reference `pt`.
-- [ ] T013 [US3] Browser verification via Playwright (`file://`, no Node needed):
+- [x] T013 [US3] Browser verification via Playwright (`file://`, no Node needed):
       confirm Study Console nav, Cheat & Keywords core-principle cards, decision-rules
       table (`IF THE STEM SAYS` left in English), Learning Path (5 domains → task
       statements in Portuguese), Concepts tab (59 concepts with translated titles/
       insights), and the quiz counter all render correctly in Portuguese with **zero
       console errors**. Screenshot the record.
-- [ ] T014 [US3] Update `CHANGELOG.md` documenting the Portuguese addition.
+      - **Bug found and fixed** (pre-existing, affected all 7 other languages equally,
+        not introduced by this addition): the quiz meta line concatenated the task
+        statement id and title into a single text node (`"ts-4.3 · Enforce structured
+        output..."`), which never matched a dictionary key, so the title silently
+        stayed in English under every non-English language. Fixed by splitting the id
+        into its own `.tscode` span, matching the pattern already used in Learning
+        Path/Study — confirmed translated correctly in pt/ko/es after the fix.
+- [x] T014 [US3] Update `CHANGELOG.md` documenting the Portuguese addition.
 
 ## Dependencies & Execution Order
 
