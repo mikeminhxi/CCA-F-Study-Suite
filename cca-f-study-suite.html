@@ -50,7 +50,31 @@
   #shell-nav #nav-controls{flex-basis:100%;margin-left:0;justify-content:space-between}
   #tool-console .top-in{padding:12px 16px}
   #tool-console .wrap{padding:22px 16px 80px}
+  #shell-nav .nav-toggle{display:inline-flex}
+  #shell-nav:not(.nav-expanded) .shell-tab:not(.on){display:none}
+  #shell-nav:not(.nav-expanded) #nav-controls{display:none}
+  #tool-console .tabs .nav-toggle{display:inline-flex}
+  #tool-console .tabs:not(.nav-expanded) .tab:not(.on){display:none}
+  #tool-console .tabs{flex-basis:100%}
+  #tool-console .tabs .tab{flex:1}
+  #tool-console .top{position:sticky;top:var(--shell-nav-h,0px);z-index:5}
 }
+@media (max-width: 720px) {
+  #tool-console .rail button.rail-toggle{display:inline-flex}
+  #tool-console .rail:not(.rail-expanded) .rail-group:not(.current-domain){display:none}
+  #tool-console .rail:not(.rail-expanded) .rail-domain-body:not(.current-domain){display:none}
+}
+@media (min-width: 721px) {
+  #tool-console .rail button.rail-toggle{display:none}
+}
+.nav-toggle{display:none;align-items:center;justify-content:center;width:32px;height:32px;flex-shrink:0;
+  border-radius:9px;cursor:pointer;font-size:12px;line-height:1;transition:transform .15s}
+#shell-nav .nav-toggle{border:1px solid var(--tab-border);background:var(--tab-bg);color:var(--tab-ink)}
+#shell-nav .nav-toggle:hover{color:var(--tab-ink-hover)}
+#shell-nav.nav-expanded .nav-toggle{transform:rotate(180deg)}
+#tool-console .tabs .nav-toggle{border:1px solid var(--line);background:var(--panel);color:var(--ink2);font-family:var(--mono)}
+#tool-console .tabs .nav-toggle:hover{color:var(--ink)}
+#tool-console .tabs.nav-expanded .nav-toggle{transform:rotate(180deg)}
 @media (min-width: 900px) {
   html, body { height: 100%; }
   body { display:flex; flex-direction:column; height:100vh; overflow:hidden; }
@@ -111,7 +135,7 @@
 }
 #tool-console button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 #tool-console ::selection{background:var(--amber);color:#241a05}
-#tool-console .top{position:static;background:rgba(13,17,32,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+#tool-console .top{background:rgba(13,17,32,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 #tool-console .top-in{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 #tool-console .brand{display:flex;align-items:baseline;gap:10px;flex-basis:100%}
 #tool-console .brand .mk{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--paper);background:var(--amber);padding:3px 7px;border-radius:5px;font-weight:700}
@@ -200,8 +224,20 @@
 #tool-console .study-grid{display:grid;grid-template-columns:230px 1fr;gap:24px;align-items:start}
 #tool-console .rail{position:static;max-height:none;display:flex;flex-direction:column}
 #tool-console .rail h5{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:0 0 8px;flex-shrink:0}
-#tool-console .rail-group{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold,#f5b13d);margin:14px 0 6px;padding-left:2px;opacity:.85}
+#tool-console .rail-group{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold,#f5b13d);margin:14px 0 6px;padding-left:2px;opacity:.85;
+  cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none}
 #tool-console .rail-group:first-of-type{margin-top:0}
+#tool-console .rail-group .rail-chevron{font-size:9px;transition:transform .15s;opacity:.8}
+#tool-console .rail-group.open .rail-chevron{transform:rotate(180deg)}
+#tool-console .rail-domain-body{display:none;flex-direction:column}
+#tool-console .rail-domain-body.open{display:flex}
+#tool-console .rail-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+#tool-console .rail-head h5{margin:0}
+#tool-console .rail button.rail-toggle{align-items:center;justify-content:center;width:26px;height:26px;flex-shrink:0;
+  border-radius:7px;border:1px solid var(--line);background:var(--panel);
+  color:var(--ink2);cursor:pointer;font-size:10px;transition:.15s;margin-bottom:0}
+#tool-console .rail-toggle:hover{color:var(--ink)}
+#tool-console .rail.rail-expanded .rail-toggle .rail-chevron{transform:rotate(180deg)}
 #tool-console .rail-scroll{overflow-y:auto;min-height:0;flex:1}
 #tool-console .rail button{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;padding:8px 11px;border-radius:8px;font-size:13px;color:var(--ink2);transition:.12s;margin-bottom:2px;border:1px solid transparent}
 #tool-console .rail button:hover{background:var(--panel);border-color:var(--line)}
@@ -263,9 +299,8 @@
 #tool-console .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 #tool-console .foot{text-align:center;font-family:var(--mono);font-size:11px;color:var(--ink3);margin-top:40px}
 @media(max-width:720px){#tool-console .study-grid{grid-template-columns:1fr}
-#tool-console .rail{position:static;display:flex;gap:6px;overflow-x:auto;padding-bottom:8px}
-#tool-console .rail h5{display:none}
-#tool-console .rail button{white-space:nowrap;margin-bottom:0}
+#tool-console .rail{position:static;display:flex;flex-direction:column;gap:6px;padding-bottom:8px}
+#tool-console .rail button{white-space:normal}
 #tool-console .rule{grid-template-columns:1fr;gap:4px}
 #tool-console .rarrow{display:none}
 #tool-console .rif .t::after{content:""}
@@ -599,6 +634,7 @@
     <div class="shell-tab" data-pane="hub"><span class="dot" style="background:#7aa2ff"></span><span data-i18n-shell="tab_hub" data-en="Study Hub">Study Hub</span></div>
     <div class="shell-tab" data-pane="map"><span class="dot" style="background:#f7a072"></span><span data-i18n-shell="tab_map" data-en="Neuron Map">Neuron Map</span></div>
     <div class="shell-tab" data-pane="plan"><span class="dot" style="background:#5fd0a8"></span><span data-i18n-shell="tab_plan" data-en="2-Week Plan">2-Week Plan</span></div>
+    <button type="button" class="nav-toggle" id="shell-nav-toggle" aria-label="Show all tabs" aria-expanded="false">▾</button>
     <div id="nav-controls">
       <div id="theme-toggle" class="pill-toggle">
         <button data-theme="light" onclick="window.__setTheme__('light')" title="Light" aria-label="Light theme">
@@ -643,6 +679,7 @@
       <button class="tab" data-v="study">Study</button>
       <button class="tab" data-v="quiz">Exam by Domain</button>
       <button class="tab" data-v="concepts">Concepts</button>
+      <button type="button" class="nav-toggle" id="console-tabs-toggle" aria-label="Show all tabs" aria-expanded="false">▾</button>
     </nav>
   </div>
 </header>
@@ -677,7 +714,7 @@
   <!-- STUDY -->
   <section class="view" id="v-study">
     <div class="study-grid">
-      <aside class="rail"><h5>Modules</h5><div id="rail" class="rail-scroll"></div></aside>
+      <aside class="rail" id="study-rail"><div class="rail-head"><h5>Domains</h5><button type="button" class="rail-toggle" id="rail-toggle" aria-label="Show all domains" aria-expanded="false"><span class="rail-chevron">&#9660;</span></button></div><div id="rail" class="rail-scroll"></div></aside>
       <div>
         <div class="qhead">
           <span class="modname" id="s-modname">—</span>
@@ -1223,6 +1260,8 @@
 (function(){
   var tabs=document.querySelectorAll('.shell-tab');
   var panes=document.querySelectorAll('.shell-pane');
+  var nav=document.getElementById('shell-nav');
+  var toggle=document.getElementById('shell-nav-toggle');
   tabs.forEach(function(t){
     t.addEventListener('click',function(){
       tabs.forEach(function(x){x.classList.remove('on');});
@@ -1232,8 +1271,16 @@
       activePane.classList.add('on');
       activePane.scrollTop = 0;
       window.scrollTo(0,0);
+      nav.classList.remove('nav-expanded');
+      if(toggle)toggle.setAttribute('aria-expanded','false');
     });
   });
+  if(toggle){
+    toggle.addEventListener('click',function(){
+      var expanded=nav.classList.toggle('nav-expanded');
+      toggle.setAttribute('aria-expanded',expanded?'true':'false');
+    });
+  }
 })();
 </script>
 <script>window.__I18N__={
@@ -6448,10 +6495,19 @@ const tsTitle=id=>{ const t=TS_BY_ID[id]; return t?t.title:id; };
 /* ---------- tabs ---------- */
 const views={path:'v-path',cheat:'v-cheat',study:'v-study',quiz:'v-quiz',concepts:'v-concepts'};
 document.getElementById('tabs').addEventListener('click',e=>{
+  const toggleBtn=e.target.closest('#console-tabs-toggle');
+  if(toggleBtn){
+    const expanded=document.getElementById('tabs').classList.toggle('nav-expanded');
+    toggleBtn.setAttribute('aria-expanded',expanded?'true':'false');
+    return;
+  }
   const b=e.target.closest('.tab'); if(!b)return;
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t===b));
   Object.values(views).forEach(id=>document.getElementById(id).classList.remove('on'));
   document.getElementById(views[b.dataset.v]).classList.add('on');
+  document.getElementById('tabs').classList.remove('nav-expanded');
+  const innerToggle=document.getElementById('console-tabs-toggle');
+  if(innerToggle)innerToggle.setAttribute('aria-expanded','false');
   if(b.dataset.v==='path')renderPath();
   if(b.dataset.v==='concepts')renderConcepts();
 });
@@ -6506,28 +6562,51 @@ let curTs=null, studyFilter='all';  // curTs = a task-statement id, or MIXED_KEY
 curTs = (TS_BY_DOMAIN['D1'] && TS_BY_DOMAIN['D1'][0] && TS_BY_DOMAIN['D1'][0].id) || TASK_STATEMENTS[0].id;
 function curList(){ return curTs===MIXED_KEY ? MIXED_Q : (Q_BY_TS[curTs]||[]); }
 function curName(){ return curTs===MIXED_KEY ? 'Mixed / Applied' : tsTitle(curTs); }
+const openRailDomains=new Set();
+function curDomainCode(){
+  if(curTs===MIXED_KEY)return 'MIX';
+  const t=TS_BY_ID[curTs]; return t?t.domain:null;
+}
+function collapseRailMobile(){
+  const rail=document.getElementById('study-rail'); if(!rail)return;
+  rail.classList.remove('rail-expanded');
+  const t=document.getElementById('rail-toggle'); if(t)t.setAttribute('aria-expanded','false');
+}
 function renderRail(){
   const r=document.getElementById('rail'); r.innerHTML='';
+  const curDom=curDomainCode();
+  if(curDom)openRailDomains.add(curDom);
+  const addGroup=(code,label,tsOrMixed)=>{
+    const isOpen=openRailDomains.has(code);
+    const isCurrent=code===curDom;
+    const h=document.createElement('div'); h.className='rail-group'+(isOpen?' open':'')+(isCurrent?' current-domain':'');
+    h.innerHTML=`<span>${label}</span><span class="rail-chevron">▾</span>`;
+    h.onclick=()=>{ if(openRailDomains.has(code))openRailDomains.delete(code); else openRailDomains.add(code); renderRail(); };
+    r.appendChild(h);
+    const body=document.createElement('div'); body.className='rail-domain-body'+(isOpen?' open':'')+(isCurrent?' current-domain':'');
+    tsOrMixed(body);
+    r.appendChild(body);
+  };
   DOMAIN_ORDER.forEach(code=>{
     const info=DOMAIN_INFO[code];
     const tsList=TS_BY_DOMAIN[code]||[];
     if(!tsList.length) return;
-    const h=document.createElement('div'); h.className='rail-group'; h.innerHTML=`${domainBadge(code)} ${info.label}`;
-    r.appendChild(h);
-    tsList.forEach(t=>{
-      const list=Q_BY_TS[t.id]||[];
-      const b=document.createElement('button'); if(t.id===curTs)b.classList.add('on');
-      b.innerHTML=`<span>${t.title}</span><span class="n">${tsKnown(t.id)}/${list.length}</span>`;
-      b.onclick=()=>{curTs=t.id;renderStudy();renderRail();};
-      r.appendChild(b);
+    addGroup(code, `${domainBadge(code)} ${info.label}`, body=>{
+      tsList.forEach(t=>{
+        const list=Q_BY_TS[t.id]||[];
+        const b=document.createElement('button'); if(t.id===curTs)b.classList.add('on');
+        b.innerHTML=`<span>${t.title}</span><span class="n">${tsKnown(t.id)}/${list.length}</span>`;
+        b.onclick=(e)=>{e.stopPropagation();curTs=t.id;renderStudy();renderRail();collapseRailMobile();};
+        body.appendChild(b);
+      });
     });
   });
-  const h=document.createElement('div'); h.className='rail-group'; h.textContent='Cross-cutting';
-  r.appendChild(h);
-  const mb=document.createElement('button'); if(curTs===MIXED_KEY)mb.classList.add('on');
-  mb.innerHTML=`<span>Mixed / Applied</span><span class="n">${MIXED_Q.filter(q=>STATE[q.id]==='known').length}/${MIXED_Q.length}</span>`;
-  mb.onclick=()=>{curTs=MIXED_KEY;renderStudy();renderRail();};
-  r.appendChild(mb);
+  addGroup('MIX', 'Cross-cutting', body=>{
+    const mb=document.createElement('button'); if(curTs===MIXED_KEY)mb.classList.add('on');
+    mb.innerHTML=`<span>Mixed / Applied</span><span class="n">${MIXED_Q.filter(q=>STATE[q.id]==='known').length}/${MIXED_Q.length}</span>`;
+    mb.onclick=(e)=>{e.stopPropagation();curTs=MIXED_KEY;renderStudy();renderRail();collapseRailMobile();};
+    body.appendChild(mb);
+  });
 }
 function openTs(id){
   curTs=id;
@@ -6832,6 +6911,22 @@ function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random
 (async function(){
   await loadState();
   renderPath(); renderCheat(); renderRail(); renderStudy(); quizSetup();
+  const railToggle=document.getElementById('rail-toggle');
+  if(railToggle){
+    railToggle.addEventListener('click',()=>{
+      const rail=document.getElementById('study-rail');
+      const expanded=rail.classList.toggle('rail-expanded');
+      railToggle.setAttribute('aria-expanded',expanded?'true':'false');
+    });
+  }
+  function syncShellNavH(){
+    const nav=document.getElementById('shell-nav');
+    if(nav)document.documentElement.style.setProperty('--shell-nav-h', nav.offsetHeight+'px');
+  }
+  syncShellNavH();
+  window.addEventListener('resize', syncShellNavH);
+  const shellNavEl=document.getElementById('shell-nav');
+  if(shellNavEl)new MutationObserver(syncShellNavH).observe(shellNavEl,{attributes:true,attributeFilter:['class']});
 })();
 
 }catch(err){console.error("[CONSOLE]",err);}
