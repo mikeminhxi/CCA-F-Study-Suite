@@ -2,6 +2,14 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Languages (Portuguese)
+
+- Added **Portuguese, Brazil (Português)** as the 8th supported UI language — a Tier 1 candidate from `SPEC_KIT_INTEGRATION_PLAN.md` §5 (large developer population, Latin script, same mechanics as Spanish/Vietnamese, no new engineering lift). Checked off in the priority list, along with fixing a stale entry there for Korean (already shipped in PR #1 but left unchecked).
+- Full 696-key (691 `i18n` + 5 `shell`) dictionary translated and staged at `translations/pt.json` via `fetch-language-dictionary`, then wired into `cca-f-study-suite.html` (`MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT`, `#lang-select` dropdown — positioned between English and Español per alphabetical-by-English-name ordering) via `add-language`. All 7 existing READMEs updated; added `README.pt.md`.
+- Built via a **prospective** spec-kit round (`/speckit-plan` → `/speckit-tasks` run *before* implementation, per FR-009) — the first language round to follow that order from the start rather than retrofitting it afterward. Also updated `specs/001-add-language/spec.md`'s hardcoded "531 keys" references (FR-002, SC-002) to describe the baseline dynamically, since it has grown to 696 keys since Korean's round and will keep changing.
+- **Bug found and fixed during verification** (pre-existing, affected all 7 other languages equally, not introduced by this addition): the Exam-by-Domain quiz's in-quiz meta line concatenated the task-statement id and title into a single text node (`"ts-4.3 · Enforce structured output..."`), which never matched any dictionary key, so the title silently stayed in English under every non-English language. Fixed by splitting the id into its own `.tscode` span, matching the pattern already used in the Learning Path and Study rail — the title is now an independently-translated text node in all 8 languages.
+- Verified end-to-end in a real browser (Playwright) across all 8 languages: Learning Path, Cheat & Keywords, Study, Exam by Domain (including the fixed quiz meta line), and the Concepts tab all render correctly, zero console errors, progress and language preference both persist across reload.
+
 ## UI / Theme
 
 - **Light-theme parity fixes**: the Study Console header and Study Hub jump-nav had hardcoded dark backgrounds that stayed dark in light mode, and the Neuron Map stage had a hardcoded dark gradient that rendered everything — including the amber synapse lines — on a dark-gray field. All now use theme variables with light-mode overrides; synapses are clearly visible in light mode.

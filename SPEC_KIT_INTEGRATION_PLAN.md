@@ -106,8 +106,8 @@ that just-staged file — see the skill's script-conversion section.
 **Tier 1 — next up, no new engineering lift** (Latin or CJK script, same
 mechanics as the six already done):
 
-- [ ] Korean (한국어) — large tech/developer population; script complexity is
-      comparable to Japanese, already solved.
+- [x] Korean (한국어) — large tech/developer population; script complexity is
+      comparable to Japanese, already solved. Shipped in PR #1.
 - [ ] Portuguese, Brazil (Português) — large developer population; Latin
       script, same mechanics as Spanish/Vietnamese.
 - [ ] French (Français) — Latin script, straightforward.
