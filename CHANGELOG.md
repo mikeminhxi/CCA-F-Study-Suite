@@ -2,6 +2,14 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## UI / Theme
+
+- **Light-theme parity fixes**: the Study Console header and Study Hub jump-nav had hardcoded dark backgrounds that stayed dark in light mode, and the Neuron Map stage had a hardcoded dark gradient that rendered everything — including the amber synapse lines — on a dark-gray field. All now use theme variables with light-mode overrides; synapses are clearly visible in light mode.
+- **Concept library legibility**: level chips (Foundation/Intermediate/Advanced) used hardcoded pastel hex tuned for dark mode and were low-contrast on white; switched to the themed `--teal`/`--amber`/`--rose` variables. The card background was near-invisible (`rgba(127,127,127,.06)`); switched to the themed `--panel2`. Legible in both themes.
+- **Responsive header**: the Study Console tab row now always wraps to its own line, so tab placement is consistent across all 7 languages instead of depending on how wide that language's tab labels happen to be.
+- **Mobile layout (≤640px)**: brand on its own row, shell tabs as full-width stacked buttons, theme toggle and language selector spread across the bottom row — tidy and identical across all 7 languages, instead of the brand and first tab crowding onto one line.
+- Renamed the system-theme button's tooltip from "Windows Default" to "System" (the app has never been Windows-specific — it follows the OS's `prefers-color-scheme` on any platform).
+
 ## Blueprint taxonomy restructure
 
 - Restructured the Study Console around the **official CCA-F blueprint** (from [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn)): **5 domains → 30 task statements → 59 concepts**, replacing the previous 7-phase / 14-module organization as the app's primary navigation.
