@@ -102,8 +102,10 @@ check, both run as a task before the feature is marked complete.
   language drawn from `SPEC_KIT_INTEGRATION_PLAN.md` §5's priority list, or a user-supplied
   language not on that list.
 - **FR-002**: Generated tasks MUST include full dictionary translation covering the exact
-  key set already present in the existing dictionaries (526 `__I18N_XX__` entries + 5
-  `__SHELL_XX__` entries), never a partial subset, staged to `translations/<code>.json`
+  key set already present in the existing dictionaries (`__I18N_XX__` entries + 5
+  `__SHELL_XX__` entries — the count grows over time as app content changes; verify the
+  current count from a baseline language, e.g. `window.__I18N__`, rather than a number
+  hardcoded here), never a partial subset, staged to `translations/<code>.json`
   before any change to `cca-f-study-suite.html` is made — translation and app-wiring are
   distinct tasks, not one combined step, so a wiring retry never forces re-translation.
 - **FR-003**: Generated tasks MUST include adding the new language's entries to `QS_UNIT`
@@ -154,8 +156,9 @@ check, both run as a task before the feature is marked complete.
   `/speckit-tasks` → `/speckit-implement` for that language, without ad-hoc conversational
   back-and-forth to rediscover the steps — and with no language ever wired into the app via
   a direct skill invocation that skipped its own plan/tasks round.
-- **SC-002**: 100% of the 531 dictionary keys (526 + 5 shell) are present for every newly
-  added language before it is considered shipped.
+- **SC-002**: 100% of the current dictionary keys (i18n + shell) are present for every
+  newly added language before it is considered shipped, matching the live baseline-language
+  key count at implementation time — not a number fixed at spec-writing time.
 - **SC-003**: Zero language-ordering mismatches between the app's dropdown and any of the
   six READMEs after a language addition.
 - **SC-004**: For any script requiring a character-derivation pass, zero leftover
