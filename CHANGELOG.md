@@ -2,6 +2,30 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Answer-key fix and cross-check against an external practice set
+
+- **Fixed `ts-4.5-03` (Message Batches SLA/batching-strategy question): the marked correct answer was `A`, but the question's own explanation already argued for `C`** ("Why it's correct: C... 4-hour wait + 24-hour batch SLO = 28-hour worst case, 2-hour cushion under the 30-hour SLA"). Self-contradictory data bug, independent of any external source — the `a` field just didn't match the `w` field. Corrected `a` to `C`.
+- Cross-checked a few questions against a third-party practice platform (CyberSkill's "Claude Certified Architect · Practice Together") that the maintainer is using alongside this project. Two questions initially flagged as "missing" turned out to already be present, just under different domain/task-statement tags than expected: the invoice-extraction-reliability question (`ts-4.4-03`) and the citation/provenance-loss question (`ts-5.6-01`) both matched word-for-word (options and correct answer included).
+- **`ts-5.6-01`'s question text now includes the lead-in sentence** ("In production, final reports frequently contain claims without proper source attribution.") to match that source's phrasing more closely — a cosmetic addition, the scenario/options/answer were already identical.
+
+## Duplicate question removed (157 → 156)
+
+- **Removed `ts-1.2-06`**, a near-duplicate of `ts-1.2-02` (same scenario: a synthesis agent flattening a financial/news/patent multi-source briefing into uniform bullet points). Found by spot-checking search results after adding the question-search feature. The two originated from the pre-merge S1/S2 decks (`S1-Q12` and `S2-Q10`) and the old `dup` cross-reference field never caught this pair — it pointed `S1-Q12` at an unrelated id (`S2-Q82`) instead, which is part of why that field was dead weight (see the id-scheme entry below). Kept `ts-1.2-02`: `ts-1.2-06`'s question text had words dropped mid-sentence (garbled by whatever process produced the S2 deck) and its `w` (answer explanation) field was empty.
+- `ts-1.2` is now 5 questions (`-01`..`-05`) instead of 6; no renumbering needed elsewhere since `-06` was the last in its group. Total question count is now **156**, corrected everywhere it was hardcoded: the Study Console badge, source lines, Learning Path/Study Hub/2-Week Plan copy (English + all 7 translated dictionaries), `translations/*.json`, and every `README*.md`.
+- This is a good reminder the original S1/S2 merge's duplicate-detection wasn't exhaustive — there may be other undetected near-duplicates in the remaining 156; none were specifically searched for beyond this one.
+
+## Question search (Study tab)
+
+- **Added a search box to the Study tab** that filters across all 157 questions by id (e.g. `ts-2.2-03`), question/option text, or category — independent of the currently-selected domain/task statement. Previously the only way to find a question was to browse Domain → task statement or the Mixed/Applied filter; there was no way to jump to a specific question. Combines with the existing All/To review/Not yet known filter. Selecting a task statement from the rail, the Mixed/Applied button, or `openTs()` (Learning Path deep links) clears an active search.
+- **Each question card now shows its id** (the `ts-x.x-##` code, reusing the existing `.tscode` chip style) — previously `q.id` was never rendered anywhere, so there was no way to see which question you were looking at, in search results or otherwise.
+- Added `"Search results"` and the no-match empty-state message to all 7 non-English dictionaries (the search input's placeholder and the clear button's `aria-label` are left untranslated, consistent with the one pre-existing precedent for input placeholders in Cheat & Keywords).
+- Verified in a real browser (Playwright): search by id/keyword/category, the clear button, combining search with the known/review filter, the empty "no matches" state, and the Vietnamese translation of that state — all work with zero console errors. Checked desktop (dark + light) and mobile (390px) layouts.
+
+## Question ID scheme (QDATA)
+
+- **Replaced the `S1-Q##` / `S2-Q##` question ids** (a leftover from the two original source sessions, long since merged into one 157-question set) **with `<ts-code>-##`** — e.g. `ts-1.1-01` — a sequence number scoped to each question's task statement, so the id itself encodes both Domain and task statement instead of a meaningless session number. Also dropped the now-fully-stale `sec` field (still `1`/`2` per question, unused anywhere in the app) and the `dup` field (a pre-merge annotation whose every reference pointed at an S1-Q/S2-Q id that no longer exists in QDATA, since the duplicate side was dropped during the original merge; also unused in code).
+- `q.id` is only ever used as an internal key (localStorage progress, quiz-answer tracking) — never rendered to the user — so this is a pure data/bookkeeping change with no UI difference. It does mean previously-saved "known"/"review" progress in `localStorage` won't match the new keys and will read as unseen after this update (accepted tradeoff, not migrated).
+
 ## Languages (Portuguese)
 
 - Added **Portuguese, Brazil (Português)** as the 8th supported UI language — a Tier 1 candidate from `SPEC_KIT_INTEGRATION_PLAN.md` §5 (large developer population, Latin script, same mechanics as Spanish/Vietnamese, no new engineering lift). Checked off in the priority list, along with fixing a stale entry there for Korean (already shipped in PR #1 but left unchecked).

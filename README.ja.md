@@ -21,7 +21,7 @@ Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対
 
 ## 収録内容
 
-- **157問の練習問題**を `CCA-F_Study_Guide.md` から収録。元資料の中で正答が本当に矛盾していた1組は、Studyモードで⚠バッジ付きで表示されます。
+- **156問の練習問題**を `CCA-F_Study_Guide.md` から収録。元資料の中で正答が本当に矛盾していた1組は、Studyモードで⚠バッジ付きで表示されます。
 - このアプリは公式の**CCA-F blueprint**を中心に構成されています：**5ドメイン → 30 task statement → 59コンセプト**。すべての問題は1つのtask statementにタグ付けされ、そのドメインはタグから導かれます。配点順の5ドメイン：Agentic Architecture（27%）、Tool Design & MCP（18%）、Claude Code & Workflows（20%）、Prompt Engineering & Output（20%）、Context & Reliability（15%）。（blueprintの分類は [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn) より。）
 
 ## 特徴

@@ -21,7 +21,7 @@ Anthropic의 **Claude Certified Architect — Foundations (CCA-F)** 시험 대�
 
 ## 콘텐츠
 
-- `CCA-F_Study_Guide.md`에서 가져온 **157개 연습 문항**. 원본 자료에서 정답이 실제로 서로 다른 한 쌍은 Study 모드에서 ⚠ 배지로 표시됩니다.
+- `CCA-F_Study_Guide.md`에서 가져온 **156개 연습 문항**. 원본 자료에서 정답이 실제로 서로 다른 한 쌍은 Study 모드에서 ⚠ 배지로 표시됩니다.
 - 이 앱은 공식 **CCA-F blueprint**를 중심으로 구성됩니다: **5개 도메인 → 30개 task statement → 59개 개념**. 모든 문항은 하나의 task statement에 태깅되며, 도메인은 그 태그에서 파생됩니다. 시험 비중 순의 다섯 도메인: Agentic Architecture(27%), Tool Design & MCP(18%), Claude Code & Workflows(20%), Prompt Engineering & Output(20%), Context & Reliability(15%). (blueprint 분류 출처: [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## 기능

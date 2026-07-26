@@ -21,7 +21,7 @@
 
 ## 内容构成
 
-- **157 道练习题**,来源于 `CCA-F_Study_Guide.md`。有一对题目在原资料中的正确答案确实相互矛盾,会在 Study 模式中以 ⚠ 徽章标出。
+- **156 道练习题**,来源于 `CCA-F_Study_Guide.md`。有一对题目在原资料中的正确答案确实相互矛盾,会在 Study 模式中以 ⚠ 徽章标出。
 - 应用围绕官方 **CCA-F blueprint** 组织:**5 个领域 → 30 个 task statement → 59 个概念**。每道题都标记到一个 task statement,其领域由该标记推导得出。按考试权重排序的五个领域:Agentic Architecture(27%)、Tool Design & MCP(18%)、Claude Code & Workflows(20%)、Prompt Engineering & Output(20%)、Context & Reliability(15%)。(blueprint 分类来自 [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn)。)
 
 ## 功能特性

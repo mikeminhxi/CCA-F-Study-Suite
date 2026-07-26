@@ -21,7 +21,7 @@ A página é um shell com abas contendo quatro ferramentas. Em telas de largura 
 
 ## Conteúdo
 
-- **157 perguntas de prática**, extraídas de `CCA-F_Study_Guide.md`. Um par com uma resposta correta genuinamente contraditória na fonte é sinalizado com um selo ⚠ no modo Study.
+- **156 perguntas de prática**, extraídas de `CCA-F_Study_Guide.md`. Um par com uma resposta correta genuinamente contraditória na fonte é sinalizado com um selo ⚠ no modo Study.
 - O app é organizado em torno do **blueprint oficial do CCA-F**: **5 domínios → 30 task statements → 59 conceitos**. Cada pergunta é marcada em um task statement, e seu domínio decorre dessa marcação. Os cinco domínios, na ordem de peso da prova: Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%), e Context & Reliability (15%). (Taxonomia do blueprint de [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Funcionalidades
