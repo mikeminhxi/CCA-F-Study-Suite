@@ -2,6 +2,36 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Pin the exam Previous/Next bar to the bottom of the screen
+
+- The exam-taking screen's Previous/Next bar used to sit directly under the Q&A card, so on a short question it floated mid-page and on a long one you had to scroll to reach it. It's now a fixed footer bar pinned to the bottom of the viewport (like CyberSkill's), always in the same place regardless of question length. `position:sticky` was tried first but doesn't work here — its own wrapper hugs the card tightly with no slack to stick within, so it switched to `position:fixed` with matching bottom padding added to the exam grid so the bar never covers the last answer option.
+
+## Results page polish, after a side-by-side check against CyberSkill's screen
+
+- Verified the exam-taking screen's Previous/Next against a fresh CyberSkill screenshot: already correct (Previous is genuinely disabled — 40% opacity, `disabled` attribute — on question 1; Next stays active). Kept this app's existing amber `.btn` styling rather than copying CyberSkill's cream button color, for consistency with every other button in the app.
+- **Added circular status icons** (✓ / ✕ / – / 🕐) to the four results-page stat tiles, matching CyberSkill's layout.
+- **Added a "Question N" label to each review card**, using the question's position in the original exam order (not the filtered list) — otherwise, once you filter the review list to just Incorrect or Flagged, there's no way to tell which numbered question you're looking at.
+- **Deliberately kept domain-breakdown bars colored by domain identity** (matching Learning Path/Neuron Map elsewhere in this app) rather than switching to CyberSkill's uniform tier-based green — a weak domain is still obvious from its short bar and low percentage, and identity colors stay consistent with the rest of the app.
+- Added and translated 1 new string ("Question") across all 7 non-English dictionaries.
+
+## Results/review page redesign (Exam by Domain)
+
+- **Rebuilt the exam results screen** as a single scrollable page instead of a percentage + "Review misses" button gating a separate screen: a score banner (colored by the existing 85/70/50 tier thresholds — no new pass/fail scoring), four stat tiles (Correct / Incorrect / Skipped / Time Taken), a **Performance by domain** breakdown with per-domain progress bars, and an always-visible **Review Questions** list covering every question, not just the missed ones. Modeled after the CyberSkill results-page screenshot, minus the SaaS-only parts (AI tutor, sharing, certificates, leaderboard) that don't fit a zero-dependency single-file app.
+- **Skipped is now a real, distinct outcome**: since the new exam-taking screen (previous round) lets you move on without answering, the results page tallies Correct/Incorrect/Skipped separately instead of treating every non-correct answer as a miss.
+- The review list is filterable — **All / Incorrect / Flagged** — closing the loop on the Flag for Review feature from the exam-taking screen: you can now jump straight to just the questions you flagged while taking the exam. Each review card shows a Correct/Incorrect/Skipped badge, a 🚩 marker if flagged, and all four options with the correct one highlighted (plus your pick highlighted if wrong), same visual language as Study mode.
+- Added a simple elapsed-time stat (recorded from when the exam starts to when it's submitted) — informational only, the exam itself stays untimed.
+- **Found and fixed a pre-existing i18n bug while moving this code**: the old quiz's per-question explanation heading concatenated the correct answer's letter directly into the text (`Why C`), which never matched the dictionaries (only the plain `Why` — already used correctly by Study mode — was translated), so it silently stayed in English in all 7 non-English languages. Now uses the same plain `Why` heading as Study mode.
+- Added and translated 8 new UI strings (stat labels, section headings, filter chip labels, empty-filter state) across all 7 non-English dictionaries; split the filter-chip counts (e.g. "Incorrect (7)") into a separate non-translated `<span>` so the count doesn't block the label from matching its dictionary entry.
+- Verified in a real browser (Playwright): stat accuracy against a mixed correct/incorrect/skipped/flagged run, all three review filters, domain breakdown percentages, desktop dark/light, mobile (390px), and Japanese translation of every new string — zero console errors.
+
+## Exam-taking screen redesign (Exam by Domain)
+
+- **Reworked the exam-taking flow** from a linear one-question-at-a-time quiz that revealed correct/incorrect immediately on each pick, to a real mock-exam layout: a question-number sidebar grid (jump to any question directly), a top bar with a "Practice · untimed" badge, a **Flag for Review** toggle, and a fullscreen button, and Previous/Next navigation at the bottom. No answer feedback is shown during the exam anymore — picking an option just selects it (and can be freely changed) — correctness is only revealed on the existing results screen once you finish, matching how a real exam works. Modeled after a CyberSkill mock-exam screenshot the maintainer shared; the results/review page redesign (pass/fail banner, per-domain breakdown, color-coded review list) is intentionally deferred to a follow-up round.
+- Sidebar numbers show answered (filled teal), current (indigo ring), and flagged (amber dot) state at a glance; the counter reads "Questions answered/total".
+- **Found and fixed an i18n regression while making this change**: the question counter's English text changed from "Question N / M" to "Question N of M" to match the reference screenshot, which silently broke the app's existing number-substitution translation (it only pattern-matched the old "/" format) — all 7 non-English languages would have shown the raw English counter. Fixed by updating the match pattern instead of leaving it broken.
+- Added and translated 7 new UI strings (sidebar header, badge, flag button in both states, Previous/Next/Finish exam) across all 7 non-English dictionaries.
+- Verified in a real browser (Playwright): free navigation via sidebar/Previous/Next, answer selection and re-selection with no correctness leak, Flag for Review toggling and persisting across navigation, reaching the existing score screen, desktop dark/light, mobile (390px), and Vietnamese translation of every new string — zero console errors.
+
 ## Answer-key fix and cross-check against an external practice set
 
 - **Fixed `ts-4.5-03` (Message Batches SLA/batching-strategy question): the marked correct answer was `A`, but the question's own explanation already argued for `C`** ("Why it's correct: C... 4-hour wait + 24-hour batch SLO = 28-hour worst case, 2-hour cushion under the 30-hour SLA"). Self-contradictory data bug, independent of any external source — the `a` field just didn't match the `w` field. Corrected `a` to `C`.

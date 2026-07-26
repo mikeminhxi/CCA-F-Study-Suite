@@ -284,14 +284,59 @@
 #tool-console .mini.act.known{background:var(--teal);color:var(--paper);border-color:var(--teal)}
 #tool-console .mini.act.review{background:var(--amber);color:var(--paper);border-color:var(--amber)}
 #tool-console .mini.reveal{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-#tool-console .quiz-wrap{max-width:640px;margin:0 auto}
+#tool-console .quiz-wrap{max-width:1000px;margin:0 auto}
 #tool-console .qbar{height:6px;border-radius:4px;background:var(--panel2);overflow:hidden;margin-bottom:6px}
 #tool-console .qbar>i{display:block;height:100%;background:linear-gradient(90deg,var(--indigo),var(--teal));width:0;transition:width .3s}
 #tool-console .qmeta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--ink3);margin-bottom:18px}
 #tool-console .quiz-opt{cursor:pointer}
+#tool-console .opt.selected{border-color:var(--indigo);background:var(--indigo-soft);color:var(--ink)}
+#tool-console .opt.selected .lt{background:var(--indigo);color:var(--paper)}
+#tool-console .exam-grid{display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:start;max-width:900px;margin:0 auto;padding-bottom:80px}
+#tool-console .exam-sidebar{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+#tool-console .exam-sidebar-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink)}
+#tool-console .exam-sidebar-head .n{font-family:var(--mono);font-size:12px;color:var(--ink3);font-weight:500}
+#tool-console .exam-qgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-height:420px;overflow-y:auto;padding-right:2px}
+#tool-console .exam-qnum{position:relative;aspect-ratio:1;border:1px solid var(--line);border-radius:8px;background:var(--panel2);color:var(--ink2);font-family:var(--mono);font-size:12px;font-weight:600;display:grid;place-items:center;transition:.12s}
+#tool-console .exam-qnum:hover{border-color:var(--ink3)}
+#tool-console .exam-qnum.answered{background:var(--teal);color:var(--paper);border-color:var(--teal)}
+#tool-console .exam-qnum.current{border-color:var(--indigo);border-width:2px;box-shadow:0 0 0 2px var(--indigo-soft)}
+#tool-console .exam-qnum.flagged::after{content:"";position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;background:var(--amber);border:1.5px solid var(--panel)}
+#tool-console .exam-topbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+#tool-console .exam-qcounter{font-family:var(--mono);font-size:13px;color:var(--ink2);font-weight:600}
+#tool-console .exam-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#tool-console .exam-iconbtn{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:8px;color:var(--ink2);background:var(--panel)}
+#tool-console .exam-iconbtn:hover{border-color:var(--ink3);color:var(--ink)}
+#tool-console .exam-flag{font-size:12px;font-weight:600;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink2);display:inline-flex;align-items:center;gap:6px}
+#tool-console .exam-flag:hover{border-color:var(--amber);color:var(--amber)}
+#tool-console .exam-flag.on{background:var(--amber-soft);border-color:var(--amber);color:var(--amber)}
+#tool-console .exam-bottomnav{display:flex;justify-content:space-between;gap:10px;margin-top:18px;position:fixed;left:0;right:0;bottom:0;max-width:900px;margin:0 auto;padding:14px 18px;background:var(--panel);border-top:1px solid var(--line);box-shadow:0 -6px 16px rgba(0,0,0,.12);z-index:30}
+@media(max-width:720px){#tool-console .exam-grid{grid-template-columns:1fr}#tool-console .exam-qgrid{max-height:220px}}
 #tool-console .score{text-align:center;padding:40px 20px}
 #tool-console .score .big{font-family:var(--disp);font-size:56px;font-weight:700;letter-spacing:-.03em;line-height:1}
 #tool-console .score .lab{color:var(--ink2);margin:8px 0 22px}
+#tool-console .exam-banner{text-align:center;padding:28px 20px;border-top:4px solid;border-radius:14px;background:linear-gradient(180deg,var(--panel),var(--panel2));box-shadow:var(--shadow);max-width:640px;margin:0 auto 22px}
+#tool-console .exam-banner-pct{font-family:var(--disp);font-size:48px;font-weight:700;letter-spacing:-.03em;line-height:1}
+#tool-console .exam-banner-msg{color:var(--ink2);margin-top:8px}
+#tool-console .exam-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:640px;margin:0 auto 22px}
+#tool-console .exam-stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 8px;text-align:center}
+#tool-console .exam-stat .n{font-family:var(--disp);font-size:24px;font-weight:700;color:var(--ink)}
+#tool-console .exam-stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-top:3px}
+#tool-console .exam-stat-icon{width:26px;height:26px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-weight:700;font-size:13px;line-height:1}
+#tool-console .rq-qn{font-family:var(--mono);font-size:11px;color:var(--ink3);font-weight:600}
+#tool-console .exam-domains{max-width:640px;margin:0 auto 10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+#tool-console .exam-domains h3{font-family:var(--disp);font-size:16px;margin:0 0 14px;color:var(--ink)}
+#tool-console .exam-domain-row{margin-bottom:12px}
+#tool-console .exam-domain-row:last-child{margin-bottom:0}
+#tool-console .exam-domain-label{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink2);margin-bottom:5px}
+#tool-console .exam-domain-label .n{font-family:var(--mono);color:var(--ink3)}
+#tool-console .exam-domain-bar{height:8px;border-radius:4px;background:var(--panel2);overflow:hidden}
+#tool-console .exam-domain-bar>i{display:block;height:100%;border-radius:4px}
+#tool-console .exam-review{max-width:720px;margin:28px auto 0}
+#tool-console .exam-review h3{font-family:var(--disp);font-size:19px;margin:0 0 12px;color:var(--ink)}
+#tool-console .rq-badge{font-weight:700}
+#tool-console .rq-correct{background:var(--teal-soft);color:var(--teal)}
+#tool-console .rq-incorrect{background:var(--rose-soft);color:var(--rose)}
+#tool-console .rq-skip{background:var(--panel2);color:var(--ink3)}
 #tool-console .setup{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);max-width:520px;margin:10px auto}
 #tool-console .setup h3{font-family:var(--disp);margin:0 0 4px;font-size:20px;color:var(--ink)}
 #tool-console .chips{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}
@@ -302,6 +347,8 @@
 #tool-console .btn:hover{filter:brightness(1.08)}
 #tool-console .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);box-shadow:none}
 #tool-console .btn.ghost:hover{border-color:var(--ink3)}
+#tool-console .btn:disabled{opacity:.4;cursor:not-allowed;filter:none}
+#tool-console .btn:disabled:hover{filter:none;border-color:var(--line)}
 #tool-console .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 #tool-console .foot{text-align:center;font-family:var(--mono);font-size:11px;color:var(--ink3);margin-top:40px}
 @media(max-width:720px){#tool-console .study-grid{grid-template-columns:1fr}
@@ -1341,6 +1388,22 @@
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "Không có gì với bộ lọc này. Đổi bộ lọc, hoặc bạn đã học hết học phần này — tuyệt!",
   "Search results": "Kết quả tìm kiếm",
   "No questions match this search — try a different keyword or id.": "Không có câu hỏi nào khớp với tìm kiếm này — thử từ khóa hoặc id khác.",
+  "Questions": "Câu hỏi",
+  "Practice · untimed": "Luyện tập · không giới hạn thời gian",
+  "⚑ Flag for Review": "⚑ Đánh dấu để xem lại",
+  "🚩 Flagged": "🚩 Đã đánh dấu",
+  "← Previous": "← Trước",
+  "Finish exam": "Hoàn thành bài thi",
+  "Next →": "Tiếp →",
+  "Correct": "Đúng",
+  "Incorrect": "Sai",
+  "Skipped": "Bỏ qua",
+  "Time Taken": "Thời gian làm bài",
+  "Performance by domain": "Kết quả theo lĩnh vực",
+  "Review Questions": "Xem lại câu hỏi",
+  "Nothing matches this filter.": "Không có gì khớp với bộ lọc này.",
+  "Flagged": "Đã đánh dấu",
+  "Question": "Câu hỏi",
   "When is an agent even the right tool, and which workflow shape fits.": "Khi nào agent là công cụ phù hợp, và dạng workflow nào hợp lý.",
   "The primitives every agent is assembled from: tools, integrations, and search.": "Các thành phần cơ bản tạo nên mọi agent: tools, integrations và search.",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "Quản lý những gì model thấy, xử lý lỗi, và áp đặt quy tắc bắt buộc.",
@@ -2043,6 +2106,22 @@ window.__I18N_JA__={
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "このフィルタに該当するものはない。フィルタを変えるか、このモジュールはもう終わっている — お見事!",
   "Search results": "検索結果",
   "No questions match this search — try a different keyword or id.": "この検索に一致する問題はない — 別のキーワードやidを試してみて。",
+  "Questions": "問題",
+  "Practice · untimed": "練習 · 時間無制限",
+  "⚑ Flag for Review": "⚑ あとで確認する",
+  "🚩 Flagged": "🚩 確認予定",
+  "← Previous": "← 前へ",
+  "Finish exam": "試験を終了",
+  "Next →": "次へ →",
+  "Correct": "正解",
+  "Incorrect": "不正解",
+  "Skipped": "未回答",
+  "Time Taken": "所要時間",
+  "Performance by domain": "ドメイン別の成績",
+  "Review Questions": "問題の振り返り",
+  "Nothing matches this filter.": "このフィルタに該当するものはない。",
+  "Flagged": "確認予定",
+  "Question": "問題",
   "When is an agent even the right tool, and which workflow shape fits.": "そもそもagentが適切なツールなのか、どのworkflowの形が合うのか。",
   "The primitives every agent is assembled from: tools, integrations, and search.": "あらゆるagentを組み立てる基本部品:tools、integrations、search。",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "modelに見えているものを管理し、失敗を乗り越え、厳格なルールを守らせる。",
@@ -2745,6 +2824,22 @@ window.__I18N_ZH__={
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "这个筛选条件下没有内容了。换个筛选条件试试,或者——你已经清空了这个模块,真棒!",
   "Search results": "搜索结果",
   "No questions match this search — try a different keyword or id.": "没有匹配此搜索的题目——换个关键词或 id 试试。",
+  "Questions": "问题",
+  "Practice · untimed": "练习 · 不计时",
+  "⚑ Flag for Review": "⚑ 标记待复查",
+  "🚩 Flagged": "🚩 已标记",
+  "← Previous": "← 上一题",
+  "Finish exam": "完成考试",
+  "Next →": "下一题 →",
+  "Correct": "正确",
+  "Incorrect": "错误",
+  "Skipped": "跳过",
+  "Time Taken": "用时",
+  "Performance by domain": "按领域划分的表现",
+  "Review Questions": "回顾题目",
+  "Nothing matches this filter.": "没有符合此筛选条件的内容。",
+  "Flagged": "已标记",
+  "Question": "问题",
   "When is an agent even the right tool, and which workflow shape fits.": "什么时候agent才是正确的工具,哪种workflow形态更合适。",
   "The primitives every agent is assembled from: tools, integrations, and search.": "组成每个agent的基本组件:tools、integrations与search。",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "管理model能看到什么、扛住失败、并强制执行硬性规则。",
@@ -3447,6 +3542,22 @@ window.__I18N_TW__={
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "這個篩選條件下没有內容了。換個篩選條件試試,或者——你已經清空了這個模塊,真棒!",
   "Search results": "搜尋結果",
   "No questions match this search — try a different keyword or id.": "沒有符合此搜尋的題目——換個關鍵字或 id 試試。",
+  "Questions": "問題",
+  "Practice · untimed": "練習 · 不計時",
+  "⚑ Flag for Review": "⚑ 標記待複查",
+  "🚩 Flagged": "🚩 已標記",
+  "← Previous": "← 上一題",
+  "Finish exam": "完成考試",
+  "Next →": "下一題 →",
+  "Correct": "正確",
+  "Incorrect": "錯誤",
+  "Skipped": "跳過",
+  "Time Taken": "用時",
+  "Performance by domain": "按領域劃分的表現",
+  "Review Questions": "回顧題目",
+  "Nothing matches this filter.": "沒有符合此篩選條件的內容。",
+  "Flagged": "已標記",
+  "Question": "問題",
   "When is an agent even the right tool, and which workflow shape fits.": "什麼時候agent才是正確的工具,哪種workflow形態更合適。",
   "The primitives every agent is assembled from: tools, integrations, and search.": "組成每個agent的基本組件:tools、integrations與search。",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "管理model能看到什麼、扛住失敗、並強制執行硬性規則。",
@@ -4149,6 +4260,22 @@ window.__I18N_ES__={
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "No hay nada con este filtro. Cambia el filtro, o ya terminaste este módulo — ¡genial!",
   "Search results": "Resultados de búsqueda",
   "No questions match this search — try a different keyword or id.": "Ninguna pregunta coincide con esta búsqueda — prueba otra palabra clave o id.",
+  "Questions": "Preguntas",
+  "Practice · untimed": "Práctica · sin límite de tiempo",
+  "⚑ Flag for Review": "⚑ Marcar para revisar",
+  "🚩 Flagged": "🚩 Marcada",
+  "← Previous": "← Anterior",
+  "Finish exam": "Finalizar examen",
+  "Next →": "Siguiente →",
+  "Correct": "Correcta",
+  "Incorrect": "Incorrecta",
+  "Skipped": "Omitida",
+  "Time Taken": "Tiempo empleado",
+  "Performance by domain": "Resultados por dominio",
+  "Review Questions": "Revisar preguntas",
+  "Nothing matches this filter.": "Nada coincide con este filtro.",
+  "Flagged": "Marcada",
+  "Question": "Pregunta",
   "When is an agent even the right tool, and which workflow shape fits.": "Cuándo un agent es realmente la herramienta correcta, y qué forma de workflow encaja.",
   "The primitives every agent is assembled from: tools, integrations, and search.": "Las piezas básicas con las que se arma todo agent: tools, integrations y search.",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "Gestionar lo que el model ve, sobrevivir a los fallos y hacer cumplir reglas estrictas.",
@@ -4851,6 +4978,22 @@ window.__I18N_KO__={
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "이 필터에 해당하는 항목이 없다. 필터를 바꾸거나, 이 모듈을 이미 다 학습한 것이다 — 훌륭하다!",
   "Search results": "검색 결과",
   "No questions match this search — try a different keyword or id.": "이 검색과 일치하는 문항이 없다 — 다른 키워드나 id를 시도해 보라.",
+  "Questions": "문항",
+  "Practice · untimed": "연습 · 시간 제한 없음",
+  "⚑ Flag for Review": "⚑ 검토용으로 표시",
+  "🚩 Flagged": "🚩 표시됨",
+  "← Previous": "← 이전",
+  "Finish exam": "시험 종료",
+  "Next →": "다음 →",
+  "Correct": "정답",
+  "Incorrect": "오답",
+  "Skipped": "건너뜀",
+  "Time Taken": "소요 시간",
+  "Performance by domain": "도메인별 성과",
+  "Review Questions": "문항 검토",
+  "Nothing matches this filter.": "이 필터에 해당하는 항목이 없다.",
+  "Flagged": "표시됨",
+  "Question": "문항",
   "When is an agent even the right tool, and which workflow shape fits.": "애초에 agent가 적합한 도구인지, 어떤 workflow 형태가 맞는지.",
   "The primitives every agent is assembled from: tools, integrations, and search.": "모든 agent를 구성하는 기본 요소: tools, integrations, search.",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "model이 보는 것을 관리하고, 실패를 견디며, 엄격한 규칙을 강제하기.",
@@ -5553,6 +5696,22 @@ window.__I18N_PT__={
   "Nothing here with this filter. Switch the filter, or you’ve cleared this module — nice.": "Nada aqui com esse filtro. Troque o filtro, ou você já zerou este módulo — muito bem!",
   "Search results": "Resultados da busca",
   "No questions match this search — try a different keyword or id.": "Nenhuma pergunta corresponde a esta busca — tente outra palavra-chave ou id.",
+  "Questions": "Perguntas",
+  "Practice · untimed": "Prática · sem limite de tempo",
+  "⚑ Flag for Review": "⚑ Marcar para revisão",
+  "🚩 Flagged": "🚩 Marcada",
+  "← Previous": "← Anterior",
+  "Finish exam": "Finalizar prova",
+  "Next →": "Próxima →",
+  "Correct": "Correta",
+  "Incorrect": "Incorreta",
+  "Skipped": "Pulada",
+  "Time Taken": "Tempo gasto",
+  "Performance by domain": "Desempenho por domínio",
+  "Review Questions": "Revisar perguntas",
+  "Nothing matches this filter.": "Nada corresponde a este filtro.",
+  "Flagged": "Marcada",
+  "Question": "Pergunta",
   "When is an agent even the right tool, and which workflow shape fits.": "Quando um agent é realmente a ferramenta certa, e qual formato de workflow se encaixa.",
   "The primitives every agent is assembled from: tools, integrations, and search.": "As peças básicas com que todo agent é montado: tools, integrations e search.",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "Gerenciar o que o model vê, sobreviver a falhas e impor regras rígidas.",
@@ -6885,74 +7044,177 @@ function quizSetup(){
   root.querySelector('#qstart').onclick=()=>{
     let p=pool(); if(!p.length)return;
     p=shuffle(p.slice()); const n=len==='All'?p.length:Math.min(len,p.length);
-    quiz={items:p.slice(0,n),i:0,answers:{}}; quizQ();
+    quiz={items:p.slice(0,n),i:0,answers:{},flagged:new Set(),startedAt:Date.now()}; quizQ();
   };
+}
+function goToQuestion(idx){
+  quiz.i=Math.max(0,Math.min(idx,quiz.items.length-1));
+  quizQ();
+}
+function toggleFlag(){
+  const q=quiz.items[quiz.i];
+  if(quiz.flagged.has(q.id))quiz.flagged.delete(q.id); else quiz.flagged.add(q.id);
+  quizQ();
+}
+function toggleExamFullscreen(){
+  if(document.fullscreenElement)document.exitFullscreen();
+  else document.documentElement.requestFullscreen().catch(()=>{});
+}
+function examSidebarHtml(){
+  const answered=quiz.items.filter(q=>quiz.answers[q.id]).length;
+  const nums=quiz.items.map((q,idx)=>{
+    const cls=['exam-qnum'];
+    if(quiz.answers[q.id])cls.push('answered');
+    if(idx===quiz.i)cls.push('current');
+    if(quiz.flagged.has(q.id))cls.push('flagged');
+    return `<button type="button" class="${cls.join(' ')}" data-idx="${idx}">${idx+1}</button>`;
+  }).join('');
+  return `<aside class="exam-sidebar">
+    <div class="exam-sidebar-head"><span>Questions</span><span class="n">${answered}/${quiz.items.length}</span></div>
+    <div class="exam-qgrid">${nums}</div>
+  </aside>`;
 }
 function quizQ(){
   const q=quiz.items[quiz.i]; const root=document.getElementById('quiz-root');
-  const pct=Math.round(quiz.i/quiz.items.length*100);
-  root.innerHTML=`<div class="qbar"><i style="width:${pct}%"></i></div>
-    <div class="qmeta"><span>Question ${quiz.i+1} / ${quiz.items.length}</span><span><span class="tscode">${esc(q.ts)}</span> ${esc(tsTitle(q.ts))}</span></div>
-    <div class="card">
-      <div class="qtext">${esc(q.q)}</div>
-      <div class="opts"></div>
-      <div class="qactions" id="qnav" style="display:none">
-        <button class="btn" id="qnext">${quiz.i===quiz.items.length-1?'See score':'Next'}</button>
+  const isLast=quiz.i===quiz.items.length-1;
+  const flagged=quiz.flagged.has(q.id);
+  root.innerHTML=`<div class="exam-grid">
+    ${examSidebarHtml()}
+    <div>
+      <div class="exam-topbar">
+        <span class="exam-qcounter">Question ${quiz.i+1} of ${quiz.items.length}</span>
+        <div class="exam-controls">
+          <span class="pill">Practice · untimed</span>
+          <button type="button" class="exam-flag${flagged?' on':''}" id="qflag">${flagged?'🚩 Flagged':'⚑ Flag for Review'}</button>
+          <button type="button" class="exam-iconbtn" id="qexpand" aria-label="Toggle fullscreen" title="Toggle fullscreen">⤢</button>
+        </div>
       </div>
-    </div>`;
+      <div class="card">
+        <div class="qtext">${esc(q.q)}</div>
+        <div class="opts"></div>
+      </div>
+      <div class="exam-bottomnav">
+        <button class="btn ghost" id="qprev"${quiz.i===0?' disabled':''}>← Previous</button>
+        <button class="btn" id="qnext">${isLast?'Finish exam':'Next →'}</button>
+      </div>
+    </div>
+  </div>`;
   const ob=root.querySelector('.opts');
   ['A','B','C','D'].forEach(L=>{ if(!q.o[L])return;
-    const o=document.createElement('button'); o.className='opt quiz-opt'; o.dataset.l=L;
+    const o=document.createElement('button'); o.className='opt quiz-opt'+(quiz.answers[q.id]===L?' selected':''); o.dataset.l=L;
     o.innerHTML=`<span class="lt">${L}</span><span>${esc(q.o[L])}</span>`;
-    o.onclick=()=>pick(q,L,ob);
+    o.onclick=()=>{ quiz.answers[q.id]=L; quizQ(); };
     ob.appendChild(o);
   });
+  root.querySelectorAll('.exam-qnum').forEach(b=>{ b.onclick=()=>goToQuestion(+b.dataset.idx); });
+  root.querySelector('#qflag').onclick=toggleFlag;
+  root.querySelector('#qexpand').onclick=toggleExamFullscreen;
+  root.querySelector('#qprev').onclick=()=>goToQuestion(quiz.i-1);
+  root.querySelector('#qnext').onclick=()=>{ isLast?quizScore():goToQuestion(quiz.i+1); };
 }
-function pick(q,L,ob){
-  if(quiz.answers[q.id])return;
-  quiz.answers[q.id]=L;
-  ob.querySelectorAll('.opt').forEach(o=>{
-    o.style.pointerEvents='none';
-    if(o.dataset.l===q.a)o.classList.add('correct');
-    if(o.dataset.l===L&&L!==q.a)o.classList.add('wrong');
+function fmtElapsed(ms){
+  const s=Math.max(0,Math.round(ms/1000));
+  const m=Math.floor(s/60), r=s%60;
+  return m>0?`${m}m ${r}s`:`${r}s`;
+}
+function quizDomainBreakdown(){
+  const byDom={};
+  quiz.items.forEach(q=>{
+    const t=TS_BY_ID[q.ts]; const code=t?t.domain:null; if(!code)return;
+    byDom[code]=byDom[code]||{correct:0,total:0};
+    byDom[code].total++;
+    if(quiz.answers[q.id]===q.a)byDom[code].correct++;
   });
-  if(L!==q.a || q.w){
-    const w=document.createElement('div'); w.className='why';
-    w.innerHTML=q.w?`<b>Why ${q.a}</b><br>${esc(q.w)}`:`<b>Answer</b><br>Correct: ${q.a}`;
-    ob.after(w);
-  }
-  const nav=document.getElementById('qnav'); nav.style.display='flex';
-  document.getElementById('qnext').onclick=()=>{ quiz.i++; quiz.i>=quiz.items.length?quizScore():quizQ(); };
+  return DOMAIN_ORDER.filter(c=>byDom[c]).map(code=>{
+    const info=DOMAIN_INFO[code], d=byDom[code];
+    return {label:info.label,color:info.color,correct:d.correct,total:d.total,pct:Math.round(d.correct/d.total*100)};
+  });
+}
+function reviewBadge(q){
+  const a=quiz.answers[q.id];
+  if(!a)return '<span class="pill rq-badge rq-skip">Skipped</span>';
+  return a===q.a?'<span class="pill rq-badge rq-correct">Correct</span>':'<span class="pill rq-badge rq-incorrect">Incorrect</span>';
+}
+function renderReviewList(){
+  const list=document.getElementById('rq-list'); if(!list)return;
+  const filter=quiz.reviewFilter||'all';
+  const items=quiz.items.filter(q=>{
+    if(filter==='incorrect')return quiz.answers[q.id]&&quiz.answers[q.id]!==q.a;
+    if(filter==='flagged')return quiz.flagged.has(q.id);
+    return true;
+  });
+  list.innerHTML='';
+  if(!items.length){ list.innerHTML='<div class="card" style="color:var(--ink3)">Nothing matches this filter.</div>'; return; }
+  items.forEach(q=>{
+    const a=quiz.answers[q.id];
+    const qn=quiz.items.indexOf(q)+1;
+    const el=document.createElement('div'); el.className='card';
+    el.innerHTML=`<div class="row" style="margin-bottom:10px;justify-content:space-between">
+        <span class="rq-qn">Question <span class="n">${qn}</span></span>
+        <div class="row">${reviewBadge(q)}${quiz.flagged.has(q.id)?'<span class="pill" style="color:var(--amber);border-color:var(--amber)">🚩 Flagged</span>':''}</div>
+      </div>
+      <div class="qtext">${esc(q.q)}</div>
+      <div class="opts"></div>
+      ${q.w?`<div class="why"><b>Why</b><br>${esc(q.w)}</div>`:''}
+      ${kwChips(q)}`;
+    const ob=el.querySelector('.opts');
+    ['A','B','C','D'].forEach(L=>{ if(!q.o[L])return;
+      const o=document.createElement('div'); o.className='opt'+(L===q.a?' correct':(L===a?' wrong':''));
+      o.innerHTML=`<span class="lt">${L}</span><span>${esc(q.o[L])}</span>`;
+      ob.appendChild(o);
+    });
+    list.appendChild(el);
+  });
 }
 function quizScore(){
   const correct=quiz.items.filter(q=>quiz.answers[q.id]===q.a).length;
+  const incorrect=quiz.items.filter(q=>quiz.answers[q.id]&&quiz.answers[q.id]!==q.a).length;
+  const skipped=quiz.items.length-correct-incorrect;
   const tot=quiz.items.length; const pct=Math.round(correct/tot*100);
   const msg=pct>=85?'Exam-ready on this set.':pct>=70?'Solid — tighten the misses.':pct>=50?'Getting there. Re-drill the trap answers.':'Back to the cheat sheet, then run it again.';
+  const tierColor=pct>=70?'var(--teal)':pct>=50?'var(--amber)':'var(--rose)';
+  const elapsed=quiz.startedAt?fmtElapsed(Date.now()-quiz.startedAt):'—';
+  quiz.reviewFilter=quiz.reviewFilter||'all';
+  const domains=quizDomainBreakdown();
   const root=document.getElementById('quiz-root');
-  root.innerHTML=`<div class="score">
-    <div class="big" style="color:${pct>=70?'var(--teal)':pct>=50?'var(--amber)':'var(--rose)'}">${pct}%</div>
-    <div class="lab">${correct} of ${tot} correct · ${msg}</div>
-    <div class="row" style="justify-content:center">
+  root.innerHTML=`<div class="exam-banner" style="border-color:${tierColor}">
+      <div class="exam-banner-pct" style="color:${tierColor}">${pct}%</div>
+      <div class="exam-banner-msg">${correct} of ${tot} correct · ${msg}</div>
+    </div>
+    <div class="exam-stats">
+      <div class="exam-stat"><div class="exam-stat-icon" style="color:var(--teal);border-color:var(--teal)">✓</div><div class="n" style="color:var(--teal)">${correct}</div><div class="l">Correct</div></div>
+      <div class="exam-stat"><div class="exam-stat-icon" style="color:var(--rose);border-color:var(--rose)">✕</div><div class="n" style="color:var(--rose)">${incorrect}</div><div class="l">Incorrect</div></div>
+      <div class="exam-stat"><div class="exam-stat-icon" style="color:var(--ink3);border-color:var(--ink3)">–</div><div class="n" style="color:var(--ink3)">${skipped}</div><div class="l">Skipped</div></div>
+      <div class="exam-stat"><div class="exam-stat-icon" style="color:var(--indigo);border-color:var(--indigo)">🕐</div><div class="n">${elapsed}</div><div class="l">Time Taken</div></div>
+    </div>
+    ${domains.length?`<div class="exam-domains">
+      <h3>Performance by domain</h3>
+      ${domains.map(d=>`<div class="exam-domain-row">
+        <div class="exam-domain-label"><span>${esc(d.label)}</span><span class="n">${d.correct}/${d.total} (${d.pct}%)</span></div>
+        <div class="exam-domain-bar"><i style="width:${d.pct}%;background:${d.color}"></i></div>
+      </div>`).join('')}
+    </div>`:''}
+    <div class="row" style="justify-content:center;margin:22px 0">
       <button class="btn" id="qagain">New exam</button>
-      <button class="btn ghost" id="qmiss">Review misses (${tot-correct})</button>
-    </div></div>`;
+    </div>
+    <div class="exam-review">
+      <h3>Review Questions</h3>
+      <div class="chips" id="rq-filter">
+        <button type="button" class="chip${quiz.reviewFilter==='all'?' on':''}" data-f="all">All <span class="n">(${tot})</span></button>
+        <button type="button" class="chip${quiz.reviewFilter==='incorrect'?' on':''}" data-f="incorrect">Incorrect <span class="n">(${incorrect})</span></button>
+        <button type="button" class="chip${quiz.reviewFilter==='flagged'?' on':''}" data-f="flagged">Flagged <span class="n">(${quiz.flagged.size})</span></button>
+      </div>
+      <div id="rq-list"></div>
+    </div>`;
   root.querySelector('#qagain').onclick=quizSetup;
-  root.querySelector('#qmiss').onclick=()=>{
-    const misses=quiz.items.filter(q=>quiz.answers[q.id]!==q.a);
-    if(!misses.length){root.querySelector('.score .lab').textContent='No misses — clean run.';return;}
-    root.innerHTML='<div class="eyebrow">Review</div><h2 class="vt">Questions you missed</h2><div id="mlist"></div><div class="row" style="justify-content:center;margin-top:20px"><button class="btn" id="qagain2">New exam</button></div>';
-    const ml=root.querySelector('#mlist');
-    misses.forEach(q=>{
-      const el=document.createElement('div');el.className='card';
-      el.innerHTML=`<div class="qn">your answer ${quiz.answers[q.id]||'—'} · correct ${q.a}</div>
-        <div class="qtext">${esc(q.q)}</div>
-        <div class="opt correct"><span class="lt">${q.a}</span><span>${esc(q.o[q.a]||'')}</span></div>
-        ${q.w?`<div class="why"><b>Why</b><br>${esc(q.w)}</div>`:''}
-        ${kwChips(q)}`;
-      ml.appendChild(el);
-    });
-    root.querySelector('#qagain2').onclick=quizSetup;
-  };
+  root.querySelectorAll('#rq-filter .chip').forEach(b=>{
+    b.onclick=()=>{
+      quiz.reviewFilter=b.dataset.f;
+      root.querySelectorAll('#rq-filter .chip').forEach(x=>x.classList.toggle('on',x===b));
+      renderReviewList();
+    };
+  });
+  renderReviewList();
 }
 
 /* ---------- utils ---------- */
@@ -7361,7 +7623,7 @@ try{
       if(qm && QS_UNIT[lang]) tr=qm[1]+((lang==='ja'||lang==='zh'||lang==='tw'||lang==='ko')?'':' ')+QS_UNIT[lang];
     }
     if(tr==null){
-      var qn=key.match(/^Question\s+(\d+)\s*\/\s*(\d+)$/);
+      var qn=key.match(/^Question\s+(\d+)\s+of\s+(\d+)$/);
       if(qn && QUESTION_FMT[lang]) tr=QUESTION_FMT[lang](qn[1],qn[2]);
     }
     if(tr!=null){
