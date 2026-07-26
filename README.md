@@ -21,7 +21,7 @@ The page is a tabbed shell with four tools. On desktop-width screens (900px and 
 
 ## Content
 
-- **157 practice questions**, sourced from `CCA-F_Study_Guide.md`. One pair with a genuinely conflicting source answer is flagged with a ⚠ badge in Study mode.
+- **156 practice questions**, sourced from `CCA-F_Study_Guide.md`. One pair with a genuinely conflicting source answer is flagged with a ⚠ badge in Study mode.
 - The app is organized around the **official CCA-F blueprint**: **5 domains → 30 task statements → 59 concepts**. Every question is tagged to one task statement, and its domain follows from that tag. The five domains, in exam-weight order: Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%), and Context & Reliability (15%). (Blueprint taxonomy from [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Features

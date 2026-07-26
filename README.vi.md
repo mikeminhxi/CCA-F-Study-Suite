@@ -21,7 +21,7 @@ Trang có dạng shell với 4 tab công cụ. Trên màn hình rộng (từ 900
 
 ## Nội dung câu hỏi
 
-- **157 câu luyện tập**, lấy từ `CCA-F_Study_Guide.md`. Một cặp câu có đáp án mâu thuẫn thật sự trong tài liệu gốc được đánh dấu bằng huy hiệu ⚠ trong chế độ Study.
+- **156 câu luyện tập**, lấy từ `CCA-F_Study_Guide.md`. Một cặp câu có đáp án mâu thuẫn thật sự trong tài liệu gốc được đánh dấu bằng huy hiệu ⚠ trong chế độ Study.
 - Ứng dụng được tổ chức quanh **blueprint CCA-F chính thức**: **5 domain → 30 task statement → 59 khái niệm**. Mỗi câu hỏi được gắn vào một task statement, và domain của nó suy ra từ thẻ đó. Năm domain theo thứ tự trọng số thi: Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%), và Context & Reliability (15%). (Phân loại blueprint từ [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Tính năng
