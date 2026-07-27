@@ -2,6 +2,12 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Optional "Buy me a coffee" QR code on the results page
+
+- Added a small, unobtrusive donation card to the exam results screen — a caption plus a QR code image (`donate-qr.png`, dropped in next to the HTML file). Since this is a static single-file app with no way to embed a real image, the `<img>` fails and removes its own card gracefully if the file isn't present, so the app still ships clean without it.
+- Added and translated 1 new string ("☕ Buy me a coffee") across all 7 non-English dictionaries.
+- Also caught up `translations/*.json` with 16 other strings from the exam/results redesign (Questions, Flag for Review, Previous/Next, stat labels, domain/review headings, etc.) that were never synced after that work landed — all 7 files were still at 693 keys against the in-app 710.
+
 ## Renamed to `index.html` for GitHub Pages hosting
 
 - **`cca-f-study-suite.html` renamed to `index.html`**, the filename GitHub Pages requires to serve a repo's root as a site. No content changed — same single self-contained file, same `git mv` history.
