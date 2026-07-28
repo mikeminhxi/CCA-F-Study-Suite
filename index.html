@@ -15,6 +15,8 @@
     --badge-bg:#f5b13d; --badge-ink:#241a05;
     --pill-bg:#161d3a; --pill-border:#28325c; --pill-ink:#9aa4c6; --pill-ink-hover:#e9edf8;
     --pill-on-bg:#f5b13d; --pill-on-ink:#241a05;
+    --surface:#161d3a; --surface2:#1c2547; --text:#e9edf8; --text2:#9aa4c6; --text3:#6b769c; --border:#28325c;
+    --shadow-soft:0 1px 2px rgba(0,0,0,.4),0 10px 28px -12px rgba(0,0,0,.6);
   }
   :root[data-theme="light"]{
     --shell-bg:#f6f7fb; --shell-border:#d8deea; --shell-brand:#12172b; --shell-brand-sub:#b8720a;
@@ -23,6 +25,8 @@
     --badge-bg:#b8720a; --badge-ink:#fff7ea;
     --pill-bg:#ffffff; --pill-border:#d8deea; --pill-ink:#5b6486; --pill-ink-hover:#12172b;
     --pill-on-bg:#b8720a; --pill-on-ink:#fff7ea;
+    --surface:#ffffff; --surface2:#eef1f8; --text:#12172b; --text2:#5b6486; --text3:#8890ac; --border:#dde2ee;
+    --shadow-soft:0 1px 2px rgba(20,25,50,.06),0 10px 28px -12px rgba(20,25,50,.12);
   }
   html,body{margin:0;padding:0}
   body{background:var(--shell-bg);font-family:'JetBrains Mono',monospace;-webkit-overflow-scrolling:touch}
@@ -32,7 +36,8 @@
     color:var(--shell-brand);font-size:14px;margin-right:8px;letter-spacing:-.01em}
   #shell-nav .brand small{color:var(--shell-brand-sub);font-family:'JetBrains Mono',monospace;font-size:9.5px;
     letter-spacing:.22em;display:block;font-weight:400}
-  .shell-tab{cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--tab-ink);
+  #shell-nav .shell-tabs-list{display:flex;flex-wrap:wrap;gap:8px;flex:1 1 auto}
+  .shell-tab{box-sizing:border-box;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--tab-ink);
     background:var(--tab-bg);border:1px solid var(--tab-border);padding:9px 15px;border-radius:9px;
     display:flex;align-items:center;gap:8px;transition:.15s;user-select:none}
   .shell-tab:hover{color:var(--tab-ink-hover);border-color:var(--pill-ink-hover)}
@@ -45,18 +50,38 @@
     overflow:visible!important;max-height:none!important}
 
 @media (max-width: 640px) {
-  #shell-nav .brand{flex-basis:100%;margin-right:0}
+  #shell-nav{transition:transform .25s ease}
+  #tool-console .top{transition:transform .25s ease}
+  html.headers-hidden #shell-nav{transform:translateY(-100%)}
+  html.headers-hidden #tool-console .top{transform:translateY(calc(-100% - var(--shell-nav-h,0px)))}
+  #shell-nav .brand{flex-basis:100%;margin-right:0;order:0}
+  #shell-nav .shell-tabs-list{order:2}
   #shell-nav .shell-tab{flex:1 1 calc(50% - 4px)}
-  #shell-nav #nav-controls{flex-basis:100%;margin-left:0;justify-content:space-between}
+  #shell-nav #nav-controls{flex-basis:auto;margin-left:auto;order:1}
   #tool-console .top-in{padding:12px 16px}
   #tool-console .wrap{padding:22px 16px 80px}
-  #shell-nav .nav-toggle{display:inline-flex}
-  #shell-nav:not(.nav-expanded) .shell-tab:not(.on){display:none}
-  #shell-nav:not(.nav-expanded) #nav-controls{display:none}
+  #shell-nav .nav-toggle{display:inline-flex;order:2}
+  #shell-nav:not(.nav-expanded) .shell-tabs-list .shell-tab:not(.on){display:none}
+  #shell-nav.nav-expanded .shell-tabs-list{
+    position:absolute;left:18px;right:18px;top:100%;margin-top:8px;
+    flex-direction:column;flex-wrap:nowrap;
+    background:var(--shell-bg);border:1px solid var(--shell-border);border-radius:12px;
+    padding:8px;box-shadow:0 14px 32px rgba(0,0,0,.4);z-index:80;
+  }
+  #shell-nav.nav-expanded .shell-tabs-list .shell-tab{flex:none;width:100%}
+  #tool-console .tabs{position:relative}
+  #tool-console .tabs-list{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 auto}
   #tool-console .tabs .nav-toggle{display:inline-flex}
-  #tool-console .tabs:not(.nav-expanded) .tab:not(.on){display:none}
+  #tool-console .tabs:not(.nav-expanded) .tabs-list .tab:not(.on){display:none}
   #tool-console .tabs{flex-basis:100%}
   #tool-console .tabs .tab{flex:1}
+  #tool-console .tabs.nav-expanded .tabs-list{
+    position:absolute;left:0;right:0;top:100%;margin-top:8px;
+    flex-direction:column;flex-wrap:nowrap;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:8px;box-shadow:var(--shadow);z-index:80;
+  }
+  #tool-console .tabs.nav-expanded .tabs-list .tab{flex:none;width:100%;text-align:left}
   #tool-console .top{position:sticky;top:var(--shell-nav-h,0px);z-index:5}
 }
 @media (max-width: 720px) {
@@ -142,9 +167,14 @@
 #tool-console .brand h1{font-family:var(--disp);font-size:17px;font-weight:700;margin:0;letter-spacing:-.01em;color:var(--ink)}
 #tool-console .brand .src{font-family:var(--mono);font-size:11px;color:var(--ink3)}
 #tool-console .tabs{display:flex;gap:6px;flex-wrap:wrap}
+#tool-console .tabs-list{display:flex;gap:6px;flex-wrap:wrap;flex:1 1 auto}
 #tool-console .tab{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--ink2);background:var(--panel);border:1px solid var(--line);padding:8px 14px;border-radius:9px;transition:.15s;white-space:nowrap}
 #tool-console .tab:hover{color:var(--ink);border-color:var(--ink3)}
 #tool-console .tab.on{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:700}
+@media (min-width: 900px) {
+  #tool-console .brand{flex-basis:auto}
+  #tool-console .tabs{flex-basis:auto}
+}
 #tool-console .wrap{max-width:1080px;margin:0 auto;padding:34px 22px 90px}
 #tool-console .view{display:none;animation:fade .3s ease}
 #tool-console .view.on{display:block}
@@ -310,7 +340,7 @@
 #tool-console .exam-flag:hover{border-color:var(--amber);color:var(--amber)}
 #tool-console .exam-flag.on{background:var(--amber-soft);border-color:var(--amber);color:var(--amber)}
 #tool-console .exam-bottomnav{display:flex;justify-content:space-between;gap:10px;margin-top:18px;position:fixed;left:0;right:0;bottom:0;max-width:900px;margin:0 auto;padding:14px 18px;background:var(--panel);border-top:1px solid var(--line);box-shadow:0 -6px 16px rgba(0,0,0,.12);z-index:30}
-@media(max-width:720px){#tool-console .exam-grid{grid-template-columns:1fr}#tool-console .exam-qgrid{max-height:220px}}
+@media(max-width:720px){#tool-console .exam-grid{grid-template-columns:1fr}#tool-console .exam-qgrid{max-height:220px}#tool-console .exam-sidebar{order:2}}
 #tool-console .score{text-align:center;padding:40px 20px}
 #tool-console .score .big{font-family:var(--disp);font-size:56px;font-weight:700;letter-spacing:-.03em;line-height:1}
 #tool-console .score .lab{color:var(--ink2);margin:8px 0 22px}
@@ -322,6 +352,23 @@
 #tool-console .exam-stat .n{font-family:var(--disp);font-size:24px;font-weight:700;color:var(--ink)}
 #tool-console .exam-stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-top:3px}
 #tool-console .exam-stat-icon{width:26px;height:26px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-weight:700;font-size:13px;line-height:1}
+.exam-donate-wrap,.exam-donate-wrap *{box-sizing:border-box}
+.donate-pop-title{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:700;font-size:15px;color:var(--text);margin-bottom:16px;text-align:center}
+.donate-cards{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:16px}
+.donate-card{flex:1 1 260px;max-width:360px;min-width:0;padding:16px;border:1px solid var(--border);border-radius:14px;background:transparent;text-align:center}
+.donate-cap{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:700;font-size:13px;color:var(--text2);margin-bottom:10px}
+.donate-qr{width:100%;border-radius:10px;display:block}
+.donate-banner{max-width:640px;margin:0 auto 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 20px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
+.donate-banner-title{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:700;font-size:14px;color:var(--text)}
+.donate-banner-sub{font-size:12px;color:var(--text2);margin-top:2px}
+.exam-donate-wrap{display:inline-flex}
+.donate-nav-btn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:8px;border:1px solid var(--tab-border);background:var(--tab-bg);color:var(--tab-ink);font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
+.donate-nav-btn:hover{color:var(--tab-ink-hover);border-color:var(--tab-ink-hover)}
+.donate-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);padding:24px}
+.donate-modal.show{display:flex}
+.donate-modal-panel{position:relative;width:100%;max-width:1200px;max-height:85vh;overflow-y:auto;padding:28px 24px 24px;border:1px solid var(--border);border-radius:16px;background:var(--surface);box-shadow:var(--shadow-soft)}
+.donate-modal-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text2);display:grid;place-items:center;cursor:pointer;font-size:14px}
+.donate-modal-close:hover{color:var(--text);border-color:var(--text3)}
 #tool-console .rq-qn{font-family:var(--mono);font-size:11px;color:var(--ink3);font-weight:600}
 #tool-console .exam-domains{max-width:640px;margin:0 auto 10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
 #tool-console .exam-domains h3{font-family:var(--disp);font-size:16px;margin:0 0 14px;color:var(--ink)}
@@ -683,12 +730,15 @@
 
   <div id="shell-nav">
     <div class="brand">CCA-F Study Suite<small data-i18n-shell="brand_sub" data-en="ONE FILE · SAVES LOCALLY">ONE FILE · SAVES LOCALLY</small></div>
-    <div class="shell-tab on" data-pane="console"><span class="dot" style="background:#c98bff"></span><span data-i18n-shell="tab_console" data-en="Study Console">Study Console</span><span class="badge">156 Qs</span></div>
-    <div class="shell-tab" data-pane="hub"><span class="dot" style="background:#7aa2ff"></span><span data-i18n-shell="tab_hub" data-en="Study Hub">Study Hub</span></div>
-    <div class="shell-tab" data-pane="map"><span class="dot" style="background:#f7a072"></span><span data-i18n-shell="tab_map" data-en="Neuron Map">Neuron Map</span></div>
-    <div class="shell-tab" data-pane="plan"><span class="dot" style="background:#5fd0a8"></span><span data-i18n-shell="tab_plan" data-en="2-Week Plan">2-Week Plan</span></div>
+    <div class="shell-tabs-list">
+      <div class="shell-tab on" data-pane="console"><span class="dot" style="background:#c98bff"></span><span data-i18n-shell="tab_console" data-en="Study Console">Study Console</span><span class="badge">156 Qs</span></div>
+      <div class="shell-tab" data-pane="hub"><span class="dot" style="background:#7aa2ff"></span><span data-i18n-shell="tab_hub" data-en="Study Hub">Study Hub</span></div>
+      <div class="shell-tab" data-pane="map"><span class="dot" style="background:#f7a072"></span><span data-i18n-shell="tab_map" data-en="Neuron Map">Neuron Map</span></div>
+      <div class="shell-tab" data-pane="plan"><span class="dot" style="background:#5fd0a8"></span><span data-i18n-shell="tab_plan" data-en="2-Week Plan">2-Week Plan</span></div>
+    </div>
     <button type="button" class="nav-toggle" id="shell-nav-toggle" aria-label="Show all tabs" aria-expanded="false">▾</button>
     <div id="nav-controls">
+      <span id="navdonate-slot"></span>
       <div id="theme-toggle" class="pill-toggle">
         <button data-theme="light" onclick="window.__setTheme__('light')" title="Light" aria-label="Light theme">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -727,11 +777,13 @@
       </div>
     </div>
     <nav class="tabs" id="tabs">
-      <button class="tab on" data-v="path">Learning Path</button>
-      <button class="tab" data-v="cheat">Cheat &amp; Keywords</button>
-      <button class="tab" data-v="study">Study</button>
-      <button class="tab" data-v="quiz">Exam by Domain</button>
-      <button class="tab" data-v="concepts">Concepts</button>
+      <div class="tabs-list">
+        <button class="tab on" data-v="path">Learning Path</button>
+        <button class="tab" data-v="cheat">Cheat &amp; Keywords</button>
+        <button class="tab" data-v="study">Study</button>
+        <button class="tab" data-v="quiz">Exam by Domain</button>
+        <button class="tab" data-v="concepts">Concepts</button>
+      </div>
       <button type="button" class="nav-toggle" id="console-tabs-toggle" aria-label="Show all tabs" aria-expanded="false">▾</button>
     </nav>
   </div>
@@ -1321,6 +1373,12 @@
   var toggle=document.getElementById('shell-nav-toggle');
   tabs.forEach(function(t){
     t.addEventListener('click',function(){
+      var collapsed=toggle && getComputedStyle(toggle).display!=='none' && !nav.classList.contains('nav-expanded');
+      if(collapsed){
+        nav.classList.add('nav-expanded');
+        toggle.setAttribute('aria-expanded','true');
+        return;
+      }
       tabs.forEach(function(x){x.classList.remove('on');});
       panes.forEach(function(p){p.classList.remove('on');});
       t.classList.add('on');
@@ -1404,6 +1462,12 @@
   "Nothing matches this filter.": "Không có gì khớp với bộ lọc này.",
   "Flagged": "Đã đánh dấu",
   "Question": "Câu hỏi",
+  "☕ Buy me a coffee": "☕ Mời tôi cà phê",
+  "Found this useful?": "Thấy hữu ích chứ?",
+  "Free and open-source practice questions.": "Câu hỏi luyện tập miễn phí và mã nguồn mở.",
+  "Bank 1": "Ngân hàng 1",
+  "Bank 2": "Ngân hàng 2",
+  "Bank 3": "Ngân hàng 3",
   "When is an agent even the right tool, and which workflow shape fits.": "Khi nào agent là công cụ phù hợp, và dạng workflow nào hợp lý.",
   "The primitives every agent is assembled from: tools, integrations, and search.": "Các thành phần cơ bản tạo nên mọi agent: tools, integrations và search.",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "Quản lý những gì model thấy, xử lý lỗi, và áp đặt quy tắc bắt buộc.",
@@ -2122,6 +2186,12 @@ window.__I18N_JA__={
   "Nothing matches this filter.": "このフィルタに該当するものはない。",
   "Flagged": "確認予定",
   "Question": "問題",
+  "☕ Buy me a coffee": "☕ コーヒーをおごる",
+  "Found this useful?": "役に立ちましたか?",
+  "Free and open-source practice questions.": "無料・オープンソースの練習問題です。",
+  "Bank 1": "銀行1",
+  "Bank 2": "銀行2",
+  "Bank 3": "銀行3",
   "When is an agent even the right tool, and which workflow shape fits.": "そもそもagentが適切なツールなのか、どのworkflowの形が合うのか。",
   "The primitives every agent is assembled from: tools, integrations, and search.": "あらゆるagentを組み立てる基本部品:tools、integrations、search。",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "modelに見えているものを管理し、失敗を乗り越え、厳格なルールを守らせる。",
@@ -2840,6 +2910,12 @@ window.__I18N_ZH__={
   "Nothing matches this filter.": "没有符合此筛选条件的内容。",
   "Flagged": "已标记",
   "Question": "问题",
+  "☕ Buy me a coffee": "☕ 请我喝杯咖啡",
+  "Found this useful?": "觉得有帮助吗?",
+  "Free and open-source practice questions.": "免费开源的练习题。",
+  "Bank 1": "银行1",
+  "Bank 2": "银行2",
+  "Bank 3": "银行3",
   "When is an agent even the right tool, and which workflow shape fits.": "什么时候agent才是正确的工具,哪种workflow形态更合适。",
   "The primitives every agent is assembled from: tools, integrations, and search.": "组成每个agent的基本组件:tools、integrations与search。",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "管理model能看到什么、扛住失败、并强制执行硬性规则。",
@@ -3558,6 +3634,12 @@ window.__I18N_TW__={
   "Nothing matches this filter.": "沒有符合此篩選條件的內容。",
   "Flagged": "已標記",
   "Question": "問題",
+  "☕ Buy me a coffee": "☕ 請我喝杯咖啡",
+  "Found this useful?": "覺得有幫助嗎?",
+  "Free and open-source practice questions.": "免費開源的練習題。",
+  "Bank 1": "銀行1",
+  "Bank 2": "銀行2",
+  "Bank 3": "銀行3",
   "When is an agent even the right tool, and which workflow shape fits.": "什麼時候agent才是正確的工具,哪種workflow形態更合適。",
   "The primitives every agent is assembled from: tools, integrations, and search.": "組成每個agent的基本組件:tools、integrations與search。",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "管理model能看到什麼、扛住失敗、並強制執行硬性規則。",
@@ -4276,6 +4358,12 @@ window.__I18N_ES__={
   "Nothing matches this filter.": "Nada coincide con este filtro.",
   "Flagged": "Marcada",
   "Question": "Pregunta",
+  "☕ Buy me a coffee": "☕ Invítame un café",
+  "Found this useful?": "¿Te resultó útil?",
+  "Free and open-source practice questions.": "Preguntas de práctica gratuitas y de código abierto.",
+  "Bank 1": "Banco 1",
+  "Bank 2": "Banco 2",
+  "Bank 3": "Banco 3",
   "When is an agent even the right tool, and which workflow shape fits.": "Cuándo un agent es realmente la herramienta correcta, y qué forma de workflow encaja.",
   "The primitives every agent is assembled from: tools, integrations, and search.": "Las piezas básicas con las que se arma todo agent: tools, integrations y search.",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "Gestionar lo que el model ve, sobrevivir a los fallos y hacer cumplir reglas estrictas.",
@@ -4994,6 +5082,12 @@ window.__I18N_KO__={
   "Nothing matches this filter.": "이 필터에 해당하는 항목이 없다.",
   "Flagged": "표시됨",
   "Question": "문항",
+  "☕ Buy me a coffee": "☕ 커피 한 잔 사주세요",
+  "Found this useful?": "도움이 되셨나요?",
+  "Free and open-source practice questions.": "무료 오픈소스 연습 문제입니다.",
+  "Bank 1": "은행 1",
+  "Bank 2": "은행 2",
+  "Bank 3": "은행 3",
   "When is an agent even the right tool, and which workflow shape fits.": "애초에 agent가 적합한 도구인지, 어떤 workflow 형태가 맞는지.",
   "The primitives every agent is assembled from: tools, integrations, and search.": "모든 agent를 구성하는 기본 요소: tools, integrations, search.",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "model이 보는 것을 관리하고, 실패를 견디며, 엄격한 규칙을 강제하기.",
@@ -5712,6 +5806,12 @@ window.__I18N_PT__={
   "Nothing matches this filter.": "Nada corresponde a este filtro.",
   "Flagged": "Marcada",
   "Question": "Pergunta",
+  "☕ Buy me a coffee": "☕ Pague-me um café",
+  "Found this useful?": "Achou útil?",
+  "Free and open-source practice questions.": "Perguntas de prática gratuitas e de código aberto.",
+  "Bank 1": "Banco 1",
+  "Bank 2": "Banco 2",
+  "Bank 3": "Banco 3",
   "When is an agent even the right tool, and which workflow shape fits.": "Quando um agent é realmente a ferramenta certa, e qual formato de workflow se encaixa.",
   "The primitives every agent is assembled from: tools, integrations, and search.": "As peças básicas com que todo agent é montado: tools, integrations e search.",
   "Managing what the model sees, surviving failures, and enforcing hard rules.": "Gerenciar o que o model vê, sobreviver a falhas e impor regras rígidas.",
@@ -6684,6 +6784,14 @@ document.getElementById('tabs').addEventListener('click',e=>{
     return;
   }
   const b=e.target.closest('.tab'); if(!b)return;
+  const tabsNav=document.getElementById('tabs');
+  const innerToggle0=document.getElementById('console-tabs-toggle');
+  const collapsed=innerToggle0 && getComputedStyle(innerToggle0).display!=='none' && !tabsNav.classList.contains('nav-expanded');
+  if(collapsed){
+    tabsNav.classList.add('nav-expanded');
+    innerToggle0.setAttribute('aria-expanded','true');
+    return;
+  }
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t===b));
   Object.values(views).forEach(id=>document.getElementById(id).classList.remove('on'));
   document.getElementById(views[b.dataset.v]).classList.add('on');
@@ -6983,11 +7091,11 @@ function quizSetup(){
         <button class="mini" id="qall">Select all</button>
         <button class="mini" id="qnone">Clear</button>
       </div>
-      <div id="qgroups"></div>
       <h3 style="margin-top:16px">Length</h3>
       <div class="chips" id="qlen"></div>
       <div class="row" style="margin-top:16px"><button class="btn" id="qstart">Start exam</button>
       <span class="ph-prog" id="qavail">0 questions available</span></div>
+      <div id="qgroups" style="margin-top:16px"></div>
     </div>`;
   const gc=root.querySelector('#qgroups');
   const allChipBtns=[];
@@ -7030,9 +7138,9 @@ function quizSetup(){
   gc.appendChild(mgrp);
   root.querySelector('#qall').onclick=()=>{allChipBtns.forEach(b=>b.classList.add('on'));cats.forEach(c=>sel.add(c));updAvail();};
   root.querySelector('#qnone').onclick=()=>{allChipBtns.forEach(b=>b.classList.remove('on'));sel.clear();updAvail();};
-  let len=15; const lens=[10,15,25,50,'All'];
+  let len=20; const lens=[10,20,60,'All'];
   const lc=root.querySelector('#qlen');
-  lens.forEach(n=>{const b=document.createElement('button');b.className='chip'+(n===15?' on':'');b.textContent=n;
+  lens.forEach(n=>{const b=document.createElement('button');b.className='chip'+(n===20?' on':'');b.textContent=n;
     b.onclick=()=>{len=n;lc.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');};lc.appendChild(b);});
   const pool=()=>{
     const seen=new Set(); const out=[];
@@ -7073,6 +7181,48 @@ function examSidebarHtml(){
     <div class="exam-sidebar-head"><span>Questions</span><span class="n">${answered}/${quiz.items.length}</span></div>
     <div class="exam-qgrid">${nums}</div>
   </aside>`;
+}
+var DONATIONS=[
+  {file:'donate-qr/1.jpg', label:'Bank 1'},
+  {file:'donate-qr/2.png', label:'Bank 2'},
+  {file:'donate-qr/3.jpg', label:'Bank 3'}
+];
+function donateCardsHtml(){
+  return `<div class="donate-cards">
+    ${DONATIONS.map(d=>`<div class="donate-card">
+      <div class="donate-cap">${esc(d.label)}</div>
+      <img class="donate-qr" src="${esc(d.file)}" alt="${esc(d.label)} QR code" onerror="var c=this.closest('.donate-card'),grid=c.closest('.donate-cards');c.remove();if(grid&&!grid.querySelector('.donate-card')){var wrap=grid.closest('.exam-donate-wrap'),t=wrap||grid,banner=t.closest('.donate-banner');(banner||t).remove();}">
+    </div>`).join('')}
+  </div>`;
+}
+function donateModalHtml(id){
+  return `<div class="donate-modal" id="${id}-pop">
+    <div class="donate-modal-panel">
+      <button type="button" class="donate-modal-close" id="${id}-close" aria-label="Close">✕</button>
+      <div class="donate-pop-title">☕ Buy me a coffee</div>
+      ${donateCardsHtml()}
+    </div>
+  </div>`;
+}
+function wireDonateModal(root,id){
+  const btn=root.querySelector('#'+id+'-btn'), modal=root.querySelector('#'+id+'-pop');
+  if(!btn||!modal)return;
+  btn.onclick=()=>modal.classList.add('show');
+  const close=()=>modal.classList.remove('show');
+  root.querySelector('#'+id+'-close').onclick=close;
+  modal.onclick=(e)=>{ if(e.target===modal)close(); };
+}
+function donateBannerHtml(){
+  return `<div class="donate-banner">
+    <div class="donate-banner-text">
+      <div class="donate-banner-title">Found this useful?</div>
+      <div class="donate-banner-sub">Free and open-source practice questions.</div>
+    </div>
+    <span class="exam-donate-wrap">
+      <button type="button" class="btn ghost" id="rdonate-btn">☕ Buy me a coffee</button>
+      ${donateModalHtml('rdonate')}
+    </span>
+  </div>`;
 }
 function quizQ(){
   const q=quiz.items[quiz.i]; const root=document.getElementById('quiz-root');
@@ -7187,6 +7337,7 @@ function quizScore(){
       <div class="exam-stat"><div class="exam-stat-icon" style="color:var(--ink3);border-color:var(--ink3)">–</div><div class="n" style="color:var(--ink3)">${skipped}</div><div class="l">Skipped</div></div>
       <div class="exam-stat"><div class="exam-stat-icon" style="color:var(--indigo);border-color:var(--indigo)">🕐</div><div class="n">${elapsed}</div><div class="l">Time Taken</div></div>
     </div>
+    ${donateBannerHtml()}
     ${domains.length?`<div class="exam-domains">
       <h3>Performance by domain</h3>
       ${domains.map(d=>`<div class="exam-domain-row">
@@ -7207,6 +7358,7 @@ function quizScore(){
       <div id="rq-list"></div>
     </div>`;
   root.querySelector('#qagain').onclick=quizSetup;
+  wireDonateModal(root,'rdonate');
   root.querySelectorAll('#rq-filter .chip').forEach(b=>{
     b.onclick=()=>{
       quiz.reviewFilter=b.dataset.f;
@@ -7225,6 +7377,14 @@ function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random
 (async function(){
   await loadState();
   renderPath(); renderCheat(); renderRail(); renderStudy(); quizSetup();
+  const navDonateSlot=document.getElementById('navdonate-slot');
+  if(navDonateSlot){
+    navDonateSlot.innerHTML=`<span class="exam-donate-wrap">
+      <button type="button" class="donate-nav-btn" id="navdonate-btn">☕ Buy me a coffee</button>
+      ${donateModalHtml('navdonate')}
+    </span>`;
+    wireDonateModal(document,'navdonate');
+  }
   const railToggle=document.getElementById('rail-toggle');
   if(railToggle){
     railToggle.addEventListener('click',()=>{
@@ -7241,6 +7401,31 @@ function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random
   window.addEventListener('resize', syncShellNavH);
   const shellNavEl=document.getElementById('shell-nav');
   if(shellNavEl)new MutationObserver(syncShellNavH).observe(shellNavEl,{attributes:true,attributeFilter:['class']});
+
+  (function(){
+    let lastY=window.scrollY, hidden=false;
+    const THRESHOLD=8;
+    const mq=window.matchMedia('(max-width:640px)');
+    function anyNavExpanded(){
+      const sn=document.getElementById('shell-nav');
+      const tb=document.getElementById('tabs');
+      return (sn&&sn.classList.contains('nav-expanded'))||(tb&&tb.classList.contains('nav-expanded'));
+    }
+    function setHidden(v){
+      if(v===hidden)return;
+      hidden=v;
+      document.documentElement.classList.toggle('headers-hidden',hidden);
+    }
+    window.addEventListener('scroll',function(){
+      if(!mq.matches){ setHidden(false); lastY=window.scrollY; return; }
+      const y=window.scrollY;
+      if(y<=4){ setHidden(false); lastY=y; return; }
+      if(anyNavExpanded()){ lastY=y; return; }
+      const delta=y-lastY;
+      if(delta>THRESHOLD){ setHidden(true); lastY=y; }
+      else if(delta<-THRESHOLD){ setHidden(false); lastY=y; }
+    },{passive:true});
+  })();
 })();
 
 }catch(err){console.error("[CONSOLE]",err);}
@@ -7653,6 +7838,8 @@ try{
     if(busy)return; busy=true;
     var panes=document.getElementById('shell-panes')||document.body;
     walk(panes, lang==='en'?restoreNode:translateNode);
+    var navDonate=document.getElementById('navdonate-slot');
+    if(navDonate) walk(navDonate, lang==='en'?restoreNode:translateNode);
     document.querySelectorAll('[data-i18n-shell]').forEach(function(el){
       var k=el.getAttribute('data-i18n-shell');
       var shell=SHELLS[lang];

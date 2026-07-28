@@ -2,6 +2,34 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Persistent donate button + mobile nav overhaul
+
+- **"☕ Buy me a coffee" is now a persistent button in the top shell-nav**, visible on every page (Study Console, Study Hub, Neuron Map, 2-Week Plan), not just during/after an exam. Removed the now-redundant icon-only button that used to sit next to "Flag for Review" in the exam-taking top bar; the results-page "Found this useful?" banner stays, since it has its own contextual copy.
+- QR cards render side by side (up to 360px each, shrinking gracefully on narrow screens instead of overflowing) so they're easy to scan without needing to stack-scroll through 3 separate images. Added translations for the "Bank 1"/"Bank 2"/"Bank 3" labels across all 7 non-English dictionaries.
+- Donate popovers redesigned as a centered modal (dark backdrop, closes via the ✕, a backdrop click, or re-clicking the trigger) instead of a small anchored dropdown.
+- **Study Console desktop header**: title and tab bar now share one row instead of stacking on two; content stays centered on wide screens.
+- **Exam setup screen**: "Length" and "Start exam" moved up near "Select all"/"Clear", above the domain list, instead of buried at the bottom; length options changed to 10/20/60/All.
+- **Mobile exam Q&A**: the question-number sidebar now renders below the question instead of above it, so you see the question immediately instead of scrolling past a big number grid first.
+- **Mobile nav dropdowns (outer shell-nav tabs + inner Study Console tabs) now expand as a floating overlay** instead of an inline accordion that pushed all page content down and back on every open/close. Tapping the collapsed pill itself (not just the small arrow) now opens the overlay too.
+- **Both sticky headers now auto-hide on scroll-down and slide back in on scroll-up** (mobile only), like a mobile browser's address bar — keeps navigation reachable without permanently eating screen space now that the donate button and theme/language controls are always visible.
+- Fixed two regressions caught during this work: a `box-sizing` overflow bug in the new overlay (same root cause as the earlier QR-card sizing bug — no `border-box` reset outside `#tool-console`), and an accidental loss of the outer shell-nav's `position:sticky` (a stray `position:relative` added for the overlay's positioning context silently won the cascade over the existing sticky rule at equal specificity).
+
+## Donation QR codes: multiple banks, reachable during the exam, CyberSkill-style placement
+
+- Supports up to 3 donation QR codes (e.g. different bank accounts), not just one — configured via a `DONATIONS` array (`{file, label}`) and a shared `donateCardsHtml()` renderer so the exam popover and results page can't drift out of sync. Each card degrades independently on a missing file; if all are missing, the whole donate button/section removes itself.
+- The results-page "Buy me a coffee" card only reached people who finished a full exam and scrolled past the domain breakdown. Redesigned as a slim "Found this useful? [☕ Buy me a coffee]" banner placed right after the stat tiles, before "Performance by domain" — matching the reference CyberSkill mock-exam results layout the maintainer shared (its "Buy me a banana" card sits in the same spot). Clicking the button opens a popover with the QR cards instead of showing them inline at full size.
+- Also added a matching ☕ icon button next to Flag for Review in the exam-taking top bar, opening the same QR popover without leaving the question — the donation ask no longer requires finishing the exam first.
+- Fixed a bug caught during verification: the "all files missing" cleanup only removed the empty QR grid, not the button itself, so with zero QR files dropped in, the ☕ button rendered but did nothing when clicked (a silently-emptied popover). Now the button only renders once at least one QR file actually exists.
+- The 3 real QR images now live at `donate-qr/1.jpg`, `donate-qr/2.png`, `donate-qr/3.jpg` and are committed to the repo (not gitignored) so they actually ship on GitHub Pages — a donation/payment QR is meant to be scanned by strangers, so it's not treated as sensitive the way credentials would be.
+- Reworked the popover into a centered modal (dark backdrop, close via the ✕ button, backdrop click, or Escape-equivalent outside click) with each QR card shown much larger (up to 360px) so it's actually easy to scan, instead of a small anchored dropdown. Multiple cards stack and scroll within the modal if they overflow the viewport height.
+- Verified in a real browser (Playwright) at desktop and mobile (390px): both placements render with the real QR images, modal opens/closes via all three interactions, stays within the viewport with internal scroll on mobile, zero console errors.
+
+## Optional "Buy me a coffee" QR code on the results page
+
+- Added a small, unobtrusive donation card to the exam results screen — a caption plus a QR code image (`donate-qr.png`, dropped in next to the HTML file). Since this is a static single-file app with no way to embed a real image, the `<img>` fails and removes its own card gracefully if the file isn't present, so the app still ships clean without it.
+- Added and translated 1 new string ("☕ Buy me a coffee") across all 7 non-English dictionaries.
+- Also caught up `translations/*.json` with 16 other strings from the exam/results redesign (Questions, Flag for Review, Previous/Next, stat labels, domain/review headings, etc.) that were never synced after that work landed — all 7 files were still at 693 keys against the in-app 710.
+
 ## Renamed to `index.html` for GitHub Pages hosting
 
 - **`cca-f-study-suite.html` renamed to `index.html`**, the filename GitHub Pages requires to serve a repo's root as a site. No content changed — same single self-contained file, same `git mv` history.
