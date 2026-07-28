@@ -322,12 +322,18 @@
 #tool-console .exam-stat .n{font-family:var(--disp);font-size:24px;font-weight:700;color:var(--ink)}
 #tool-console .exam-stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-top:3px}
 #tool-console .exam-stat-icon{width:26px;height:26px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-weight:700;font-size:13px;line-height:1}
-#tool-console .exam-donate{max-width:200px;margin:24px auto;text-align:center;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
-#tool-console .exam-donate-cap{font-family:var(--disp);font-weight:700;font-size:13px;color:var(--ink2);margin-bottom:10px}
-#tool-console .exam-donate-qr{width:100%;border-radius:8px;display:block}
+#tool-console .donate-group{max-width:640px;margin:24px auto;text-align:center}
+#tool-console .donate-group-title{font-family:var(--disp);font-weight:700;font-size:13px;color:var(--ink2);margin-bottom:12px}
+#tool-console .donate-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+#tool-console .donate-card{width:160px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+#tool-console .donate-cap{font-family:var(--disp);font-weight:700;font-size:12px;color:var(--ink2);margin-bottom:10px}
+#tool-console .donate-qr{width:100%;border-radius:8px;display:block}
 #tool-console .exam-donate-wrap{position:relative;display:inline-flex}
-#tool-console .exam-donate-pop{position:absolute;top:calc(100% + 8px);right:0;z-index:40;margin:0;display:none;box-shadow:var(--shadow)}
+#tool-console .exam-donate-pop{position:absolute;top:calc(100% + 8px);right:0;z-index:40;display:none;box-shadow:var(--shadow)}
 #tool-console .exam-donate-pop.show{display:block}
+#tool-console .exam-donate-pop .donate-group{margin:0}
+#tool-console .exam-donate-pop .donate-cards{flex-direction:column}
+#tool-console .exam-donate-pop .donate-card{width:150px}
 #tool-console .rq-qn{font-family:var(--mono);font-size:11px;color:var(--ink3);font-weight:600}
 #tool-console .exam-domains{max-width:640px;margin:0 auto 10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
 #tool-console .exam-domains h3{font-family:var(--disp);font-size:16px;margin:0 0 14px;color:var(--ink)}
@@ -7087,6 +7093,22 @@ function examSidebarHtml(){
     <div class="exam-qgrid">${nums}</div>
   </aside>`;
 }
+var DONATIONS=[
+  {file:'donate-qr-1.png', label:'Bank 1'},
+  {file:'donate-qr-2.png', label:'Bank 2'},
+  {file:'donate-qr-3.png', label:'Bank 3'}
+];
+function donateGroupHtml(){
+  return `<div class="donate-group">
+    <div class="donate-group-title">☕ Buy me a coffee</div>
+    <div class="donate-cards">
+      ${DONATIONS.map(d=>`<div class="donate-card">
+        <div class="donate-cap">${esc(d.label)}</div>
+        <img class="donate-qr" src="${esc(d.file)}" alt="${esc(d.label)} QR code" onerror="var c=this.closest('.donate-card'),g=c.closest('.donate-group');c.remove();if(g&&!g.querySelector('.donate-card'))g.remove();">
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
 function quizQ(){
   const q=quiz.items[quiz.i]; const root=document.getElementById('quiz-root');
   const isLast=quiz.i===quiz.items.length-1;
@@ -7101,10 +7123,7 @@ function quizQ(){
           <button type="button" class="exam-flag${flagged?' on':''}" id="qflag">${flagged?'🚩 Flagged':'⚑ Flag for Review'}</button>
           <span class="exam-donate-wrap">
             <button type="button" class="exam-iconbtn" id="qdonate" aria-label="Buy me a coffee" title="Buy me a coffee">☕</button>
-            <div class="exam-donate exam-donate-pop" id="qdonate-pop">
-              <div class="exam-donate-cap">☕ Buy me a coffee</div>
-              <img class="exam-donate-qr" src="donate-qr.png" alt="Buy me a coffee QR code" onerror="this.closest('.exam-donate-wrap').remove()">
-            </div>
+            <div class="exam-donate-pop" id="qdonate-pop">${donateGroupHtml()}</div>
           </span>
           <button type="button" class="exam-iconbtn" id="qexpand" aria-label="Toggle fullscreen" title="Toggle fullscreen">⤢</button>
         </div>
@@ -7219,10 +7238,7 @@ function quizScore(){
     <div class="row" style="justify-content:center;margin:22px 0">
       <button class="btn" id="qagain">New exam</button>
     </div>
-    <div class="exam-donate">
-      <div class="exam-donate-cap">☕ Buy me a coffee</div>
-      <img class="exam-donate-qr" src="donate-qr.png" alt="Buy me a coffee QR code" onerror="this.closest('.exam-donate').remove()">
-    </div>
+    ${donateGroupHtml()}
     <div class="exam-review">
       <h3>Review Questions</h3>
       <div class="chips" id="rq-filter">

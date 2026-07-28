@@ -2,6 +2,12 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Support multiple donation QR codes (e.g. several bank accounts)
+
+- Replaced the single hardcoded `donate-qr.png` with a `DONATIONS` config array (`{file, label}` per entry, 3 slots by default: `donate-qr-1.png`/`donate-qr-2.png`/`donate-qr-3.png`, labeled "Bank 1"/"Bank 2"/"Bank 3") and a shared `donateGroupHtml()` renderer used by both the exam-Q&A popover and the results-page card, so they can't drift out of sync.
+- Each QR card degrades independently: if one bank's image file is missing, only that card disappears (checked via each `<img>`'s own `onerror`); if all of them are missing, the whole "Buy me a coffee" section — heading, button, everything — removes itself, same as the single-QR version's behavior.
+- Verified in a real browser (Playwright): all 3 placeholder QR cards render side-by-side on the results page and stacked in the exam popover; removing one file drops only that card; removing all three drops the whole section; zero console errors in the working (all-files-present) case.
+
 ## Donation QR code also reachable during the exam itself
 
 - The "Buy me a coffee" card only reached people who finished a full exam and scrolled the results page. Added a matching ☕ icon button next to Flag for Review in the exam-taking top bar that toggles a small popover with the same QR code, without leaving the question. Same graceful-degrade behavior if `donate-qr.png` isn't present: the `<img>`'s `onerror` removes the whole icon button + popover, not just the image, so a missing file doesn't leave a dead button behind.
