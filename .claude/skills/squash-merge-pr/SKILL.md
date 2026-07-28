@@ -91,6 +91,26 @@ Confirm the subject/body with the user before running this — merging is a
 shared-state, hard-to-reverse action (per `merge-pr`'s own standing rule),
 and a squash commit message is effectively permanent once it lands on `main`.
 
+## Step 6 — Clean up the branch
+
+Once the merge succeeds, delete the now-merged branch and sync local state
+so it doesn't linger as stale clutter:
+
+```bash
+git checkout main
+git pull --ff-only origin main
+git branch -d <branch-name>
+git push origin --delete <branch-name>
+git fetch origin --prune
+```
+
+`git branch -d` (not `-D`) is deliberate — it refuses to delete if the local
+branch isn't actually merged into your current HEAD, which is a useful
+sanity check that the fast-forward above actually happened. The final
+`--prune` clears out any other remote-tracking refs (`origin/<branch>`) for
+branches already deleted on the remote, so `git branch -a` stays an accurate
+picture of what's really open instead of accumulating dead references.
+
 ## Example
 
 From this project's actual Korean-language PR:

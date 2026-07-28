@@ -32,6 +32,7 @@ La página es un shell con pestañas que reúne cuatro herramientas. En pantalla
 - **Palabras clave etiquetadas automáticamente** — cada pregunta se compara con una lista de docenas de términos frecuentes del examen (p. ej., "MCP resource", "stateless", "tool_choice") y muestra las coincidencias como chips, para que la frase reveladora salte a la vista antes de leer la explicación.
 - **Persistencia local** — el progreso de estudio (marcas de Dominada/Por repasar) y el estado del checklist del plan se guardan mediante `localStorage`, con una alternativa en memoria para la pestaña actual si el almacenamiento está bloqueado.
 - **Cero dependencias** — JS/CSS/SVG puro en un solo archivo; las únicas llamadas externas son a Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+- **Apoyo opcional** — un botón "☕ Buy me a coffee" (siempre visible en la barra de navegación superior, más un aviso al terminar un examen de práctica) abre un modal con códigos QR para varias opciones de pago; totalmente opcional y se oculta automáticamente si no hay imágenes QR configuradas.
 
 ## Aviso legal
 

@@ -32,6 +32,7 @@ A página é um shell com abas contendo quatro ferramentas. Em telas de largura 
 - **Palavras-chave marcadas automaticamente** — cada pergunta é verificada contra uma lista de dezenas de termos típicos da prova (ex.: "MCP resource", "stateless", "tool_choice") e mostra as que encontrou como chips, para que a frase reveladora salte aos olhos antes de você ler a explicação.
 - **Persistência local** — o progresso de estudo (marcações de dominada/revisar) e o estado do checklist do plano são salvos via `localStorage`, com um fallback em memória para a aba atual caso o armazenamento esteja bloqueado.
 - **Zero dependências** — JS/CSS/SVG puro em um único arquivo; as únicas chamadas externas são as Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+- **Apoio opcional** — um botão "☕ Buy me a coffee" (sempre visível na navegação superior, além de um aviso ao terminar uma prova de prática) abre um modal com QR codes para algumas opções de pagamento; totalmente opcional e ocultado automaticamente se nenhuma imagem de QR estiver configurada.
 
 ## Aviso legal
 

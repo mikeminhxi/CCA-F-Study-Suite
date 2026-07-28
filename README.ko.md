@@ -32,6 +32,7 @@ Anthropic의 **Claude Certified Architect — Foundations (CCA-F)** 시험 대�
 - **자동 키워드 태깅** — 각 문항은 수십 개의 시험 빈출 키워드(예: "MCP resource", "stateless", "tool_choice")와 대조되어 일치하는 항목이 칩으로 표시되므로, 해설을 읽기 전에 결정적인 문구가 한눈에 들어옵니다.
 - **로컬 저장** — 학습 진행 상황(Known/Review 표시)과 계획 체크리스트 상태는 `localStorage`에 저장되며, 저장이 차단된 경우 현재 탭에 한해 메모리 기반으로 대체됩니다.
 - **의존성 없음** — 순수 바닐라 JS/CSS/SVG로 구성된 단일 파일입니다. 외부 호출은 Google Fonts(Space Grotesk, Inter, JetBrains Mono)뿐입니다.
+- **선택적 후원 기능** — 상단 내비게이션에 항상 표시되는 "☕ Buy me a coffee" 버튼(연습 시험을 마친 뒤에도 안내가 표시됩니다)을 누르면 몇 가지 결제 수단의 QR 코드를 보여주는 모달이 열립니다. 완전히 선택 사항이며, QR 이미지가 설정되어 있지 않으면 자동으로 숨겨집니다.
 
 ## 면책 조항
 
