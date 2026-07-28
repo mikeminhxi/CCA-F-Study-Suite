@@ -79,7 +79,7 @@ Going forward, feature work on the Study Suite follows: **constitution (once) �
 
 ## 5. Language expansion priority
 
-Currently supported: English, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어 (8).
+Currently supported: English, Français, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어 (9).
 Candidates below, in recommended order — rationale is developer/tech-market size
 for a technical certification exam, weighed against added engineering effort
 (not just translation volume). Check one off when you decide to pursue it;
@@ -106,10 +106,10 @@ of just the translations.
 
 `translations/{vn,ja,zh,tw,es}.json` were originally backfilled (mechanical
 extraction from the app, no translation) for the languages that predated the
-staging-file convention; `pt.json` and `ko.json` were staged the normal way
-as part of those languages' own additions. All 7 non-English shipped
-languages now have a staged file — the schema isn't just for new languages
-going forward.
+staging-file convention; `pt.json`, `ko.json`, and `fr.json` were each staged
+the normal way as part of those languages' own additions. All 8 non-English
+shipped languages now have a staged file — the schema isn't just for new
+languages going forward.
 For a derived-script pair added together from scratch (e.g. a hypothetical
 fresh Simplified+Traditional Chinese addition), run `fetch-language-dictionary`
 for the base script first, then again for the derived script sourced from
@@ -122,14 +122,25 @@ mechanics as the languages already shipped):
       comparable to Japanese, already solved. Shipped in PR #1.
 - [x] Portuguese, Brazil (Português) — large developer population; Latin
       script, same mechanics as Spanish/Vietnamese. Shipped in PR #7.
-- [ ] **French (Français) — next up.** Latin script, straightforward.
-- [ ] German (Deutsch) — Latin script, straightforward.
+- [x] French (Français) — Latin script, straightforward. Shipped in PR #13.
+- [ ] **German (Deutsch) — next up.** Latin script, straightforward.
 
 **Tier 2 — good candidates, slightly smaller markets or newer script for this app:**
 
+- [ ] **Hindi (हिन्दी)** — India has one of the largest and fastest-growing
+      developer populations in the world (GitHub's own Octoverse reports have
+      cited it as the #2 or fastest-growing developer nation) — a bigger
+      tech-market gap than anything else currently in this tier. Devanagari
+      script: not RTL, so no layout-mirroring work like Arabic/Hebrew, just a
+      new (non-Latin, non-CJK) alphabet — comparable engineering lift to
+      Russian below.
 - [ ] Russian (Русский) — first Cyrillic-script language in the app; same
       mechanics as Latin/CJK (LTR, no layout changes), just a new alphabet.
 - [ ] Italian (Italiano) — Latin script, straightforward, smaller market than Tier 1.
+- [ ] Indonesian (Bahasa Indonesia) — large, fast-growing Southeast Asian tech
+      market; Latin script, trivial engineering.
+- [ ] Polish (Polski) — major IT-outsourcing/dev-shop hub in Europe; Latin
+      script, trivial engineering.
 
 **Tier 3 — larger markets, but real engineering lift beyond translation:**
 
