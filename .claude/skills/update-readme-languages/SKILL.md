@@ -9,7 +9,7 @@ This project has one README per language: `README.md` (English, the
 canonical one), `README.vi.md`, `README.ja.md`, `README.zh-cn.md`,
 `README.zh-tw.md`, `README.es.md`. Every one of them carries two things that
 must stay in sync with each other, with the in-app `#lang-select` dropdown in
-`cca-f-study-suite.html`, and with each other:
+`index.html`, and with each other:
 
 1. **The switch-link header row** — line 3 of every README, right under the
    `# CCA-F Study Suite` title. Example (English file):
@@ -48,7 +48,7 @@ never diverge), and update this skill file's description of the rule to match.
    files with individual `Edit` calls (these lines are short — no need for
    Node scripts here, unlike the dictionary work).
 3. Update the "Features" bullet in all six files to match.
-4. Update the `<option>` order inside `#lang-select` in `cca-f-study-suite.html`
+4. Update the `<option>` order inside `#lang-select` in `index.html`
    to match (grep `id="lang-select"` to find it).
 5. If a language's flag emoji or native-name label changed, keep it
    consistent between the dropdown `<option>` text and every README link

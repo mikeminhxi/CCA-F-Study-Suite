@@ -2,11 +2,13 @@
 
 [🇺🇸 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · **🇨🇳 简体中文** · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md)
 
-一个用于备考 Anthropic **Claude Certified Architect — Foundations（CCA-F）** 认证考试的单文件 HTML 学习应用。无需构建、无需服务器、无需安装任何依赖——只需在浏览器中打开 `cca-f-study-suite.html` 即可使用。
+🔗 **在线演示：** https://mikeminhxi.github.io/CCA-F-Study-Suite/
+
+一个用于备考 Anthropic **Claude Certified Architect — Foundations（CCA-F）** 认证考试的单文件 HTML 学习应用。无需构建、无需服务器、无需安装任何依赖——只需在浏览器中打开 `index.html` 即可使用。
 
 ## 打开方式
 
-双击 [cca-f-study-suite.html](cca-f-study-suite.html),或用任意静态文件服务器托管它。学习进度会通过 `localStorage` 保存在本地浏览器中,按设备/浏览器区分。
+双击 [index.html](index.html),或用任意静态文件服务器托管它。学习进度会通过 `localStorage` 保存在本地浏览器中,按设备/浏览器区分。
 
 ## 页面内容
 

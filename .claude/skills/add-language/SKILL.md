@@ -1,11 +1,11 @@
 ---
 name: add-language
-description: Add a new UI language to the CCA-F Study Suite (cca-f-study-suite.html), from an already-staged translations/<code>.json file. Use this whenever the user asks to add/support a new language, translate the app into a language, or add a language variant — it will trigger fetch-language-dictionary first if no staged file exists yet. Covers wiring the staged dictionary into the JS engine, updating the language dropdown, and updating all README files.
+description: Add a new UI language to the CCA-F Study Suite (index.html), from an already-staged translations/<code>.json file. Use this whenever the user asks to add/support a new language, translate the app into a language, or add a language variant — it will trigger fetch-language-dictionary first if no staged file exists yet. Covers wiring the staged dictionary into the JS engine, updating the language dropdown, and updating all README files.
 ---
 
 # Add a language to the CCA-F Study Suite
 
-This app is a single self-contained HTML file (`cca-f-study-suite.html`) with a
+This app is a single self-contained HTML file (`index.html`) with a
 runtime text-swap i18n system. English is the implicit default (it's literally
 the text already in the HTML) — every other language is a full dictionary that
 gets swapped in. As of the last update the supported languages are: English,
@@ -52,7 +52,7 @@ drifted since the file was staged, e.g. new questions/keys added since):
 
 ```js
 const fs = require('fs');
-const html = fs.readFileSync('cca-f-study-suite.html', 'utf8');
+const html = fs.readFileSync('index.html', 'utf8');
 const staged = JSON.parse(fs.readFileSync('translations/<code>.json', 'utf8'));
 const vn = JSON.parse(html.match(/window\.__I18N__=(\{[\s\S]*?\});/s)[1]);
 const shellVn = JSON.parse(html.match(/window\.__SHELL__=(\{[\s\S]*?\});/s)[1]);

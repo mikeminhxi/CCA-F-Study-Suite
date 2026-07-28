@@ -100,7 +100,7 @@ feat: Add Korean (한국어) as the 7th supported language #1
 
 - Full 531-key dictionary translated and staged at translations/ko.json
   via the new fetch-language-dictionary skill, then wired into
-  cca-f-study-suite.html (MAPS/SHELLS/QS_UNIT/QUESTION_FMT), the
+  index.html (MAPS/SHELLS/QS_UNIT/QUESTION_FMT), the
   #lang-select dropdown, and all six existing READMEs. Added README.ko.md.
 - Verified against the real app with Playwright (newly installed in this
   environment): zero console errors, all core UI renders correctly in

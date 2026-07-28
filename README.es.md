@@ -2,11 +2,13 @@
 
 [🇺🇸 English](README.md) · [🇧🇷 Português](README.pt.md) · **🇪🇸 Español** · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md)
 
-Un archivo HTML autocontenido para preparar el examen de certificación de Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Sin proceso de compilación, sin servidor, sin dependencias que instalar — solo abre `cca-f-study-suite.html` en un navegador.
+🔗 **Demo en vivo:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
+
+Un archivo HTML autocontenido para preparar el examen de certificación de Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Sin proceso de compilación, sin servidor, sin dependencias que instalar — solo abre `index.html` en un navegador.
 
 ## Cómo abrirlo
 
-Haz doble clic en [cca-f-study-suite.html](cca-f-study-suite.html), o sírvelo con cualquier servidor de archivos estático. El progreso se guarda localmente en el navegador (`localStorage`), por dispositivo/navegador.
+Haz doble clic en [index.html](index.html), o sírvelo con cualquier servidor de archivos estático. El progreso se guarda localmente en el navegador (`localStorage`), por dispositivo/navegador.
 
 ## Qué contiene
 

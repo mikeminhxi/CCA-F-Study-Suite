@@ -26,7 +26,7 @@ Sync Impact Report
 
 ### I. Zero-Dependency Single File
 
-The entire application is one self-contained file, `cca-f-study-suite.html`.
+The entire application is one self-contained file, `index.html`.
 No build step, no server, no external JS dependencies — the only external
 network call is a Google Fonts `<link>`. Any change that would require a
 bundler, package manager, or a new external script/library dependency is out

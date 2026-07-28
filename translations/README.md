@@ -1,7 +1,7 @@
 # translations/
 
 Staged, per-language dictionary files produced by the `fetch-language-dictionary`
-Claude Code skill, before they're wired into `cca-f-study-suite.html` by the
+Claude Code skill, before they're wired into `index.html` by the
 `add-language` skill.
 
 Each `<code>.json` here is the full 531-key translated dictionary (526
