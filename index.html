@@ -322,16 +322,17 @@
 #tool-console .exam-stat .n{font-family:var(--disp);font-size:24px;font-weight:700;color:var(--ink)}
 #tool-console .exam-stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-top:3px}
 #tool-console .exam-stat-icon{width:26px;height:26px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-weight:700;font-size:13px;line-height:1}
-#tool-console .donate-group{max-width:640px;margin:24px auto;text-align:center}
-#tool-console .donate-group-title{font-family:var(--disp);font-weight:700;font-size:13px;color:var(--ink2);margin-bottom:12px}
+#tool-console .donate-pop-title{font-family:var(--disp);font-weight:700;font-size:13px;color:var(--ink2);margin-bottom:12px;text-align:center}
 #tool-console .donate-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
-#tool-console .donate-card{width:160px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+#tool-console .donate-card{width:160px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--panel);text-align:center}
 #tool-console .donate-cap{font-family:var(--disp);font-weight:700;font-size:12px;color:var(--ink2);margin-bottom:10px}
 #tool-console .donate-qr{width:100%;border-radius:8px;display:block}
+#tool-console .donate-banner{max-width:640px;margin:0 auto 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 20px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+#tool-console .donate-banner-title{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--ink)}
+#tool-console .donate-banner-sub{font-size:12px;color:var(--ink3);margin-top:2px}
 #tool-console .exam-donate-wrap{position:relative;display:inline-flex}
-#tool-console .exam-donate-pop{position:absolute;top:calc(100% + 8px);right:0;z-index:40;display:none;box-shadow:var(--shadow)}
+#tool-console .exam-donate-pop{position:absolute;top:calc(100% + 8px);right:0;z-index:40;display:none;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--panel);box-shadow:var(--shadow)}
 #tool-console .exam-donate-pop.show{display:block}
-#tool-console .exam-donate-pop .donate-group{margin:0}
 #tool-console .exam-donate-pop .donate-cards{flex-direction:column}
 #tool-console .exam-donate-pop .donate-card{width:150px}
 #tool-console .rq-qn{font-family:var(--mono);font-size:11px;color:var(--ink3);font-weight:600}
@@ -7098,14 +7099,32 @@ var DONATIONS=[
   {file:'donate-qr-2.png', label:'Bank 2'},
   {file:'donate-qr-3.png', label:'Bank 3'}
 ];
-function donateGroupHtml(){
-  return `<div class="donate-group">
-    <div class="donate-group-title">☕ Buy me a coffee</div>
-    <div class="donate-cards">
-      ${DONATIONS.map(d=>`<div class="donate-card">
-        <div class="donate-cap">${esc(d.label)}</div>
-        <img class="donate-qr" src="${esc(d.file)}" alt="${esc(d.label)} QR code" onerror="var c=this.closest('.donate-card'),g=c.closest('.donate-group');c.remove();if(g&&!g.querySelector('.donate-card')){var w=g.closest('.exam-donate-wrap');(w||g).remove();}">
-      </div>`).join('')}
+function donateCardsHtml(){
+  return `<div class="donate-cards">
+    ${DONATIONS.map(d=>`<div class="donate-card">
+      <div class="donate-cap">${esc(d.label)}</div>
+      <img class="donate-qr" src="${esc(d.file)}" alt="${esc(d.label)} QR code" onerror="var c=this.closest('.donate-card'),grid=c.closest('.donate-cards');c.remove();if(grid&&!grid.querySelector('.donate-card')){var wrap=grid.closest('.exam-donate-wrap'),t=wrap||grid,banner=t.closest('.donate-banner');(banner||t).remove();}">
+    </div>`).join('')}
+  </div>`;
+}
+function donatePopHtml(id){
+  return `<div class="exam-donate-wrap">
+    <button type="button" class="exam-iconbtn" id="${id}-btn" aria-label="Buy me a coffee" title="Buy me a coffee">☕</button>
+    <div class="exam-donate-pop" id="${id}-pop">
+      <div class="donate-pop-title">☕ Buy me a coffee</div>
+      ${donateCardsHtml()}
+    </div>
+  </div>`;
+}
+function donateBannerHtml(){
+  return `<div class="donate-banner">
+    <div class="donate-banner-text">
+      <div class="donate-banner-title">Found this useful?</div>
+      <div class="donate-banner-sub">Free and open-source practice questions.</div>
+    </div>
+    <div class="exam-donate-wrap">
+      <button type="button" class="btn ghost" id="rdonate-btn">☕ Support</button>
+      <div class="exam-donate-pop" id="rdonate-pop">${donateCardsHtml()}</div>
     </div>
   </div>`;
 }
@@ -7121,10 +7140,7 @@ function quizQ(){
         <div class="exam-controls">
           <span class="pill">Practice · untimed</span>
           <button type="button" class="exam-flag${flagged?' on':''}" id="qflag">${flagged?'🚩 Flagged':'⚑ Flag for Review'}</button>
-          <span class="exam-donate-wrap">
-            <button type="button" class="exam-iconbtn" id="qdonate" aria-label="Buy me a coffee" title="Buy me a coffee">☕</button>
-            <div class="exam-donate-pop" id="qdonate-pop">${donateGroupHtml()}</div>
-          </span>
+          ${donatePopHtml('qdonate')}
           <button type="button" class="exam-iconbtn" id="qexpand" aria-label="Toggle fullscreen" title="Toggle fullscreen">⤢</button>
         </div>
       </div>
@@ -7147,7 +7163,7 @@ function quizQ(){
   });
   root.querySelectorAll('.exam-qnum').forEach(b=>{ b.onclick=()=>goToQuestion(+b.dataset.idx); });
   root.querySelector('#qflag').onclick=toggleFlag;
-  const qdonate=root.querySelector('#qdonate');
+  const qdonate=root.querySelector('#qdonate-btn');
   if(qdonate)qdonate.onclick=()=>root.querySelector('#qdonate-pop').classList.toggle('show');
   root.querySelector('#qexpand').onclick=toggleExamFullscreen;
   root.querySelector('#qprev').onclick=()=>goToQuestion(quiz.i-1);
@@ -7228,6 +7244,7 @@ function quizScore(){
       <div class="exam-stat"><div class="exam-stat-icon" style="color:var(--ink3);border-color:var(--ink3)">–</div><div class="n" style="color:var(--ink3)">${skipped}</div><div class="l">Skipped</div></div>
       <div class="exam-stat"><div class="exam-stat-icon" style="color:var(--indigo);border-color:var(--indigo)">🕐</div><div class="n">${elapsed}</div><div class="l">Time Taken</div></div>
     </div>
+    ${donateBannerHtml()}
     ${domains.length?`<div class="exam-domains">
       <h3>Performance by domain</h3>
       ${domains.map(d=>`<div class="exam-domain-row">
@@ -7238,7 +7255,6 @@ function quizScore(){
     <div class="row" style="justify-content:center;margin:22px 0">
       <button class="btn" id="qagain">New exam</button>
     </div>
-    ${donateGroupHtml()}
     <div class="exam-review">
       <h3>Review Questions</h3>
       <div class="chips" id="rq-filter">
@@ -7249,6 +7265,8 @@ function quizScore(){
       <div id="rq-list"></div>
     </div>`;
   root.querySelector('#qagain').onclick=quizSetup;
+  const rdonate=root.querySelector('#rdonate-btn');
+  if(rdonate)rdonate.onclick=()=>root.querySelector('#rdonate-pop').classList.toggle('show');
   root.querySelectorAll('#rq-filter .chip').forEach(b=>{
     b.onclick=()=>{
       quiz.reviewFilter=b.dataset.f;

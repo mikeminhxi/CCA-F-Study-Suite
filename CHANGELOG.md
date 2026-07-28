@@ -2,16 +2,13 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
-## Support multiple donation QR codes (e.g. several bank accounts)
+## Donation QR codes: multiple banks, reachable during the exam, CyberSkill-style placement
 
-- Replaced the single hardcoded `donate-qr.png` with a `DONATIONS` config array (`{file, label}` per entry, 3 slots by default: `donate-qr-1.png`/`donate-qr-2.png`/`donate-qr-3.png`, labeled "Bank 1"/"Bank 2"/"Bank 3") and a shared `donateGroupHtml()` renderer used by both the exam-Q&A popover and the results-page card, so they can't drift out of sync.
-- Each QR card degrades independently: if one bank's image file is missing, only that card disappears (checked via each `<img>`'s own `onerror`); if all of them are missing, the whole "Buy me a coffee" section — heading, button, everything — removes itself, same as the single-QR version's behavior.
-- Verified in a real browser (Playwright): all 3 placeholder QR cards render side-by-side on the results page and stacked in the exam popover; removing one file drops only that card; removing all three drops the whole section; zero console errors in the working (all-files-present) case.
-
-## Donation QR code also reachable during the exam itself
-
-- The "Buy me a coffee" card only reached people who finished a full exam and scrolled the results page. Added a matching ☕ icon button next to Flag for Review in the exam-taking top bar that toggles a small popover with the same QR code, without leaving the question. Same graceful-degrade behavior if `donate-qr.png` isn't present: the `<img>`'s `onerror` removes the whole icon button + popover, not just the image, so a missing file doesn't leave a dead button behind.
-- Verified in a real browser (Playwright) at desktop and mobile (390px) widths: popover opens/closes and positions correctly under the button on both, zero console errors.
+- Supports up to 3 donation QR codes (e.g. different bank accounts), not just one — configured via a `DONATIONS` array (`{file, label}`, defaulting to `donate-qr-1.png`/`-2`/`-3`) and a shared `donateCardsHtml()` renderer so the exam popover and results page can't drift out of sync. Each card degrades independently on a missing file; if all are missing, the whole donate button/section removes itself.
+- The results-page "Buy me a coffee" card only reached people who finished a full exam and scrolled past the domain breakdown. Redesigned as a slim "Found this useful? [☕ Support]" banner placed right after the stat tiles, before "Performance by domain" — matching the reference CyberSkill mock-exam results layout the maintainer shared (its "Buy me a banana" card sits in the same spot). Clicking Support opens a popover with the QR cards instead of showing them inline at full size.
+- Also added a matching ☕ icon button next to Flag for Review in the exam-taking top bar, opening the same QR popover without leaving the question — the donation ask no longer requires finishing the exam first.
+- Fixed a bug caught during verification: the "all files missing" cleanup only removed the empty QR grid, not the button itself, so with zero `donate-qr-*.png` files dropped in, the ☕ button rendered but did nothing when clicked (a silently-emptied popover). Now the button only renders once at least one QR file actually exists.
+- Verified in a real browser (Playwright) at desktop and mobile (390px): both placements render, popovers open/position correctly, partial and full missing-file cases degrade correctly, zero console errors.
 
 ## Optional "Buy me a coffee" QR code on the results page
 
