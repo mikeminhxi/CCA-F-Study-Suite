@@ -2,6 +2,11 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Donation QR code also reachable during the exam itself
+
+- The "Buy me a coffee" card only reached people who finished a full exam and scrolled the results page. Added a matching ☕ icon button next to Flag for Review in the exam-taking top bar that toggles a small popover with the same QR code, without leaving the question. Same graceful-degrade behavior if `donate-qr.png` isn't present: the `<img>`'s `onerror` removes the whole icon button + popover, not just the image, so a missing file doesn't leave a dead button behind.
+- Verified in a real browser (Playwright) at desktop and mobile (390px) widths: popover opens/closes and positions correctly under the button on both, zero console errors.
+
 ## Optional "Buy me a coffee" QR code on the results page
 
 - Added a small, unobtrusive donation card to the exam results screen — a caption plus a QR code image (`donate-qr.png`, dropped in next to the HTML file). Since this is a static single-file app with no way to embed a real image, the `<img>` fails and removes its own card gracefully if the file isn't present, so the app still ships clean without it.

@@ -325,6 +325,9 @@
 #tool-console .exam-donate{max-width:200px;margin:24px auto;text-align:center;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
 #tool-console .exam-donate-cap{font-family:var(--disp);font-weight:700;font-size:13px;color:var(--ink2);margin-bottom:10px}
 #tool-console .exam-donate-qr{width:100%;border-radius:8px;display:block}
+#tool-console .exam-donate-wrap{position:relative;display:inline-flex}
+#tool-console .exam-donate-pop{position:absolute;top:calc(100% + 8px);right:0;z-index:40;margin:0;display:none;box-shadow:var(--shadow)}
+#tool-console .exam-donate-pop.show{display:block}
 #tool-console .rq-qn{font-family:var(--mono);font-size:11px;color:var(--ink3);font-weight:600}
 #tool-console .exam-domains{max-width:640px;margin:0 auto 10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
 #tool-console .exam-domains h3{font-family:var(--disp);font-size:16px;margin:0 0 14px;color:var(--ink)}
@@ -7096,6 +7099,13 @@ function quizQ(){
         <div class="exam-controls">
           <span class="pill">Practice · untimed</span>
           <button type="button" class="exam-flag${flagged?' on':''}" id="qflag">${flagged?'🚩 Flagged':'⚑ Flag for Review'}</button>
+          <span class="exam-donate-wrap">
+            <button type="button" class="exam-iconbtn" id="qdonate" aria-label="Buy me a coffee" title="Buy me a coffee">☕</button>
+            <div class="exam-donate exam-donate-pop" id="qdonate-pop">
+              <div class="exam-donate-cap">☕ Buy me a coffee</div>
+              <img class="exam-donate-qr" src="donate-qr.png" alt="Buy me a coffee QR code" onerror="this.closest('.exam-donate-wrap').remove()">
+            </div>
+          </span>
           <button type="button" class="exam-iconbtn" id="qexpand" aria-label="Toggle fullscreen" title="Toggle fullscreen">⤢</button>
         </div>
       </div>
@@ -7118,6 +7128,8 @@ function quizQ(){
   });
   root.querySelectorAll('.exam-qnum').forEach(b=>{ b.onclick=()=>goToQuestion(+b.dataset.idx); });
   root.querySelector('#qflag').onclick=toggleFlag;
+  const qdonate=root.querySelector('#qdonate');
+  if(qdonate)qdonate.onclick=()=>root.querySelector('#qdonate-pop').classList.toggle('show');
   root.querySelector('#qexpand').onclick=toggleExamFullscreen;
   root.querySelector('#qprev').onclick=()=>goToQuestion(quiz.i-1);
   root.querySelector('#qnext').onclick=()=>{ isLast?quizScore():goToQuestion(quiz.i+1); };
