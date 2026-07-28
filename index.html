@@ -322,19 +322,20 @@
 #tool-console .exam-stat .n{font-family:var(--disp);font-size:24px;font-weight:700;color:var(--ink)}
 #tool-console .exam-stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-top:3px}
 #tool-console .exam-stat-icon{width:26px;height:26px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-weight:700;font-size:13px;line-height:1}
-#tool-console .donate-pop-title{font-family:var(--disp);font-weight:700;font-size:13px;color:var(--ink2);margin-bottom:12px;text-align:center}
-#tool-console .donate-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
-#tool-console .donate-card{width:160px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--panel);text-align:center}
-#tool-console .donate-cap{font-family:var(--disp);font-weight:700;font-size:12px;color:var(--ink2);margin-bottom:10px}
-#tool-console .donate-qr{width:100%;border-radius:8px;display:block}
+#tool-console .donate-pop-title{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);margin-bottom:16px;text-align:center}
+#tool-console .donate-cards{display:flex;flex-direction:column;align-items:center;gap:18px}
+#tool-console .donate-card{width:100%;max-width:360px;padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--panel2);text-align:center}
+#tool-console .donate-cap{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--ink2);margin-bottom:12px}
+#tool-console .donate-qr{width:100%;border-radius:10px;display:block}
 #tool-console .donate-banner{max-width:640px;margin:0 auto 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 20px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
 #tool-console .donate-banner-title{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--ink)}
 #tool-console .donate-banner-sub{font-size:12px;color:var(--ink3);margin-top:2px}
-#tool-console .exam-donate-wrap{position:relative;display:inline-flex}
-#tool-console .exam-donate-pop{position:absolute;top:calc(100% + 8px);right:0;z-index:40;display:none;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--panel);box-shadow:var(--shadow)}
-#tool-console .exam-donate-pop.show{display:block}
-#tool-console .exam-donate-pop .donate-cards{flex-direction:column}
-#tool-console .exam-donate-pop .donate-card{width:150px}
+#tool-console .exam-donate-wrap{display:inline-flex}
+#tool-console .donate-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);padding:24px}
+#tool-console .donate-modal.show{display:flex}
+#tool-console .donate-modal-panel{position:relative;width:100%;max-width:420px;max-height:85vh;overflow-y:auto;padding:28px 24px 24px;border:1px solid var(--line);border-radius:16px;background:var(--panel);box-shadow:var(--shadow)}
+#tool-console .donate-modal-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--ink2);display:grid;place-items:center;cursor:pointer;font-size:14px}
+#tool-console .donate-modal-close:hover{color:var(--ink);border-color:var(--ink3)}
 #tool-console .rq-qn{font-family:var(--mono);font-size:11px;color:var(--ink3);font-weight:600}
 #tool-console .exam-domains{max-width:640px;margin:0 auto 10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
 #tool-console .exam-domains h3{font-family:var(--disp);font-size:16px;margin:0 0 14px;color:var(--ink)}
@@ -7107,14 +7108,28 @@ function donateCardsHtml(){
     </div>`).join('')}
   </div>`;
 }
-function donatePopHtml(id){
-  return `<div class="exam-donate-wrap">
-    <button type="button" class="exam-iconbtn" id="${id}-btn" aria-label="Buy me a coffee" title="Buy me a coffee">☕</button>
-    <div class="exam-donate-pop" id="${id}-pop">
+function donateModalHtml(id){
+  return `<div class="donate-modal" id="${id}-pop">
+    <div class="donate-modal-panel">
+      <button type="button" class="donate-modal-close" id="${id}-close" aria-label="Close">✕</button>
       <div class="donate-pop-title">☕ Buy me a coffee</div>
       ${donateCardsHtml()}
     </div>
   </div>`;
+}
+function wireDonateModal(root,id){
+  const btn=root.querySelector('#'+id+'-btn'), modal=root.querySelector('#'+id+'-pop');
+  if(!btn||!modal)return;
+  btn.onclick=()=>modal.classList.add('show');
+  const close=()=>modal.classList.remove('show');
+  root.querySelector('#'+id+'-close').onclick=close;
+  modal.onclick=(e)=>{ if(e.target===modal)close(); };
+}
+function donatePopHtml(id){
+  return `<span class="exam-donate-wrap">
+    <button type="button" class="exam-iconbtn" id="${id}-btn" aria-label="Buy me a coffee" title="Buy me a coffee">☕</button>
+    ${donateModalHtml(id)}
+  </span>`;
 }
 function donateBannerHtml(){
   return `<div class="donate-banner">
@@ -7122,10 +7137,10 @@ function donateBannerHtml(){
       <div class="donate-banner-title">Found this useful?</div>
       <div class="donate-banner-sub">Free and open-source practice questions.</div>
     </div>
-    <div class="exam-donate-wrap">
+    <span class="exam-donate-wrap">
       <button type="button" class="btn ghost" id="rdonate-btn">☕ Buy me a coffee</button>
-      <div class="exam-donate-pop" id="rdonate-pop">${donateCardsHtml()}</div>
-    </div>
+      ${donateModalHtml('rdonate')}
+    </span>
   </div>`;
 }
 function quizQ(){
@@ -7163,8 +7178,7 @@ function quizQ(){
   });
   root.querySelectorAll('.exam-qnum').forEach(b=>{ b.onclick=()=>goToQuestion(+b.dataset.idx); });
   root.querySelector('#qflag').onclick=toggleFlag;
-  const qdonate=root.querySelector('#qdonate-btn');
-  if(qdonate)qdonate.onclick=()=>root.querySelector('#qdonate-pop').classList.toggle('show');
+  wireDonateModal(root,'qdonate');
   root.querySelector('#qexpand').onclick=toggleExamFullscreen;
   root.querySelector('#qprev').onclick=()=>goToQuestion(quiz.i-1);
   root.querySelector('#qnext').onclick=()=>{ isLast?quizScore():goToQuestion(quiz.i+1); };
@@ -7265,8 +7279,7 @@ function quizScore(){
       <div id="rq-list"></div>
     </div>`;
   root.querySelector('#qagain').onclick=quizSetup;
-  const rdonate=root.querySelector('#rdonate-btn');
-  if(rdonate)rdonate.onclick=()=>root.querySelector('#rdonate-pop').classList.toggle('show');
+  wireDonateModal(root,'rdonate');
   root.querySelectorAll('#rq-filter .chip').forEach(b=>{
     b.onclick=()=>{
       quiz.reviewFilter=b.dataset.f;

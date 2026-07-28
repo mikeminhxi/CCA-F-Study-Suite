@@ -9,7 +9,8 @@ All notable changes to the CCA-F Study Suite are recorded here.
 - Also added a matching ☕ icon button next to Flag for Review in the exam-taking top bar, opening the same QR popover without leaving the question — the donation ask no longer requires finishing the exam first.
 - Fixed a bug caught during verification: the "all files missing" cleanup only removed the empty QR grid, not the button itself, so with zero QR files dropped in, the ☕ button rendered but did nothing when clicked (a silently-emptied popover). Now the button only renders once at least one QR file actually exists.
 - The 3 real QR images now live at `donate-qr/1.jpg`, `donate-qr/2.png`, `donate-qr/3.jpg` and are committed to the repo (not gitignored) so they actually ship on GitHub Pages — a donation/payment QR is meant to be scanned by strangers, so it's not treated as sensitive the way credentials would be.
-- Verified in a real browser (Playwright) at desktop and mobile (390px): both placements render with the real QR images, popovers open/position correctly, partial and full missing-file cases degrade correctly, zero console errors.
+- Reworked the popover into a centered modal (dark backdrop, close via the ✕ button, backdrop click, or Escape-equivalent outside click) with each QR card shown much larger (up to 360px) so it's actually easy to scan, instead of a small anchored dropdown. Multiple cards stack and scroll within the modal if they overflow the viewport height.
+- Verified in a real browser (Playwright) at desktop and mobile (390px): both placements render with the real QR images, modal opens/closes via all three interactions, stays within the viewport with internal scroll on mobile, zero console errors.
 
 ## Optional "Buy me a coffee" QR code on the results page
 
