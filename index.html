@@ -7104,7 +7104,7 @@ function donateGroupHtml(){
     <div class="donate-cards">
       ${DONATIONS.map(d=>`<div class="donate-card">
         <div class="donate-cap">${esc(d.label)}</div>
-        <img class="donate-qr" src="${esc(d.file)}" alt="${esc(d.label)} QR code" onerror="var c=this.closest('.donate-card'),g=c.closest('.donate-group');c.remove();if(g&&!g.querySelector('.donate-card'))g.remove();">
+        <img class="donate-qr" src="${esc(d.file)}" alt="${esc(d.label)} QR code" onerror="var c=this.closest('.donate-card'),g=c.closest('.donate-group');c.remove();if(g&&!g.querySelector('.donate-card')){var w=g.closest('.exam-donate-wrap');(w||g).remove();}">
       </div>`).join('')}
     </div>
   </div>`;
