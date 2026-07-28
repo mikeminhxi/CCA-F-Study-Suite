@@ -2,11 +2,13 @@
 
 [🇺🇸 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · **🇻🇳 Tiếng Việt** · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md)
 
-Một tệp HTML độc lập (không cần build, không cần server, không phụ thuộc thư viện ngoài) để ôn thi chứng chỉ **Claude Certified Architect — Foundations (CCA-F)** của Anthropic. Chỉ cần mở `cca-f-study-suite.html` bằng trình duyệt là dùng được.
+🔗 **Bản demo trực tuyến:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
+
+Một tệp HTML độc lập (không cần build, không cần server, không phụ thuộc thư viện ngoài) để ôn thi chứng chỉ **Claude Certified Architect — Foundations (CCA-F)** của Anthropic. Chỉ cần mở `index.html` bằng trình duyệt là dùng được.
 
 ## Cách mở
 
-Nhấp đúp vào [cca-f-study-suite.html](cca-f-study-suite.html), hoặc chạy bằng bất kỳ static file server nào. Tiến độ học được lưu cục bộ ngay trên trình duyệt (`localStorage`), theo từng thiết bị/trình duyệt.
+Nhấp đúp vào [index.html](index.html), hoặc chạy bằng bất kỳ static file server nào. Tiến độ học được lưu cục bộ ngay trên trình duyệt (`localStorage`), theo từng thiết bị/trình duyệt.
 
 ## Nội dung trang
 

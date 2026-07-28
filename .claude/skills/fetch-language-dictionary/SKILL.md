@@ -1,12 +1,12 @@
 ---
 name: fetch-language-dictionary
-description: Pre-step for adding a new UI language to the CCA-F Study Suite. Generates the full translated dictionary for a target language and stages it as a local JSON file under translations/, WITHOUT touching cca-f-study-suite.html. Run this before the add-language skill whenever the user asks to add/translate/support a new language. Use on its own if the user just wants translations drafted/reviewed/edited before committing to wiring them into the app.
+description: Pre-step for adding a new UI language to the CCA-F Study Suite. Generates the full translated dictionary for a target language and stages it as a local JSON file under translations/, WITHOUT touching index.html. Run this before the add-language skill whenever the user asks to add/translate/support a new language. Use on its own if the user just wants translations drafted/reviewed/edited before committing to wiring them into the app.
 ---
 
 # Fetch a language dictionary (pre-step for add-language)
 
 Translating all 531 keys is the expensive, generation-heavy part of adding a
-language. Wiring the result into `cca-f-study-suite.html` is a cheap,
+language. Wiring the result into `index.html` is a cheap,
 mechanical script step ([add-language](../add-language/SKILL.md)). Keeping
 these as two separate skills means:
 
@@ -18,7 +18,7 @@ these as two separate skills means:
   reviewable diff of the actual translations, separate from the noisy
   in-app dictionary diff.
 
-**This skill never edits `cca-f-study-suite.html`.** Its only output is
+**This skill never edits `index.html`.** Its only output is
 `translations/<code>.json`.
 
 ## Step 0 — Confirm spec-kit has run for this language
@@ -44,7 +44,7 @@ extraction as `add-language` Step 1 used to do):
 
 ```js
 const fs = require('fs');
-const html = fs.readFileSync('cca-f-study-suite.html', 'utf8');
+const html = fs.readFileSync('index.html', 'utf8');
 const vn = JSON.parse(html.match(/window\.__I18N__=(\{[\s\S]*?\});/)[1]);
 const shellVn = JSON.parse(html.match(/window\.__SHELL__=(\{[\s\S]*?\});/)[1]);
 console.log(Object.keys(vn).length); // currently 526
@@ -80,7 +80,7 @@ latter matters when a related pair is being added together for the first
 time — e.g. adding Chinese from scratch means running this skill for `zh`
 first (a normal from-scratch translation, nothing Chinese exists yet), then
 running it again for `tw` in conversion mode sourced from the just-written
-`translations/zh.json`, before either has touched `cca-f-study-suite.html`.
+`translations/zh.json`, before either has touched `index.html`.
 Only run `add-language` for both once both are staged.
 
 Don't blindly do a 1:1 character substitution — several common characters
@@ -140,5 +140,5 @@ it doesn't exist yet) with this shape:
 ```
 
 Report the key count and confirm parity before finishing. Do not proceed to
-inject anything into `cca-f-study-suite.html` — hand off to the
+inject anything into `index.html` — hand off to the
 [add-language](../add-language/SKILL.md) skill for that.

@@ -2,11 +2,13 @@
 
 [🇺🇸 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · **🇯🇵 日本語** · [🇰🇷 한국어](README.ko.md)
 
-Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対策のために作られた、単一のHTMLファイルだけで完結する学習アプリです。ビルドもサーバーも外部依存も不要 —— ブラウザで `cca-f-study-suite.html` を開くだけで使えます。
+🔗 **ライブデモ:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
+
+Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対策のために作られた、単一のHTMLファイルだけで完結する学習アプリです。ビルドもサーバーも外部依存も不要 —— ブラウザで `index.html` を開くだけで使えます。
 
 ## 開き方
 
-[cca-f-study-suite.html](cca-f-study-suite.html) をダブルクリックするか、任意の静的ファイルサーバーで配信してください。学習の進捗はブラウザの `localStorage` にローカル保存されます（端末・ブラウザごと）。
+[index.html](index.html) をダブルクリックするか、任意の静的ファイルサーバーで配信してください。学習の進捗はブラウザの `localStorage` にローカル保存されます（端末・ブラウザごと）。
 
 ## 中身
 

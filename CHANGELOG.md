@@ -2,6 +2,12 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Renamed to `index.html` for GitHub Pages hosting
+
+- **`cca-f-study-suite.html` renamed to `index.html`**, the filename GitHub Pages requires to serve a repo's root as a site. No content changed — same single self-contained file, same `git mv` history.
+- Added a **live demo link** (`https://mikeminhxi.github.io/CCA-F-Study-Suite/`) near the top of all 8 READMEs, and updated every `cca-f-study-suite.html` reference/link across them to `index.html`.
+- GitHub Pages itself (Settings → Pages → Deploy from branch → `main` / `/ (root)`) is a one-time repo-settings change, not a file change — done separately, outside this PR.
+
 ## Pin the exam Previous/Next bar to the bottom of the screen
 
 - The exam-taking screen's Previous/Next bar used to sit directly under the Q&A card, so on a short question it floated mid-page and on a long one you had to scroll to reach it. It's now a fixed footer bar pinned to the bottom of the viewport (like CyberSkill's), always in the same place regardless of question length. `position:sticky` was tried first but doesn't work here — its own wrapper hugs the card tightly with no slack to stick within, so it switched to `position:fixed` with matching bottom padding added to the exam grid so the bar never covers the last answer option.
