@@ -2,6 +2,13 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## French (Français) — 9th supported language
+
+- **French (fr)** — fully wired into `index.html` (`window.__I18N_FR__`/`__SHELL_FR__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT`, `#lang-select` dropdown positioned between English and Português per alphabetical-by-English-name ordering), all 8 existing READMEs updated, new `README.fr.md` added. Full 715-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/fr.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-french-language`.
+- **Bug found and fixed during verification** (pre-existing, affected all 8 other languages equally, not French-specific): the Learning Path's per-domain progress line concatenated the word "known" directly after a dynamic count into one un-matchable text node, so the already-translated "known" dictionary key was never applied — it silently stayed in English under every non-English language. Fixed by isolating it into its own `<span>`; confirmed fixed across fr/es/pt/en.
+- **Flagged, not fixed here** (pre-existing, affects all languages equally, tracked in `specs/001-add-language/tasks.md`): the exam-setup "Exam Domains" heading and "N questions available" counter have no matching dictionary key at all; the Study Hub "Rapid Decoder" table pulls some cell fragments from a source never wired into any dictionary; the Neuron Map's node labels were never wired into any dictionary either (a re-surfacing of the Korean round's originally-flagged gap — the blueprint-taxonomy restructure fixed domain/task-statement/concept titles but not this specific array). None are specific to French.
+- Verified in a real browser via Playwright: Learning Path, Cheat & Keywords (core-principle cards + decision-rules table), Exam by Domain, Concepts tab (59 concepts), Neuron Map, 2-Week Plan, and the donate modal (nav button + results banner, including "Bank 1/2/3" labels) all render correctly in French — zero console errors throughout.
+
 ## Persistent donate button + mobile nav overhaul
 
 - **"☕ Buy me a coffee" is now a persistent button in the top shell-nav**, visible on every page (Study Console, Study Hub, Neuron Map, 2-Week Plan), not just during/after an exam. Removed the now-redundant icon-only button that used to sit next to "Flag for Review" in the exam-taking top bar; the results-page "Found this useful?" banner stays, since it has its own contextual copy.
