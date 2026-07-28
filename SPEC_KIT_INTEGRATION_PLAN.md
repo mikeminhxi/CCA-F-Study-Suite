@@ -40,7 +40,7 @@ This added to the repo (commit `fc10742`):
 - `.specify/` — templates, memory (`constitution.md`), scripts.
 - `.claude/skills/speckit-*/SKILL.md` — **not** `.claude/commands/speckit.*.md` as originally assumed. This installed version of spec-kit (0.14.1) ships its workflow as Claude Code **skills**, invoked as `/speckit-constitution`, `/speckit-specify`, `/speckit-plan`, `/speckit-tasks`, `/speckit-implement` (hyphens, not dots), plus optional `/speckit-clarify`, `/speckit-analyze`, `/speckit-checklist`, `/speckit-converge`, and `/speckit-taskstoissues`.
 
-No existing project files (`cca-f-study-suite.html`, the READMEs, `CHANGELOG.md`) were touched by this step.
+No existing project files (`index.html`, the READMEs, `CHANGELOG.md`) were touched by this step.
 
 **Verify:** confirmed `.specify/` and all `.claude/skills/speckit-*` directories exist; the two pre-existing project skills (`add-language`, `update-readme-languages`) were untouched by the merge.
 
@@ -54,24 +54,32 @@ Because the newly-installed `speckit-constitution` skill wasn't indexed yet in t
 
 ### 3b. First feature spec — done
 
-Given three options (A: formalize "add a new language"; B: split the single HTML file's i18n data out; C: a genuinely new feature), the maintainer picked **Option A**. Wrote `specs/001-add-language/spec.md` (three prioritized user stories — drop-in languages, RTL-script languages, and a verification-step story targeting two real mistakes made earlier this session) plus a passing quality checklist, following the `speckit-specify` skill's instructions by hand for the same session-indexing reason as the constitution step. `/speckit-plan` and `/speckit-tasks` for this feature are intentionally not yet run — each spec-kit stage is a checkpoint, not a batch.
+Given three options (A: formalize "add a new language"; B: split the single HTML file's i18n data out; C: a genuinely new feature), the maintainer picked **Option A**. Wrote `specs/001-add-language/spec.md` (three prioritized user stories — drop-in languages, RTL-script languages, and a verification-step story targeting two real mistakes made earlier this session) plus a passing quality checklist, following the `speckit-specify` skill's instructions by hand for the same session-indexing reason as the constitution step. `/speckit-plan` and `/speckit-tasks` for `specs/001-add-language/` are intentionally reused per-language rather than re-run once — each language addition is its own pass through plan → tasks → implement against this same spec (see [§5](#5-language-expansion-priority)).
+
+(Option B — splitting the i18n dictionaries out of `index.html` into fetched JSON files — was reconsidered later and explicitly declined: it would break the app's core "double-click and use fully offline" story, since browsers block `fetch()` of local files under `file://`. `translations/*.json` stays a staging/review artifact only, not a runtime source.)
+
+### 3c. Second feature cycle — done
+
+Ran the full **constitution → specify → plan → tasks → implement** cycle a second time, this time for a genuinely new feature rather than the language-addition spec: `specs/002-blueprint-taxonomy/` — restructuring the app's navigation around the official CCA-F exam blueprint (5 domains → 30 task statements → 59 concepts), replacing the earlier ad-hoc 7-phase/14-module structure. All artifacts (`spec.md`, `plan.md`, `tasks.md`, `data-model.md`, `research.md`, `quickstart.md`, `contracts/`, `checklists/`) landed in the repo and the feature shipped across PR #3 (restructure) and PR #4 (translate the new taxonomy into all 6 languages at the time). This confirms the spec-kit workflow generalizes beyond the language-addition use case it was first exercised on.
 
 ## 4. Expected outcome
 
 After steps 1–3, this repo gained:
 ```
 .specify/
-  memory/constitution.md       # from step 3a
+  memory/constitution.md              # from step 3a
   specs/001-add-language/
-    spec.md                    # from step 3b
+    spec.md                           # from step 3b — reused per-language via plan/tasks/implement
     checklists/requirements.md
-.claude/skills/speckit-*/SKILL.md  # the workflow skills themselves
+  specs/002-blueprint-taxonomy/       # from step 3c — a second, unrelated feature cycle
+    spec.md, plan.md, tasks.md, data-model.md, research.md, quickstart.md, contracts/, checklists/
+.claude/skills/speckit-*/SKILL.md     # the workflow skills themselves
 ```
 Going forward, feature work on the Study Suite follows: **constitution (once) → specify → (optional clarify) → plan → tasks → (optional analyze/checklist) → implement**, with each stage's output kept in the repo as a durable record — instead of the conversation-only planning this project used before. `CHANGELOG.md` keeps recording *what shipped*; `.specify/specs/**` records *why and how it was planned*.
 
 ## 5. Language expansion priority
 
-Currently supported: English, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語 (6).
+Currently supported: English, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어 (8).
 Candidates below, in recommended order — rationale is developer/tech-market size
 for a technical certification exam, weighed against added engineering effort
 (not just translation volume). Check one off when you decide to pursue it;
@@ -86,31 +94,35 @@ pull request, not committed straight to `main` — see [Workflow note](#workflow
 below.
 
 Translation generation and app-wiring are now two separate skills, run in
-sequence: `fetch-language-dictionary` (translates the full 531-key set,
+sequence: `fetch-language-dictionary` (translates the full key set — 715
+`i18n` + 5 `shell` keys as of the last count; grows as the app does —
 stages it at `translations/<code>.json`, never touches the app file) →
-`add-language` (mechanical injection into `cca-f-study-suite.html`, the
+`add-language` (mechanical injection into `index.html`, the
 dropdown, and the READMEs, sourced from that staged file). Splitting them
 means a failed or reworked injection never forces re-translating from
 scratch, the staged JSON is reviewable on its own before anything touches
-the 600KB app file, and it rides along in the language's PR as a clean diff
+the app file, and it rides along in the language's PR as a clean diff
 of just the translations.
 
-`translations/{vn,ja,zh,tw,es}.json` were backfilled (mechanical extraction
-from the app, no translation) so all six already-shipped languages now have
-a staged file too — the schema isn't just for new languages going forward.
+`translations/{vn,ja,zh,tw,es}.json` were originally backfilled (mechanical
+extraction from the app, no translation) for the languages that predated the
+staging-file convention; `pt.json` and `ko.json` were staged the normal way
+as part of those languages' own additions. All 7 non-English shipped
+languages now have a staged file — the schema isn't just for new languages
+going forward.
 For a derived-script pair added together from scratch (e.g. a hypothetical
 fresh Simplified+Traditional Chinese addition), run `fetch-language-dictionary`
 for the base script first, then again for the derived script sourced from
 that just-staged file — see the skill's script-conversion section.
 
-**Tier 1 — next up, no new engineering lift** (Latin or CJK script, same
-mechanics as the six already done):
+**Tier 1 — no new engineering lift** (Latin or CJK script, same
+mechanics as the languages already shipped):
 
 - [x] Korean (한국어) — large tech/developer population; script complexity is
       comparable to Japanese, already solved. Shipped in PR #1.
-- [ ] Portuguese, Brazil (Português) — large developer population; Latin
-      script, same mechanics as Spanish/Vietnamese.
-- [ ] French (Français) — Latin script, straightforward.
+- [x] Portuguese, Brazil (Português) — large developer population; Latin
+      script, same mechanics as Spanish/Vietnamese. Shipped in PR #7.
+- [ ] **French (Français) — next up.** Latin script, straightforward.
 - [ ] German (Deutsch) — Latin script, straightforward.
 
 **Tier 2 — good candidates, slightly smaller markets or newer script for this app:**

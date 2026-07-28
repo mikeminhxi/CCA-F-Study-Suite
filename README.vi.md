@@ -32,6 +32,7 @@ Trang có dạng shell với 4 tab công cụ. Trên màn hình rộng (từ 900
 - **Từ khóa tự động gắn thẻ** — mỗi câu hỏi được đối chiếu với danh sách hàng chục từ khóa đặc trưng của đề thi (ví dụ "MCP resource", "stateless", "tool_choice") và hiển thị những từ khớp dưới dạng thẻ, giúp cụm từ mấu chốt nổi bật lên trước khi bạn đọc phần giải thích.
 - **Lưu trữ cục bộ** — tiến độ học (đánh dấu đã thuộc/cần ôn) và trạng thái checklist kế hoạch được lưu qua `localStorage`, có cơ chế dự phòng lưu tạm trong bộ nhớ cho tab hiện tại nếu trình duyệt chặn lưu trữ.
 - **Không phụ thuộc thư viện ngoài** — toàn bộ JS/CSS/SVG thuần nằm trong một tệp; phần gọi ra ngoài duy nhất là Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+- **Tùy chọn ủng hộ** — nút "☕ Buy me a coffee" (luôn hiển thị trên thanh điều hướng trên cùng, cùng với một lời nhắc sau khi hoàn thành bài thi thử) sẽ mở một hộp thoại chứa mã QR cho vài phương thức thanh toán; hoàn toàn tùy chọn và tự động ẩn nếu chưa cấu hình ảnh QR.
 
 ## Miễn trừ trách nhiệm
 

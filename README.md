@@ -32,6 +32,7 @@ The page is a tabbed shell with four tools. On desktop-width screens (900px and 
 - **Auto-tagged keywords** — each question is checked against a list of dozens of exam buzzwords (e.g. "MCP resource", "stateless", "tool_choice") and shows the ones it matches as chips, so the giveaway phrase jumps out before you read the explanation.
 - **Local persistence** — study progress (known/review marks) and plan checklist state are saved via `localStorage`, with an in-memory fallback for the current tab if storage is blocked.
 - **Zero dependencies** — vanilla JS/CSS/SVG in one file; the only external calls are Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+- **Optional support** — a "☕ Buy me a coffee" button (always visible in the top nav, plus a callout after finishing a practice exam) opens a QR-code modal with a few payment options; entirely optional and automatically hidden if no QR images are configured.
 
 ## Disclaimer
 
