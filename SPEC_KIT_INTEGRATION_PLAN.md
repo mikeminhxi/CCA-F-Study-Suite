@@ -79,7 +79,7 @@ Going forward, feature work on the Study Suite follows: **constitution (once) �
 
 ## 5. Language expansion priority
 
-Currently supported: English, Français, Deutsch, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어 (10).
+Currently supported: English, Français, Deutsch, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어, हिन्दी (11).
 Candidates below, in recommended order — rationale is developer/tech-market size
 for a technical certification exam, weighed against added engineering effort
 (not just translation volume). Check one off when you decide to pursue it;
@@ -127,13 +127,18 @@ mechanics as the languages already shipped):
 
 **Tier 2 — good candidates, slightly smaller markets or newer script for this app:**
 
-- [ ] **Hindi (हिन्दी)** — India has one of the largest and fastest-growing
+- [x] Hindi (हिन्दी) — India has one of the largest and fastest-growing
       developer populations in the world (GitHub's own Octoverse reports have
       cited it as the #2 or fastest-growing developer nation) — a bigger
       tech-market gap than anything else currently in this tier. Devanagari
       script: not RTL, so no layout-mirroring work like Arabic/Hebrew, just a
-      new (non-Latin, non-CJK) alphabet — comparable engineering lift to
-      Russian below.
+      new (non-Latin, non-CJK) alphabet. Shipped in PR #16 — the app's first
+      non-Latin, non-CJK script; established a new trailing-script-group
+      ordering precedent for the dropdown/READMEs (script-family groups are
+      appended in the order introduced — Latin, then CJK, then Devanagari —
+      rather than merged alphabetically into an existing group; see
+      `specs/001-add-language/plan.md`'s dropdown-ordering note from that
+      round for the full rationale).
 - [ ] Russian (Русский) — first Cyrillic-script language in the app; same
       mechanics as Latin/CJK (LTR, no layout changes), just a new alphabet.
 - [ ] Italian (Italiano) — Latin script, straightforward, smaller market than Tier 1.

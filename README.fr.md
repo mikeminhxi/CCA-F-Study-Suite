@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · **🇫🇷 Français** · [🇩🇪 Deutsch](README.de.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md)
+[🇺🇸 English](README.md) · **🇫🇷 Français** · [🇩🇪 Deutsch](README.de.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md)
 
 🔗 **Démo en ligne :** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ La page est une coquille à onglets regroupant quatre outils. Sur les écrans de
 
 ## Fonctionnalités
 
-- **Sélecteur de langue EN / FR / DE / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어** — une couche de remplacement de texte en temps réel traduit le contenu affiché entre l'anglais, le français, l'allemand, le portugais, l'espagnol, le vietnamien, le chinois simplifié, le chinois traditionnel, le japonais et le coréen sans recharger la page ; la langue choisie est conservée lors des visites futures.
+- **Sélecteur de langue EN / FR / DE / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI** — une couche de remplacement de texte en temps réel traduit le contenu affiché entre l'anglais, le français, l'allemand, le portugais, l'espagnol, le vietnamien, le chinois simplifié, le chinois traditionnel, le japonais, le coréen et l'hindi sans recharger la page ; la langue choisie est conservée lors des visites futures.
 - **Mots-clés auto-détectés** — chaque question est comparée à une liste de dizaines de termes fréquents de l'examen (ex. « MCP resource », « stateless », « tool_choice ») et affiche ceux qui correspondent sous forme de puces, pour que la phrase révélatrice saute aux yeux avant même de lire l'explication.
 - **Persistance locale** — la progression d'étude (marques Acquis/À revoir) et l'état de la checklist du plan sont sauvegardés via `localStorage`, avec une solution de repli en mémoire pour l'onglet actuel si le stockage est bloqué.
 - **Zéro dépendance** — JS/CSS/SVG pur dans un seul fichier ; les seuls appels externes sont Google Fonts (Space Grotesk, Inter, JetBrains Mono).
