@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · **🇰🇷 한국어** · [🇮🇳 हिन्दी](README.hi.md)
+[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · **🇰🇷 한국어** · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md)
 
 🔗 **라이브 데모:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ Anthropic의 **Claude Certified Architect — Foundations (CCA-F)** 시험 대�
 
 ## 기능
 
-- **EN / FR / DE / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI 언어 전환** — 런타임 텍스트 교체 레이어가 새로고침 없이 화면 문구를 영어, 프랑스어, 독일어, 포르투갈어, 스페인어, 베트남어, 간체 중국어, 번체 중국어, 일본어, 한국어, 힌디어 사이에서 전환합니다. 선택한 언어는 다음 방문 시에도 유지됩니다.
+- **EN / FR / DE / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU 언어 전환** — 런타임 텍스트 교체 레이어가 새로고침 없이 화면 문구를 영어, 프랑스어, 독일어, 포르투갈어, 스페인어, 베트남어, 간체 중국어, 번체 중국어, 일본어, 한국어, 힌디어, 러시아어 사이에서 전환합니다. 선택한 언어는 다음 방문 시에도 유지됩니다.
 - **자동 키워드 태깅** — 각 문항은 수십 개의 시험 빈출 키워드(예: "MCP resource", "stateless", "tool_choice")와 대조되어 일치하는 항목이 칩으로 표시되므로, 해설을 읽기 전에 결정적인 문구가 한눈에 들어옵니다.
 - **로컬 저장** — 학습 진행 상황(Known/Review 표시)과 계획 체크리스트 상태는 `localStorage`에 저장되며, 저장이 차단된 경우 현재 탭에 한해 메모리 기반으로 대체됩니다.
 - **의존성 없음** — 순수 바닐라 JS/CSS/SVG로 구성된 단일 파일입니다. 외부 호출은 Google Fonts(Space Grotesk, Inter, JetBrains Mono)뿐입니다.

@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · **🇨🇳 简体中文** · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md)
+[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · **🇨🇳 简体中文** · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md)
 
 🔗 **在线演示：** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@
 
 ## 功能特性
 
-- **EN / FR / DE / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI 语言切换**——一层运行时文本替换机制,可将界面文案在英语、法语、德语、葡萄牙语、西班牙语、越南语、简体中文、繁体中文、日语、韩语与印地语之间无需刷新即可切换;所选语言会在下次访问时保留。
+- **EN / FR / DE / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU 语言切换**——一层运行时文本替换机制,可将界面文案在英语、法语、德语、葡萄牙语、西班牙语、越南语、简体中文、繁体中文、日语、韩语、印地语与俄语之间无需刷新即可切换;所选语言会在下次访问时保留。
 - **自动标注关键词**——每道题都会与数十个考试高频词(例如「MCP resource」「stateless」「tool_choice」)进行比对,匹配到的会以标签形式显示,让关键提示词在你阅读解释之前就先跳出来。
 - **本地持久化**——学习进度(已掌握/待复习标记)与计划清单状态均通过 `localStorage` 保存;若存储被阻止,则为当前标签页提供内存中的临时回退方案。
 - **零外部依赖**——纯原生 JS/CSS/SVG 集于一个文件;唯一的外部请求是 Google Fonts(Space Grotesk、Inter、JetBrains Mono)。
