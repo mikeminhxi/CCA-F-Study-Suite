@@ -2,6 +2,12 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Italian (Italiano) — 13th supported language
+
+- **Italian (it)** — fully wired into `index.html` (`window.__I18N_IT__`/`__SHELL_IT__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT`, `#lang-select` dropdown positioned between Deutsch and Português per alphabetical-by-English-name ordering), all 12 existing READMEs updated, new `README.it.md` added. Full 715-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/it.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-italian-language`.
+- **Bug found and fixed via the pre-injection quality gate**: the word "context" was systematically left untranslated (26 occurrences) despite German consistently translating it to "Kontext" — the translating agent's own self-check had wrongly rationalized this as an acceptable exception without actually verifying against the German sibling. Caught by manually spot-checking the agent's residual "verified exception" list rather than trusting its self-report, fixed with a word-boundary-safe regex pass (correctly skipping literal identifiers like `context_length_exceeded`), then manually repaired 5 compound phrases the blind regex left broken (e.g. "context window" → "finestra di contesto"). Lesson: an agent verifying its own translation work is prone to rationalizing genuine gaps as exceptions — always spot-check its self-reported "clean" residual list directly.
+- Verified via headless Edge (Node/Playwright/chromium-cli unavailable in this environment): Learning Path, Cheat & Keywords decision-rules table, Concepts tab, a full live exam round (question counter, sidebar unit label), and the donate button/modal (Italian naturally translated "Bank 1/2/3" to "Banca 1/2/3") all render correctly in Italian with zero console errors across all 5 Study Console tabs.
+
 ## Russian (Русский) — 12th supported language
 
 - **Russian (ru)** — the app's first Cyrillic-script language. Fully wired into `index.html` (`window.__I18N_RU__`/`__SHELL_RU__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT`, `#lang-select` dropdown), all 11 existing READMEs updated, new `README.ru.md` added. Full 715-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/ru.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-russian-language`.

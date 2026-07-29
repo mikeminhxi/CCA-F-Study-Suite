@@ -79,7 +79,7 @@ Going forward, feature work on the Study Suite follows: **constitution (once) �
 
 ## 5. Language expansion priority
 
-Currently supported: English, Français, Deutsch, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어, हिन्दी, Русский (12).
+Currently supported: English, Français, Deutsch, Italiano, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어, हिन्दी, Русский (13).
 Candidates below, in recommended order — rationale is developer/tech-market size
 for a technical certification exam, weighed against added engineering effort
 (not just translation volume). Check one off when you decide to pursue it;
@@ -148,7 +148,16 @@ mechanics as the languages already shipped):
       sibling (`de.json`) *before* injecting into `index.html`, added after
       the Hindi round shipped with 148 under-translated keys that needed a
       costly post-hoc fix.
-- [ ] Italian (Italiano) — Latin script, straightforward, smaller market than Tier 1.
+- [x] Italian (Italiano) — Latin script, straightforward, smaller market than
+      Tier 1. Shipped in PR #18. Introduced a lesson for the standing
+      pre-injection quality gate (added in the Russian round): a translating
+      agent verifying its own under-translation self-check is prone to
+      rationalizing genuine gaps as acceptable exceptions — this round's agent
+      wrongly waved through 26 untranslated instances of "context" as
+      exceptions without actually checking the German sibling, caught only by
+      manually spot-checking its residual list rather than trusting the
+      self-report. Future rounds should keep doing that manual spot-check, not
+      just re-running the agent's own gate.
 - [ ] Indonesian (Bahasa Indonesia) — large, fast-growing Southeast Asian tech
       market; Latin script, trivial engineering.
 - [ ] Polish (Polski) — major IT-outsourcing/dev-shop hub in Europe; Latin

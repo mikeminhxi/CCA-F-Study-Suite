@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · **🇮🇳 हिन्दी** · [🇷🇺 Русский](README.ru.md)
+[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇹 Italiano](README.it.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · **🇮🇳 हिन्दी** · [🇷🇺 Русский](README.ru.md)
 
 🔗 **लाइव डेमो:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ Anthropic की **Claude Certified Architect — Foundations (CCA-F)** प्�
 
 ## विशेषताएँ (Features)
 
-- **EN / FR / DE / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU भाषा टॉगल** — एक runtime text-swap layer, पेज को दोबारा लोड किए बिना, ऑन-स्क्रीन कॉपी को अंग्रेज़ी, फ़्रेंच, जर्मन, पुर्तगाली, स्पेनिश, वियतनामी, सरलीकृत चीनी, पारंपरिक चीनी, जापानी, कोरियाई, हिंदी और रूसी के बीच translate करता है; चुनी गई भाषा आगामी visits में भी बनी रहती है।
+- **EN / FR / DE / IT / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU भाषा टॉगल** — एक runtime text-swap layer, पेज को दोबारा लोड किए बिना, ऑन-स्क्रीन कॉपी को अंग्रेज़ी, फ़्रेंच, जर्मन, इतालवी, पुर्तगाली, स्पेनिश, वियतनामी, सरलीकृत चीनी, पारंपरिक चीनी, जापानी, कोरियाई, हिंदी और रूसी के बीच translate करता है; चुनी गई भाषा आगामी visits में भी बनी रहती है।
 - **स्वतः-टैग किए गए keywords** — हर प्रश्न को दर्जनों आम exam buzzwords की एक सूची (जैसे "MCP resource", "stateless", "tool_choice") के विरुद्ध जाँचा जाता है और मेल खाने वाले शब्दों को chips के रूप में दिखाया जाता है, ताकि explanation पढ़ने से पहले ही निर्णायक संकेत वाक्यांश (giveaway phrase) उभर आए।
 - **Local persistence** — study progress (Known/To review markers) और plan की checklist स्थिति `localStorage` के ज़रिए सहेजी जाती है, और यदि storage blocked हो तो वर्तमान tab के लिए एक in-memory fallback भी उपलब्ध है।
 - **शून्य dependencies** — एक ही फ़ाइल में शुद्ध JS/CSS/SVG; एकमात्र बाहरी calls Google Fonts (Space Grotesk, Inter, JetBrains Mono) के लिए हैं।

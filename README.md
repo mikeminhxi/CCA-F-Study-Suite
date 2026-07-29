@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-**🇺🇸 English** · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md)
+**🇺🇸 English** · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇹 Italiano](README.it.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md)
 
 🔗 **Live demo:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ The page is a tabbed shell with four tools. On desktop-width screens (900px and 
 
 ## Features
 
-- **EN / FR / DE / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU language toggle** — a runtime text-swap layer translates on-screen copy between English, French, German, Portuguese, Spanish, Vietnamese, Simplified Chinese, Traditional Chinese, Japanese, Korean, Hindi, and Russian without reloading; the selected language persists across visits.
+- **EN / FR / DE / IT / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU language toggle** — a runtime text-swap layer translates on-screen copy between English, French, German, Italian, Portuguese, Spanish, Vietnamese, Simplified Chinese, Traditional Chinese, Japanese, Korean, Hindi, and Russian without reloading; the selected language persists across visits.
 - **Auto-tagged keywords** — each question is checked against a list of dozens of exam buzzwords (e.g. "MCP resource", "stateless", "tool_choice") and shows the ones it matches as chips, so the giveaway phrase jumps out before you read the explanation.
 - **Local persistence** — study progress (known/review marks) and plan checklist state are saved via `localStorage`, with an in-memory fallback for the current tab if storage is blocked.
 - **Zero dependencies** — vanilla JS/CSS/SVG in one file; the only external calls are Google Fonts (Space Grotesk, Inter, JetBrains Mono).
