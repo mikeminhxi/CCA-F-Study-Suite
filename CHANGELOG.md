@@ -2,6 +2,13 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Russian (Русский) — 12th supported language
+
+- **Russian (ru)** — the app's first Cyrillic-script language. Fully wired into `index.html` (`window.__I18N_RU__`/`__SHELL_RU__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT`, `#lang-select` dropdown), all 11 existing READMEs updated, new `README.ru.md` added. Full 715-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/ru.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-russian-language`.
+- Reused the Hindi round's trailing-script-group ordering precedent without needing a new maintainer decision: Russian's `<option>` and README switch-link sit at the very end, after हिन्दी (Latin group → CJK group → Devanagari group → new Cyrillic group).
+- **New standing quality gate, added after the Hindi round's under-translation bug**: ran an English-word-overlap diff of the staged dictionary against the German sibling *before* injecting into `index.html`, instead of after. Caught and fixed a handful of under-translated keys pre-injection, avoiding the extra re-injection pass the Hindi round needed.
+- Verified via headless Edge (Node/Playwright/chromium-cli unavailable in this environment): Learning Path, Cheat & Keywords decision-rules table, Concepts tab, a full live exam round (question counter, sidebar unit label) in Cyrillic, and the donate button/modal (Russian naturally translated "Bank 1/2/3" to "Банк 1/2/3", unlike German/Hindi which kept "Bank" in English — a reasonable per-language register choice) all render correctly with zero console errors across all 5 Study Console tabs.
+
 ## Hindi (हिन्दी) — 11th supported language
 
 - **Hindi (hi)** — the app's first Devanagari-script language. Fully wired into `index.html` (`window.__I18N_HI__`/`__SHELL_HI__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT`, `#lang-select` dropdown), all 10 existing READMEs updated, new `README.hi.md` added. Full 715-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/hi.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-hindi-language`.

@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · **🇩🇪 Deutsch** · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md)
+[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · **🇩🇪 Deutsch** · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md)
 
 🔗 **Live-Demo:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ Die Seite ist eine Tab-Hülle, die vier Tools zusammenfasst. Auf Desktop-breiten
 
 ## Funktionen
 
-- **Sprachumschalter EN / FR / DE / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI** — eine Laufzeit-Textersetzungsschicht übersetzt den angezeigten Inhalt zwischen Englisch, Französisch, Deutsch, Portugiesisch, Spanisch, Vietnamesisch, vereinfachtem Chinesisch, traditionellem Chinesisch, Japanisch, Koreanisch und Hindi, ohne neu zu laden; die gewählte Sprache bleibt über Besuche hinweg erhalten.
+- **Sprachumschalter EN / FR / DE / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU** — eine Laufzeit-Textersetzungsschicht übersetzt den angezeigten Inhalt zwischen Englisch, Französisch, Deutsch, Portugiesisch, Spanisch, Vietnamesisch, vereinfachtem Chinesisch, traditionellem Chinesisch, Japanisch, Koreanisch, Hindi und Russisch, ohne neu zu laden; die gewählte Sprache bleibt über Besuche hinweg erhalten.
 - **Automatisch erkannte Schlagwörter** — jede Frage wird mit einer Liste von Dutzenden gängiger Prüfungsbegriffe abgeglichen (z. B. „MCP resource", „stateless", „tool_choice") und zeigt Treffer als Chips an, damit der entscheidende Hinweissatz schon vor dem Lesen der Erklärung ins Auge fällt.
 - **Lokale Persistenz** — Lernfortschritt (Bekannt/Zu-wiederholen-Markierungen) und der Checklistenstatus des Plans werden über `localStorage` gespeichert, mit einem In-Memory-Fallback für den aktuellen Tab, falls der Speicher blockiert ist.
 - **Null Abhängigkeiten** — reines JS/CSS/SVG in einer einzigen Datei; die einzigen externen Aufrufe gelten Google Fonts (Space Grotesk, Inter, JetBrains Mono).

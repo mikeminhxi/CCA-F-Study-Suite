@@ -79,7 +79,7 @@ Going forward, feature work on the Study Suite follows: **constitution (once) �
 
 ## 5. Language expansion priority
 
-Currently supported: English, Français, Deutsch, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어, हिन्दी (11).
+Currently supported: English, Français, Deutsch, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어, हिन्दी, Русский (12).
 Candidates below, in recommended order — rationale is developer/tech-market size
 for a technical certification exam, weighed against added engineering effort
 (not just translation volume). Check one off when you decide to pursue it;
@@ -139,8 +139,15 @@ mechanics as the languages already shipped):
       rather than merged alphabetically into an existing group; see
       `specs/001-add-language/plan.md`'s dropdown-ordering note from that
       round for the full rationale).
-- [ ] Russian (Русский) — first Cyrillic-script language in the app; same
+- [x] Russian (Русский) — first Cyrillic-script language in the app; same
       mechanics as Latin/CJK (LTR, no layout changes), just a new alphabet.
+      Shipped in PR #17. Reused the Hindi round's trailing-script-group
+      ordering precedent as-is (no new maintainer decision needed). Also
+      introduced a standing quality gate for all future rounds: diff the
+      staged dictionary's English-word-overlap against a known-complete
+      sibling (`de.json`) *before* injecting into `index.html`, added after
+      the Hindi round shipped with 148 under-translated keys that needed a
+      costly post-hoc fix.
 - [ ] Italian (Italiano) — Latin script, straightforward, smaller market than Tier 1.
 - [ ] Indonesian (Bahasa Indonesia) — large, fast-growing Southeast Asian tech
       market; Latin script, trivial engineering.
