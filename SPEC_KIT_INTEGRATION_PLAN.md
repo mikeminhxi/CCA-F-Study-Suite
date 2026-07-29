@@ -79,7 +79,7 @@ Going forward, feature work on the Study Suite follows: **constitution (once) �
 
 ## 5. Language expansion priority
 
-Currently supported: English, Français, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어 (9).
+Currently supported: English, Français, Deutsch, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어 (10).
 Candidates below, in recommended order — rationale is developer/tech-market size
 for a technical certification exam, weighed against added engineering effort
 (not just translation volume). Check one off when you decide to pursue it;
@@ -123,7 +123,7 @@ mechanics as the languages already shipped):
 - [x] Portuguese, Brazil (Português) — large developer population; Latin
       script, same mechanics as Spanish/Vietnamese. Shipped in PR #7.
 - [x] French (Français) — Latin script, straightforward. Shipped in PR #13.
-- [ ] **German (Deutsch) — next up.** Latin script, straightforward.
+- [x] German (Deutsch) — Latin script, straightforward. Shipped in PR #15.
 
 **Tier 2 — good candidates, slightly smaller markets or newer script for this app:**
 

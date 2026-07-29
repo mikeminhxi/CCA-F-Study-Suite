@@ -2,6 +2,11 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## German (Deutsch) — 10th supported language
+
+- **German (de)** — fully wired into `index.html` (`window.__I18N_DE__`/`__SHELL_DE__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT`, `#lang-select` dropdown positioned between Français and Português per alphabetical-by-English-name ordering), all 9 existing READMEs updated, new `README.de.md` added. Full 715-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/de.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-german-language`.
+- Verified via headless Edge (`msedge --headless=new`, since Node/Playwright weren't available in this environment): Learning Path (5 domains → task statements in German), Cheat & Keywords core-principle cards + decision-rules table (`IF THE STEM SAYS` header translated, literal exam-stem phrases left in English per convention), Concepts tab (59 concepts), and the donate button/modal (including "Bank 1/2/3" labels) all render correctly in German — a `window.onerror` collector round-tripped through all 5 Study Console tabs with zero console errors.
+
 ## French (Français) — 9th supported language
 
 - **French (fr)** — fully wired into `index.html` (`window.__I18N_FR__`/`__SHELL_FR__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT`, `#lang-select` dropdown positioned between English and Português per alphabetical-by-English-name ordering), all 8 existing READMEs updated, new `README.fr.md` added. Full 715-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/fr.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-french-language`.
