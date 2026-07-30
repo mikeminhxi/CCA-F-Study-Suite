@@ -26,7 +26,11 @@ function loadConfig(repoRoot) {
   const sandboxWindow = {};
   const fn = new Function('window', code);
   fn(sandboxWindow);
-  return sandboxWindow.CCAF_LANG_CONFIG || {};
+  const cfg = sandboxWindow.CCAF_LANG_CONFIG;
+  if (!cfg || typeof cfg !== 'object' || Array.isArray(cfg)) {
+    throw new Error('languages.config.js did not set window.CCAF_LANG_CONFIG to an object');
+  }
+  return cfg;
 }
 
 function getValidCodes(repoRoot) {

@@ -1,7 +1,10 @@
 'use strict';
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { validateConfig } = require('./validate-language-config.js');
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
+const { validateConfig, loadConfig } = require('./validate-language-config.js');
 
 test('accepts an all-true config with valid codes', function () {
   const result = validateConfig({ en: true, fr: true }, ['en', 'fr', 'de']);
@@ -31,4 +34,15 @@ test('rejects en set to false', function () {
   const result = validateConfig({ en: false }, ['en']);
   assert.equal(result.ok, false);
   assert.match(result.errors[0], /"en" cannot be set to false/);
+});
+
+test('loadConfig throws when languages.config.js does not set window.CCAF_LANG_CONFIG', function () {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ccaf-lang-config-test-'));
+  fs.writeFileSync(
+    path.join(tempDir, 'languages.config.js'),
+    'var somethingElse = {en: true};\n'
+  );
+  assert.throws(function () {
+    loadConfig(tempDir);
+  }, /did not set window\.CCAF_LANG_CONFIG/);
 });
