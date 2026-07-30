@@ -11509,8 +11509,13 @@ try{
     var cfg=getLangConfig();
     applyLangVisibility(cfg);
     var saved='en'; try{saved=localStorage.getItem('ccaf_lang')||'en';}catch(e){}
+    var original=saved;
     if(cfg[saved]===false) saved='en';
-    setTimeout(function(){ startObserver(); window.__setLang__(saved); },150);
+    setTimeout(function(){
+      startObserver();
+      window.__setLang__(saved);
+      if(saved!==original){ try{localStorage.setItem('ccaf_lang',original);}catch(e){} }
+    },150);
   });
 })();
 </script>
