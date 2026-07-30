@@ -11490,7 +11490,8 @@ try{
     mo.observe(panes,{childList:true,subtree:true});
   }
   function getLangConfig(){
-    var cfg=(window.CCAF_LANG_CONFIG&&typeof window.CCAF_LANG_CONFIG==='object')?window.CCAF_LANG_CONFIG:{};
+    var src=(window.CCAF_LANG_CONFIG&&typeof window.CCAF_LANG_CONFIG==='object')?window.CCAF_LANG_CONFIG:{};
+    var cfg={}; for(var k in src){ if(Object.prototype.hasOwnProperty.call(src,k)) cfg[k]=src[k]; }
     cfg.en=true;
     return cfg;
   }
@@ -11505,16 +11506,17 @@ try{
     var sel=document.getElementById('lang-select'); if(sel) sel.value=l;
     try{localStorage.setItem('ccaf_lang',l);}catch(e){}
   };
+  var __langCfg = getLangConfig();
+  applyLangVisibility(__langCfg);
   window.addEventListener('load',function(){
-    var cfg=getLangConfig();
-    applyLangVisibility(cfg);
+    var cfg=__langCfg;
     var saved='en'; try{saved=localStorage.getItem('ccaf_lang')||'en';}catch(e){}
     var original=saved;
     if(cfg[saved]===false) saved='en';
     setTimeout(function(){
       startObserver();
-      window.__setLang__(saved);
-      if(saved!==original){ try{localStorage.setItem('ccaf_lang',original);}catch(e){} }
+      try { window.__setLang__(saved); }
+      finally { if(saved!==original){ try{localStorage.setItem('ccaf_lang',original);}catch(e){} } }
     },150);
   });
 })();
