@@ -8,6 +8,8 @@ on:
       - 'translations/**'
       - '.github/scripts/validate-language-config.js'
       - '.github/scripts/validate-language-config.test.js'
+      - '.github/scripts/sync-language-config.js'
+      - '.github/scripts/sync-language-config.test.js'
       - '.github/workflows/validate-language-config.yml'
 
 jobs:
