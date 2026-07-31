@@ -1,0 +1,26 @@
+# .github/workflows/validate-language-config.yml
+name: Validate language config
+
+on:
+  pull_request:
+    paths:
+      - 'languages.config.js'
+      - 'translations/**'
+      - '.github/scripts/validate-language-config.js'
+      - '.github/scripts/validate-language-config.test.js'
+      - '.github/workflows/validate-language-config.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run unit tests
+        run: node --test .github/scripts/validate-language-config.test.js
+      - name: Validate languages.config.js
+        run: node .github/scripts/validate-language-config.js

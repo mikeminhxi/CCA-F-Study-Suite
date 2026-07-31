@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CCA-F Study Suite</title>
+<script src="languages.config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11488,14 +11489,35 @@ try{
     });
     mo.observe(panes,{childList:true,subtree:true});
   }
+  function getLangConfig(){
+    var src=(window.CCAF_LANG_CONFIG&&typeof window.CCAF_LANG_CONFIG==='object')?window.CCAF_LANG_CONFIG:{};
+    var cfg={}; for(var k in src){ if(Object.prototype.hasOwnProperty.call(src,k)) cfg[k]=src[k]; }
+    cfg.en=true;
+    return cfg;
+  }
+  function applyLangVisibility(cfg){
+    var sel=document.getElementById('lang-select'); if(!sel)return;
+    Array.prototype.slice.call(sel.options).forEach(function(opt){
+      if(cfg[opt.value]===false) opt.remove();
+    });
+  }
   window.__setLang__=function(l){
     lang=l; applyAll();
     var sel=document.getElementById('lang-select'); if(sel) sel.value=l;
     try{localStorage.setItem('ccaf_lang',l);}catch(e){}
   };
+  var __langCfg = getLangConfig();
+  applyLangVisibility(__langCfg);
   window.addEventListener('load',function(){
+    var cfg=__langCfg;
     var saved='en'; try{saved=localStorage.getItem('ccaf_lang')||'en';}catch(e){}
-    setTimeout(function(){ startObserver(); window.__setLang__(saved); },150);
+    var original=saved;
+    if(cfg[saved]===false) saved='en';
+    setTimeout(function(){
+      startObserver();
+      try { window.__setLang__(saved); }
+      finally { if(saved!==original){ try{localStorage.setItem('ccaf_lang',original);}catch(e){} } }
+    },150);
   });
 })();
 </script>
