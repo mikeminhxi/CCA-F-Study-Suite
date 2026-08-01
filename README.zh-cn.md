@@ -16,7 +16,7 @@
 
 | 标签页 | 说明 |
 |---|---|
-| **Study Console**(学习控制台) | 主训练工具。一条按 5 个官方考试领域(按 blueprint 权重排序)组织的学习路径,每个领域再拆分为其 task statement;一张核心原则速查表,配合「IF 触发词 → THEN 模式」判断表;一个类似闪卡的 Study 模式(按 task statement 或跨领域的「Mixed / Applied」集合筛选,将题目标记为已掌握/待复习、查看解释、查看自动打标的关键词标签);「Exam by Domain」Quiz 模式(整体或按 task statement 切换开关、选择题量,完成一轮计分测试并解释每道错题);以及一个 Concepts 标签页,按领域 → task statement 列出全部 59 个 blueprint 概念,每个都附有核心 insight 和 Foundation/Intermediate/Advanced 难度。|
+| **Study Console**(学习控制台) | 主训练工具。一条按 5 个官方考试领域(按 blueprint 权重排序)组织的学习路径,每个领域再拆分为其 task statement;一张核心原则速查表,配合「IF 触发词 → THEN 模式」判断表;一个类似闪卡的 Study 模式(按 task statement 或跨领域的「Mixed / Applied」集合筛选,将题目标记为已掌握/待复习、查看解释、查看自动打标的关键词标签);「Exam by Domain」Quiz 模式(整体或按 task statement 切换开关、选择题量,完成一轮计分测试并解释每道错题,并可一键「重考」只重新练习答错的题目,每题即时反馈);以及一个 Concepts 标签页,按领域 → task statement 列出全部 59 个 blueprint 概念,每个都附有核心 insight 和 Foundation/Intermediate/Advanced 难度。|
 | **Study Hub**(学习中心) | 按官方5大考试领域(加权 D1–D5)组织的参考视图,包含各领域的判断规则、需规避的陷阱与关键词触发点,以及一张可搜索的快速解码表。|
 | **Neuron Map**(神经元地图) | 一张交互式 SVG 概念图,将考试领域与其子主题相连,还包含可点击的跨领域「突触」连接。|
 | **2-Week Plan**(两周计划) | 一份按天列出的清单式学习计划,自带独立进度条;在 `localStorage` 不可用的场景(例如某些 `file://` 打开方式)下,提供手动 JSON 导出/导入的备用方案。|
@@ -29,6 +29,7 @@
 ## 功能特性
 
 - **EN / FR / DE / IT / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU 语言切换**——一层运行时文本替换机制,可将界面文案在英语、法语、德语、意大利语、葡萄牙语、西班牙语、越南语、简体中文、繁体中文、日语、韩语、印地语与俄语之间无需刷新即可切换;所选语言会在下次访问时保留。
+- **浅色 / 深色 / 跟随系统 / 复古(Sepia)主题**——选择固定的浅色或深色外观、跟随系统设置,或切换到暖色调的琥珀奶油色 Sepia 主题(该主题也会自动适配浅色/深色);所选主题会在下次访问时保留。
 - **自动标注关键词**——每道题都会与数十个考试高频词(例如「MCP resource」「stateless」「tool_choice」)进行比对,匹配到的会以标签形式显示,让关键提示词在你阅读解释之前就先跳出来。
 - **本地持久化**——学习进度(已掌握/待复习标记)与计划清单状态均通过 `localStorage` 保存;若存储被阻止,则为当前标签页提供内存中的临时回退方案。
 - **零外部依赖**——纯原生 JS/CSS/SVG 集于一个文件;唯一的外部请求是 Google Fonts(Space Grotesk、Inter、JetBrains Mono)。

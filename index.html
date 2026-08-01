@@ -299,7 +299,7 @@
 #tool-console .s-search-clear:hover{color:var(--ink);background:var(--panel2)}
 #tool-console .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-left:3px solid var(--indigo);border-radius:14px;padding:20px 22px;margin-bottom:14px;box-shadow:var(--shadow)}
 #tool-console .card .qn{font-family:var(--mono);font-size:11px;color:var(--amber);font-weight:600;letter-spacing:.08em}
-#tool-console .card .qtext{font-size:15px;margin:6px 0 14px;line-height:1.55;color:var(--ink)}
+#tool-console .card .qtext,#tool-console .rq-row-body .qtext{font-size:15px;margin:6px 0 14px;line-height:1.55;color:var(--ink)}
 #tool-console .opt{display:flex;gap:11px;padding:11px 13px;border:1px solid var(--line);background:var(--panel);border-radius:10px;margin-bottom:7px;font-size:13.5px;line-height:1.45;transition:.12s;text-align:left;width:100%;align-items:flex-start;color:var(--ink2)}
 #tool-console .opt:hover{border-color:var(--ink3)}
 #tool-console .opt .lt{font-family:var(--mono);font-weight:700;font-size:12px;width:20px;height:20px;border-radius:6px;background:var(--panel2);color:var(--ink2);display:grid;place-items:center;flex:none;margin-top:1px}
@@ -326,7 +326,7 @@
 #tool-console .exam-sidebar{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
 #tool-console .exam-sidebar-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink)}
 #tool-console .exam-sidebar-head .n{font-family:var(--mono);font-size:12px;color:var(--ink3);font-weight:500}
-#tool-console .exam-qgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-height:420px;overflow-y:auto;padding-right:2px}
+#tool-console .exam-qgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-height:420px;overflow-y:auto;overflow-x:hidden;padding-right:2px}
 #tool-console .exam-qnum{position:relative;aspect-ratio:1;border:1px solid var(--line);border-radius:8px;background:var(--panel2);color:var(--ink2);font-family:var(--mono);font-size:12px;font-weight:600;display:grid;place-items:center;transition:.12s}
 #tool-console .exam-qnum:hover{border-color:var(--ink3)}
 #tool-console .exam-qnum.answered{background:var(--teal);color:var(--paper);border-color:var(--teal)}
@@ -382,6 +382,14 @@
 #tool-console .exam-review{max-width:720px;margin:28px auto 0}
 #tool-console .exam-review h3{font-family:var(--disp);font-size:19px;margin:0 0 12px;color:var(--ink)}
 #tool-console .rq-badge{font-weight:700}
+#tool-console .rq-row{border:1px solid var(--line);background:var(--panel);border-radius:10px;margin-bottom:8px;overflow:hidden}
+#tool-console .rq-row-head{display:flex;align-items:center;gap:9px;padding:10px 13px;cursor:pointer;width:100%;text-align:left;font:inherit;color:inherit;background:none;border:none}
+#tool-console .rq-row-head:hover{background:var(--panel2)}
+#tool-console .rq-row-chev{flex-shrink:0;color:var(--ink3);font-size:11px;transition:transform .15s;display:inline-block}
+#tool-console .rq-row.open .rq-row-chev{transform:rotate(90deg)}
+#tool-console .rq-row-preview{flex:1;min-width:0;font-size:13px;color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#tool-console .rq-row-body{padding:2px 16px 18px}
+@media(max-width:600px){#tool-console .rq-row-preview{display:none}}
 #tool-console .rq-correct{background:var(--teal-soft);color:var(--teal)}
 #tool-console .rq-incorrect{background:var(--rose-soft);color:var(--rose)}
 #tool-console .rq-skip{background:var(--panel2);color:var(--ink3)}
@@ -399,6 +407,52 @@
 #tool-console .btn:disabled:hover{filter:none;border-color:var(--line)}
 #tool-console .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 #tool-console .foot{text-align:center;font-family:var(--mono);font-size:11px;color:var(--ink3);margin-top:40px}
+
+/* ---------- retake (missed questions) ---------- */
+#tool-console .rt-top{margin-bottom:22px}
+#tool-console .rt-toprow{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+#tool-console .rt-title{font-family:var(--disp);font-size:16px;font-weight:700;margin:0;display:flex;align-items:center;gap:8px;color:var(--ink)}
+#tool-console .rt-tag{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--paper);background:var(--amber);border-radius:4px;padding:2px 7px}
+#tool-console .rt-score{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12px;color:var(--ink2);white-space:nowrap}
+#tool-console .rt-progress{display:flex;gap:3px}
+#tool-console .rt-progress i{flex:1;height:5px;border-radius:3px;background:var(--line);display:block}
+#tool-console .rt-progress i.current{background:var(--ink3)}
+#tool-console .rt-progress i.good{background:var(--teal)}
+#tool-console .rt-progress i.bad{background:var(--rose)}
+#tool-console .rt-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;box-shadow:var(--shadow)}
+#tool-console .rt-cardhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+#tool-console .rt-qn{font-family:var(--mono);font-size:12px;color:var(--ink3);letter-spacing:.03em}
+#tool-console .rt-domain{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--amber);background:var(--amber-soft);border-radius:5px;padding:3px 9px}
+#tool-console .rt-qtext{font-size:17px;line-height:1.55;margin:0 0 20px;color:var(--ink)}
+#tool-console .rt-opts{display:flex;flex-direction:column;gap:9px}
+#tool-console .rt-opt{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);background:var(--panel2);border-radius:10px;padding:12px 14px;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}
+#tool-console .rt-opt:hover:not(:disabled){border-color:var(--amber)}
+#tool-console .rt-lt{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink2)}
+#tool-console .rt-ot{font-size:14px;padding-top:2px;color:var(--ink)}
+#tool-console .rt-opt:disabled{cursor:default}
+#tool-console .rt-opt.pick-good{border-color:var(--teal);background:var(--teal-soft)}
+#tool-console .rt-opt.pick-good .rt-lt{border-color:var(--teal);background:var(--teal);color:var(--paper)}
+#tool-console .rt-opt.pick-bad{border-color:var(--rose);background:var(--rose-soft)}
+#tool-console .rt-opt.pick-bad .rt-lt{border-color:var(--rose);background:var(--rose);color:var(--paper)}
+#tool-console .rt-opt.reveal-correct:not(.pick-good){border-color:var(--teal)}
+#tool-console .rt-opt.reveal-correct:not(.pick-good) .rt-lt{border-color:var(--teal);color:var(--teal)}
+#tool-console .rt-opt.dim{opacity:.55}
+#tool-console .rt-result{display:flex;align-items:center;gap:8px;margin:18px 0 4px;font-weight:700;font-size:14px}
+#tool-console .rt-result.good{color:var(--teal)}
+#tool-console .rt-result.bad{color:var(--rose)}
+#tool-console .rt-result .rt-dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+#tool-console .rt-why{margin-top:10px;padding-top:14px;border-top:1px dashed var(--line);color:var(--ink2);font-size:13px;line-height:1.6}
+#tool-console .rt-why.empty{color:var(--ink3);font-style:italic}
+#tool-console .rt-foot{display:flex;justify-content:flex-end;gap:10px;margin-top:22px;flex-wrap:wrap}
+#tool-console .rt-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:700;margin:0 0 6px}
+#tool-console .rt-bigscore{display:flex;align-items:baseline;gap:14px;margin:6px 0 22px}
+#tool-console .rt-num{font-family:var(--mono);font-size:44px;font-weight:700;line-height:1;color:var(--ink)}
+#tool-console .rt-of{color:var(--ink2);font-size:16px}
+#tool-console .rt-misslist{display:flex;flex-direction:column;gap:10px;margin:18px 0 6px}
+#tool-console .rt-missitem{border-left:3px solid var(--rose);background:var(--panel2);border-radius:0 8px 8px 0;padding:10px 14px}
+#tool-console .rt-missdom{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--rose);display:block;margin-bottom:3px}
+#tool-console .rt-misstext{font-size:13px;color:var(--ink2)}
+#tool-console .rt-allclear{border-left:3px solid var(--teal);background:var(--teal-soft);border-radius:0 8px 8px 0;padding:14px 16px;color:var(--ink)}
 @media(max-width:720px){#tool-console .study-grid{grid-template-columns:1fr}
 #tool-console .rail{position:static;display:flex;flex-direction:column;gap:6px;padding-bottom:8px}
 #tool-console .rail button{white-space:normal}
@@ -725,6 +779,87 @@
 :root[data-theme="light"] #tool-hub nav.jump{background:rgba(246,247,251,.85)}
 :root[data-theme="light"] #tool-map .stage{background:linear-gradient(180deg,#eef1f8,#e4e8f2)}
 :root[data-theme="light"] #tool-map .edge{stroke:#b9c2d8;opacity:.7}
+
+/* ---------- sepia theme (warm amber/cream) ---------- */
+:root[data-theme="sepia"]{
+  --shell-bg:#100e0c; --shell-border:#332c22; --shell-brand:#f1ece2; --shell-brand-sub:#e2a33f;
+  --tab-bg:#1a1714; --tab-border:#332c22; --tab-ink:#a89c8a; --tab-ink-hover:#f1ece2;
+  --tab-on-bg:#f1ece2; --tab-on-ink:#100e0c;
+  --badge-bg:#e2a33f; --badge-ink:#3a2a0c;
+  --pill-bg:#1a1714; --pill-border:#332c22; --pill-ink:#a89c8a; --pill-ink-hover:#f1ece2;
+  --pill-on-bg:#e2a33f; --pill-on-ink:#3a2a0c;
+  --surface:#1a1714; --surface2:#221e19; --text:#f1ece2; --text2:#a89c8a; --text3:#736555; --border:#332c22;
+  --shadow-soft:0 1px 2px rgba(0,0,0,.4),0 8px 24px -8px rgba(0,0,0,.5);
+}
+:root[data-theme="sepia"] #tool-console{
+  --paper:#100e0c; --ink:#f1ece2; --ink2:#a89c8a; --ink3:#736555; --line:#332c22;
+  --panel:#1a1714; --panel2:#221e19;
+  --amber:#e2a33f; --amber-soft:#3a2c12;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -8px rgba(0,0,0,.5);
+  background:radial-gradient(1200px 600px at 50% -10%, rgba(226,163,63,.12), transparent 60%), var(--paper);
+}
+:root[data-theme="sepia"] #tool-console .top{background:rgba(16,14,12,.92)}
+:root[data-theme="sepia"] #tool-hub{
+  --ink:#100e0c; --ink-2:#1a1714; --surface:#1a1714; --surface-2:#221e19; --line:#332c22;
+  --text:#f1ece2; --muted:#a89c8a; --dim:#736555; --signal:#e2a33f; --lock:#4fd6be;
+  background:radial-gradient(1200px 600px at 50% -8%, rgba(226,163,63,.10), transparent 60%), var(--ink);
+}
+:root[data-theme="sepia"] #tool-hub nav.jump{background:rgba(16,14,12,.85)}
+:root[data-theme="sepia"] #tool-map{
+  --ink:#100e0c; --surface:#1a1714; --line:#332c22;
+  --text:#f1ece2; --muted:#a89c8a; --dim:#736555; --signal:#e2a33f;
+  background:radial-gradient(1100px 600px at 50% -10%, rgba(226,163,63,.10), transparent 60%), var(--ink);
+}
+:root[data-theme="sepia"] #tool-map .stage{background:linear-gradient(180deg,rgba(26,23,20,.5),rgba(16,14,12,.5))}
+:root[data-theme="sepia"] #tool-plan{
+  --ink:#100e0c; --ink-2:#1a1714; --surface:#1a1714; --surface-2:#221e19; --line:#332c22;
+  --text:#f1ece2; --muted:#a89c8a; --dim:#736555; --signal:#e2a33f; --done:#4fd6be;
+  background:radial-gradient(1100px 560px at 78% -8%, rgba(226,163,63,.10), transparent 60%), var(--ink);
+}
+@media (prefers-color-scheme: light){
+  :root[data-theme="sepia"]{
+    --shell-bg:#faf6ee; --shell-border:#e3d8c4; --shell-brand:#231d14; --shell-brand-sub:#af7420;
+    --tab-bg:#ffffff; --tab-border:#e3d8c4; --tab-ink:#6e6252; --tab-ink-hover:#231d14;
+    --tab-on-bg:#231d14; --tab-on-ink:#ffffff;
+    --badge-bg:#af7420; --badge-ink:#fff6e6;
+    --pill-bg:#ffffff; --pill-border:#e3d8c4; --pill-ink:#6e6252; --pill-ink-hover:#231d14;
+    --pill-on-bg:#af7420; --pill-on-ink:#fff6e6;
+    --surface:#ffffff; --surface2:#f4ede0; --text:#231d14; --text2:#6e6252; --text3:#a2937c; --border:#e3d8c4;
+    --shadow-soft:0 1px 2px rgba(80,60,20,.08),0 8px 24px -8px rgba(80,60,20,.18);
+  }
+  :root[data-theme="sepia"] #tool-console{
+    --paper:#faf6ee; --ink:#231d14; --ink2:#6e6252; --ink3:#a2937c; --line:#e3d8c4;
+    --panel:#ffffff; --panel2:#f4ede0;
+    --indigo:#3b63d6; --indigo-soft:#e3ebff;
+    --teal:#1f9e86; --teal-soft:#e1f6f0;
+    --amber:#af7420; --amber-soft:#fdf0d9;
+    --rose:#c23d76; --rose-soft:#fbe4ee;
+    --shadow:0 1px 2px rgba(80,60,20,.08),0 8px 24px -8px rgba(80,60,20,.18);
+    --d1:#3b63d6; --d2:#8b3fd1; --d3:#1f9e6e; --d4:#c96a29; --d5:#c23d76;
+    background:radial-gradient(1200px 600px at 50% -10%, rgba(175,116,32,.10), transparent 60%), var(--paper);
+  }
+  :root[data-theme="sepia"] #tool-console .top{background:rgba(250,246,238,.92)}
+  :root[data-theme="sepia"] #tool-hub{
+    --ink:#faf6ee; --ink-2:#f4ede0; --surface:#ffffff; --surface-2:#f4ede0; --line:#e3d8c4;
+    --text:#231d14; --muted:#6e6252; --dim:#a2937c; --signal:#af7420; --lock:#1f9e86;
+    --d1:#3b63d6; --d2:#8b3fd1; --d3:#1f9e6e; --d4:#c96a29; --d5:#c23d76;
+    background:radial-gradient(1200px 600px at 50% -8%, rgba(175,116,32,.08), transparent 60%), var(--ink);
+  }
+  :root[data-theme="sepia"] #tool-hub nav.jump{background:rgba(250,246,238,.85)}
+  :root[data-theme="sepia"] #tool-map{
+    --ink:#faf6ee; --surface:#ffffff; --line:#e3d8c4;
+    --text:#231d14; --muted:#6e6252; --dim:#a2937c; --signal:#af7420;
+    --d1:#3b63d6; --d2:#c96a29; --d3:#1f9e6e; --d4:#8b3fd1; --d5:#c23d76;
+    background:radial-gradient(1100px 600px at 50% -10%, rgba(175,116,32,.08), transparent 60%), var(--ink);
+  }
+  :root[data-theme="sepia"] #tool-map .stage{background:linear-gradient(180deg,#f4ede0,#ece0c8)}
+  :root[data-theme="sepia"] #tool-plan{
+    --ink:#faf6ee; --ink-2:#f4ede0; --surface:#ffffff; --surface-2:#f4ede0; --line:#e3d8c4;
+    --text:#231d14; --muted:#6e6252; --dim:#a2937c; --signal:#af7420; --done:#1f9e86;
+    --d1:#3b63d6; --d2:#c96a29; --d3:#1f9e6e; --d4:#8b3fd1; --d5:#c23d76;
+    background:radial-gradient(1100px 560px at 78% -8%, rgba(175,116,32,.08), transparent 60%), var(--ink);
+  }
+}
 </style>
 </head>
 <body>
@@ -749,6 +884,9 @@
         </button>
         <button data-theme="system" onclick="window.__setTheme__('system')" title="System" aria-label="System theme">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </button>
+        <button data-theme="sepia" onclick="window.__setTheme__('sepia')" title="Sepia" aria-label="Sepia theme">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
         </button>
       </div>
       <div class="select-wrap">
@@ -1438,6 +1576,13 @@
   "New exam": "Đề mới",
   "Review": "Xem lại",
   "Questions you missed": "Câu bạn làm sai",
+  "Retake": "Làm lại",
+  "Correct.": "Chính xác.",
+  "No saved explanation for this one.": "Không có giải thích được lưu cho câu này.",
+  "Next question": "Câu tiếp theo",
+  "See results": "Xem kết quả",
+  "Round complete": "Hoàn thành vòng này",
+  "Back to exam results": "Quay lại kết quả bài thi",
   "IF THE STEM SAYS": "NẾU ĐỀ BÀI NÓI",
   "REACH FOR": "HÃY CHỌN",
   "TRAP": "BẪY",
@@ -2162,6 +2307,13 @@ window.__I18N_JA__={
   "New exam": "新しい試験",
   "Review": "復習",
   "Questions you missed": "間違えた問題",
+  "Retake": "再挑戦",
+  "Correct.": "正解です。",
+  "No saved explanation for this one.": "この問題には保存された解説がありません。",
+  "Next question": "次の問題",
+  "See results": "結果を見る",
+  "Round complete": "ラウンド終了",
+  "Back to exam results": "試験結果に戻る",
   "IF THE STEM SAYS": "設問がこう言ったら",
   "REACH FOR": "これを選べ",
   "TRAP": "罠",
@@ -2886,6 +3038,13 @@ window.__I18N_ZH__={
   "New exam": "新试卷",
   "Review": "回顾",
   "Questions you missed": "你答错的题",
+  "Retake": "重考",
+  "Correct.": "回答正确。",
+  "No saved explanation for this one.": "此题没有保存的解析。",
+  "Next question": "下一题",
+  "See results": "查看结果",
+  "Round complete": "本轮完成",
+  "Back to exam results": "返回考试结果",
   "IF THE STEM SAYS": "如果题干说",
   "REACH FOR": "就选",
   "TRAP": "陷阱",
@@ -3610,6 +3769,13 @@ window.__I18N_TW__={
   "New exam": "新試卷",
   "Review": "回顧",
   "Questions you missed": "你答錯的題",
+  "Retake": "重考",
+  "Correct.": "回答正確。",
+  "No saved explanation for this one.": "此題沒有儲存的解析。",
+  "Next question": "下一題",
+  "See results": "查看結果",
+  "Round complete": "本輪完成",
+  "Back to exam results": "返回考試結果",
   "IF THE STEM SAYS": "如果題幹說",
   "REACH FOR": "就選",
   "TRAP": "陷阱",
@@ -4334,6 +4500,13 @@ window.__I18N_ES__={
   "New exam": "Nuevo examen",
   "Review": "Revisión",
   "Questions you missed": "Preguntas que fallaste",
+  "Retake": "Repetir",
+  "Correct.": "Correcto.",
+  "No saved explanation for this one.": "No hay explicación guardada para esta pregunta.",
+  "Next question": "Siguiente pregunta",
+  "See results": "Ver resultados",
+  "Round complete": "Ronda completada",
+  "Back to exam results": "Volver a los resultados del examen",
   "IF THE STEM SAYS": "SI EL ENUNCIADO DICE",
   "REACH FOR": "ELIGE",
   "TRAP": "TRAMPA",
@@ -5058,6 +5231,13 @@ window.__I18N_KO__={
   "New exam": "새 시험",
   "Review": "복습",
   "Questions you missed": "틀린 문제",
+  "Retake": "재도전",
+  "Correct.": "정답입니다.",
+  "No saved explanation for this one.": "이 문제에는 저장된 설명이 없습니다.",
+  "Next question": "다음 문제",
+  "See results": "결과 보기",
+  "Round complete": "라운드 완료",
+  "Back to exam results": "시험 결과로 돌아가기",
   "IF THE STEM SAYS": "설문이 이렇게 말하면",
   "REACH FOR": "이것을 선택하라",
   "TRAP": "함정",
@@ -5782,6 +5962,13 @@ window.__I18N_PT__={
   "New exam": "Nova prova",
   "Review": "Revisão",
   "Questions you missed": "Perguntas que você errou",
+  "Retake": "Repetir",
+  "Correct.": "Correto.",
+  "No saved explanation for this one.": "Não há explicação salva para esta pergunta.",
+  "Next question": "Próxima pergunta",
+  "See results": "Ver resultados",
+  "Round complete": "Rodada concluída",
+  "Back to exam results": "Voltar aos resultados do exame",
   "IF THE STEM SAYS": "SE O ENUNCIADO DIZ",
   "REACH FOR": "ESCOLHA",
   "TRAP": "ARMADILHA",
@@ -6506,6 +6693,13 @@ window.__I18N_FR__={
   "New exam": "Nouvel examen",
   "Review": "Révision",
   "Questions you missed": "Questions manquées",
+  "Retake": "Reprise",
+  "Correct.": "Correct.",
+  "No saved explanation for this one.": "Aucune explication enregistrée pour cette question.",
+  "Next question": "Question suivante",
+  "See results": "Voir les résultats",
+  "Round complete": "Manche terminée",
+  "Back to exam results": "Retour aux résultats de l'examen",
   "IF THE STEM SAYS": "SI L'ÉNONCÉ DIT",
   "REACH FOR": "CHOISISSEZ",
   "TRAP": "PIÈGE",
@@ -7230,6 +7424,13 @@ window.__I18N_DE__={
   "New exam": "Neue Prüfung",
   "Review": "Wiederholung",
   "Questions you missed": "Verpasste Fragen",
+  "Retake": "Neuversuch",
+  "Correct.": "Richtig.",
+  "No saved explanation for this one.": "Für diese Frage ist keine Erklärung gespeichert.",
+  "Next question": "Nächste Frage",
+  "See results": "Ergebnisse ansehen",
+  "Round complete": "Runde abgeschlossen",
+  "Back to exam results": "Zurück zu den Prüfungsergebnissen",
   "IF THE STEM SAYS": "WENN DIE AUFGABE SAGT",
   "REACH FOR": "GREIFEN SIE ZU",
   "TRAP": "FALLE",
@@ -7954,6 +8155,13 @@ window.__I18N_HI__={
   "New exam": "नई परीक्षा",
   "Review": "समीक्षा",
   "Questions you missed": "आपसे छूटे प्रश्न",
+  "Retake": "पुनः प्रयास",
+  "Correct.": "सही उत्तर।",
+  "No saved explanation for this one.": "इस प्रश्न के लिए कोई सहेजी गई व्याख्या नहीं है।",
+  "Next question": "अगला प्रश्न",
+  "See results": "परिणाम देखें",
+  "Round complete": "राउंड पूर्ण",
+  "Back to exam results": "परीक्षा परिणाम पर वापस जाएँ",
   "IF THE STEM SAYS": "जब स्टेम में लिखा हो",
   "REACH FOR": "यह चुनें",
   "TRAP": "जाल",
@@ -8678,6 +8886,13 @@ window.__I18N_RU__={
   "New exam": "Новый экзамен",
   "Review": "Повторение",
   "Questions you missed": "Вопросы, в которых вы ошиблись",
+  "Retake": "Повтор",
+  "Correct.": "Верно.",
+  "No saved explanation for this one.": "Для этого вопроса нет сохранённого объяснения.",
+  "Next question": "Следующий вопрос",
+  "See results": "Показать результаты",
+  "Round complete": "Раунд завершён",
+  "Back to exam results": "Вернуться к результатам экзамена",
   "IF THE STEM SAYS": "ЕСЛИ В УСЛОВИИ СКАЗАНО",
   "REACH FOR": "ВЫБИРАЙТЕ",
   "TRAP": "ЛОВУШКА",
@@ -9402,6 +9617,13 @@ window.__I18N_IT__={
   "New exam": "Nuovo esame",
   "Review": "Revisione",
   "Questions you missed": "Domande sbagliate",
+  "Retake": "Ripeti",
+  "Correct.": "Corretto.",
+  "No saved explanation for this one.": "Nessuna spiegazione salvata per questa domanda.",
+  "Next question": "Domanda successiva",
+  "See results": "Vedi risultati",
+  "Round complete": "Round completato",
+  "Back to exam results": "Torna ai risultati dell'esame",
   "IF THE STEM SAYS": "SE L'ENUNCIATO DICE",
   "REACH FOR": "SCEGLI",
   "TRAP": "TRAPPOLA",
@@ -10854,6 +11076,7 @@ function quizQ(){
   const q=quiz.items[quiz.i]; const root=document.getElementById('quiz-root');
   const isLast=quiz.i===quiz.items.length-1;
   const flagged=quiz.flagged.has(q.id);
+  const prevGridScroll=root.querySelector('.exam-qgrid')?.scrollTop||0;
   root.innerHTML=`<div class="exam-grid">
     ${examSidebarHtml()}
     <div>
@@ -10875,6 +11098,7 @@ function quizQ(){
       </div>
     </div>
   </div>`;
+  const grid=root.querySelector('.exam-qgrid'); if(grid)grid.scrollTop=prevGridScroll;
   const ob=root.querySelector('.opts');
   ['A','B','C','D'].forEach(L=>{ if(!q.o[L])return;
     const o=document.createElement('button'); o.className='opt quiz-opt'+(quiz.answers[q.id]===L?' selected':''); o.dataset.l=L;
@@ -10914,6 +11138,7 @@ function reviewBadge(q){
 function renderReviewList(){
   const list=document.getElementById('rq-list'); if(!list)return;
   const filter=quiz.reviewFilter||'all';
+  quiz.reviewExpanded=quiz.reviewExpanded||new Set();
   const items=quiz.items.filter(q=>{
     if(filter==='incorrect')return quiz.answers[q.id]&&quiz.answers[q.id]!==q.a;
     if(filter==='flagged')return quiz.flagged.has(q.id);
@@ -10924,21 +11149,34 @@ function renderReviewList(){
   items.forEach(q=>{
     const a=quiz.answers[q.id];
     const qn=quiz.items.indexOf(q)+1;
-    const el=document.createElement('div'); el.className='card';
-    el.innerHTML=`<div class="row" style="margin-bottom:10px;justify-content:space-between">
-        <span class="rq-qn">Question <span class="n">${qn}</span></span>
-        <div class="row">${reviewBadge(q)}${quiz.flagged.has(q.id)?'<span class="pill" style="color:var(--amber);border-color:var(--amber)">🚩 Flagged</span>':''}</div>
-      </div>
-      <div class="qtext">${esc(q.q)}</div>
-      <div class="opts"></div>
-      ${q.w?`<div class="why"><b>Why</b><br>${esc(q.w)}</div>`:''}
-      ${kwChips(q)}`;
-    const ob=el.querySelector('.opts');
-    ['A','B','C','D'].forEach(L=>{ if(!q.o[L])return;
-      const o=document.createElement('div'); o.className='opt'+(L===q.a?' correct':(L===a?' wrong':''));
-      o.innerHTML=`<span class="lt">${L}</span><span>${esc(q.o[L])}</span>`;
-      ob.appendChild(o);
-    });
+    const open=quiz.reviewExpanded.has(q.id);
+    const el=document.createElement('div'); el.className='rq-row'+(open?' open':'');
+    el.innerHTML=`<button type="button" class="rq-row-head">
+        <span class="rq-row-chev">▸</span>
+        <span class="rq-qn">Q${qn}</span>
+        ${reviewBadge(q)}
+        ${q.c?`<span class="rt-domain">${esc(q.c)}</span>`:''}
+        ${quiz.flagged.has(q.id)?'<span class="pill" style="color:var(--amber);border-color:var(--amber)">🚩</span>':''}
+        <span class="rq-row-preview">${esc(q.q)}</span>
+      </button>
+      <div class="rq-row-body"${open?'':' style="display:none"'}>
+        <div class="qtext">${esc(q.q)}</div>
+        <div class="opts"></div>
+        ${q.w?`<div class="why"><b>Why</b><br>${esc(q.w)}</div>`:''}
+        ${kwChips(q)}
+      </div>`;
+    if(open){
+      const ob=el.querySelector('.opts');
+      ['A','B','C','D'].forEach(L=>{ if(!q.o[L])return;
+        const o=document.createElement('div'); o.className='opt'+(L===q.a?' correct':(L===a?' wrong':''));
+        o.innerHTML=`<span class="lt">${L}</span><span>${esc(q.o[L])}</span>`;
+        ob.appendChild(o);
+      });
+    }
+    el.querySelector('.rq-row-head').onclick=()=>{
+      if(quiz.reviewExpanded.has(q.id))quiz.reviewExpanded.delete(q.id); else quiz.reviewExpanded.add(q.id);
+      renderReviewList();
+    };
     list.appendChild(el);
   });
 }
@@ -10973,6 +11211,7 @@ function quizScore(){
     </div>`:''}
     <div class="row" style="justify-content:center;margin:22px 0">
       <button class="btn" id="qagain">New exam</button>
+      ${incorrect>0?`<button class="btn ghost" id="qretake">Questions you missed</button>`:''}
     </div>
     <div class="exam-review">
       <h3>Review Questions</h3>
@@ -10984,6 +11223,12 @@ function quizScore(){
       <div id="rq-list"></div>
     </div>`;
   root.querySelector('#qagain').onclick=quizSetup;
+  const qretake=root.querySelector('#qretake');
+  if(qretake)qretake.onclick=()=>{
+    const missed=quiz.items.filter(q=>quiz.answers[q.id]&&quiz.answers[q.id]!==q.a);
+    if(!missed.length)return;
+    startRetake(missed);
+  };
   wireDonateModal(root,'rdonate');
   root.querySelectorAll('#rq-filter .chip').forEach(b=>{
     b.onclick=()=>{
@@ -10993,6 +11238,94 @@ function quizScore(){
     };
   });
   renderReviewList();
+}
+
+/* ---------- retake missed questions ---------- */
+let retake=null;
+function startRetake(items){
+  retake={items:shuffle(items.slice()),i:0,answers:{},startedAt:Date.now()};
+  retakeQ();
+}
+function retakeScoreSoFar(){
+  let correct=0,answered=0;
+  retake.items.forEach(q=>{ if(retake.answers[q.id]!==undefined){ answered++; if(retake.answers[q.id]===q.a)correct++; } });
+  return {correct,answered};
+}
+function retakeHeaderHtml(){
+  const s=retakeScoreSoFar();
+  const track=retake.items.map((q,i)=>{
+    let cls='';
+    const a=retake.answers[q.id];
+    if(a!==undefined)cls=a===q.a?'good':'bad';
+    else if(i===retake.i)cls='current';
+    return `<i class="${cls}"></i>`;
+  }).join('');
+  return `<div class="rt-top">
+    <div class="rt-toprow">
+      <h3 class="rt-title"><span class="rt-tag">Retake</span> Questions you missed</h3>
+      <span class="rt-score">${s.answered?s.correct+' / '+s.answered+' correct so far':''}</span>
+    </div>
+    <div class="rt-progress">${track}</div>
+  </div>`;
+}
+function retakeQ(){
+  const q=retake.items[retake.i]; const root=document.getElementById('quiz-root');
+  const chosen=retake.answers[q.id]; const answered=chosen!==undefined;
+  const isLast=retake.i===retake.items.length-1;
+  const optsHtml=['A','B','C','D'].filter(L=>q.o[L]).map(L=>{
+    let cls='rt-opt';
+    if(answered){
+      if(L===chosen&&L===q.a)cls+=' pick-good';
+      else if(L===chosen&&L!==q.a)cls+=' pick-bad';
+      else if(L===q.a)cls+=' reveal-correct';
+      else cls+=' dim';
+    }
+    return `<button type="button" class="${cls}" data-l="${L}"${answered?' disabled':''}><span class="rt-lt">${L}</span><span class="rt-ot">${esc(q.o[L])}</span></button>`;
+  }).join('');
+  let resultHtml='';
+  if(answered){
+    const isGood=chosen===q.a;
+    resultHtml=`<div class="rt-result ${isGood?'good':'bad'}"><span class="rt-dot"></span>${isGood?'Correct.':'Not this time — correct answer is '+q.a+'.'}</div>`;
+    resultHtml+=q.w?`<div class="rt-why">${esc(q.w)}</div>`:`<div class="rt-why empty">No saved explanation for this one.</div>`;
+  }
+  const footHtml=answered?`<div class="rt-foot"><button class="btn" id="rtnext">${isLast?'See results':'Next question'}</button></div>`:'';
+  root.innerHTML=retakeHeaderHtml()+`
+    <div class="rt-card">
+      <div class="rt-cardhead"><span class="rt-qn">Question ${retake.i+1} of ${retake.items.length}</span><span class="rt-domain">${esc(q.c||'')}</span></div>
+      <div class="rt-qtext">${esc(q.q)}</div>
+      <div class="rt-opts">${optsHtml}</div>
+      ${resultHtml}
+      ${footHtml}
+    </div>`;
+  if(!answered){
+    root.querySelectorAll('.rt-opt').forEach(btn=>{ btn.onclick=()=>{ retake.answers[q.id]=btn.dataset.l; retakeQ(); }; });
+  } else {
+    const nb=root.querySelector('#rtnext');
+    if(nb)nb.onclick=()=>{ if(isLast){ retakeScore(); } else { retake.i++; retakeQ(); } };
+  }
+}
+function retakeScore(){
+  const s=retakeScoreSoFar();
+  const misses=retake.items.filter(q=>retake.answers[q.id]!==q.a);
+  const pct=Math.round(s.correct/retake.items.length*100);
+  const root=document.getElementById('quiz-root');
+  const missHtml=misses.length
+    ? `<div class="rt-misslist">${misses.map(q=>`<div class="rt-missitem"><span class="rt-missdom">${esc(q.c||'')}</span><span class="rt-misstext">${esc(q.q.slice(0,110))}${q.q.length>110?'…':''}</span></div>`).join('')}</div>`
+    : `<div class="rt-allclear">All ${retake.items.length} correct this round.</div>`;
+  root.innerHTML=`<div class="rt-card">
+    <p class="rt-eyebrow">Round complete</p>
+    <div class="rt-bigscore"><span class="rt-num">${s.correct}</span><span class="rt-of">/ ${retake.items.length} correct &middot; ${pct}%</span></div>
+    ${missHtml}
+    <div class="rt-foot" style="justify-content:flex-start">
+      <button class="btn" id="rtRetryAll">Retake all ${retake.items.length}</button>
+      ${misses.length?`<button class="btn ghost" id="rtRetryMissed">Retake just the ${misses.length} missed</button>`:''}
+      <button class="btn ghost" id="rtBackToExam">Back to exam results</button>
+    </div>
+  </div>`;
+  root.querySelector('#rtRetryAll').onclick=()=>startRetake(retake.items);
+  const rm=root.querySelector('#rtRetryMissed');
+  if(rm)rm.onclick=()=>startRetake(misses);
+  root.querySelector('#rtBackToExam').onclick=quizScore;
 }
 
 /* ---------- utils ---------- */
@@ -11427,6 +11760,90 @@ try{
     ru:function(a,b){return 'Вопрос '+a+' / '+b;},
     it:function(a,b){return 'Domanda '+a+' / '+b;}
   };
+  var SCORE_SOFAR_FMT={
+    vn:function(a,b){return a+' / '+b+' câu đúng cho đến nay';},
+    ja:function(a,b){return '現在 '+a+' / '+b+' 問正解';},
+    zh:function(a,b){return '目前 '+a+' / '+b+' 题正确';},
+    tw:function(a,b){return '目前 '+a+' / '+b+' 題正確';},
+    es:function(a,b){return a+' / '+b+' correctas hasta ahora';},
+    ko:function(a,b){return '지금까지 '+a+' / '+b+'개 정답';},
+    pt:function(a,b){return a+' / '+b+' corretas até agora';},
+    fr:function(a,b){return a+' / '+b+' correctes jusqu\'à présent';},
+    de:function(a,b){return a+' / '+b+' bisher richtig';},
+    hi:function(a,b){return 'अब तक '+a+' / '+b+' सही';},
+    ru:function(a,b){return a+' / '+b+' правильно на данный момент';},
+    it:function(a,b){return a+' / '+b+' corrette finora';}
+  };
+  var BIGSCORE_FMT={
+    vn:function(n,p){return '/ '+n+' câu đúng · '+p+'%';},
+    ja:function(n,p){return '/ '+n+' 問正解 · '+p+'%';},
+    zh:function(n,p){return '/ '+n+' 题正确 · '+p+'%';},
+    tw:function(n,p){return '/ '+n+' 題正確 · '+p+'%';},
+    es:function(n,p){return '/ '+n+' correctas · '+p+'%';},
+    ko:function(n,p){return '/ '+n+'개 정답 · '+p+'%';},
+    pt:function(n,p){return '/ '+n+' corretas · '+p+'%';},
+    fr:function(n,p){return '/ '+n+' correctes · '+p+'%';},
+    de:function(n,p){return '/ '+n+' richtig · '+p+'%';},
+    hi:function(n,p){return '/ '+n+' सही · '+p+'%';},
+    ru:function(n,p){return '/ '+n+' правильно · '+p+'%';},
+    it:function(n,p){return '/ '+n+' corrette · '+p+'%';}
+  };
+  var ALLCORRECT_FMT={
+    vn:function(n){return 'Cả '+n+' câu đều đúng trong vòng này.';},
+    ja:function(n){return '今回は'+n+'問すべて正解です。';},
+    zh:function(n){return '本轮全部 '+n+' 题正确。';},
+    tw:function(n){return '本輪全部 '+n+' 題正確。';},
+    es:function(n){return 'Las '+n+' preguntas correctas en esta ronda.';},
+    ko:function(n){return '이번 라운드 '+n+'문제 모두 정답입니다.';},
+    pt:function(n){return 'As '+n+' perguntas corretas nesta rodada.';},
+    fr:function(n){return 'Les '+n+' questions correctes dans cette manche.';},
+    de:function(n){return 'Alle '+n+' in dieser Runde richtig.';},
+    hi:function(n){return 'इस राउंड में सभी '+n+' सही।';},
+    ru:function(n){return 'Все '+n+' правильно в этом раунде.';},
+    it:function(n){return 'Tutte le '+n+' corrette in questo round.';}
+  };
+  var RETAKEALL_FMT={
+    vn:function(n){return 'Làm lại cả '+n;},
+    ja:function(n){return n+'問すべて再挑戦';},
+    zh:function(n){return '重考全部 '+n+' 题';},
+    tw:function(n){return '重考全部 '+n+' 題';},
+    es:function(n){return 'Repetir las '+n;},
+    ko:function(n){return n+'문제 전체 재도전';},
+    pt:function(n){return 'Repetir todas as '+n;},
+    fr:function(n){return 'Reprendre les '+n;},
+    de:function(n){return 'Alle '+n+' wiederholen';},
+    hi:function(n){return 'सभी '+n+' दोबारा लें';},
+    ru:function(n){return 'Повторить все '+n;},
+    it:function(n){return 'Ripeti tutte le '+n;}
+  };
+  var RETAKEMISSED_FMT={
+    vn:function(n){return 'Chỉ làm lại '+n+' câu sai';},
+    ja:function(n){return '間違えた'+n+'問だけ再挑戦';},
+    zh:function(n){return '只重考答错的 '+n+' 题';},
+    tw:function(n){return '只重考答錯的 '+n+' 題';},
+    es:function(n){return 'Repetir solo las '+n+' falladas';},
+    ko:function(n){return '틀린 '+n+'문제만 재도전';},
+    pt:function(n){return 'Repetir apenas as '+n+' erradas';},
+    fr:function(n){return 'Reprendre uniquement les '+n+' ratées';},
+    de:function(n){return 'Nur die '+n+' falschen wiederholen';},
+    hi:function(n){return 'केवल गलत '+n+' दोबारा लें';},
+    ru:function(n){return 'Повторить только '+n+' ошибочных';},
+    it:function(n){return 'Ripeti solo le '+n+' sbagliate';}
+  };
+  var NOTTHISTIME_FMT={
+    vn:function(l){return 'Chưa đúng — đáp án đúng là '+l+'.';},
+    ja:function(l){return '不正解 — 正解は'+l+'です。';},
+    zh:function(l){return '这次不对 — 正确答案是 '+l+'。';},
+    tw:function(l){return '這次不對 — 正確答案是 '+l+'。';},
+    es:function(l){return 'Esta vez no — la respuesta correcta es '+l+'.';},
+    ko:function(l){return '이번엔 아닙니다 — 정답은 '+l+'입니다.';},
+    pt:function(l){return 'Desta vez não — a resposta correta é '+l+'.';},
+    fr:function(l){return 'Pas cette fois — la bonne réponse est '+l+'.';},
+    de:function(l){return 'Diesmal nicht — richtige Antwort ist '+l+'.';},
+    hi:function(l){return 'इस बार नहीं — सही उत्तर है '+l+'।';},
+    ru:function(l){return 'На этот раз нет — правильный ответ '+l+'.';},
+    it:function(l){return 'Non questa volta — la risposta corretta è '+l+'.';}
+  };
   var lang='en', busy=false;
   function norm(s){ return s.trim().replace(/\s+/g,' '); }
   function translateNode(n){
@@ -11441,6 +11858,30 @@ try{
     if(tr==null){
       var qn=key.match(/^Question\s+(\d+)\s+of\s+(\d+)$/);
       if(qn && QUESTION_FMT[lang]) tr=QUESTION_FMT[lang](qn[1],qn[2]);
+    }
+    if(tr==null){
+      var ssf=key.match(/^(\d+)\s*\/\s*(\d+)\s+correct so far$/);
+      if(ssf && SCORE_SOFAR_FMT[lang]) tr=SCORE_SOFAR_FMT[lang](ssf[1],ssf[2]);
+    }
+    if(tr==null){
+      var bsf=key.match(/^\/\s*(\d+)\s+correct\s*·\s*(\d+)%$/);
+      if(bsf && BIGSCORE_FMT[lang]) tr=BIGSCORE_FMT[lang](bsf[1],bsf[2]);
+    }
+    if(tr==null){
+      var acf=key.match(/^All\s+(\d+)\s+correct this round\.$/);
+      if(acf && ALLCORRECT_FMT[lang]) tr=ALLCORRECT_FMT[lang](acf[1]);
+    }
+    if(tr==null){
+      var raf=key.match(/^Retake all\s+(\d+)$/);
+      if(raf && RETAKEALL_FMT[lang]) tr=RETAKEALL_FMT[lang](raf[1]);
+    }
+    if(tr==null){
+      var rmf=key.match(/^Retake just the\s+(\d+)\s+missed$/);
+      if(rmf && RETAKEMISSED_FMT[lang]) tr=RETAKEMISSED_FMT[lang](rmf[1]);
+    }
+    if(tr==null){
+      var ntf=key.match(/^Not this time — correct answer is\s+([A-D])\.$/);
+      if(ntf && NOTTHISTIME_FMT[lang]) tr=NOTTHISTIME_FMT[lang](ntf[1]);
     }
     if(tr!=null){
       if(n.__en==null)n.__en=n.nodeValue;
