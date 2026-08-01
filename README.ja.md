@@ -16,7 +16,7 @@ Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対
 
 | タブ | 内容 |
 |---|---|
-| **Study Console**（学習コンソール） | メインのトレーニングツール。公式の5試験ドメイン（blueprintの配点順）で構成された学習パス（各ドメインはtask statementに分割）、コア原則のチートシートと「IFトリガー → THENパターン」の判断表、フラッシュカード形式のStudyモード（task statementまたは分野横断の「Mixed / Applied」セットでフィルタ、問題をKnown/Reviewでマーク、解説を表示、自動タグ付けキーワードチップを確認）、「Exam by Domain」Quizモード（ドメイン単位・task statement単位でオン/オフ、出題数を選び、間違えた問題の解説付きで採点）、そして59のblueprintコンセプトをドメイン → task statementごとに一覧するConceptsタブ（各コンセプトの核心insightとFoundation/Intermediate/Advancedの難易度付き）を提供します。|
+| **Study Console**（学習コンソール） | メインのトレーニングツール。公式の5試験ドメイン（blueprintの配点順）で構成された学習パス（各ドメインはtask statementに分割）、コア原則のチートシートと「IFトリガー → THENパターン」の判断表、フラッシュカード形式のStudyモード（task statementまたは分野横断の「Mixed / Applied」セットでフィルタ、問題をKnown/Reviewでマーク、解説を表示、自動タグ付けキーワードチップを確認）、「Exam by Domain」Quizモード（ドメイン単位・task statement単位でオン/オフ、出題数を選び、間違えた問題の解説付きで採点、さらにワンクリックで間違えた問題だけを即座のフィードバック付きで再挑戦できる「Retake」機能）、そして59のblueprintコンセプトをドメイン → task statementごとに一覧するConceptsタブ（各コンセプトの核心insightとFoundation/Intermediate/Advancedの難易度付き）を提供します。|
 | **Study Hub**（学習ハブ） | 試験の公式5ドメイン（D1〜D5、重み付き）ごとに整理されたリファレンス画面。ドメインごとの判断ルール、避けるべき罠、キーワードのトリガーに加え、検索可能な早見デコーダー表を収録。|
 | **Neuron Map**（概念マップ） | 試験ドメインとそのサブトピックを結ぶインタラクティブなSVG概念図。ドメインをまたぐ「シナプス」接続をクリックしてたどれます。|
 | **2-Week Plan**（2週間プラン） | 独自の進捗バー付きの日次チェックリスト学習計画。`localStorage` が使えない環境（一部の `file://` での利用など）向けに、手動のJSONエクスポート/インポートのフォールバックも備えています。|
@@ -29,6 +29,7 @@ Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対
 ## 特徴
 
 - **EN / FR / DE / IT / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU 言語切り替え** —— ランタイムのテキスト置換レイヤーが、再読み込みなしで画面表示を英語・フランス語・ドイツ語・イタリア語・ポルトガル語・スペイン語・ベトナム語・簡体字中国語・繁体字中国語・日本語・韓国語・ヒンディー語・ロシア語の間で切り替えます。選択した言語は次回訪問時も保持されます。
+- **ライト / ダーク / システム / セピア テーマ** —— 固定のライトまたはダーク表示を選ぶか、OS設定に追従するか、暖かみのあるアンバー×クリームの「セピア」テーマに切り替えられます(こちらも明暗に自動対応)。選択したテーマは次回訪問時も保持されます。
 - **自動キーワードタグ付け** —— 各問題は数十個の試験頻出キーワード（例：「MCP resource」「stateless」「tool_choice」）と照合され、一致したものがチップとして表示されるので、解説を読む前に決め手となるフレーズが一目でわかります。
 - **ローカル保存** —— 学習の進捗（Known/Reviewのマーク）とプランのチェックリストの状態は `localStorage` に保存され、保存がブロックされている場合はそのタブ限定でメモリ上にフォールバックします。
 - **依存ライブラリなし** —— バニラのJS/CSS/SVGのみで1ファイルに完結。外部通信はGoogle Fonts（Space Grotesk、Inter、JetBrains Mono）のみです。

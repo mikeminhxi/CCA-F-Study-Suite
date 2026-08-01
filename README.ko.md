@@ -16,7 +16,7 @@ Anthropic의 **Claude Certified Architect — Foundations (CCA-F)** 시험 대�
 
 | 탭 | 설명 |
 |---|---|
-| **Study Console**(학습 콘솔) | 메인 학습 도구입니다. 공식 5개 시험 도메인(blueprint 비중 순)으로 구성된 학습 경로 — 각 도메인은 task statement로 나뉩니다 —, 핵심 원칙 치트 시트와 "IF 트리거 → THEN 패턴" 판단표, 플래시카드 형식의 Study 모드(task statement별 또는 교차 영역 "Mixed / Applied" 세트로 필터링, 문제를 Known/Review로 표시, 해설 확인, 자동 태그된 키워드 칩 확인), "Exam by Domain" Quiz 모드(도메인 전체 또는 개별 task statement를 켜고 끄고, 문항 수를 선택해 채점 결과와 모든 오답 해설 확인), 그리고 59개 blueprint 개념을 도메인 → task statement별로 정리한 Concepts 탭(각 개념의 핵심 insight와 Foundation/Intermediate/Advanced 난이도 포함)을 제공합니다. |
+| **Study Console**(학습 콘솔) | 메인 학습 도구입니다. 공식 5개 시험 도메인(blueprint 비중 순)으로 구성된 학습 경로 — 각 도메인은 task statement로 나뉩니다 —, 핵심 원칙 치트 시트와 "IF 트리거 → THEN 패턴" 판단표, 플래시카드 형식의 Study 모드(task statement별 또는 교차 영역 "Mixed / Applied" 세트로 필터링, 문제를 Known/Review로 표시, 해설 확인, 자동 태그된 키워드 칩 확인), "Exam by Domain" Quiz 모드(도메인 전체 또는 개별 task statement를 켜고 끄고, 문항 수를 선택해 채점 결과와 모든 오답 해설 확인, 그리고 틀린 문제만 즉시 피드백과 함께 원클릭으로 재도전하는 "Retake" 기능), 그리고 59개 blueprint 개념을 도메인 → task statement별로 정리한 Concepts 탭(각 개념의 핵심 insight와 Foundation/Intermediate/Advanced 난이도 포함)을 제공합니다. |
 | **Study Hub**(스터디 허브) | 공식 5개 시험 도메인(D1–D5, 가중치 포함)별로 정리된 참고 화면입니다. 도메인별 판단 규칙, 피해야 할 함정, 키워드 트리거와 함께 검색 가능한 빠른 디코더 표를 포함합니다. |
 | **Neuron Map**(뉴런 맵) | 시험 도메인과 그 하위 주제를 연결한 인터랙티브 SVG 개념도입니다. 도메인을 넘나드는 "시냅스" 연결을 클릭해 따라갈 수 있습니다. |
 | **2-Week Plan**(2주 계획) | 자체 진행률 표시줄이 있는 일별 체크리스트 학습 계획입니다. `localStorage`를 사용할 수 없는 환경(일부 `file://` 설정 등)을 위한 수동 JSON 내보내기/가져오기 대체 수단도 포함되어 있습니다. |
@@ -29,6 +29,7 @@ Anthropic의 **Claude Certified Architect — Foundations (CCA-F)** 시험 대�
 ## 기능
 
 - **EN / FR / DE / IT / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU 언어 전환** — 런타임 텍스트 교체 레이어가 새로고침 없이 화면 문구를 영어, 프랑스어, 독일어, 이탈리아어, 포르투갈어, 스페인어, 베트남어, 간체 중국어, 번체 중국어, 일본어, 한국어, 힌디어, 러시아어 사이에서 전환합니다. 선택한 언어는 다음 방문 시에도 유지됩니다.
+- **라이트 / 다크 / 시스템 / 세피아 테마** — 고정된 라이트 또는 다크 모습을 선택하거나, OS 설정을 따르거나, 따뜻한 호박색·크림색의 세피아 테마로 전환할 수 있습니다(라이트/다크에도 자동으로 맞춰집니다). 선택한 테마는 다음 방문 시에도 유지됩니다.
 - **자동 키워드 태깅** — 각 문항은 수십 개의 시험 빈출 키워드(예: "MCP resource", "stateless", "tool_choice")와 대조되어 일치하는 항목이 칩으로 표시되므로, 해설을 읽기 전에 결정적인 문구가 한눈에 들어옵니다.
 - **로컬 저장** — 학습 진행 상황(Known/Review 표시)과 계획 체크리스트 상태는 `localStorage`에 저장되며, 저장이 차단된 경우 현재 탭에 한해 메모리 기반으로 대체됩니다.
 - **의존성 없음** — 순수 바닐라 JS/CSS/SVG로 구성된 단일 파일입니다. 외부 호출은 Google Fonts(Space Grotesk, Inter, JetBrains Mono)뿐입니다.

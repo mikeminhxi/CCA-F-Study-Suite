@@ -2,6 +2,15 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Retake missed questions + Sepia theme
+
+- **New "Questions you missed" retake flow** — after finishing an "Exam by Domain" run, a **Questions you missed** button appears next to "New exam" whenever at least one answer was wrong. Launches a dedicated retake UI (`RETAKE` badge, segmented progress bar, per-question immediate feedback with inline correct/incorrect coloring and explanation), separate from the standard answer-all-then-score exam flow, ending in its own summary screen with "Retake all" / "Retake just the missed" / "Back to exam results".
+- **New "Sepia" theme** — a 4th theme option (warm amber/cream palette) alongside Light/Dark/System, toggled via a flame icon in the top nav. Applies across the shell chrome and all four tool sections (Study Console, Study Hub, Neuron Map, 2-Week Plan); auto-adapts between a dark-brown and cream-light variant based on OS `prefers-color-scheme`, mirroring the existing Light/Dark split. Existing themes untouched.
+- **Exam sidebar fixes**: the question-number grid no longer shows a spurious horizontal scrollbar, and clicking a question number while scrolled down no longer resets the sidebar's scroll position back to the top (`scrollTop` is now captured and restored across every re-render).
+- **Score-page review list is now collapsible** — each reviewed question defaults to a compact one-line row (badge + category chip + truncated preview); click to expand in place for the full question/options/explanation. Combined with the existing All/Incorrect/Flagged filters, a 20+ item review now fits on one screen instead of forcing a long scroll through full-height cards.
+- Translations for all new UI copy (7 static strings + 6 dynamic "N of M"-style patterns, e.g. "Retake all N", "X / Y correct so far") added across all 12 languages, in both `index.html` and the staged `translations/*.json` mirror files. All 13 `README*.md` files updated to describe both new features.
+- New `update-translations` Claude Code skill (`.claude/skills/update-translations/`) codifying the 3-place-sync workflow (`index.html` + `translations/*.json` + `README*.md`) for any future new UI copy.
+
 ## Italian (Italiano) — 13th supported language
 
 - **Italian (it)** — fully wired into `index.html` (`window.__I18N_IT__`/`__SHELL_IT__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT`, `#lang-select` dropdown positioned between Deutsch and Português per alphabetical-by-English-name ordering), all 12 existing READMEs updated, new `README.it.md` added. Full 715-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/it.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-italian-language`.
