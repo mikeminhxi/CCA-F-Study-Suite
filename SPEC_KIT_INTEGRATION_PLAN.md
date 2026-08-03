@@ -79,7 +79,7 @@ Going forward, feature work on the Study Suite follows: **constitution (once) �
 
 ## 5. Language expansion priority
 
-Currently supported: English, Français, Deutsch, Bahasa Indonesia, Italiano, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어, हिन्दी, Русский (14).
+Currently supported: English, Français, Deutsch, Bahasa Indonesia, Italiano, Bahasa Melayu, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어, हिन्दी, Русский (15).
 Candidates below, in recommended order — rationale is developer/tech-market size
 for a technical certification exam, weighed against added engineering effort
 (not just translation volume). Check one off when you decide to pursue it;
@@ -160,6 +160,11 @@ mechanics as the languages already shipped):
       just re-running the agent's own gate.
 - [x] Indonesian (Bahasa Indonesia) — large, fast-growing Southeast Asian tech
       market; Latin script, trivial engineering. Shipped in PR #23.
+- [ ] Malay (Bahasa Melayu) — Malaysia's national language; Latin script,
+      trivial engineering, same mechanics as Indonesian. Closely related to
+      Bahasa Indonesia (both Malayic languages) but a distinct standardized
+      language with its own vocabulary/spelling conventions, not a dialect
+      to be merged with the Indonesian dictionary.
 - [ ] Polish (Polski) — major IT-outsourcing/dev-shop hub in Europe; Latin
       script, trivial engineering.
 
