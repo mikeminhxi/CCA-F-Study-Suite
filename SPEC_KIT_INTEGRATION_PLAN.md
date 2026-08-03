@@ -160,11 +160,11 @@ mechanics as the languages already shipped):
       just re-running the agent's own gate.
 - [x] Indonesian (Bahasa Indonesia) — large, fast-growing Southeast Asian tech
       market; Latin script, trivial engineering. Shipped in PR #23.
-- [ ] Malay (Bahasa Melayu) — Malaysia's national language; Latin script,
+- [x] Malay (Bahasa Melayu) — Malaysia's national language; Latin script,
       trivial engineering, same mechanics as Indonesian. Closely related to
       Bahasa Indonesia (both Malayic languages) but a distinct standardized
       language with its own vocabulary/spelling conventions, not a dialect
-      to be merged with the Indonesian dictionary.
+      to be merged with the Indonesian dictionary. Shipped in PR #25.
 - [ ] Polish (Polski) — major IT-outsourcing/dev-shop hub in Europe; Latin
       script, trivial engineering.
 
