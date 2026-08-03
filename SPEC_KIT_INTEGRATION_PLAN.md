@@ -79,7 +79,7 @@ Going forward, feature work on the Study Suite follows: **constitution (once) �
 
 ## 5. Language expansion priority
 
-Currently supported: English, Français, Deutsch, Italiano, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어, हिन्दी, Русский (13).
+Currently supported: English, Français, Deutsch, Bahasa Indonesia, Italiano, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어, हिन्दी, Русский (14).
 Candidates below, in recommended order — rationale is developer/tech-market size
 for a technical certification exam, weighed against added engineering effort
 (not just translation volume). Check one off when you decide to pursue it;
@@ -158,8 +158,8 @@ mechanics as the languages already shipped):
       manually spot-checking its residual list rather than trusting the
       self-report. Future rounds should keep doing that manual spot-check, not
       just re-running the agent's own gate.
-- [ ] Indonesian (Bahasa Indonesia) — large, fast-growing Southeast Asian tech
-      market; Latin script, trivial engineering.
+- [x] Indonesian (Bahasa Indonesia) — large, fast-growing Southeast Asian tech
+      market; Latin script, trivial engineering. Shipped in PR #23.
 - [ ] Polish (Polski) — major IT-outsourcing/dev-shop hub in Europe; Latin
       script, trivial engineering.
 
