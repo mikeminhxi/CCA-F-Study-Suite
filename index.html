@@ -1570,6 +1570,7 @@
   "Exam mode": "Chế độ thi",
   "Build an exam by domain": "Tạo đề thi theo lĩnh vực",
   "Domains": "Lĩnh vực",
+  "Exam Domains": "Lĩnh vực thi",
   "Select all": "Chọn tất cả",
   "Clear": "Xóa hết",
   "Length": "Số câu",
@@ -2301,6 +2302,7 @@ window.__I18N_JA__={
   "Exam mode": "試験モード",
   "Build an exam by domain": "ドメイン別に試験を作成",
   "Domains": "ドメイン",
+  "Exam Domains": "試験ドメイン",
   "Select all": "すべて選択",
   "Clear": "クリア",
   "Length": "問題数",
@@ -3032,6 +3034,7 @@ window.__I18N_ZH__={
   "Exam mode": "考试模式",
   "Build an exam by domain": "按领域生成一套试题",
   "Domains": "领域",
+  "Exam Domains": "考试领域",
   "Select all": "全选",
   "Clear": "清空",
   "Length": "题数",
@@ -3763,6 +3766,7 @@ window.__I18N_TW__={
   "Exam mode": "考試模式",
   "Build an exam by domain": "按領域生成一套試題",
   "Domains": "領域",
+  "Exam Domains": "考試領域",
   "Select all": "全選",
   "Clear": "清空",
   "Length": "題數",
@@ -4494,6 +4498,7 @@ window.__I18N_ES__={
   "Exam mode": "Modo examen",
   "Build an exam by domain": "Crea un examen por dominio",
   "Domains": "Dominios",
+  "Exam Domains": "Dominios del examen",
   "Select all": "Seleccionar todo",
   "Clear": "Limpiar",
   "Length": "Cantidad",
@@ -5225,6 +5230,7 @@ window.__I18N_KO__={
   "Exam mode": "시험 모드",
   "Build an exam by domain": "도메인별로 시험 만들기",
   "Domains": "도메인",
+  "Exam Domains": "시험 도메인",
   "Select all": "전체 선택",
   "Clear": "초기화",
   "Length": "문항 수",
@@ -5956,6 +5962,7 @@ window.__I18N_PT__={
   "Exam mode": "Modo prova",
   "Build an exam by domain": "Monte uma prova por domínio",
   "Domains": "Domínios",
+  "Exam Domains": "Domínios do Exame",
   "Select all": "Selecionar tudo",
   "Clear": "Limpar",
   "Length": "Quantidade",
@@ -6687,6 +6694,7 @@ window.__I18N_FR__={
   "Exam mode": "Mode examen",
   "Build an exam by domain": "Créer un examen par domaine",
   "Domains": "Domaines",
+  "Exam Domains": "Domaines de l'examen",
   "Select all": "Tout sélectionner",
   "Clear": "Effacer",
   "Length": "Nombre",
@@ -7418,6 +7426,7 @@ window.__I18N_DE__={
   "Exam mode": "Prüfungsmodus",
   "Build an exam by domain": "Prüfung nach Domäne erstellen",
   "Domains": "Domänen",
+  "Exam Domains": "Prüfungsdomänen",
   "Select all": "Alle auswählen",
   "Clear": "Leeren",
   "Length": "Länge",
@@ -8149,6 +8158,7 @@ window.__I18N_HI__={
   "Exam mode": "परीक्षा मोड",
   "Build an exam by domain": "डोमेन के अनुसार परीक्षा बनाएँ",
   "Domains": "डोमेन",
+  "Exam Domains": "परीक्षा डोमेन",
   "Select all": "सभी चुनें",
   "Clear": "साफ़ करें",
   "Length": "लंबाई",
@@ -8880,6 +8890,7 @@ window.__I18N_RU__={
   "Exam mode": "Режим экзамена",
   "Build an exam by domain": "Составить экзамен по доменам",
   "Domains": "Домены",
+  "Exam Domains": "Домены экзамена",
   "Select all": "Выбрать всё",
   "Clear": "Очистить",
   "Length": "Длина",
@@ -9611,6 +9622,7 @@ window.__I18N_IT__={
   "Exam mode": "Modalità esame",
   "Build an exam by domain": "Crea un esame per dominio",
   "Domains": "Domini",
+  "Exam Domains": "Domini dell'esame",
   "Select all": "Seleziona tutto",
   "Clear": "Cancella",
   "Length": "Lunghezza",
@@ -10342,6 +10354,7 @@ window.__I18N_ID__={
   "Exam mode": "Mode ujian",
   "Build an exam by domain": "Buat ujian per domain",
   "Domains": "Domain",
+  "Exam Domains": "Domain Ujian",
   "Select all": "Pilih semua",
   "Clear": "Hapus",
   "Length": "Jumlah soal",
@@ -12583,6 +12596,21 @@ try{
     it:function(l){return 'Non questa volta — la risposta corretta è '+l+'.';},
     id:function(l){return 'Bukan kali ini — jawaban yang benar adalah '+l+'.';}
   };
+  var QUESTIONS_AVAILABLE_FMT={
+    vn:function(n){return n+' câu hỏi khả dụng';},
+    ja:function(n){return n+'問利用可能';},
+    zh:function(n){return n+'题可用';},
+    tw:function(n){return n+'題可用';},
+    es:function(n){return n+' preguntas disponibles';},
+    ko:function(n){return n+'문항 이용 가능';},
+    pt:function(n){return n+' perguntas disponíveis';},
+    fr:function(n){return n+' questions disponibles';},
+    de:function(n){return n+' Fragen verfügbar';},
+    hi:function(n){return n+' प्रश्न उपलब्ध';},
+    ru:function(n){return 'Доступно '+n+' вопросов';},
+    it:function(n){return n+' domande disponibili';},
+    id:function(n){return n+' soal tersedia';}
+  };
   var lang='en', busy=false;
   function norm(s){ return s.trim().replace(/\s+/g,' '); }
   function translateNode(n){
@@ -12621,6 +12649,10 @@ try{
     if(tr==null){
       var ntf=key.match(/^Not this time — correct answer is\s+([A-D])\.$/);
       if(ntf && NOTTHISTIME_FMT[lang]) tr=NOTTHISTIME_FMT[lang](ntf[1]);
+    }
+    if(tr==null){
+      var qav=key.match(/^(\d+)\s+questions available$/);
+      if(qav && QUESTIONS_AVAILABLE_FMT[lang]) tr=QUESTIONS_AVAILABLE_FMT[lang](qav[1]);
     }
     if(tr!=null){
       if(n.__en==null)n.__en=n.nodeValue;

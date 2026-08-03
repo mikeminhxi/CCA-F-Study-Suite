@@ -2,6 +2,12 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Translate "Exam Domains" heading and "N questions available" counter
+
+- Fixed a pre-existing i18n gap flagged during the Indonesian round (PR #23): the exam-setup screen's "Exam Domains" heading and the dynamic "N questions available" counter were hardcoded English strings that bypassed the i18n dictionary entirely, missing from all 14 languages' dictionaries. Added `"Exam Domains"` as a static key and a new `QUESTIONS_AVAILABLE_FMT` dynamic-format table (matching the existing `QUESTION_FMT`/`SCORE_SOFAR_FMT`-style pattern in `translateNode`) across all 14 languages, in both `index.html` and the staged `translations/*.json` mirror files.
+- Found and flagged, not fixed here: 7 of the 13 staged `translations/*.json` files (`vn`, `ja`, `zh`, `tw`, `es`, `ko`, `pt`) were already missing 5 unrelated donate-modal strings ("Found this useful?", "Bank 1/2/3", etc.) that are correctly translated in `index.html` itself — a pre-existing staging-file staleness issue from an earlier round, out of scope for this fix.
+- Verified via headless Edge driven over the DevTools Protocol: both strings render correctly translated (spot-checked Italian, Russian, Japanese, Indonesian, and Vietnamese) with zero console errors.
+
 ## Indonesian (Bahasa Indonesia) — 14th supported language
 
 - **Indonesian (id)** — fully wired into `index.html` (`window.__I18N_ID__`/`__SHELL_ID__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT` plus the six other dynamic-format tables, `#lang-select` dropdown positioned between Deutsch and Italiano per alphabetical-by-English-name ordering), all 13 existing READMEs updated, new `README.id.md` added. Full 722-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/id.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-indonesian-language`.
