@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · **🇧🇷 Português** · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md)
+[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · **🇧🇷 Português** · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇹🇭 ไทย](README.th.md)
 
 🔗 **Demo ao vivo:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ A página é um shell com abas contendo quatro ferramentas. Em telas de largura 
 
 ## Funcionalidades
 
-- **Seletor de idioma EN / FR / DE / ID / IT / MS / PL / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU** — uma camada de troca de texto em tempo real traduz o conteúdo na tela entre inglês, francês, alemão, indonésio, italiano, malaio, polonês, português, espanhol, vietnamita, chinês simplificado, chinês tradicional, japonês, coreano, hindi e russo sem recarregar a página; o idioma escolhido persiste entre visitas.
+- **Seletor de idioma EN / FR / DE / ID / IT / MS / PL / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU / TH** — uma camada de troca de texto em tempo real traduz o conteúdo na tela entre inglês, francês, alemão, indonésio, italiano, malaio, polonês, português, espanhol, vietnamita, chinês simplificado, chinês tradicional, japonês, coreano, hindi, russo e tailandês sem recarregar a página; o idioma escolhido persiste entre visitas.
 - **Temas Claro / Escuro / Sistema / Sepia** — escolha uma aparência clara ou escura fixa, siga a configuração do sistema, ou mude para um tema Sepia em tons quentes de âmbar e creme (que também se adapta automaticamente a claro/escuro); a escolha persiste entre visitas.
 - **Palavras-chave marcadas automaticamente** — cada pergunta é verificada contra uma lista de dezenas de termos típicos da prova (ex.: "MCP resource", "stateless", "tool_choice") e mostra as que encontrou como chips, para que a frase reveladora salte aos olhos antes de você ler a explicação.
 - **Persistência local** — o progresso de estudo (marcações de dominada/revisar) e o estado do checklist do plano são salvos via `localStorage`, com um fallback em memória para a aba atual caso o armazenamento esteja bloqueado.
