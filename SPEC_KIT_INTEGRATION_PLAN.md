@@ -166,7 +166,7 @@ mechanics as the languages already shipped):
       language with its own vocabulary/spelling conventions, not a dialect
       to be merged with the Indonesian dictionary. Shipped in PR #25.
 - [x] Polish (Polski) — major IT-outsourcing/dev-shop hub in Europe; Latin
-      script, trivial engineering. Shipped in this round.
+      script, trivial engineering. Shipped in PR #26.
 
 **Tier 3 — larger markets, but real engineering lift beyond translation:**
 
