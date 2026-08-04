@@ -79,7 +79,7 @@ Going forward, feature work on the Study Suite follows: **constitution (once) �
 
 ## 5. Language expansion priority
 
-Currently supported: English, Français, Deutsch, Bahasa Indonesia, Italiano, Bahasa Melayu, Polski, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어, हिन्दी, Русский (16).
+Currently supported: English, Français, Deutsch, Bahasa Indonesia, Italiano, Bahasa Melayu, Polski, Português, Español, Tiếng Việt, 简体中文, 繁體中文, 日本語, 한국어, हिन्दी, Русский, ไทย (17).
 Candidates below, in recommended order — rationale is developer/tech-market size
 for a technical certification exam, weighed against added engineering effort
 (not just translation volume). Check one off when you decide to pursue it;
@@ -167,6 +167,18 @@ mechanics as the languages already shipped):
       to be merged with the Indonesian dictionary. Shipped in PR #25.
 - [x] Polish (Polski) — major IT-outsourcing/dev-shop hub in Europe; Latin
       script, trivial engineering. Shipped in PR #26.
+- [x] Thai (ไทย) — sizeable Southeast Asian tech market; picked up from the
+      "not yet prioritized" list at the maintainer's request. Thai script:
+      not RTL, so same mechanics as Hindi/Russian — a new (non-Latin,
+      non-CJK, non-Devanagari, non-Cyrillic) alphabet, no layout-mirroring
+      work needed. Google Fonts loaded by the app (Space Grotesk, Inter,
+      JetBrains Mono) don't cover Thai glyphs, same as they don't cover
+      CJK/Devanagari/Cyrillic either — browser system-font fallback already
+      handles this for every non-Latin language shipped so far, so no font
+      changes anticipated. Becomes a new trailing script-family group in the
+      dropdown/READMEs, appended after Cyrillic (Русский) per the Hindi
+      round's ordering precedent (script groups appended in the order
+      introduced, not merged alphabetically). Shipped in PR #27.
 
 **Tier 3 — larger markets, but real engineering lift beyond translation:**
 
@@ -178,7 +190,7 @@ mechanics as the languages already shipped):
 
 **Not yet prioritized / needs a signal to justify** (from the original
 brainstormed list — include if you have a specific reason, e.g. known exam-
-candidate demand): Dutch, Greek, Swedish, Thai, Ukrainian.
+candidate demand): Dutch, Greek, Swedish, Ukrainian.
 
 ## Workflow note: branch + PR per language
 
