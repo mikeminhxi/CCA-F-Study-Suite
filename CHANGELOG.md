@@ -2,6 +2,13 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Polish (Polski) — 16th supported language
+
+- **Polish (pl)** — fully wired into `index.html` (`window.__I18N_PL__`/`__SHELL_PL__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT` plus the seven other dynamic-format tables including `QUESTIONS_AVAILABLE_FMT`, `#lang-select` dropdown positioned between Bahasa Melayu and Português per alphabetical-by-English-name ordering), all 15 existing READMEs updated, new `README.pl.md` added. Full 723-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/pl.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-polish-language`.
+- **Standing quality gate**: pre-injection English-word-overlap diff against `de.json` flagged 25 keys; 6 were genuine under-translations and fixed, the remaining 19 (now 20 after fixes shifted phrasing) were manually spot-checked against `de.json`/`it.json` and confirmed as legitimate exceptions (proper nouns, literal quoted example text, established loanword-pattern technical terms).
+- Found and flagged, not fixed here: the Concepts tab's per-domain header (`${nConc} concepts`, `index.html` ~line 13121) is a hardcoded English word baked into a JS template literal rather than routed through the i18n dictionary — affects all 16 languages identically, not a Polish-specific gap. Pre-existing since before this round.
+- Verified via headless Edge driven over the DevTools Protocol: Study Console (brand/nav/tabs), Concepts tab (domain header, concept title/insight), Study Hub decision-rule row, Exam by Domain screen (`"0 pytań dostępnych"` dynamic-format badge, "Rozpocznij egzamin" start button), and the donate button all render correctly in Polish with zero console errors.
+
 ## Malay (Bahasa Melayu) — 15th supported language
 
 - **Malay (ms)** — fully wired into `index.html` (`window.__I18N_MS__`/`__SHELL_MS__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT` plus the seven other dynamic-format tables including `QUESTIONS_AVAILABLE_FMT`, `#lang-select` dropdown positioned between Italiano and Português per alphabetical-by-English-name ordering), all 14 existing READMEs updated, new `README.ms.md` added. Full 723-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/ms.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-malay-language`.

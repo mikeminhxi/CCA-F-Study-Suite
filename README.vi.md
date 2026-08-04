@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · **🇻🇳 Tiếng Việt** · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md)
+[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · **🇻🇳 Tiếng Việt** · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md)
 
 🔗 **Bản demo trực tuyến:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ Trang có dạng shell với 4 tab công cụ. Trên màn hình rộng (từ 900
 
 ## Tính năng
 
-- **Chuyển đổi ngôn ngữ EN / FR / DE / ID / MS / IT / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU** — lớp dịch runtime thay thế nội dung hiển thị giữa tiếng Anh, tiếng Pháp, tiếng Đức, tiếng Indonesia, tiếng Mã Lai, tiếng Ý, tiếng Bồ Đào Nha, tiếng Tây Ban Nha, tiếng Việt, tiếng Trung giản thể, tiếng Trung phồn thể, tiếng Nhật, tiếng Hàn, tiếng Hindi và tiếng Nga mà không cần tải lại trang; ngôn ngữ đã chọn được ghi nhớ cho lần truy cập sau.
+- **Chuyển đổi ngôn ngữ EN / FR / DE / ID / IT / MS / PL / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU** — lớp dịch runtime thay thế nội dung hiển thị giữa tiếng Anh, tiếng Pháp, tiếng Đức, tiếng Indonesia, tiếng Ý, tiếng Mã Lai, tiếng Ba Lan, tiếng Bồ Đào Nha, tiếng Tây Ban Nha, tiếng Việt, tiếng Trung giản thể, tiếng Trung phồn thể, tiếng Nhật, tiếng Hàn, tiếng Hindi và tiếng Nga mà không cần tải lại trang; ngôn ngữ đã chọn được ghi nhớ cho lần truy cập sau.
 - **Giao diện Sáng / Tối / Theo hệ thống / Sepia** — chọn giao diện sáng hoặc tối cố định, theo cài đặt hệ điều hành, hoặc chuyển sang giao diện Sepia ấm màu hổ phách và kem (cũng tự động thích ứng sáng/tối); lựa chọn được ghi nhớ cho các lần truy cập sau.
 - **Từ khóa tự động gắn thẻ** — mỗi câu hỏi được đối chiếu với danh sách hàng chục từ khóa đặc trưng của đề thi (ví dụ "MCP resource", "stateless", "tool_choice") và hiển thị những từ khớp dưới dạng thẻ, giúp cụm từ mấu chốt nổi bật lên trước khi bạn đọc phần giải thích.
 - **Lưu trữ cục bộ** — tiến độ học (đánh dấu đã thuộc/cần ôn) và trạng thái checklist kế hoạch được lưu qua `localStorage`, có cơ chế dự phòng lưu tạm trong bộ nhớ cho tab hiện tại nếu trình duyệt chặn lưu trữ.
