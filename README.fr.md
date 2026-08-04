@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · **🇫🇷 Français** · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md)
+[🇺🇸 English](README.md) · **🇫🇷 Français** · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md)
 
 🔗 **Démo en ligne :** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ La page est une coquille à onglets regroupant quatre outils. Sur les écrans de
 
 ## Fonctionnalités
 
-- **Sélecteur de langue EN / FR / DE / ID / IT / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU** — une couche de remplacement de texte en temps réel traduit le contenu affiché entre l'anglais, le français, l'allemand, l'indonésien, l'italien, le portugais, l'espagnol, le vietnamien, le chinois simplifié, le chinois traditionnel, le japonais, le coréen, l'hindi et le russe sans recharger la page ; la langue choisie est conservée lors des visites futures.
+- **Sélecteur de langue EN / FR / DE / ID / MS / IT / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU** — une couche de remplacement de texte en temps réel traduit le contenu affiché entre l'anglais, le français, l'allemand, l'indonésien, le malais, l'italien, le portugais, l'espagnol, le vietnamien, le chinois simplifié, le chinois traditionnel, le japonais, le coréen, l'hindi et le russe sans recharger la page ; la langue choisie est conservée lors des visites futures.
 - **Thèmes Clair / Sombre / Système / Sépia** — choisissez un rendu clair ou sombre fixe, suivez le réglage du système, ou passez à un thème « Sépia » chaleureux ambre et crème (qui s'adapte aussi automatiquement au clair/sombre) ; le choix est conservé lors des visites futures.
 - **Mots-clés auto-détectés** — chaque question est comparée à une liste de dizaines de termes fréquents de l'examen (ex. « MCP resource », « stateless », « tool_choice ») et affiche ceux qui correspondent sous forme de puces, pour que la phrase révélatrice saute aux yeux avant même de lire l'explication.
 - **Persistance locale** — la progression d'étude (marques Acquis/À revoir) et l'état de la checklist du plan sont sauvegardés via `localStorage`, avec une solution de repli en mémoire pour l'onglet actuel si le stockage est bloqué.
