@@ -178,7 +178,7 @@ mechanics as the languages already shipped):
       changes anticipated. Becomes a new trailing script-family group in the
       dropdown/READMEs, appended after Cyrillic (Русский) per the Hindi
       round's ordering precedent (script groups appended in the order
-      introduced, not merged alphabetically).
+      introduced, not merged alphabetically). Shipped in PR #27.
 
 **Tier 3 — larger markets, but real engineering lift beyond translation:**
 
