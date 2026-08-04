@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · **🇯🇵 日本語** · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md)
+[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · **🇯🇵 日本語** · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md)
 
 🔗 **ライブデモ:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対
 
 ## 特徴
 
-- **EN / FR / DE / ID / MS / IT / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU 言語切り替え** —— ランタイムのテキスト置換レイヤーが、再読み込みなしで画面表示を英語・フランス語・ドイツ語・インドネシア語・マレー語・イタリア語・ポルトガル語・スペイン語・ベトナム語・簡体字中国語・繁体字中国語・日本語・韓国語・ヒンディー語・ロシア語の間で切り替えます。選択した言語は次回訪問時も保持されます。
+- **EN / FR / DE / ID / IT / MS / PL / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU 言語切り替え** —— ランタイムのテキスト置換レイヤーが、再読み込みなしで画面表示を英語・フランス語・ドイツ語・インドネシア語・イタリア語・マレー語・ポーランド語・ポルトガル語・スペイン語・ベトナム語・簡体字中国語・繁体字中国語・日本語・韓国語・ヒンディー語・ロシア語の間で切り替えます。選択した言語は次回訪問時も保持されます。
 - **ライト / ダーク / システム / セピア テーマ** —— 固定のライトまたはダーク表示を選ぶか、OS設定に追従するか、暖かみのあるアンバー×クリームの「セピア」テーマに切り替えられます(こちらも明暗に自動対応)。選択したテーマは次回訪問時も保持されます。
 - **自動キーワードタグ付け** —— 各問題は数十個の試験頻出キーワード（例：「MCP resource」「stateless」「tool_choice」）と照合され、一致したものがチップとして表示されるので、解説を読む前に決め手となるフレーズが一目でわかります。
 - **ローカル保存** —— 学習の進捗（Known/Reviewのマーク）とプランのチェックリストの状態は `localStorage` に保存され、保存がブロックされている場合はそのタブ限定でメモリ上にフォールバックします。
