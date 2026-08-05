@@ -1416,11 +1416,15 @@ Expected: all pass, validator exits 0.
 
 Using the project's established CDP-driven headless Edge verification: cycle through all 17 `#lang-select` options (`en` + 16), for each confirm the Study, Exam, Cheat-sheet, and Map tabs render without console errors and without any visible untranslated-English leakage outside known non-goals (`QDATA` question/answer text, which stays English by design). Spot-check Light and Dark theme for at least 3 languages spanning different scripts (e.g. `fr`, `ja`, `th`).
 
-- [ ] **Step 4: Add the CHANGELOG entry**
+- [ ] **Step 4: Add the CHANGELOG entry — this is also the first version-numbered entry**
 
-Add a new entry at the top of `CHANGELOG.md` (matching the file's existing entry format/style — read the top few entries first to match heading level and phrasing conventions):
+Every prior `CHANGELOG.md` entry is topic-titled only (e.g. `## Thai (ไทย) — 17th supported language`), with no version number — this project has never had one (no `package.json`, no `VERSION` file, no version string anywhere in `index.html`). Per explicit maintainer decision: starting with this entry, new entries get a `## [X.Y.Z] - YYYY-MM-DD - Title` header (semver, dated), and the version lives in `CHANGELOG.md` only — no UI change, no new file. Do **not** retroactively add version numbers to the existing topic-titled entries above this one; they stay as they are. This refactor is `1.0.0`, the first tagged version. Future entries increment from here using ordinary semver judgment (a new language or capability = minor bump, a bugfix = patch, a breaking change to the app's on-disk format or public behavior = major) — that judgment call belongs to whoever writes the next entry, not to this task.
+
+Add a new entry at the top of `CHANGELOG.md` (matching the file's existing body style for the `### Changed` bullet — read the top few entries first to match phrasing conventions; only the header line itself is new format):
 
 ```markdown
+## [1.0.0] - 2026-08-05 - Lazy-loaded translation files
+
 ### Changed
 - **Translation data split out of `index.html` into `translations/<code>.js`, loaded lazily.** Previously every visitor downloaded all 16 languages' dictionaries inline (1.26MB of the 1.71MB file) regardless of which language they used. Each language now lives in its own `translations/<code>.js`, loaded via a `<script src>` tag only when that language is selected — `<script src>` rather than `fetch()` specifically so the app keeps working when `index.html` is opened directly via `file://`. `index.html` drops from ~1.7MB to ~450KB. No visible behavior change; language switching, offline use, and the missing-language/missing-key English fallback all work exactly as before.
 ```
