@@ -6,12 +6,12 @@ All notable changes to the CCA-F Study Suite are recorded here.
 
 ### Changed
 
-- **`index.html` split further: CSS moved to `style.css`, static content to `content.js`.** The `<style>` block (~65KB) and the nine read-only data constants (`QDATA`'s 156-question bank plus `DOMAIN_INFO`, `TASK_STATEMENTS`, `CONCEPTS`, `DOMAIN_DESC`, `RULES`, `CORE`, `KEYWORDS`, `DONATIONS` — ~247KB) now live in their own first-party files, loaded via `<link rel="stylesheet">` and `<script src>`. `index.html` drops from ~431KB to ~120KB, leaving it as app engine and markup only. Content was moved byte-identically — nothing was rewritten. Each file now caches independently, so editing an exam question no longer invalidates the CSS and vice versa.
+- **`index.html` split further: CSS moved to `style.css`, static content to `content.js`.** The `<style>` block (~65KB) and the nine read-only data constants (`QDATA`'s 156-question bank plus `DOMAIN_INFO`, `TASK_STATEMENTS`, `CONCEPTS`, `DOMAIN_DESC`, `RULES`, `CORE`, `KEYWORDS`, `DONATIONS` — ~241KB) now live in their own first-party files, loaded via `<link rel="stylesheet">` and `<script src>`. `index.html` drops from ~431KB to ~116KB, leaving it as app engine and markup only. Content was moved byte-identically — nothing was rewritten. Each file now caches independently, so editing an exam question no longer invalidates the CSS and vice versa.
 - **Constitution amended to v1.2.0**: Principle I now permits first-party `<link rel="stylesheet">` files and requires every such file to ship alongside `index.html`; Principle IV's rationale re-grounded on escaping correctness (it now covers `content.js`, and drops a stale claim about 30KB single-line literals).
 
 ### Added
 
-- **A visible error banner when a data file fails to load.** Previously any startup exception was only logged to the console and the app rendered empty panes. `index.html` now needs `style.css`, `content.js` and `translations/` beside it; if `content.js` is missing it says so on the page instead of failing silently.
+- **A visible error banner when content.js fails to load.** Previously any startup exception was only logged to the console and the app rendered empty panes. `index.html` needs `style.css` and `content.js` beside it — `translations/` is optional and silently falls back to English if missing. If `content.js` specifically is missing, the banner names it directly; any other startup error shows a generic "failed to start" message instead.
 
 ## [1.0.0] - 2026-08-05 - Lazy-loaded translation files
 
