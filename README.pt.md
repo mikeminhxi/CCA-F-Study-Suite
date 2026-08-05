@@ -4,11 +4,11 @@
 
 🔗 **Demo ao vivo:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Um único arquivo HTML autocontido para estudar a prova **Claude Certified Architect — Foundations (CCA-F)** da Anthropic. Sem build, sem servidor, sem dependências para instalar — basta abrir `index.html` em um navegador.
+Um aplicativo estático autocontido para estudar a prova **Claude Certified Architect — Foundations (CCA-F)** da Anthropic. Sem build, sem servidor, sem dependências para instalar — basta abrir `index.html` em um navegador.
 
 ## Como abrir
 
-Dê duplo clique em [index.html](index.html), ou sirva com qualquer servidor de arquivos estático. O progresso é salvo localmente no navegador (`localStorage`), por dispositivo/navegador.
+Dê duplo clique em [index.html](index.html), ou sirva com qualquer servidor de arquivos estático. O progresso é salvo localmente no navegador (`localStorage`), por dispositivo/navegador. Mantenha a pasta `translations/` junto de `index.html` — ela é necessária para todos os idiomas exceto o inglês; aberto sozinho, `index.html` funciona apenas em inglês.
 
 ## O que tem dentro
 
@@ -32,7 +32,7 @@ A página é um shell com abas contendo quatro ferramentas. Em telas de largura 
 - **Temas Claro / Escuro / Sistema / Sepia** — escolha uma aparência clara ou escura fixa, siga a configuração do sistema, ou mude para um tema Sepia em tons quentes de âmbar e creme (que também se adapta automaticamente a claro/escuro); a escolha persiste entre visitas.
 - **Palavras-chave marcadas automaticamente** — cada pergunta é verificada contra uma lista de dezenas de termos típicos da prova (ex.: "MCP resource", "stateless", "tool_choice") e mostra as que encontrou como chips, para que a frase reveladora salte aos olhos antes de você ler a explicação.
 - **Persistência local** — o progresso de estudo (marcações de dominada/revisar) e o estado do checklist do plano são salvos via `localStorage`, com um fallback em memória para a aba atual caso o armazenamento esteja bloqueado.
-- **Zero dependências** — JS/CSS/SVG puro em um único arquivo; as únicas chamadas externas são as Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+- **Zero dependências** — JS/CSS/SVG puro, sem framework ou build tooling; as únicas chamadas externas são as Google Fonts (Space Grotesk, Inter, JetBrains Mono).
 - **Apoio opcional** — um botão "☕ Buy me a coffee" (sempre visível na navegação superior, além de um aviso ao terminar uma prova de prática) abre um modal com QR codes para algumas opções de pagamento; totalmente opcional e ocultado automaticamente se nenhuma imagem de QR estiver configurada.
 
 ## Aviso legal

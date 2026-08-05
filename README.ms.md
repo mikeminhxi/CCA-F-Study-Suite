@@ -4,11 +4,11 @@
 
 🔗 **Demo langsung:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Satu fail HTML tunggal yang berdiri sendiri untuk belajar bagi peperiksaan pensijilan Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Tiada proses build, tiada pelayan (server), tiada dependency yang perlu dipasang — cukup buka `index.html` dalam pelayar web.
+Aplikasi statik yang berdiri sendiri untuk belajar bagi peperiksaan pensijilan Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Tiada proses build, tiada pelayan (server), tiada dependency yang perlu dipasang — cukup buka `index.html` dalam pelayar web.
 
 ## Cara membuka
 
-Klik dua kali pada [index.html](index.html), atau jalankan melalui mana-mana pelayan fail statik. Kemajuan disimpan secara tempatan dalam pelayar (`localStorage`), mengikut peranti/pelayar.
+Klik dua kali pada [index.html](index.html), atau jalankan melalui mana-mana pelayan fail statik. Kemajuan disimpan secara tempatan dalam pelayar (`localStorage`), mengikut peranti/pelayar. Simpan folder `translations/` bersebelahan dengan `index.html` — ia diperlukan untuk semua bahasa selain bahasa Inggeris; jika `index.html` dibuka sendirian, hanya bahasa Inggeris yang berfungsi.
 
 ## Kandungan Halaman
 
@@ -32,7 +32,7 @@ Halaman ini adalah rangka bertab yang menggabungkan empat alat. Pada skrin lebar
 - **Tema Light / Dark / System / Sepia** — pilih rupa terang atau gelap yang tetap, ikut tetapan OS anda, atau tukar kepada tema Sepia berwarna ambar-krim yang hangat (turut menyesuaikan diri secara automatik dengan terang/gelap); pilihan ini kekal pada lawatan seterusnya.
 - **Kata kunci bertanda automatik** — setiap soalan disemak berbanding senarai berpuluh-puluh istilah popular peperiksaan (cth. "MCP resource", "stateless", "tool_choice") dan memaparkan yang sepadan sebagai cip, supaya frasa penentu terus kelihatan sebelum anda sempat membaca penjelasannya.
 - **Ketekalan tempatan** — kemajuan pembelajaran (tanda Dikuasai/Ulang kaji) dan status senarai semak pelan disimpan melalui `localStorage`, dengan sandaran dalam-memori untuk tab semasa jika storan disekat.
-- **Sifar dependency** — JS/CSS/SVG tulen dalam satu fail sahaja; satu-satunya panggilan luaran adalah kepada Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+- **Sifar dependency** — JS/CSS/SVG tulen tanpa framework atau alat build; satu-satunya panggilan luaran adalah kepada Google Fonts (Space Grotesk, Inter, JetBrains Mono).
 - **Sokongan pilihan** — butang "☕ Buy me a coffee" (sentiasa kelihatan pada navigasi atas, ditambah seruan selepas selesai peperiksaan latihan) membuka modal kod QR dengan beberapa pilihan pembayaran; sepenuhnya pilihan dan tersembunyi secara automatik jika tiada imej QR dikonfigurasikan.
 
 ## Penafian

@@ -1,18 +1,18 @@
-{
-  "code": "pl",
-  "nativeName": "Polski",
-  "sortHint": "latin",
-  "qsUnit": "pytań",
-  "noSpaceBeforeUnit": false,
-  "questionFmt": "function(a,b){return 'Pytanie '+a+' / '+b;}",
-  "questionsAvailableFmt": "function(n){return n+' pytań dostępnych';}",
-  "scoreSoFarFmt": "function(a,b){return a+' / '+b+' poprawnych jak dotąd';}",
-  "bigScoreFmt": "function(n,p){return '/ '+n+' poprawnych · '+p+'%';}",
-  "allCorrectFmt": "function(n){return 'Wszystkie '+n+' poprawne w tej rundzie.';}",
-  "retakeAllFmt": "function(n){return 'Powtórz wszystkie '+n;}",
-  "retakeMissedFmt": "function(n){return 'Powtórz tylko '+n+' błędnych';}",
-  "notThisTimeFmt": "function(l){return 'Tym razem nie — poprawna odpowiedź to '+l+'.';}",
-  "i18n": {
+window.__LANG_PL__ = {
+  code: "pl",
+  nativeName: "Polski",
+  sortHint: "latin",
+  qsUnit: "pytań",
+  noSpaceBeforeUnit: false,
+  questionFmt: function(a,b){return 'Pytanie '+a+' / '+b;},
+  questionsAvailableFmt: function(n){return n+' pytań dostępnych';},
+  scoreSoFarFmt: function(a,b){return a+' / '+b+' poprawnych jak dotąd';},
+  bigScoreFmt: function(n,p){return '/ '+n+' poprawnych · '+p+'%';},
+  allCorrectFmt: function(n){return 'Wszystkie '+n+' poprawne w tej rundzie.';},
+  retakeAllFmt: function(n){return 'Powtórz wszystkie '+n;},
+  retakeMissedFmt: function(n){return 'Powtórz tylko '+n+' błędnych';},
+  notThisTimeFmt: function(l){return 'Tym razem nie — poprawna odpowiedź to '+l+'.';},
+  i18n: {
     "Study Console": "Konsola Nauki",
     "Learning Path": "Ścieżka Nauki",
     "Cheat & Keywords": "Ściąga i Słowa Kluczowe",
@@ -737,11 +737,11 @@
     "Preserve conflicting data with source attribution; don't choose one": "Zachowuj sprzeczne dane z przypisaniem źródła; nie wybieraj jednego",
     "Require structured claim-source mappings from subagents to preserve attribution": "Wymagaj strukturalnych mapowań twierdzenie-źródło od subagentów, aby zachować przypisanie"
   },
-  "shell": {
+  shell: {
     "brand_sub": "JEDEN PLIK · ZAPIS LOKALNY",
     "tab_console": "Konsola Nauki",
     "tab_hub": "Centrum Nauki",
     "tab_map": "Mapa Neuronów",
     "tab_plan": "Plan 2-Tygodniowy"
   }
-}
+};

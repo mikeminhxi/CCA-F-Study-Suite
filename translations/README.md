@@ -1,16 +1,21 @@
 # translations/
 
-Staged, per-language dictionary files produced by the `fetch-language-dictionary`
-Claude Code skill, before they're wired into `index.html` by the
-`add-language` skill.
+One file per supported language: `<code>.js`, defining
+`window.__LANG_<CODE>__` (metadata + `i18n` dict + `shell` dict + format
+functions). `index.html` loads the active language's file on demand via a
+`<script src="translations/<code>.js">` tag (not `fetch()` — this project
+must still work when `index.html` is opened directly via `file://`, which
+`fetch()` of a local file cannot do). This is the single source of truth
+for translated copy: there is no separate staged/inline distinction anymore.
 
-Each `<code>.json` here is the full 531-key translated dictionary (526
-`__I18N_XX__` entries + 5 `__SHELL_XX__` entries) plus the metadata needed to
-wire it in (`qsUnit`, `noSpaceBeforeUnit`, `questionFmt`, `nativeName`,
-`sortHint`) — see `.claude/skills/fetch-language-dictionary/SKILL.md` for the
-exact shape.
+Each file has exactly:
+- 5 metadata fields: `code`, `nativeName`, `sortHint`, `qsUnit`, `noSpaceBeforeUnit`
+- 8 format functions: `questionFmt`, `questionsAvailableFmt`, `scoreSoFarFmt`,
+  `bigScoreFmt`, `allCorrectFmt`, `retakeAllFmt`, `retakeMissedFmt`, `notThisTimeFmt`
+- `i18n`: 723 UI-copy/concept string keys
+- `shell`: 5 nav-label keys (`brand_sub`, `tab_console`, `tab_hub`, `tab_map`, `tab_plan`)
 
-These files are kept, not deleted, after a language ships: they're the
-easiest way to review or correct a language's translations without wading
-through the in-app dictionary, and they let a future fix re-run just the
-injection step instead of re-translating from scratch.
+To add a new language, see the `add-language` and `fetch-language-dictionary`
+skills — the workflow is: draft a new `translations/<code>.js` (using an
+existing file's keyset as the baseline), add one `<option>` to `#lang-select`
+in `index.html`, update the READMEs.

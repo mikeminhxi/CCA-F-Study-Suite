@@ -1,18 +1,18 @@
-{
-  "code": "id",
-  "nativeName": "Bahasa Indonesia",
-  "sortHint": "latin",
-  "qsUnit": "soal",
-  "noSpaceBeforeUnit": false,
-  "questionFmt": "function(a,b){return 'Soal '+a+' / '+b;}",
-  "questionsAvailableFmt": "function(n){return n+' soal tersedia';}",
-  "scoreSoFarFmt": "function(a,b){return a+' / '+b+' benar sejauh ini';}",
-  "bigScoreFmt": "function(n,p){return '/ '+n+' benar · '+p+'%';}",
-  "allCorrectFmt": "function(n){return 'Semua '+n+' benar di babak ini.';}",
-  "retakeAllFmt": "function(n){return 'Ulangi semua '+n;}",
-  "retakeMissedFmt": "function(n){return 'Ulangi hanya '+n+' yang salah';}",
-  "notThisTimeFmt": "function(l){return 'Bukan kali ini — jawaban yang benar adalah '+l+'.';}",
-  "i18n": {
+window.__LANG_ID__ = {
+  code: "id",
+  nativeName: "Bahasa Indonesia",
+  sortHint: "latin",
+  qsUnit: "soal",
+  noSpaceBeforeUnit: false,
+  questionFmt: function(a,b){return 'Soal '+a+' / '+b;},
+  questionsAvailableFmt: function(n){return n+' soal tersedia';},
+  scoreSoFarFmt: function(a,b){return a+' / '+b+' benar sejauh ini';},
+  bigScoreFmt: function(n,p){return '/ '+n+' benar · '+p+'%';},
+  allCorrectFmt: function(n){return 'Semua '+n+' benar di babak ini.';},
+  retakeAllFmt: function(n){return 'Ulangi semua '+n;},
+  retakeMissedFmt: function(n){return 'Ulangi hanya '+n+' yang salah';},
+  notThisTimeFmt: function(l){return 'Bukan kali ini — jawaban yang benar adalah '+l+'.';},
+  i18n: {
     "Study Console": "Konsol Belajar",
     "Learning Path": "Jalur Belajar",
     "Cheat & Keywords": "Contekan & Kata Kunci",
@@ -737,11 +737,11 @@
     "Preserve conflicting data with source attribution; don't choose one": "Simpan data yang bertentangan lengkap dengan atribusi sumbernya; jangan pilih salah satu",
     "Require structured claim-source mappings from subagents to preserve attribution": "Wajibkan pemetaan claim-sumber yang terstruktur dari subagent untuk menjaga atribusi"
   },
-  "shell": {
+  shell: {
     "brand_sub": "SATU FILE · DISIMPAN LOKAL",
     "tab_console": "Konsol Belajar",
     "tab_hub": "Pusat Belajar",
     "tab_map": "Peta Neuron",
     "tab_plan": "Rencana 2 Minggu"
   }
-}
+};

@@ -4,11 +4,11 @@
 
 🔗 **Live demo:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-A single self-contained HTML file for studying Anthropic's **Claude Certified Architect — Foundations (CCA-F)** exam. No build step, no server, no dependencies to install — just open `index.html` in a browser.
+A self-contained static app for studying Anthropic's **Claude Certified Architect — Foundations (CCA-F)** exam. No build step, no server, no dependencies to install — just open `index.html` in a browser.
 
 ## Open it
 
-Double-click [index.html](index.html), or serve it with any static file server. Progress is saved locally in the browser (`localStorage`), per device/browser.
+Double-click [index.html](index.html), or serve it with any static file server. Progress is saved locally in the browser (`localStorage`), per device/browser. Keep the `translations/` folder alongside `index.html` — it's required for every language except English; `index.html` opened on its own falls back to English only.
 
 ## What's inside
 
@@ -32,7 +32,7 @@ The page is a tabbed shell with four tools. On desktop-width screens (900px and 
 - **Light / Dark / System / Sepia themes** — pick a fixed light or dark look, follow your OS setting, or switch to a warm amber-and-cream Sepia theme (also auto-adapts to light/dark); the choice persists across visits.
 - **Auto-tagged keywords** — each question is checked against a list of dozens of exam buzzwords (e.g. "MCP resource", "stateless", "tool_choice") and shows the ones it matches as chips, so the giveaway phrase jumps out before you read the explanation.
 - **Local persistence** — study progress (known/review marks) and plan checklist state are saved via `localStorage`, with an in-memory fallback for the current tab if storage is blocked.
-- **Zero dependencies** — vanilla JS/CSS/SVG in one file; the only external calls are Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+- **Zero dependencies** — vanilla JS/CSS/SVG, no framework or build tooling; the only external calls are Google Fonts (Space Grotesk, Inter, JetBrains Mono).
 - **Optional support** — a "☕ Buy me a coffee" button (always visible in the top nav, plus a callout after finishing a practice exam) opens a QR-code modal with a few payment options; entirely optional and automatically hidden if no QR images are configured.
 
 ## Disclaimer

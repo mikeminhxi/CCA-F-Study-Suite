@@ -1,22 +1,22 @@
 <!--
 Sync Impact Report
-- Version change: (template) → 1.0.0
-- List of modified principles: N/A (initial ratification)
-  - I. Zero-Dependency Single File (new)
-  - II. i18n-First UI Copy (new)
-  - III. Theme Parity (new)
-  - IV. Safe Large-Dictionary Edits (new)
-  - V. Documentation Currency (new)
-- Added sections: Language & Translation Conventions; Development Workflow; Governance
+- Version change: 1.0.0 → 1.1.1
+- List of modified principles:
+  - I. Zero-Build, First-Party Files (amended: explicitly allows first-party
+    local <script src> files with no build step, alongside index.html;
+    still forbids bundlers/transpilation/third-party scripts)
+  - II. i18n-First UI Copy (amended: describes the translations/<code>.js
+    per-language-file model, replacing the inline window.__I18N_XX__/
+    __SHELL_XX__ + MAPS/SHELLS description)
+  - IV. Safe Large-Dictionary Edits (wording fix: "inline JS dictionary
+    literals" → "per-language translations/<code>.js JS dictionary
+    literals", since Principle II's amendment moved them out of index.html)
+- Added sections: none
 - Removed sections: none
 - Templates requiring updates:
-  - ✅ .specify/templates/plan-template.md — Constitution Check gate is generic
-    ("[Gates determined based on constitution file]"), no edit needed; gates
-    are derived per-feature from this file at /speckit-plan time.
-  - ✅ .specify/templates/spec-template.md — no constitution-specific
-    references, no edit needed.
-  - ✅ .specify/templates/tasks-template.md — no constitution-specific
-    references, no edit needed.
+  - ✅ .specify/templates/plan-template.md — no edit needed (generic gate).
+  - ✅ .specify/templates/spec-template.md — no edit needed.
+  - ✅ .specify/templates/tasks-template.md — no edit needed.
 - Follow-up TODOs: none.
 -->
 
@@ -24,27 +24,37 @@ Sync Impact Report
 
 ## Core Principles
 
-### I. Zero-Dependency Single File
+### I. Zero-Build, First-Party Files
 
-The entire application is one self-contained file, `index.html`.
-No build step, no server, no external JS dependencies — the only external
-network call is a Google Fonts `<link>`. Any change that would require a
-bundler, package manager, or a new external script/library dependency is out
-of scope unless the constitution is amended first to explicitly allow it.
+The application ships as first-party static files with no build step, no
+server-side code, no package manager, and no bundler — only plain files a
+browser loads directly. `index.html` is the entry point; it may load
+additional same-origin, first-party `<script src>` files (e.g.
+`languages.config.js`, `translations/<code>.js`) as long as each one is a
+plain committed file requiring no compilation step, and loading uses
+`<script src>` rather than `fetch()` so the app keeps working when
+`index.html` is opened directly via `file://`. The only external network
+call is a Google Fonts `<link>`. Any change that would require a bundler,
+package manager, transpilation, or a third-party external script/library
+dependency is out of scope unless the constitution is amended first to
+explicitly allow it.
 
 ### II. i18n-First UI Copy
 
-All user-visible copy MUST flow through the i18n dictionary system
-(`window.__I18N_XX__` dictionaries + `window.__SHELL_XX__` nav labels,
-consumed by the `MAPS`/`SHELLS` objects and the TreeWalker-based
-`translateNode`/`applyAll` engine). Hardcoded English strings that bypass
-translation are not permitted in UI-facing markup. Every new language
-addition MUST cover the full key set already present in the other
-dictionaries (currently: VN, JA, ZH, TW, ES, with EN implicit) and MUST
-update every README's switch-link row and Features bullet, and the
-`#lang-select` dropdown, in the same pass. Dropdown/README language order:
-Latin-script languages first, alphabetically by English name, then CJK
-languages grouped together.
+All user-visible copy MUST flow through the i18n dictionary system: one
+`translations/<code>.js` file per language (each defining
+`window.__LANG_<CODE>__` with an `i18n` dict, a `shell` dict, and 8 format
+functions), lazily loaded via `<script src>` into `LANG_DATA[code]` and
+consumed by the TreeWalker-based `translateNode`/`applyAll` engine.
+Hardcoded English strings that bypass translation are not permitted in
+UI-facing markup. Every new language addition MUST cover the full key set
+already present in the other language files (verified by CI keyset-parity
+checking — currently 723 `i18n` keys + 5 `shell` keys + 8 format functions
+per language, EN implicit/untranslated) and MUST update every README's
+switch-link row and Features bullet, and the `#lang-select` dropdown, in
+the same pass. Dropdown/README language order: Latin-script languages
+first, alphabetically by English name, then CJK languages grouped
+together.
 
 ### III. Theme Parity
 
@@ -56,7 +66,7 @@ other is a regression, not a follow-up.
 
 ### IV. Safe Large-Dictionary Edits
 
-Several inline JS dictionary literals exceed 30KB on a single line. Edits to
+Several per-language `translations/<code>.js` JS dictionary literals exceed 30KB on a single line. Edits to
 them MUST go through a throwaway Node script using brace-depth- and
 string-escape-aware JSON boundary detection (never naive string-splitting
 such as `indexOf(';')`, which breaks on embedded semicolons in translated
@@ -79,9 +89,10 @@ never diverge between `CHANGELOG.md`, the six README files, and the app's
   around them is translated for reading comprehension.
 - Dynamic strings containing runtime numbers (e.g. the "N Qs" badge, the
   "Question N / M" counter) cannot live in a static dictionary; they are
-  handled via the `QS_UNIT` / `QUESTION_FMT` regex-based per-language
-  formatters in the translation engine, not by trying to force them into
-  fixed dictionary entries.
+  handled via each language's `qsUnit`/`questionFmt` (and the other 7
+  `*Fmt` functions) in `translations/<code>.js`, matched by regex in the
+  translation engine, not by trying to force them into fixed dictionary
+  entries.
 - Simplified/Traditional Chinese conversions must account for
   context-dependent characters (e.g. 复/干/系/签) via phrase-level
   overrides before falling back to a general character map, and must be
@@ -111,4 +122,4 @@ not committee review. Any amendment MUST:
    `spec-template.md`, and `tasks-template.md` for consistency (see Sync
    Impact Report above for the current state of that check).
 
-**Version**: 1.0.0 | **Ratified**: 2026-07-24 | **Last Amended**: 2026-07-24
+**Version**: 1.1.1 | **Ratified**: 2026-07-24 | **Last Amended**: 2026-08-05

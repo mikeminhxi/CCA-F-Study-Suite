@@ -1,18 +1,18 @@
-{
-  "code": "ms",
-  "nativeName": "Bahasa Melayu",
-  "sortHint": "latin",
-  "qsUnit": "soalan",
-  "noSpaceBeforeUnit": false,
-  "questionFmt": "function(a,b){return 'Soalan '+a+' / '+b;}",
-  "questionsAvailableFmt": "function(n){return n+' soalan tersedia';}",
-  "scoreSoFarFmt": "function(a,b){return a+' / '+b+' betul setakat ini';}",
-  "bigScoreFmt": "function(n,p){return '/ '+n+' betul · '+p+'%';}",
-  "allCorrectFmt": "function(n){return 'Semua '+n+' betul pada pusingan ini.';}",
-  "retakeAllFmt": "function(n){return 'Ambil semula semua '+n;}",
-  "retakeMissedFmt": "function(n){return 'Ambil semula '+n+' yang tersilap sahaja';}",
-  "notThisTimeFmt": "function(l){return 'Bukan kali ini — jawapan betul ialah '+l+'.';}",
-  "i18n": {
+window.__LANG_MS__ = {
+  code: "ms",
+  nativeName: "Bahasa Melayu",
+  sortHint: "latin",
+  qsUnit: "soalan",
+  noSpaceBeforeUnit: false,
+  questionFmt: function(a,b){return 'Soalan '+a+' / '+b;},
+  questionsAvailableFmt: function(n){return n+' soalan tersedia';},
+  scoreSoFarFmt: function(a,b){return a+' / '+b+' betul setakat ini';},
+  bigScoreFmt: function(n,p){return '/ '+n+' betul · '+p+'%';},
+  allCorrectFmt: function(n){return 'Semua '+n+' betul pada pusingan ini.';},
+  retakeAllFmt: function(n){return 'Ambil semula semua '+n;},
+  retakeMissedFmt: function(n){return 'Ambil semula '+n+' yang tersilap sahaja';},
+  notThisTimeFmt: function(l){return 'Bukan kali ini — jawapan betul ialah '+l+'.';},
+  i18n: {
     "Study Console": "Konsol Belajar",
     "Learning Path": "Laluan Pembelajaran",
     "Cheat & Keywords": "Nota Ringkas & Kata Kunci",
@@ -737,11 +737,11 @@
     "Preserve conflicting data with source attribution; don't choose one": "Kekalkan data yang bercanggah berserta atribusi sumber; jangan pilih salah satu sahaja",
     "Require structured claim-source mappings from subagents to preserve attribution": "Wajibkan pemetaan claim-sumber berstruktur daripada subagent untuk mengekalkan atribusi"
   },
-  "shell": {
+  shell: {
     "brand_sub": "SATU FAIL · DISIMPAN SECARA SETEMPAT",
     "tab_console": "Konsol Belajar",
     "tab_hub": "Hab Belajar",
     "tab_map": "Peta Neuron",
     "tab_plan": "Rancangan 2 Minggu"
   }
-}
+};

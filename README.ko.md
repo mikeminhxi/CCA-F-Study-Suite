@@ -4,11 +4,11 @@
 
 🔗 **라이브 데모:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Anthropic의 **Claude Certified Architect — Foundations (CCA-F)** 시험 대비를 위한, 단일 HTML 파일로 완결되는 학습 앱입니다. 빌드 과정도, 서버도, 설치할 외부 의존성도 필요 없습니다 — 브라우저에서 `index.html`을 열기만 하면 됩니다.
+Anthropic의 **Claude Certified Architect — Foundations (CCA-F)** 시험 대비를 위한, 빌드나 서버 없이 그대로 동작하는 정적 앱입니다. 설치할 외부 의존성도 필요 없습니다 — 브라우저에서 `index.html`을 열기만 하면 됩니다.
 
 ## 여는 방법
 
-[index.html](index.html)을 더블클릭하거나, 아무 정적 파일 서버로 제공하세요. 학습 진행 상황은 브라우저의 `localStorage`에 로컬로 저장됩니다(기기·브라우저별로 별도 저장).
+[index.html](index.html)을 더블클릭하거나, 아무 정적 파일 서버로 제공하세요. 학습 진행 상황은 브라우저의 `localStorage`에 로컬로 저장됩니다(기기·브라우저별로 별도 저장). `translations/` 폴더는 `index.html`과 같은 위치에 두어야 합니다 — 영어를 제외한 모든 언어에 필요하며, `index.html`만 단독으로 열면 영어로만 동작합니다.
 
 ## 구성
 
@@ -32,7 +32,7 @@ Anthropic의 **Claude Certified Architect — Foundations (CCA-F)** 시험 대�
 - **라이트 / 다크 / 시스템 / 세피아 테마** — 고정된 라이트 또는 다크 모습을 선택하거나, OS 설정을 따르거나, 따뜻한 호박색·크림색의 세피아 테마로 전환할 수 있습니다(라이트/다크에도 자동으로 맞춰집니다). 선택한 테마는 다음 방문 시에도 유지됩니다.
 - **자동 키워드 태깅** — 각 문항은 수십 개의 시험 빈출 키워드(예: "MCP resource", "stateless", "tool_choice")와 대조되어 일치하는 항목이 칩으로 표시되므로, 해설을 읽기 전에 결정적인 문구가 한눈에 들어옵니다.
 - **로컬 저장** — 학습 진행 상황(Known/Review 표시)과 계획 체크리스트 상태는 `localStorage`에 저장되며, 저장이 차단된 경우 현재 탭에 한해 메모리 기반으로 대체됩니다.
-- **의존성 없음** — 순수 바닐라 JS/CSS/SVG로 구성된 단일 파일입니다. 외부 호출은 Google Fonts(Space Grotesk, Inter, JetBrains Mono)뿐입니다.
+- **의존성 없음** — 프레임워크나 빌드 도구 없이 순수 바닐라 JS/CSS/SVG로 구성됩니다. 외부 호출은 Google Fonts(Space Grotesk, Inter, JetBrains Mono)뿐입니다.
 - **선택적 후원 기능** — 상단 내비게이션에 항상 표시되는 "☕ Buy me a coffee" 버튼(연습 시험을 마친 뒤에도 안내가 표시됩니다)을 누르면 몇 가지 결제 수단의 QR 코드를 보여주는 모달이 열립니다. 완전히 선택 사항이며, QR 이미지가 설정되어 있지 않으면 자동으로 숨겨집니다.
 
 ## 면책 조항

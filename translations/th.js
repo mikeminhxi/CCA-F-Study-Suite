@@ -1,18 +1,18 @@
-{
-  "code": "th",
-  "nativeName": "ไทย",
-  "sortHint": "thai",
-  "qsUnit": "ข้อ",
-  "noSpaceBeforeUnit": false,
-  "questionFmt": "function(a,b){return 'ข้อ '+a+' / '+b;}",
-  "questionsAvailableFmt": "function(n){return n+' ข้อพร้อมใช้งาน';}",
-  "scoreSoFarFmt": "function(a,b){return a+' / '+b+' ถูกต้องจนถึงตอนนี้';}",
-  "bigScoreFmt": "function(n,p){return '/ '+n+' ถูกต้อง · '+p+'%';}",
-  "allCorrectFmt": "function(n){return 'ถูกทั้งหมด '+n+' ข้อในรอบนี้';}",
-  "retakeAllFmt": "function(n){return 'ทำซ้ำทั้งหมด '+n+' ข้อ';}",
-  "retakeMissedFmt": "function(n){return 'ทำซ้ำเฉพาะ '+n+' ข้อที่พลาด';}",
-  "notThisTimeFmt": "function(l){return 'ยังไม่ถูก — คำตอบที่ถูกต้องคือ '+l;}",
-  "i18n": {
+window.__LANG_TH__ = {
+  code: "th",
+  nativeName: "ไทย",
+  sortHint: "thai",
+  qsUnit: "ข้อ",
+  noSpaceBeforeUnit: false,
+  questionFmt: function(a,b){return 'ข้อ '+a+' / '+b;},
+  questionsAvailableFmt: function(n){return n+' ข้อพร้อมใช้งาน';},
+  scoreSoFarFmt: function(a,b){return a+' / '+b+' ถูกต้องจนถึงตอนนี้';},
+  bigScoreFmt: function(n,p){return '/ '+n+' ถูกต้อง · '+p+'%';},
+  allCorrectFmt: function(n){return 'ถูกทั้งหมด '+n+' ข้อในรอบนี้';},
+  retakeAllFmt: function(n){return 'ทำซ้ำทั้งหมด '+n+' ข้อ';},
+  retakeMissedFmt: function(n){return 'ทำซ้ำเฉพาะ '+n+' ข้อที่พลาด';},
+  notThisTimeFmt: function(l){return 'ยังไม่ถูก — คำตอบที่ถูกต้องคือ '+l;},
+  i18n: {
     "Study Console": "คอนโซลการเรียน",
     "Learning Path": "เส้นทางการเรียน",
     "Cheat & Keywords": "สรุปสูตรลัดและคำสำคัญ",
@@ -737,11 +737,11 @@
     "Preserve conflicting data with source attribution; don't choose one": "เก็บรักษาข้อมูลที่ขัดแย้งกันไว้พร้อมระบุแหล่งที่มา; อย่าเลือกเก็บแค่ค่าใดค่าหนึ่ง",
     "Require structured claim-source mappings from subagents to preserve attribution": "กำหนดให้ subagents ส่งการจับคู่ข้อกล่าวอ้าง-แหล่งที่มาแบบมีโครงสร้าง เพื่อรักษาการอ้างอิงแหล่งที่มาไว้"
   },
-  "shell": {
+  shell: {
     "brand_sub": "ไฟล์เดียว · บันทึกไว้ในเครื่อง",
     "tab_console": "คอนโซลการเรียน",
     "tab_hub": "ศูนย์การเรียน",
     "tab_map": "แผนที่เซลล์ประสาท",
     "tab_plan": "แผน 2 สัปดาห์"
   }
-}
+};

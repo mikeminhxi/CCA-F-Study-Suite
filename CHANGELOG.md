@@ -2,6 +2,18 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## [1.0.0] - 2026-08-05 - Lazy-loaded translation files
+
+### Changed
+
+- **Translation data split out of `index.html` into `translations/<code>.js`, loaded lazily.** Previously every visitor downloaded all 16 languages' dictionaries inline (1.26MB of the 1.71MB file) regardless of which language they used. Each language now lives in its own `translations/<code>.js`, loaded via a `<script src>` tag only when that language is selected — `<script src>` rather than `fetch()` specifically so the app keeps working when `index.html` is opened directly via `file://`. `index.html` drops from ~1.7MB to 421KB. One real behavior change: `index.html` opened by itself, without the `translations/` folder alongside it, is now English-only (every non-English language 404s on its lazy `<script src>` load and silently falls back to English); previously all 16 languages worked from the single file alone. Language switching, offline use with `translations/` present, and the missing-language/missing-key English fallback all otherwise work exactly as before.
+- **Constitution amended to v1.1.1.** Principle I renamed from "Zero-Dependency Single File" to "Zero-Build, First-Party Files" to permit first-party `<script src>` files alongside `index.html`; Principle II rewritten to describe the `translations/<code>.js` per-language-file model in place of the old inline `window.__I18N_XX__`/`__SHELL_XX__` + `MAPS`/`SHELLS` description; Principle IV's "large dictionary literal" wording updated to point at `translations/<code>.js` instead of inline `index.html` literals.
+- **CI gained a cross-language keyset-parity check.** `.github/scripts/validate-language-config.js` now also loads every `translations/<code>.js` file via `vm.runInNewContext` and fails the build if any language's `i18n`/`shell` key set, or its set of `*Fmt` dynamic-format functions, drifts from the baseline language.
+
+### Removed
+
+- **The 16 staged `translations/<code>.json` files.** These were an intermediate staging format from the pre-lazy-loading workflow (translate to JSON, then hand-inject into `index.html`); `translations/<code>.js` is now the final, directly-loaded artifact, so the `.json` staging copies were deleted as redundant.
+
 ## Thai (ไทย) — 17th supported language
 
 - **Thai (th)** — fully wired into `index.html` (`window.__I18N_TH__`/`__SHELL_TH__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT` plus the seven other dynamic-format tables including `QUESTIONS_AVAILABLE_FMT`, `#lang-select` dropdown positioned at the very end of the list, after Русский), all 16 existing READMEs updated, new `README.th.md` added. Full 723-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/th.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-thai-language`. Picked up from SPEC_KIT_INTEGRATION_PLAN.md's "not yet prioritized" list at the maintainer's request.
