@@ -13,21 +13,20 @@ Español, Tiếng Việt, 简体中文 (zh), 繁體中文 (tw), 日本語 (ja).
 
 Translation generation is **not** part of this skill — it lives in
 [fetch-language-dictionary](../fetch-language-dictionary/SKILL.md), which
-stages the full translated dictionary at `translations/<code>.json` before
-anything here runs. This skill is the cheap, mechanical half: wire an
-already-translated, already-validated dictionary into the app.
+writes the full translated dictionary directly to `translations/<code>.js`
+in its final, shipped form before anything here runs. This skill is the
+cheap, mechanical half: add the dropdown entry and README rows for an
+already-translated, already-validated language file.
 
-## Why this needs a script, not manual edits
+## No injection script needed anymore
 
-Each language's dictionary is injected as its own `<script>` block. The
-Read/Edit tools cannot safely handle these programmatically-generated
-objects. **Every step below that touches the HTML must go through a
-throwaway Node or PowerShell script** using real JSON parsing (brace-depth-
-and string-escape-aware), not direct Edit calls, `indexOf(';')`, or other
-naive string-splitting — write the script to the scratchpad directory, run
-it, then verify with another script. This is not optional; manual edits
-risk corrupting the file, and even a working manual edit reintroduces the
-one-language-per-single-line format this app has been moving away from.
+Earlier versions of this skill required a brace-depth-aware Node script to
+inject each language's dictionary into `index.html` as its own multi-KB
+`<script>` block, because the Read/Edit tools couldn't safely handle those
+programmatically-generated objects. That's gone: `translations/<code>.js`
+is loaded directly by the app at runtime (`index.html`'s `loadLang()`), so
+this skill's only HTML edit is adding one `<option>` line to `#lang-select`
+(Step 2) — a normal, safe `Edit` call, no script required.
 
 ## Step 0 — Confirm spec-kit has run for this language
 
