@@ -2,7 +2,7 @@
 Sync Impact Report
 - Version change: 1.0.0 → 1.1.0
 - List of modified principles:
-  - I. Zero-Dependency Single File (amended: explicitly allows first-party
+  - I. Zero-Build, First-Party Files (amended: explicitly allows first-party
     local <script src> files with no build step, alongside index.html;
     still forbids bundlers/transpilation/third-party scripts)
   - II. i18n-First UI Copy (amended: describes the translations/<code>.js
@@ -21,7 +21,7 @@ Sync Impact Report
 
 ## Core Principles
 
-### I. Zero-Dependency Single File
+### I. Zero-Build, First-Party Files
 
 The application ships as first-party static files with no build step, no
 server-side code, no package manager, and no bundler — only plain files a
