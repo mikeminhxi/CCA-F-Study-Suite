@@ -5,6 +5,13 @@
   "qsUnit": "ข้อ",
   "noSpaceBeforeUnit": false,
   "questionFmt": "function(a,b){return 'ข้อ '+a+' / '+b;}",
+  "questionsAvailableFmt": "function(n){return n+' ข้อพร้อมใช้งาน';}",
+  "scoreSoFarFmt": "function(a,b){return a+' / '+b+' ถูกต้องจนถึงตอนนี้';}",
+  "bigScoreFmt": "function(n,p){return '/ '+n+' ถูกต้อง · '+p+'%';}",
+  "allCorrectFmt": "function(n){return 'ถูกทั้งหมด '+n+' ข้อในรอบนี้';}",
+  "retakeAllFmt": "function(n){return 'ทำซ้ำทั้งหมด '+n+' ข้อ';}",
+  "retakeMissedFmt": "function(n){return 'ทำซ้ำเฉพาะ '+n+' ข้อที่พลาด';}",
+  "notThisTimeFmt": "function(l){return 'ยังไม่ถูก — คำตอบที่ถูกต้องคือ '+l;}",
   "i18n": {
     "Study Console": "คอนโซลการเรียน",
     "Learning Path": "เส้นทางการเรียน",

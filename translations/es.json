@@ -730,7 +730,12 @@
     "Nothing matches this filter.": "Nada coincide con este filtro.",
     "Flagged": "Marcada",
     "Question": "Pregunta",
-    "☕ Buy me a coffee": "☕ Invítame un café"
+    "☕ Buy me a coffee": "☕ Invítame un café",
+    "Found this useful?": "¿Te resultó útil?",
+    "Free and open-source practice questions.": "Preguntas de práctica gratuitas y de código abierto.",
+    "Bank 1": "Banco 1",
+    "Bank 2": "Banco 2",
+    "Bank 3": "Banco 3"
   },
   "shell": {
     "brand_sub": "UN SOLO ARCHIVO · GUARDADO LOCAL",

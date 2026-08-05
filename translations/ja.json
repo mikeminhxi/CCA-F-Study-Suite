@@ -730,7 +730,12 @@
     "Nothing matches this filter.": "このフィルタに該当するものはない。",
     "Flagged": "確認予定",
     "Question": "問題",
-    "☕ Buy me a coffee": "☕ コーヒーをおごる"
+    "☕ Buy me a coffee": "☕ コーヒーをおごる",
+    "Found this useful?": "役に立ちましたか?",
+    "Free and open-source practice questions.": "無料・オープンソースの練習問題です。",
+    "Bank 1": "銀行1",
+    "Bank 2": "銀行2",
+    "Bank 3": "銀行3"
   },
   "shell": {
     "brand_sub": "単一ファイル・自動保存",

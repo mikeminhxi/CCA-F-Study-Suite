@@ -5,6 +5,13 @@
   "qsUnit": "pytań",
   "noSpaceBeforeUnit": false,
   "questionFmt": "function(a,b){return 'Pytanie '+a+' / '+b;}",
+  "questionsAvailableFmt": "function(n){return n+' pytań dostępnych';}",
+  "scoreSoFarFmt": "function(a,b){return a+' / '+b+' poprawnych jak dotąd';}",
+  "bigScoreFmt": "function(n,p){return '/ '+n+' poprawnych · '+p+'%';}",
+  "allCorrectFmt": "function(n){return 'Wszystkie '+n+' poprawne w tej rundzie.';}",
+  "retakeAllFmt": "function(n){return 'Powtórz wszystkie '+n;}",
+  "retakeMissedFmt": "function(n){return 'Powtórz tylko '+n+' błędnych';}",
+  "notThisTimeFmt": "function(l){return 'Tym razem nie — poprawna odpowiedź to '+l+'.';}",
   "i18n": {
     "Study Console": "Konsola Nauki",
     "Learning Path": "Ścieżka Nauki",
