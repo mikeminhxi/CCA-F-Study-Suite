@@ -21,7 +21,7 @@ function makeRepo(existingConfig) {
   const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'ccaf-sync-test-'));
   fs.mkdirSync(path.join(repoRoot, 'translations'));
   ['fr', 'de'].forEach(function (code) {
-    fs.writeFileSync(path.join(repoRoot, 'translations', code + '.json'), '{}');
+    fs.writeFileSync(path.join(repoRoot, 'translations', code + '.js'), '');
   });
   if (existingConfig !== undefined) {
     fs.writeFileSync(path.join(repoRoot, 'languages.config.js'), existingConfig);
