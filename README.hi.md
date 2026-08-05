@@ -4,11 +4,11 @@
 
 🔗 **लाइव डेमो:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Anthropic की **Claude Certified Architect — Foundations (CCA-F)** प्रमाणन परीक्षा की तैयारी के लिए एक स्वतंत्र (self-contained) स्टैटिक ऐप। कोई build step नहीं, कोई server नहीं, इंस्टॉल करने के लिए कोई dependency नहीं — बस `index.html` को किसी भी browser में खोलें।
+Anthropic की **Claude Certified Architect — Foundations (CCA-F)** प्रमाणन परीक्षा की तैयारी के लिए एक स्वतंत्र (self-contained) स्टैटिक ऐप। कोई build step नहीं, कोई server नहीं, इंस्टॉल करने के लिए कोई dependency नहीं — फ़ोल्डर डाउनलोड करें और `index.html` को किसी भी browser में खोलें।
 
 ## फ़ाइल खोलें
 
-[index.html](index.html) पर डबल-क्लिक करें, या इसे किसी भी static file server के ज़रिए serve करें। प्रगति (progress) आपके browser में स्थानीय रूप से (`localStorage`) सहेजी जाती है, प्रति डिवाइस/browser। `style.css`, `content.js` और `translations/` फ़ोल्डर — तीनों को `index.html` के साथ ही रखें, ऐप को इन सभी की ज़रूरत होती है; अकेले खोले जाने पर `index.html` लोड होने के बजाय एक एरर दिखाएगा।
+[index.html](index.html) पर डबल-क्लिक करें, या इसे किसी भी static file server के ज़रिए serve करें। प्रगति (progress) आपके browser में स्थानीय रूप से (`localStorage`) सहेजी जाती है, प्रति डिवाइस/browser। `style.css` और `content.js` को `index.html` के साथ ही रखें — ऐप को इन दोनों की ज़रूरत होती है; अकेले खोले जाने पर `index.html` लोड होने के बजाय एक एरर दिखाएगा। अंग्रेज़ी के अलावा किसी भी भाषा के लिए `translations/` फ़ोल्डर भी साथ रखें — न होने पर ऐप चुपचाप अंग्रेज़ी में बदल जाएगा।
 
 ## पेज की सामग्री
 

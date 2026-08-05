@@ -4,11 +4,11 @@
 
 🔗 **在线演示：** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-一个用于备考 Anthropic **Claude Certified Architect — Foundations（CCA-F）** 认证考试的自包含静态应用。无需构建、无需服务器、无需安装任何依赖——只需在浏览器中打开 `index.html` 即可使用。
+一个用于备考 Anthropic **Claude Certified Architect — Foundations（CCA-F）** 认证考试的自包含静态应用。无需构建、无需服务器、无需安装任何依赖——下载整个文件夹后,在浏览器中打开 `index.html` 即可使用。
 
 ## 打开方式
 
-双击 [index.html](index.html),或用任意静态文件服务器托管它。学习进度会通过 `localStorage` 保存在本地浏览器中,按设备/浏览器区分。请将 `style.css`、`content.js` 和 `translations/` 文件夹与 `index.html` 放在一起——应用需要这三者齐全;若单独打开 `index.html`,将只会显示错误,而不是正常加载。
+双击 [index.html](index.html),或用任意静态文件服务器托管它。学习进度会通过 `localStorage` 保存在本地浏览器中,按设备/浏览器区分。请将 `style.css` 和 `content.js` 与 `index.html` 放在一起——应用需要这两者齐全;若单独打开 `index.html`,将只会显示错误,而不是正常加载。如果要使用英语以外的语言,还需加上 `translations/` 文件夹——缺少该文件夹时,应用会自动回退为英语,不会报错。
 
 ## 页面内容
 
