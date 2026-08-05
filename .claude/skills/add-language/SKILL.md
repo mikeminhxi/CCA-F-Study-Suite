@@ -5,11 +5,12 @@ description: Add a new UI language to the CCA-F Study Suite (index.html), from a
 
 # Add a language to the CCA-F Study Suite
 
-This app is a single self-contained HTML file (`index.html`) with a
-runtime text-swap i18n system. English is the implicit default (it's literally
-the text already in the HTML) — every other language is a full dictionary that
-gets swapped in. As of the last update the supported languages are: English,
-Español, Tiếng Việt, 简体中文 (zh), 繁體中文 (tw), 日本語 (ja).
+This app is a self-contained static app — `index.html` plus a `translations/`
+folder of per-language files, no build step — with a runtime text-swap i18n
+system. English is the implicit default (it's literally the text already in
+the HTML) — every other language is a full dictionary that gets swapped in.
+As of the last update the supported languages are: English, Español, Tiếng
+Việt, 简体中文 (zh), 繁體中文 (tw), 日本語 (ja).
 
 Translation generation is **not** part of this skill — it lives in
 [fetch-language-dictionary](../fetch-language-dictionary/SKILL.md), which
@@ -50,12 +51,12 @@ re-validation is needed here; `translations/<code>.js` is loaded directly by
 ## Step 2 — Add the dropdown option
 
 `#lang-select` in the HTML — add
-`<option value="<code>"><staged.nativeName></option>` in the agreed position
-per `staged.sortHint`: **Latin-script languages first, alphabetical by
-English name** — English, Español, Tiếng Việt — **then CJK languages grouped
-together** — 简体中文, 繁體中文, 日本語. Ask before assuming a different
-grouping if `sortHint` is ambiguous or absent, since this ordering has been
-revisited multiple times.
+`<option value="<code>"><nativeName></option>` (from `translations/<code>.js`'s
+`nativeName` field) in the agreed position per that file's `sortHint` field:
+**Latin-script languages first, alphabetical by English name** — English,
+Español, Tiếng Việt — **then CJK languages grouped together** — 简体中文,
+繁體中文, 日本語. Ask before assuming a different grouping if `sortHint` is
+ambiguous or absent, since this ordering has been revisited multiple times.
 
 ## Step 3 — Update every README
 
