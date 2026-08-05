@@ -699,7 +699,20 @@
 <script>
 (function(){
 "use strict";
+function showLoadError(){
+  try{
+    var el=document.createElement('div');
+    el.setAttribute('role','alert');
+    // Inline styles on purpose: style.css may be the file that failed to load.
+    el.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;padding:14px 18px;'+
+      'background:#7f1d1d;color:#fff;font:14px/1.5 system-ui,-apple-system,sans-serif;text-align:center';
+    el.textContent="This page couldn't load its data files. Keep index.html, style.css, "+
+      "content.js and the translations/ folder together in the same folder.";
+    (document.body||document.documentElement).appendChild(el);
+  }catch(e){}
+}
 try{
+if(typeof QDATA==='undefined') throw new Error('content.js failed to load');
 
 const MIXED_COLOR="#9aa4c6"; // "Mixed / Applied" is a cross-domain study filter, not a 6th domain
 function domainBadge(code){
@@ -1460,7 +1473,7 @@ function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random
   })();
 })();
 
-}catch(err){console.error("[CONSOLE]",err);}
+}catch(err){console.error("[CONSOLE]",err);showLoadError();}
 })();
 </script>
 <script>
