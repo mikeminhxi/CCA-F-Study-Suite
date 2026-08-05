@@ -33,11 +33,13 @@ drift the way #1 used to — write it once, not once per language.
 - **Dynamic**: contains a number, letter, or other value that varies at
   runtime, e.g. `"3 / 5 correct so far"`, `"Retake all 22"`. These can't be
   flat dictionary lookups (the exact English string is different every
-  render) — they need a small `..._FMT` dispatch, same pattern as the
-  existing `QUESTION_FMT` (search `translateNode` in `index.html` for
-  `QUESTION_FMT`/`QS_UNIT` to see the established shape: a regex that
+  render) — they need a small `<camelCase>Fmt` dispatch, same pattern as
+  the existing `questionFmt` (search `translateNode` in `index.html` for
+  `d.questionFmt`/`d.qsUnit` to see the established shape: a regex that
   extracts the runtime values from the normalized English text, matched
-  against a per-language `function(a,b){...}` in a `..._FMT` object).
+  against a `function(a,b){...}` field read directly off the currently
+  loaded language's data — `translations/<code>.js`'s
+  `window.__LANG_<CODE>__`, not a separate global `..._FMT` map).
 
 ## Step 2 — Translate
 
