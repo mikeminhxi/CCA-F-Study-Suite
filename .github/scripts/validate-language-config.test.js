@@ -65,3 +65,18 @@ test('checkLanguageFileParity flags a keyset mismatch', () => {
   assert.ok(errors.some(e => e.includes('bb.js') && e.includes('i18n keyset differs')));
   fs.rmSync(dir, { recursive: true, force: true });
 });
+
+test('checkLanguageFileParity reports a per-file error instead of crashing when a file throws', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'lang-parity-throw-'));
+  fs.mkdirSync(path.join(dir, 'translations'));
+  fs.writeFileSync(path.join(dir, 'translations', 'aa.js'),
+    "window.__LANG_AA__={questionFmt:function(){},questionsAvailableFmt:function(){}," +
+    "scoreSoFarFmt:function(){},bigScoreFmt:function(){},allCorrectFmt:function(){}," +
+    "retakeAllFmt:function(){},retakeMissedFmt:function(){},notThisTimeFmt:function(){}," +
+    "i18n:{a:'1'},shell:{x:'1'}};");
+  fs.writeFileSync(path.join(dir, 'translations', 'cc.js'), "throw new Error('boom');");
+  const { checkLanguageFileParity } = require('./validate-language-config.js');
+  const errors = checkLanguageFileParity(dir);
+  assert.ok(errors.some(e => e.includes('cc.js') && e.includes('failed to execute') && e.includes('boom')));
+  fs.rmSync(dir, { recursive: true, force: true });
+});
