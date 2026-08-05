@@ -6,7 +6,7 @@ All notable changes to the CCA-F Study Suite are recorded here.
 
 ### Changed
 
-- **`index.html` split further: CSS moved to `style.css`, static content to `content.js`.** The `<style>` block (~65KB) and the nine read-only data constants (`QDATA`'s 157-question bank plus `DOMAIN_INFO`, `TASK_STATEMENTS`, `CONCEPTS`, `DOMAIN_DESC`, `RULES`, `CORE`, `KEYWORDS`, `DONATIONS` — ~247KB) now live in their own first-party files, loaded via `<link rel="stylesheet">` and `<script src>`. `index.html` drops from ~431KB to ~120KB, leaving it as app engine and markup only. Content was moved byte-identically — nothing was rewritten. Each file now caches independently, so editing an exam question no longer invalidates the CSS and vice versa.
+- **`index.html` split further: CSS moved to `style.css`, static content to `content.js`.** The `<style>` block (~65KB) and the nine read-only data constants (`QDATA`'s 156-question bank plus `DOMAIN_INFO`, `TASK_STATEMENTS`, `CONCEPTS`, `DOMAIN_DESC`, `RULES`, `CORE`, `KEYWORDS`, `DONATIONS` — ~247KB) now live in their own first-party files, loaded via `<link rel="stylesheet">` and `<script src>`. `index.html` drops from ~431KB to ~120KB, leaving it as app engine and markup only. Content was moved byte-identically — nothing was rewritten. Each file now caches independently, so editing an exam question no longer invalidates the CSS and vice versa.
 - **Constitution amended to v1.2.0**: Principle I now permits first-party `<link rel="stylesheet">` files and requires every such file to ship alongside `index.html`; Principle IV's rationale re-grounded on escaping correctness (it now covers `content.js`, and drops a stale claim about 30KB single-line literals).
 
 ### Added
