@@ -1,6 +1,6 @@
 ---
 name: add-language
-description: Add a new UI language to the CCA-F Study Suite (index.html), from an already-staged translations/<code>.json file. Use this whenever the user asks to add/support a new language, translate the app into a language, or add a language variant — it will trigger fetch-language-dictionary first if no staged file exists yet. Covers wiring the staged dictionary into the JS engine, updating the language dropdown, and updating all README files.
+description: Add a new UI language to the CCA-F Study Suite (index.html), from an already-generated translations/<code>.js file. Use this whenever the user asks to add/support a new language, translate the app into a language, or add a language variant — it will trigger fetch-language-dictionary first if no such file exists yet. Covers adding the language dropdown option and updating all README files (translations/<code>.js is already the final, loaded artifact — no wiring into index.html's JS engine needed).
 ---
 
 # Add a language to the CCA-F Study Suite
@@ -39,53 +39,16 @@ and `tasks.md` for this language MUST already exist on its own branch
 they're missing, stop and tell the user to run `/speckit-plan` →
 `/speckit-tasks` first — don't wire the dictionary in anyway as a shortcut.
 
-## Step 1 — Load the staged dictionary
+## Step 1 — Confirm the language file exists
 
-Check for `translations/<code>.json`. **If it doesn't exist, stop and run
+Check for `translations/<code>.js`. **If it doesn't exist, stop and run
 the [fetch-language-dictionary](../fetch-language-dictionary/SKILL.md) skill
-first** — don't translate inline here as a fallback; that defeats the point
-of staging (durability across retries, reviewability, a clean PR diff).
+first** — don't translate inline here as a fallback. That skill's own Step 4
+already validates key parity against the baseline at generation time, so no
+re-validation is needed here; `translations/<code>.js` is loaded directly by
+`index.html`'s `loadLang()` function with no further wiring.
 
-Once the staged file exists, load it and re-validate key parity against the
-current in-app baseline before touching anything (the baseline may have
-drifted since the file was staged, e.g. new questions/keys added since):
-
-```js
-const fs = require('fs');
-const html = fs.readFileSync('index.html', 'utf8');
-const staged = JSON.parse(fs.readFileSync('translations/<code>.json', 'utf8'));
-const vn = JSON.parse(html.match(/window\.__I18N__=(\{[\s\S]*?\});/s)[1]);
-const shellVn = JSON.parse(html.match(/window\.__SHELL__=(\{[\s\S]*?\});/s)[1]);
-const newKeys = Object.keys(staged.i18n).sort();
-const vnKeys = Object.keys(vn).sort();
-console.log(JSON.stringify(newKeys) === JSON.stringify(vnKeys)); // must be true
-console.log(Object.keys(staged.shell).length === Object.keys(shellVn).length); // must be true
-```
-
-If parity fails, the staged file is stale — go back to
-`fetch-language-dictionary` to fill the gap (translate just the missing
-keys, not the whole set over again) rather than regenerating everything.
-
-## Step 2 — Inject into the HTML
-
-Use a script (see `scripts/inject-dict.js` in this skill folder, or write a
-fresh one following this pattern) that:
-1. Finds the last existing `window.__SHELL_XX__=...;` in the HTML.
-2. Inserts `window.__I18N_<CODE>__=<json>;\nwindow.__SHELL_<CODE>__=<json>;`
-   right after it, using brace-depth matching (not `indexOf(';')`, which
-   breaks on strings that contain literal semicolons).
-
-Then wire it into the JS engine (all four are small, single-line edits found
-via grep), pulling values straight from the staged file — no re-deriving:
-- `var MAPS={...}` — add `<code>:window.__I18N_<CODE>__||{}`.
-- `var SHELLS={...}` — add `<code>:window.__SHELL_<CODE>__||{}`.
-- `var QS_UNIT={...}` — add `<code>:'<staged.qsUnit>'`. Also check the
-  no-space rule right below it (`(lang==='ja'||lang==='zh'||...)?'':' '`) —
-  add `<code>` to that language list iff `staged.noSpaceBeforeUnit` is true.
-- `var QUESTION_FMT={...}` — add `<code>:<staged.questionFmt>` (the staged
-  file already has this as a literal JS function-expression string).
-
-## Step 3 — Add the dropdown option
+## Step 2 — Add the dropdown option
 
 `#lang-select` in the HTML — add
 `<option value="<code>"><staged.nativeName></option>` in the agreed position
@@ -95,7 +58,7 @@ together** — 简体中文, 繁體中文, 日本語. Ask before assuming a diff
 grouping if `sortHint` is ambiguous or absent, since this ordering has been
 revisited multiple times.
 
-## Step 4 — Update every README
+## Step 3 — Update every README
 
 All six `README*.md` files' **switch-link header row** (line 3) and
 **Features bullet** (the "language toggle" line) must list all supported
@@ -103,21 +66,20 @@ languages, in the same order as the dropdown, with the current file's own
 entry bolded instead of linked. Add a new `README.<code>.md` if the language
 is new (not just a script variant sharing a link target).
 
-## Step 5 — Verify
+## Step 4 — Verify
 
-1. Re-parse every `__I18N_*__`/`__SHELL_*__` dict from the HTML and confirm
-   they all parse as valid JSON with matching key counts.
-2. Confirm the dropdown option list and `MAPS`/`SHELLS`/`QS_UNIT`/
-   `QUESTION_FMT` all reference the new code.
+1. Load `translations/<code>.js` via `vm.runInNewContext` and confirm it
+   parses with the expected key counts (this is also enforced automatically
+   by CI's keyset-parity check, but verify locally before committing).
+2. Confirm the dropdown `<option value="<code>">` is present in `index.html`.
 3. Open the file in a browser (`powershell -c "Start-Process '<path>'"` on
    Windows) and manually switch to the new language — check the CORE cards,
    the decision-rules table, and a few quiz categories, since those have
    historically been the spots most likely to have missed dictionary
    entries (they're rendered from separate JS arrays, not just plain text
-   nodes, so gaps there are easy to miss).
+   nodes, so gaps there are easy to miss). Also confirm it works when
+   `index.html` is opened directly via `file://`, not just from a server.
 4. Update `CHANGELOG.md`.
-5. Leave `translations/<code>.json` in place and commit it alongside the app
-   changes — it documents exactly what was translated, gives reviewers a
-   clean diff to check translations against (instead of the in-app dict),
-   and lets a future correction re-run just the injection step instead of
-   re-translating.
+5. `translations/<code>.js` was already committed by
+   `fetch-language-dictionary` (or hand-authored) — this commit only needs
+   `index.html`'s dropdown option, READMEs, and `CHANGELOG.md`.

@@ -1,25 +1,27 @@
 ---
 name: fetch-language-dictionary
-description: Pre-step for adding a new UI language to the CCA-F Study Suite. Generates the full translated dictionary for a target language and stages it as a local JSON file under translations/, WITHOUT touching index.html. Run this before the add-language skill whenever the user asks to add/translate/support a new language. Use on its own if the user just wants translations drafted/reviewed/edited before committing to wiring them into the app.
+description: Pre-step for adding a new UI language to the CCA-F Study Suite. Generates the full translated dictionary for a target language and writes it directly to translations/<code>.js in its final, shipped form, WITHOUT touching index.html. Run this before the add-language skill whenever the user asks to add/translate/support a new language. Use on its own if the user just wants translations drafted/reviewed/edited before committing to wiring the dropdown entry in.
 ---
 
 # Fetch a language dictionary (pre-step for add-language)
 
-Translating all 531 keys is the expensive, generation-heavy part of adding a
-language. Wiring the result into `index.html` is a cheap,
-mechanical script step ([add-language](../add-language/SKILL.md)). Keeping
-these as two separate skills means:
+Translating all 723 keys is the expensive, generation-heavy part of adding a
+language. Adding the dropdown entry and README rows is a cheap, mechanical
+step ([add-language](../add-language/SKILL.md)). Keeping these as two
+separate skills means:
 
-- A failed or interrupted injection never forces re-translating from scratch
-  — the staged file is durable, sitting on disk under `translations/`.
-- The maintainer can review or hand-edit the staged JSON before anything
-  touches the 600KB app file.
-- A PR for a new language includes `translations/<code>.json` as a clean,
-  reviewable diff of the actual translations, separate from the noisy
-  in-app dictionary diff.
+- A failed or interrupted translation run never loses partial work — the
+  written file is durable, sitting on disk under `translations/`.
+- The maintainer can review or hand-edit `translations/<code>.js` before
+  it's ever referenced from `index.html`'s dropdown (an unlisted `<option>`
+  means the file simply never loads for anyone).
+- A PR for a new language includes `translations/<code>.js` as a clean,
+  reviewable diff of the actual translations, separate from the one-line
+  `index.html` dropdown diff.
 
 **This skill never edits `index.html`.** Its only output is
-`translations/<code>.json`.
+`translations/<code>.js` — already in its final, loaded form, not a staged
+intermediate.
 
 ## Step 0 — Confirm spec-kit has run for this language
 
@@ -36,18 +38,19 @@ convenience; that's exactly the ad-hoc shortcut FR-009 exists to close off.
 
 ## Step 1 — Extract the canonical key set
 
-The baseline is the existing `window.__I18N__` (Vietnamese) + `window.__SHELL__`
-dictionaries — every language must translate exactly this key set. The
-dictionary keys ARE the English source strings, so no separate English
-extraction is needed. Use a throwaway Node script (same brace-depth-safe
-extraction as `add-language` Step 1 used to do):
+The baseline is `translations/vn.js` (Vietnamese — the first language
+shipped; any of the 16 files works identically, since a CI keyset-parity
+check enforces they all match). The dictionary keys ARE the English source
+strings, so no separate English extraction is needed:
 
 ```js
 const fs = require('fs');
-const html = fs.readFileSync('index.html', 'utf8');
-const vn = JSON.parse(html.match(/window\.__I18N__=(\{[\s\S]*?\});/)[1]);
-const shellVn = JSON.parse(html.match(/window\.__SHELL__=(\{[\s\S]*?\});/)[1]);
-console.log(Object.keys(vn).length); // currently 526
+const vm = require('vm');
+const sandboxWindow = {};
+vm.runInNewContext(fs.readFileSync('translations/vn.js', 'utf8'), { window: sandboxWindow });
+const vn = sandboxWindow.__LANG_VN__.i18n;
+const shellVn = sandboxWindow.__LANG_VN__.shell;
+console.log(Object.keys(vn).length); // currently 723
 ```
 
 Also pull one or two existing languages' values alongside each key (e.g. VN
@@ -102,8 +105,13 @@ runtime numbers or per-language grammar:
 - **`noSpaceBeforeUnit`**: `true` for CJK languages (no space between the
   number and unit), `false` for space-separated languages.
 - **`questionFmt`**: the "Question N / M" counter pattern for this language,
-  written as the literal JS snippet `add-language` should splice into
-  `QUESTION_FMT` (e.g. `function(a,b){return '第'+a+'題 / 共'+b+'題';}`).
+  written as the literal JS function expression that becomes this
+  language's `questionFmt` field in `translations/<code>.js` (e.g.
+  `function(a,b){return '第'+a+'題 / 共'+b+'題';}`). The other 7 `*Fmt`
+  fields (`questionsAvailableFmt`, `scoreSoFarFmt`, `bigScoreFmt`,
+  `allCorrectFmt`, `retakeAllFmt`, `retakeMissedFmt`, `notThisTimeFmt`)
+  follow the same pattern — write each as a real function expression, not a
+  string.
 - **`nativeName`**: the language's native-script name for the `<option>`
   label and README rows (e.g. `한국어`).
 - **`sortHint`**: `"latin"` or `"cjk"`, per the established dropdown
@@ -118,26 +126,38 @@ const newKeys = Object.keys(newDict.i18n).sort();
 const vnKeys = Object.keys(vn).sort();
 console.log(JSON.stringify(newKeys) === JSON.stringify(vnKeys)); // must be true
 console.log(Object.keys(newDict.shell).length === Object.keys(shellVn).length); // must be true
+const REQUIRED_FMT = ['questionFmt','questionsAvailableFmt','scoreSoFarFmt','bigScoreFmt',
+  'allCorrectFmt','retakeAllFmt','retakeMissedFmt','notThisTimeFmt'];
+console.log(REQUIRED_FMT.every(k => typeof newDict[k] === 'function')); // must be true
 ```
 
-## Step 5 — Write the staged file
+## Step 5 — Write the file
 
-Write `translations/<code>.json` (create the `translations/` directory if
-it doesn't exist yet) with this shape:
+Write `translations/<code>.js` (create the `translations/` directory if it
+doesn't exist yet) with this shape — note the 8 `*Fmt` fields are real
+function expressions, not strings:
 
-```json
-{
-  "code": "ko",
-  "nativeName": "한국어",
-  "sortHint": "cjk",
-  "qsUnit": "문항",
-  "noSpaceBeforeUnit": true,
-  "questionFmt": "function(a,b){return a+' / '+b+'번 문항';}",
-  "i18n": { "...526 keys...": "..." },
-  "shell": { "...5 keys...": "..." }
-}
+```js
+window.__LANG_KO__ = {
+  code: "ko",
+  nativeName: "한국어",
+  sortHint: "cjk",
+  qsUnit: "문항",
+  noSpaceBeforeUnit: true,
+  questionFmt: function(a,b){return a+' / '+b+'번 문항';},
+  questionsAvailableFmt: function(n){ /* ... */ },
+  scoreSoFarFmt: function(a,b){ /* ... */ },
+  bigScoreFmt: function(n,p){ /* ... */ },
+  allCorrectFmt: function(n){ /* ... */ },
+  retakeAllFmt: function(n){ /* ... */ },
+  retakeMissedFmt: function(n){ /* ... */ },
+  notThisTimeFmt: function(l){ /* ... */ },
+  i18n: { /* ...723 keys... */ },
+  shell: { /* ...5 keys... */ }
+};
 ```
 
-Report the key count and confirm parity before finishing. Do not proceed to
-inject anything into `index.html` — hand off to the
-[add-language](../add-language/SKILL.md) skill for that.
+Report the key count and confirm parity before finishing. This file is
+already in its final, loaded form — hand off to the
+[add-language](../add-language/SKILL.md) skill only to add the dropdown
+`<option>` and update READMEs.
