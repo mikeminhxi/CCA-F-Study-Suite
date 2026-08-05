@@ -102,14 +102,15 @@ check, both run as a task before the feature is marked complete.
   language drawn from `SPEC_KIT_INTEGRATION_PLAN.md` §5's priority list, or a user-supplied
   language not on that list.
 - **FR-002**: Generated tasks MUST include full dictionary translation covering the exact
-  key set already present in the existing dictionaries (`__I18N_XX__` entries + 5
-  `__SHELL_XX__` entries — the count grows over time as app content changes; verify the
-  current count from a baseline language, e.g. `window.__I18N__`, rather than a number
-  hardcoded here), never a partial subset, staged to `translations/<code>.json`
-  before any change to `cca-f-study-suite.html` is made — translation and app-wiring are
-  distinct tasks, not one combined step, so a wiring retry never forces re-translation.
-- **FR-003**: Generated tasks MUST include adding the new language's entries to `QS_UNIT`
-  and `QUESTION_FMT` for its dynamic (runtime-number-containing) strings.
+  key set already present in the existing dictionaries (`i18n` entries + 5 `shell`
+  entries — the count grows over time as app content changes; verify the current count
+  from a baseline language's `translations/<code>.js` file rather than a number
+  hardcoded here), never a partial subset, written directly to `translations/<code>.js`
+  before any change to `index.html` is made — translation and app-wiring are distinct
+  tasks, not one combined step, so a wiring retry never forces re-translation.
+- **FR-003**: Generated tasks MUST include adding the new language's `qsUnit` and
+  `questionFmt` fields (plus the other `*Fmt` fields) within `translations/<code>.js`
+  for its dynamic (runtime-number-containing) strings.
 - **FR-004**: Generated tasks MUST include adding the new language's `<option>` to
   `#lang-select` in the correct sort position per the ordering rule (Latin-script
   languages alphabetically by English name first, then CJK languages grouped together),
