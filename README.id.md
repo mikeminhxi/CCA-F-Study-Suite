@@ -8,7 +8,7 @@ Aplikasi statis mandiri untuk belajar menghadapi ujian sertifikasi Anthropic **C
 
 ## Cara membuka
 
-Klik dua kali [index.html](index.html), atau sajikan melalui static file server apa pun. Progres disimpan secara lokal di browser (`localStorage`), per perangkat/browser. Simpan folder `translations/` tetap berada di samping `index.html` — folder ini diperlukan untuk semua bahasa selain bahasa Inggris; jika `index.html` dibuka sendirian, aplikasi hanya akan tersedia dalam bahasa Inggris.
+Klik dua kali [index.html](index.html), atau sajikan melalui static file server apa pun. Progres disimpan secara lokal di browser (`localStorage`), per perangkat/browser. Simpan `style.css`, `content.js`, dan folder `translations/` tetap berada di samping `index.html` — aplikasi ini membutuhkan semuanya; jika `index.html` dibuka sendirian, yang akan muncul adalah error, bukan aplikasinya.
 
 ## Isi halaman
 

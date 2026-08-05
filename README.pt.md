@@ -8,7 +8,7 @@ Um aplicativo estático autocontido para estudar a prova **Claude Certified Arch
 
 ## Como abrir
 
-Dê duplo clique em [index.html](index.html), ou sirva com qualquer servidor de arquivos estático. O progresso é salvo localmente no navegador (`localStorage`), por dispositivo/navegador. Mantenha a pasta `translations/` junto de `index.html` — ela é necessária para todos os idiomas exceto o inglês; aberto sozinho, `index.html` funciona apenas em inglês.
+Dê duplo clique em [index.html](index.html), ou sirva com qualquer servidor de arquivos estático. O progresso é salvo localmente no navegador (`localStorage`), por dispositivo/navegador. Mantenha `style.css`, `content.js` e a pasta `translations/` junto de `index.html` — o aplicativo precisa de todos eles; aberto sozinho, `index.html` exibirá um erro em vez de carregar.
 
 ## O que tem dentro
 

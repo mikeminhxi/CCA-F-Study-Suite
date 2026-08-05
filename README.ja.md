@@ -8,7 +8,7 @@ Anthropicの「Claude Certified Architect — Foundations（CCA-F）」試験対
 
 ## 開き方
 
-[index.html](index.html) をダブルクリックするか、任意の静的ファイルサーバーで配信してください。学習の進捗はブラウザの `localStorage` にローカル保存されます（端末・ブラウザごと）。`translations/` フォルダは `index.html` と同じ場所に置いたままにしてください —— 英語以外のすべての言語で必要です。`index.html` 単体で開いた場合、表示は英語のみになります。
+[index.html](index.html) をダブルクリックするか、任意の静的ファイルサーバーで配信してください。学習の進捗はブラウザの `localStorage` にローカル保存されます（端末・ブラウザごと）。`style.css`、`content.js`、`translations/` フォルダを `index.html` と同じ場所に置いたままにしてください —— アプリの動作にはこの3つすべてが必要です。`index.html` を単体で開いた場合、読み込まれずにエラーが表示されます。
 
 ## 中身
 

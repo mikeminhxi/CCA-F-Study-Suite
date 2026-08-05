@@ -8,7 +8,7 @@ Una aplicación estática autocontenida para preparar el examen de certificació
 
 ## Cómo abrirlo
 
-Haz doble clic en [index.html](index.html), o sírvelo con cualquier servidor de archivos estático. El progreso se guarda localmente en el navegador (`localStorage`), por dispositivo/navegador. Mantén la carpeta `translations/` junto a `index.html`; es necesaria para todos los idiomas excepto inglés — si abres `index.html` por sí solo, solo estará disponible en inglés.
+Haz doble clic en [index.html](index.html), o sírvelo con cualquier servidor de archivos estático. El progreso se guarda localmente en el navegador (`localStorage`), por dispositivo/navegador. Mantén `style.css`, `content.js` y la carpeta `translations/` junto a `index.html`; la aplicación los necesita todos — si abres `index.html` por sí solo, se mostrará un error en lugar de cargar.
 
 ## Qué contiene
 

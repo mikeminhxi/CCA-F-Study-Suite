@@ -8,7 +8,7 @@
 
 ## 打开方式
 
-双击 [index.html](index.html),或用任意静态文件服务器托管它。学习进度会通过 `localStorage` 保存在本地浏览器中,按设备/浏览器区分。请将 `translations/` 文件夹与 `index.html` 放在一起——除英语外的所有语言都需要它;若单独打开 `index.html`,将只能使用英语。
+双击 [index.html](index.html),或用任意静态文件服务器托管它。学习进度会通过 `localStorage` 保存在本地浏览器中,按设备/浏览器区分。请将 `style.css`、`content.js` 和 `translations/` 文件夹与 `index.html` 放在一起——应用需要这三者齐全;若单独打开 `index.html`,将只会显示错误,而不是正常加载。
 
 ## 页面内容
 

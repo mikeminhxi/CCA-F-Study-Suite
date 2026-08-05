@@ -8,7 +8,7 @@ Eine eigenständige statische App zur Vorbereitung auf die Anthropic-Zertifizier
 
 ## Datei öffnen
 
-Doppelklicken Sie auf [index.html](index.html), oder stellen Sie sie über einen beliebigen statischen Dateiserver bereit. Der Fortschritt wird lokal im Browser (`localStorage`) gespeichert, pro Gerät/Browser. Behalten Sie den Ordner `translations/` neben `index.html` — er wird für alle Sprachen außer Englisch benötigt; wird `index.html` allein geöffnet, steht nur Englisch zur Verfügung.
+Doppelklicken Sie auf [index.html](index.html), oder stellen Sie sie über einen beliebigen statischen Dateiserver bereit. Der Fortschritt wird lokal im Browser (`localStorage`) gespeichert, pro Gerät/Browser. Behalten Sie `style.css`, `content.js` und den Ordner `translations/` neben `index.html` — die App benötigt alle drei. Wird `index.html` allein geöffnet, wird nur ein Fehler angezeigt, statt zu laden.
 
 ## Seiteninhalt
 

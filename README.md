@@ -8,7 +8,7 @@ A self-contained static app for studying Anthropic's **Claude Certified Architec
 
 ## Open it
 
-Double-click [index.html](index.html), or serve it with any static file server. Progress is saved locally in the browser (`localStorage`), per device/browser. Keep the `translations/` folder alongside `index.html` — it's required for every language except English; `index.html` opened on its own falls back to English only.
+Double-click [index.html](index.html), or serve it with any static file server. Progress is saved locally in the browser (`localStorage`), per device/browser. Keep `style.css`, `content.js` and the `translations/` folder alongside `index.html` — the app needs all of them. `index.html` on its own will show an error instead of loading.
 
 ## What's inside
 

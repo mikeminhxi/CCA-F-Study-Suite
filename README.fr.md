@@ -8,7 +8,7 @@ Une application statique autonome pour préparer l'examen de certification Anthr
 
 ## Ouvrir le fichier
 
-Double-cliquez sur [index.html](index.html), ou servez-le avec n'importe quel serveur de fichiers statique. La progression est sauvegardée localement dans le navigateur (`localStorage`), par appareil/navigateur. Conservez le dossier `translations/` à côté de `index.html` — il est nécessaire pour toutes les langues sauf l'anglais ; ouvert seul, `index.html` ne propose que l'anglais.
+Double-cliquez sur [index.html](index.html), ou servez-le avec n'importe quel serveur de fichiers statique. La progression est sauvegardée localement dans le navigateur (`localStorage`), par appareil/navigateur. Conservez `style.css`, `content.js` et le dossier `translations/` à côté de `index.html` — l'application a besoin des trois ; ouvert seul, `index.html` affichera une erreur au lieu de se charger.
 
 ## Contenu de la page
 

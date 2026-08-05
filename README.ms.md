@@ -8,7 +8,7 @@ Aplikasi statik yang berdiri sendiri untuk belajar bagi peperiksaan pensijilan A
 
 ## Cara membuka
 
-Klik dua kali pada [index.html](index.html), atau jalankan melalui mana-mana pelayan fail statik. Kemajuan disimpan secara tempatan dalam pelayar (`localStorage`), mengikut peranti/pelayar. Simpan folder `translations/` bersebelahan dengan `index.html` — ia diperlukan untuk semua bahasa selain bahasa Inggeris; jika `index.html` dibuka sendirian, hanya bahasa Inggeris yang berfungsi.
+Klik dua kali pada [index.html](index.html), atau jalankan melalui mana-mana pelayan fail statik. Kemajuan disimpan secara tempatan dalam pelayar (`localStorage`), mengikut peranti/pelayar. Simpan `style.css`, `content.js` dan folder `translations/` bersebelahan dengan `index.html` — aplikasi ini memerlukan kesemuanya; jika `index.html` dibuka sendirian, ralat akan dipaparkan dan bukannya dimuatkan.
 
 ## Kandungan Halaman
 

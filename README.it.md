@@ -8,7 +8,7 @@ Un'app statica autonoma per prepararsi all'esame di certificazione Anthropic **C
 
 ## Aprire il file
 
-Fai doppio clic su [index.html](index.html), oppure servilo tramite un qualsiasi server di file statici. I progressi vengono salvati localmente nel browser (`localStorage`), per dispositivo/browser. Tieni la cartella `translations/` accanto a `index.html` — è necessaria per tutte le lingue tranne l'inglese; se `index.html` viene aperto da solo, è disponibile solo in inglese.
+Fai doppio clic su [index.html](index.html), oppure servilo tramite un qualsiasi server di file statici. I progressi vengono salvati localmente nel browser (`localStorage`), per dispositivo/browser. Tieni `style.css`, `content.js` e la cartella `translations/` accanto a `index.html` — l'app ha bisogno di tutti e tre; se `index.html` viene aperto da solo, verrà mostrato un errore invece di caricarsi.
 
 ## Contenuto della pagina
 

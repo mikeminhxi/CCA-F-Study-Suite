@@ -8,7 +8,7 @@ Samodzielna aplikacja statyczna do nauki przed egzaminem certyfikacyjnym Anthrop
 
 ## Jak otworzyć
 
-Kliknij dwukrotnie plik [index.html](index.html) albo udostępnij go za pomocą dowolnego serwera plików statycznych. Postępy są zapisywane lokalnie w przeglądarce (`localStorage`), oddzielnie dla każdego urządzenia/przeglądarki. Trzymaj folder `translations/` obok pliku `index.html` — jest on wymagany dla wszystkich języków oprócz angielskiego; otwarty samodzielnie `index.html` działa wyłącznie po angielsku.
+Kliknij dwukrotnie plik [index.html](index.html) albo udostępnij go za pomocą dowolnego serwera plików statycznych. Postępy są zapisywane lokalnie w przeglądarce (`localStorage`), oddzielnie dla każdego urządzenia/przeglądarki. Trzymaj pliki `style.css`, `content.js` oraz folder `translations/` obok pliku `index.html` — aplikacja potrzebuje ich wszystkich; otwarty samodzielnie `index.html` wyświetli błąd zamiast się wczytać.
 
 ## Co zawiera
 

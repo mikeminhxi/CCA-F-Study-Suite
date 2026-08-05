@@ -8,7 +8,7 @@ Anthropic की **Claude Certified Architect — Foundations (CCA-F)** प्�
 
 ## फ़ाइल खोलें
 
-[index.html](index.html) पर डबल-क्लिक करें, या इसे किसी भी static file server के ज़रिए serve करें। प्रगति (progress) आपके browser में स्थानीय रूप से (`localStorage`) सहेजी जाती है, प्रति डिवाइस/browser। `translations/` फ़ोल्डर को `index.html` के साथ ही रखें — यह अंग्रेज़ी को छोड़कर बाकी सभी भाषाओं के लिए ज़रूरी है; अकेले खोले जाने पर `index.html` केवल अंग्रेज़ी में काम करता है।
+[index.html](index.html) पर डबल-क्लिक करें, या इसे किसी भी static file server के ज़रिए serve करें। प्रगति (progress) आपके browser में स्थानीय रूप से (`localStorage`) सहेजी जाती है, प्रति डिवाइस/browser। `style.css`, `content.js` और `translations/` फ़ोल्डर — तीनों को `index.html` के साथ ही रखें, ऐप को इन सभी की ज़रूरत होती है; अकेले खोले जाने पर `index.html` लोड होने के बजाय एक एरर दिखाएगा।
 
 ## पेज की सामग्री
 
