@@ -2,6 +2,12 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## [1.0.0] - 2026-08-05 - Lazy-loaded translation files
+
+### Changed
+
+- **Translation data split out of `index.html` into `translations/<code>.js`, loaded lazily.** Previously every visitor downloaded all 16 languages' dictionaries inline (1.26MB of the 1.71MB file) regardless of which language they used. Each language now lives in its own `translations/<code>.js`, loaded via a `<script src>` tag only when that language is selected — `<script src>` rather than `fetch()` specifically so the app keeps working when `index.html` is opened directly via `file://`. `index.html` drops from ~1.7MB to ~450KB. No visible behavior change; language switching, offline use, and the missing-language/missing-key English fallback all work exactly as before.
+
 ## Thai (ไทย) — 17th supported language
 
 - **Thai (th)** — fully wired into `index.html` (`window.__I18N_TH__`/`__SHELL_TH__`, `MAPS`/`SHELLS`/`QS_UNIT`/`QUESTION_FMT` plus the seven other dynamic-format tables including `QUESTIONS_AVAILABLE_FMT`, `#lang-select` dropdown positioned at the very end of the list, after Русский), all 16 existing READMEs updated, new `README.th.md` added. Full 723-key `i18n` + 5-key `shell` dictionary translated and staged at `translations/th.json` via `fetch-language-dictionary`, then wired via `add-language`. Ran through `specs/001-add-language/` via `/speckit-plan` → `/speckit-tasks` per FR-009, on branch `feat/add-thai-language`. Picked up from SPEC_KIT_INTEGRATION_PLAN.md's "not yet prioritized" list at the maintainer's request.
