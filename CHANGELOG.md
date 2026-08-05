@@ -6,7 +6,13 @@ All notable changes to the CCA-F Study Suite are recorded here.
 
 ### Changed
 
-- **Translation data split out of `index.html` into `translations/<code>.js`, loaded lazily.** Previously every visitor downloaded all 16 languages' dictionaries inline (1.26MB of the 1.71MB file) regardless of which language they used. Each language now lives in its own `translations/<code>.js`, loaded via a `<script src>` tag only when that language is selected — `<script src>` rather than `fetch()` specifically so the app keeps working when `index.html` is opened directly via `file://`. `index.html` drops from ~1.7MB to ~450KB. No visible behavior change; language switching, offline use, and the missing-language/missing-key English fallback all work exactly as before.
+- **Translation data split out of `index.html` into `translations/<code>.js`, loaded lazily.** Previously every visitor downloaded all 16 languages' dictionaries inline (1.26MB of the 1.71MB file) regardless of which language they used. Each language now lives in its own `translations/<code>.js`, loaded via a `<script src>` tag only when that language is selected — `<script src>` rather than `fetch()` specifically so the app keeps working when `index.html` is opened directly via `file://`. `index.html` drops from ~1.7MB to 421KB. One real behavior change: `index.html` opened by itself, without the `translations/` folder alongside it, is now English-only (every non-English language 404s on its lazy `<script src>` load and silently falls back to English); previously all 16 languages worked from the single file alone. Language switching, offline use with `translations/` present, and the missing-language/missing-key English fallback all otherwise work exactly as before.
+- **Constitution amended to v1.1.1.** Principle I renamed from "Zero-Dependency Single File" to "Zero-Build, First-Party Files" to permit first-party `<script src>` files alongside `index.html`; Principle II rewritten to describe the `translations/<code>.js` per-language-file model in place of the old inline `window.__I18N_XX__`/`__SHELL_XX__` + `MAPS`/`SHELLS` description; Principle IV's "large dictionary literal" wording updated to point at `translations/<code>.js` instead of inline `index.html` literals.
+- **CI gained a cross-language keyset-parity check.** `.github/scripts/validate-language-config.js` now also loads every `translations/<code>.js` file via `vm.runInNewContext` and fails the build if any language's `i18n`/`shell` key set, or its set of `*Fmt` dynamic-format functions, drifts from the baseline language.
+
+### Removed
+
+- **The 16 staged `translations/<code>.json` files.** These were an intermediate staging format from the pre-lazy-loading workflow (translate to JSON, then hand-inject into `index.html`); `translations/<code>.js` is now the final, directly-loaded artifact, so the `.json` staging copies were deleted as redundant.
 
 ## Thai (ไทย) — 17th supported language
 

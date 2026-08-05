@@ -89,6 +89,7 @@ function main() {
   if (parityErrors.length) {
     console.error('Language file parity errors:\n' + parityErrors.join('\n'));
     process.exitCode = 1;
+    return;
   }
   console.log('languages.config.js is valid (' + Object.keys(config).length + ' entries checked).');
 }

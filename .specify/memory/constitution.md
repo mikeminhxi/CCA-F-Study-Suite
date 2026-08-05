@@ -1,6 +1,6 @@
 <!--
 Sync Impact Report
-- Version change: 1.0.0 → 1.1.0
+- Version change: 1.0.0 → 1.1.1
 - List of modified principles:
   - I. Zero-Build, First-Party Files (amended: explicitly allows first-party
     local <script src> files with no build step, alongside index.html;
@@ -8,6 +8,9 @@ Sync Impact Report
   - II. i18n-First UI Copy (amended: describes the translations/<code>.js
     per-language-file model, replacing the inline window.__I18N_XX__/
     __SHELL_XX__ + MAPS/SHELLS description)
+  - IV. Safe Large-Dictionary Edits (wording fix: "inline JS dictionary
+    literals" → "per-language translations/<code>.js JS dictionary
+    literals", since Principle II's amendment moved them out of index.html)
 - Added sections: none
 - Removed sections: none
 - Templates requiring updates:
@@ -63,7 +66,7 @@ other is a regression, not a follow-up.
 
 ### IV. Safe Large-Dictionary Edits
 
-Several inline JS dictionary literals exceed 30KB on a single line. Edits to
+Several per-language `translations/<code>.js` JS dictionary literals exceed 30KB on a single line. Edits to
 them MUST go through a throwaway Node script using brace-depth- and
 string-escape-aware JSON boundary detection (never naive string-splitting
 such as `indexOf(';')`, which breaks on embedded semicolons in translated
@@ -119,4 +122,4 @@ not committee review. Any amendment MUST:
    `spec-template.md`, and `tasks-template.md` for consistency (see Sync
    Impact Report above for the current state of that check).
 
-**Version**: 1.1.0 | **Ratified**: 2026-07-24 | **Last Amended**: 2026-08-05
+**Version**: 1.1.1 | **Ratified**: 2026-07-24 | **Last Amended**: 2026-08-05

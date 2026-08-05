@@ -114,10 +114,12 @@ runtime numbers or per-language grammar:
   string.
 - **`nativeName`**: the language's native-script name for the `<option>`
   label and README rows (e.g. `한국어`).
-- **`sortHint`**: `"latin"` or `"cjk"`, per the established dropdown
-  ordering rule (Latin-script languages first, alphabetical by English
-  name; then CJK languages grouped together) — lets `add-language` place
-  the `<option>` and README entries in the right spot without re-asking.
+- **`sortHint`**: one of `"latin"`, `"cjk"`, `"devanagari"` (hi), `"cyrillic"`
+  (ru), or `"thai"` (th), per the established dropdown ordering rule
+  (Latin-script languages first, alphabetical by English name; then each
+  other script grouped together as its own trailing block, in the order
+  that script was first added) — lets `add-language` place the `<option>`
+  and README entries in the right spot without re-asking.
 
 ## Step 4 — Validate before writing
 

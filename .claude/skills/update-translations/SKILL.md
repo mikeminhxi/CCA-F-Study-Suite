@@ -43,7 +43,7 @@ drift the way #1 used to — write it once, not once per language.
 
 ## Step 2 — Translate
 
-Translate every new string into all 12 languages. Match this app's existing
+Translate every new string into all 16 languages. Match this app's existing
 conventions (see `fetch-language-dictionary`'s Step 2 for the fuller list):
 keep technical/product terms in English where the rest of the app does,
 match the register/formality already used by neighboring keys in that
@@ -101,7 +101,7 @@ surgical edit instead of a full parse-and-redump.
 If the new text is just a label/button wording tweak, skip this step. If it
 describes new app *behavior* (a new mode, a new button that does something,
 a changed workflow), update the relevant Features-bullet/table-row prose in
-**English `README.md` and all 12 `README.<code>.md` files**, each written
+**English `README.md` and all 16 `README.<code>.md` files**, each written
 in that file's own language, matching its existing tone and level of
 detail — don't just paste an English sentence into a translated file. Find
 each file's version by searching for the neighboring feature description
