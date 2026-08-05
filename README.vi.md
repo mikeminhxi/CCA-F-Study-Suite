@@ -8,7 +8,7 @@ Một ứng dụng tĩnh độc lập (không cần build, không cần server, 
 
 ## Cách mở
 
-Nhấp đúp vào [index.html](index.html), hoặc chạy bằng bất kỳ static file server nào. Tiến độ học được lưu cục bộ ngay trên trình duyệt (`localStorage`), theo từng thiết bị/trình duyệt. Giữ `style.css`, `content.js` và thư mục `translations/` nằm cạnh `index.html` — ứng dụng cần cả ba; nếu chỉ mở riêng `index.html`, ứng dụng sẽ hiện lỗi thay vì tải lên.
+Nhấp đúp vào [index.html](index.html), hoặc chạy bằng bất kỳ static file server nào. Tiến độ học được lưu cục bộ ngay trên trình duyệt (`localStorage`), theo từng thiết bị/trình duyệt. Giữ `style.css`, `content.js` và thư mục `translations/` nằm cạnh `index.html` — ứng dụng cần cả ba; nếu chỉ mở riêng `index.html`, ứng dụng sẽ hiện lỗi thay vì tải ứng dụng.
 
 ## Nội dung trang
 
