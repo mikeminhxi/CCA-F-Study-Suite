@@ -730,7 +730,12 @@
     "Nothing matches this filter.": "이 필터에 해당하는 항목이 없다.",
     "Flagged": "표시됨",
     "Question": "문항",
-    "☕ Buy me a coffee": "☕ 커피 한 잔 사주세요"
+    "☕ Buy me a coffee": "☕ 커피 한 잔 사주세요",
+    "Found this useful?": "도움이 되셨나요?",
+    "Free and open-source practice questions.": "무료 오픈소스 연습 문제입니다.",
+    "Bank 1": "은행 1",
+    "Bank 2": "은행 2",
+    "Bank 3": "은행 3"
   },
   "shell": {
     "brand_sub": "단일 파일 · 로컬 저장",

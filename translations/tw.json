@@ -730,7 +730,12 @@
     "Nothing matches this filter.": "沒有符合此篩選條件的內容。",
     "Flagged": "已標記",
     "Question": "問題",
-    "☕ Buy me a coffee": "☕ 請我喝杯咖啡"
+    "☕ Buy me a coffee": "☕ 請我喝杯咖啡",
+    "Found this useful?": "覺得有幫助嗎?",
+    "Free and open-source practice questions.": "免費開源的練習題。",
+    "Bank 1": "銀行1",
+    "Bank 2": "銀行2",
+    "Bank 3": "銀行3"
   },
   "shell": {
     "brand_sub": "單文件 · 本地保存",
