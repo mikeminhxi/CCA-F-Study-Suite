@@ -361,12 +361,18 @@ for (const g of dictGlobalOrder) {
   const tag = 'window.' + g + '=';
   const idx = html.indexOf(tag, cursor);
   if (idx < 0) throw new Error('expected ' + g + ' right after previous global, not found');
-  if (html.slice(cursor, idx).trim() !== '') throw new Error('unexpected content between globals near ' + g);
+  // The gap between one global's closing '}' and the next 'window.X=' is
+  // the first global's trailing ';' plus a line ending -- on this repo's
+  // checkout that's '\r\n', not '\n', so strip a leading ';\s*' the same
+  // way the MAPS/table loop below already does (confirmed against the
+  // real file during Task 2; a bare .trim() left the ';' behind and
+  // failed the emptiness check on every boundary).
+  if (html.slice(cursor, idx).replace(/^;\s*/, '').trim() !== '') throw new Error('unexpected content between globals near ' + g);
   cursor = findBlockEnd(html, idx);
 }
 const dictCloseTagIdx = html.indexOf('</script>', cursor);
 if (dictCloseTagIdx < 0) throw new Error('closing </script> not found for dictionary block');
-if (html.slice(cursor, dictCloseTagIdx).trim() !== '') throw new Error('unexpected trailing content before </script>');
+if (html.slice(cursor, dictCloseTagIdx).replace(/^;\s*/, '').trim() !== '') throw new Error('unexpected trailing content before </script>');
 const dictBlockEnd = dictCloseTagIdx + '</script>'.length;
 
 html = html.slice(0, dictStart) + html.slice(dictBlockEnd);
@@ -427,9 +433,20 @@ const replacements = [
   ],
 ];
 for (const [oldStr, newStr] of replacements) {
-  const count = html.split(oldStr).length - 1;
+  // Try as-written (\n) first, then retry with \r\n line endings before
+  // giving up -- this section of index.html is CRLF on disk even though
+  // the plan text above is written with \n (same root cause as the fix
+  // just above; confirmed during Task 2). Keeps the diff surgical instead
+  // of normalizing line endings across the whole file.
+  let os = oldStr, ns = newStr;
+  let count = html.split(os).length - 1;
+  if (count !== 1) {
+    os = oldStr.split('\n').join('\r\n');
+    ns = newStr.split('\n').join('\r\n');
+    count = html.split(os).length - 1;
+  }
   if (count !== 1) throw new Error('expected exactly 1 occurrence, found ' + count + ' for:\n' + oldStr.slice(0, 90));
-  html = html.replace(oldStr, newStr);
+  html = html.replace(os, ns);
 }
 
 fs.writeFileSync(file, html);
