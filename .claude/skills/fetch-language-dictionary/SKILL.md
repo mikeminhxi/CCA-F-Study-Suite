@@ -73,15 +73,14 @@ established so far (keep doing these unless told otherwise):
 
 ### If the new language is a script conversion of an existing one (e.g. Traditional from Simplified Chinese)
 
-The source dictionary to convert from may be **either** an in-app
-`window.__I18N_XX__` dictionary **or** another language's staged
-`translations/<code>.json` that hasn't been wired into the app yet. The
-latter matters when a related pair is being added together for the first
-time — e.g. adding Chinese from scratch means running this skill for `zh`
-first (a normal from-scratch translation, nothing Chinese exists yet), then
-running it again for `tw` in conversion mode sourced from the just-written
-`translations/zh.json`, before either has touched `index.html`.
-Only run `add-language` for both once both are staged.
+The source dictionary to convert from is another language's
+`translations/<code>.js` file — either one already shipped, or another
+just-written one in the same batch. The latter matters when a related pair
+is being added together for the first time — e.g. adding Chinese from
+scratch means running this skill for `zh` first (a normal from-scratch
+translation, nothing Chinese exists yet), then running it again for `tw` in
+conversion mode sourced from the just-written `translations/zh.js`.
+Only run `add-language` for both once both files exist.
 
 Don't blindly do a 1:1 character substitution — several common characters
 map to **different** target characters depending on the word they're in.
