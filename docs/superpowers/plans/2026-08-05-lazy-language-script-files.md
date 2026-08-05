@@ -606,7 +606,12 @@ function checkLanguageFileParity(repoRoot) {
     const code = f.replace(/\.js$/, '');
     const src = fs.readFileSync(path.join(dir, f), 'utf8');
     const sandboxWindow = {};
-    vm.runInNewContext(src, { window: sandboxWindow });
+    try {
+      vm.runInNewContext(src, { window: sandboxWindow });
+    } catch (e) {
+      errors.push(f + ': failed to execute (' + e.message + ')');
+      continue;
+    }
     const data = sandboxWindow['__LANG_' + code.toUpperCase() + '__'];
     if (!data) { errors.push(f + ': did not define window.__LANG_' + code.toUpperCase() + '__'); continue; }
     for (const k of REQUIRED_FMT_KEYS) {
