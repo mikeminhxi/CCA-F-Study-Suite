@@ -4,11 +4,11 @@
 
 🔗 **Live-Demo:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Eine eigenständige HTML-Datei zur Vorbereitung auf die Anthropic-Zertifizierungsprüfung **Claude Certified Architect — Foundations (CCA-F)**. Kein Build-Schritt, kein Server, keine zu installierenden Abhängigkeiten — öffnen Sie einfach `index.html` in einem Browser.
+Eine eigenständige statische App zur Vorbereitung auf die Anthropic-Zertifizierungsprüfung **Claude Certified Architect — Foundations (CCA-F)**. Kein Build-Schritt, kein Server, keine zu installierenden Abhängigkeiten — öffnen Sie einfach `index.html` in einem Browser.
 
 ## Datei öffnen
 
-Doppelklicken Sie auf [index.html](index.html), oder stellen Sie sie über einen beliebigen statischen Dateiserver bereit. Der Fortschritt wird lokal im Browser (`localStorage`) gespeichert, pro Gerät/Browser.
+Doppelklicken Sie auf [index.html](index.html), oder stellen Sie sie über einen beliebigen statischen Dateiserver bereit. Der Fortschritt wird lokal im Browser (`localStorage`) gespeichert, pro Gerät/Browser. Behalten Sie den Ordner `translations/` neben `index.html` — er wird für alle Sprachen außer Englisch benötigt; wird `index.html` allein geöffnet, steht nur Englisch zur Verfügung.
 
 ## Seiteninhalt
 
@@ -32,7 +32,7 @@ Die Seite ist eine Tab-Hülle, die vier Tools zusammenfasst. Auf Desktop-breiten
 - **Hell / Dunkel / System / Sepia Designs** — wählen Sie ein festes helles oder dunkles Erscheinungsbild, folgen Sie der Systemeinstellung, oder wechseln Sie zu einem warmen bernsteinfarbenen „Sepia"-Design (passt sich ebenfalls automatisch hell/dunkel an); die Wahl bleibt über Besuche hinweg erhalten.
 - **Automatisch erkannte Schlagwörter** — jede Frage wird mit einer Liste von Dutzenden gängiger Prüfungsbegriffe abgeglichen (z. B. „MCP resource", „stateless", „tool_choice") und zeigt Treffer als Chips an, damit der entscheidende Hinweissatz schon vor dem Lesen der Erklärung ins Auge fällt.
 - **Lokale Persistenz** — Lernfortschritt (Bekannt/Zu-wiederholen-Markierungen) und der Checklistenstatus des Plans werden über `localStorage` gespeichert, mit einem In-Memory-Fallback für den aktuellen Tab, falls der Speicher blockiert ist.
-- **Null Abhängigkeiten** — reines JS/CSS/SVG in einer einzigen Datei; die einzigen externen Aufrufe gelten Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+- **Null Abhängigkeiten** — reines JS/CSS/SVG ohne Framework oder Build-Tooling; die einzigen externen Aufrufe gelten Google Fonts (Space Grotesk, Inter, JetBrains Mono).
 - **Optionale Unterstützung** — eine Schaltfläche „☕ Spendier mir einen Kaffee" (immer sichtbar in der oberen Navigationsleiste, mit einer Erinnerung nach Abschluss einer Übungsprüfung) öffnet ein Fenster mit QR-Codes für ein paar Zahlungsmethoden; vollständig optional und wird automatisch ausgeblendet, wenn keine QR-Bilder konfiguriert sind.
 
 ## Haftungsausschluss

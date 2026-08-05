@@ -4,11 +4,11 @@
 
 🔗 **Démo en ligne :** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Un fichier HTML autonome pour préparer l'examen de certification Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Pas d'étape de build, pas de serveur, aucune dépendance à installer — ouvrez simplement `index.html` dans un navigateur.
+Une application statique autonome pour préparer l'examen de certification Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Pas d'étape de build, pas de serveur, aucune dépendance à installer — ouvrez simplement `index.html` dans un navigateur.
 
 ## Ouvrir le fichier
 
-Double-cliquez sur [index.html](index.html), ou servez-le avec n'importe quel serveur de fichiers statique. La progression est sauvegardée localement dans le navigateur (`localStorage`), par appareil/navigateur.
+Double-cliquez sur [index.html](index.html), ou servez-le avec n'importe quel serveur de fichiers statique. La progression est sauvegardée localement dans le navigateur (`localStorage`), par appareil/navigateur. Conservez le dossier `translations/` à côté de `index.html` — il est nécessaire pour toutes les langues sauf l'anglais ; ouvert seul, `index.html` ne propose que l'anglais.
 
 ## Contenu de la page
 
@@ -32,7 +32,7 @@ La page est une coquille à onglets regroupant quatre outils. Sur les écrans de
 - **Thèmes Clair / Sombre / Système / Sépia** — choisissez un rendu clair ou sombre fixe, suivez le réglage du système, ou passez à un thème « Sépia » chaleureux ambre et crème (qui s'adapte aussi automatiquement au clair/sombre) ; le choix est conservé lors des visites futures.
 - **Mots-clés auto-détectés** — chaque question est comparée à une liste de dizaines de termes fréquents de l'examen (ex. « MCP resource », « stateless », « tool_choice ») et affiche ceux qui correspondent sous forme de puces, pour que la phrase révélatrice saute aux yeux avant même de lire l'explication.
 - **Persistance locale** — la progression d'étude (marques Acquis/À revoir) et l'état de la checklist du plan sont sauvegardés via `localStorage`, avec une solution de repli en mémoire pour l'onglet actuel si le stockage est bloqué.
-- **Zéro dépendance** — JS/CSS/SVG pur dans un seul fichier ; les seuls appels externes sont Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+- **Zéro dépendance** — JS/CSS/SVG pur, sans framework ni outillage de build ; les seuls appels externes sont Google Fonts (Space Grotesk, Inter, JetBrains Mono).
 - **Soutien optionnel** — un bouton « ☕ Offrez-moi un café » (toujours visible dans la barre de navigation supérieure, avec un rappel après avoir terminé un examen d'entraînement) ouvre une fenêtre avec des codes QR pour quelques moyens de paiement ; entièrement optionnel et masqué automatiquement si aucune image QR n'est configurée.
 
 ## Avertissement

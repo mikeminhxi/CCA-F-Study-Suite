@@ -4,11 +4,11 @@
 
 🔗 **Demo langsung:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Satu file HTML mandiri untuk belajar menghadapi ujian sertifikasi Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Tanpa proses build, tanpa server, tanpa dependency yang perlu diinstal — cukup buka `index.html` di browser.
+Aplikasi statis mandiri untuk belajar menghadapi ujian sertifikasi Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Tanpa proses build, tanpa server, tanpa dependency yang perlu diinstal — cukup buka `index.html` di browser.
 
 ## Cara membuka
 
-Klik dua kali [index.html](index.html), atau sajikan melalui static file server apa pun. Progres disimpan secara lokal di browser (`localStorage`), per perangkat/browser.
+Klik dua kali [index.html](index.html), atau sajikan melalui static file server apa pun. Progres disimpan secara lokal di browser (`localStorage`), per perangkat/browser. Simpan folder `translations/` tetap berada di samping `index.html` — folder ini diperlukan untuk semua bahasa selain bahasa Inggris; jika `index.html` dibuka sendirian, aplikasi hanya akan tersedia dalam bahasa Inggris.
 
 ## Isi halaman
 
@@ -32,7 +32,7 @@ Halaman ini berupa shell bertab yang menggabungkan empat tool. Pada layar seleba
 - **Tema Light / Dark / System / Sepia** — pilih tampilan terang atau gelap yang tetap, ikuti pengaturan OS Anda, atau beralih ke tema Sepia berwarna amber-krem yang hangat (yang juga otomatis menyesuaikan terang/gelap); pilihan tersebut tetap tersimpan pada kunjungan berikutnya.
 - **Kata kunci bertanda otomatis** — setiap pertanyaan dicocokkan dengan daftar puluhan istilah umum ujian (mis. "MCP resource", "stateless", "tool_choice") dan menampilkan yang cocok sebagai chip, sehingga frasa penentu langsung terlihat sebelum Anda membaca penjelasannya.
 - **Persistensi lokal** — progres belajar (tanda Dikuasai/Perlu diulang) dan status checklist rencana disimpan melalui `localStorage`, dengan fallback in-memory untuk tab saat ini jika penyimpanan diblokir.
-- **Nol dependency** — JS/CSS/SVG murni dalam satu file; satu-satunya panggilan eksternal adalah ke Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+- **Nol dependency** — JS/CSS/SVG murni tanpa framework atau build tooling; satu-satunya panggilan eksternal adalah ke Google Fonts (Space Grotesk, Inter, JetBrains Mono).
 - **Dukungan opsional** — tombol "☕ Buy me a coffee" (selalu tampil di navigasi atas, plus ajakan setelah menyelesaikan ujian latihan) membuka modal kode QR dengan beberapa opsi pembayaran; sepenuhnya opsional dan otomatis tersembunyi jika tidak ada gambar QR yang dikonfigurasi.
 
 ## Sangkalan

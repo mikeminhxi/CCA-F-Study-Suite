@@ -4,11 +4,11 @@
 
 🔗 **लाइव डेमो:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Anthropic की **Claude Certified Architect — Foundations (CCA-F)** प्रमाणन परीक्षा की तैयारी के लिए एक स्वतंत्र (self-contained) HTML फ़ाइल। कोई build step नहीं, कोई server नहीं, इंस्टॉल करने के लिए कोई dependency नहीं — बस `index.html` को किसी भी browser में खोलें।
+Anthropic की **Claude Certified Architect — Foundations (CCA-F)** प्रमाणन परीक्षा की तैयारी के लिए एक स्वतंत्र (self-contained) स्टैटिक ऐप। कोई build step नहीं, कोई server नहीं, इंस्टॉल करने के लिए कोई dependency नहीं — बस `index.html` को किसी भी browser में खोलें।
 
 ## फ़ाइल खोलें
 
-[index.html](index.html) पर डबल-क्लिक करें, या इसे किसी भी static file server के ज़रिए serve करें। प्रगति (progress) आपके browser में स्थानीय रूप से (`localStorage`) सहेजी जाती है, प्रति डिवाइस/browser।
+[index.html](index.html) पर डबल-क्लिक करें, या इसे किसी भी static file server के ज़रिए serve करें। प्रगति (progress) आपके browser में स्थानीय रूप से (`localStorage`) सहेजी जाती है, प्रति डिवाइस/browser। `translations/` फ़ोल्डर को `index.html` के साथ ही रखें — यह अंग्रेज़ी को छोड़कर बाकी सभी भाषाओं के लिए ज़रूरी है; अकेले खोले जाने पर `index.html` केवल अंग्रेज़ी में काम करता है।
 
 ## पेज की सामग्री
 
@@ -32,7 +32,7 @@ Anthropic की **Claude Certified Architect — Foundations (CCA-F)** प्�
 - **Light / Dark / System / Sepia थीम** — एक स्थिर light या dark लुक चुनें, अपने OS की सेटिंग फ़ॉलो करें, या गर्माहट भरे amber-cream वाले Sepia थीम पर स्विच करें (यह भी light/dark के अनुसार अपने आप ढल जाता है); चुनी गई थीम आगामी visits में भी बनी रहती है।
 - **स्वतः-टैग किए गए keywords** — हर प्रश्न को दर्जनों आम exam buzzwords की एक सूची (जैसे "MCP resource", "stateless", "tool_choice") के विरुद्ध जाँचा जाता है और मेल खाने वाले शब्दों को chips के रूप में दिखाया जाता है, ताकि explanation पढ़ने से पहले ही निर्णायक संकेत वाक्यांश (giveaway phrase) उभर आए।
 - **Local persistence** — study progress (Known/To review markers) और plan की checklist स्थिति `localStorage` के ज़रिए सहेजी जाती है, और यदि storage blocked हो तो वर्तमान tab के लिए एक in-memory fallback भी उपलब्ध है।
-- **शून्य dependencies** — एक ही फ़ाइल में शुद्ध JS/CSS/SVG; एकमात्र बाहरी calls Google Fonts (Space Grotesk, Inter, JetBrains Mono) के लिए हैं।
+- **शून्य dependencies** — बिना किसी framework या build tooling के शुद्ध JS/CSS/SVG; एकमात्र बाहरी calls Google Fonts (Space Grotesk, Inter, JetBrains Mono) के लिए हैं।
 - **वैकल्पिक समर्थन (Optional support)** — एक "☕ मुझे एक कॉफ़ी पिलाएँ" बटन (हमेशा ऊपरी navigation bar में दिखाई देता है, और एक अभ्यास परीक्षा पूरी करने के बाद एक याद-दिलाने वाला संकेत भी) कुछ भुगतान विधियों के लिए QR codes वाली एक विंडो खोलता है; यह पूरी तरह से वैकल्पिक है और यदि कोई QR image कॉन्फ़िगर नहीं की गई है तो अपने आप छिप जाता है।
 
 ## अस्वीकरण (Disclaimer)

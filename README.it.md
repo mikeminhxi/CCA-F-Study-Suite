@@ -4,11 +4,11 @@
 
 🔗 **Demo live:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Un file HTML autonomo per prepararsi all'esame di certificazione Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Nessun passaggio di build, nessun server, nessuna dipendenza da installare — basta aprire `index.html` in un browser.
+Un'app statica autonoma per prepararsi all'esame di certificazione Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Nessun passaggio di build, nessun server, nessuna dipendenza da installare — basta aprire `index.html` in un browser.
 
 ## Aprire il file
 
-Fai doppio clic su [index.html](index.html), oppure servilo tramite un qualsiasi server di file statici. I progressi vengono salvati localmente nel browser (`localStorage`), per dispositivo/browser.
+Fai doppio clic su [index.html](index.html), oppure servilo tramite un qualsiasi server di file statici. I progressi vengono salvati localmente nel browser (`localStorage`), per dispositivo/browser. Tieni la cartella `translations/` accanto a `index.html` — è necessaria per tutte le lingue tranne l'inglese; se `index.html` viene aperto da solo, è disponibile solo in inglese.
 
 ## Contenuto della pagina
 
@@ -32,7 +32,7 @@ La pagina è un guscio a schede che raggruppa quattro strumenti. Sugli schermi d
 - **Temi Chiaro / Scuro / Sistema / Sepia** — scegli un aspetto chiaro o scuro fisso, segui l'impostazione del sistema operativo, oppure passa a un caldo tema Sepia ambra e crema (che si adatta automaticamente anche a chiaro/scuro); la scelta viene mantenuta nelle visite successive.
 - **Parole chiave rilevate automaticamente** — ogni domanda viene confrontata con un elenco di decine di termini frequenti dell'esame (ad es. "MCP resource", "stateless", "tool_choice") e mostra le corrispondenze come chip, così la frase rivelatrice salta all'occhio ancora prima di leggere la spiegazione.
 - **Persistenza locale** — i progressi di studio (contrassegni Conosciuto/Da rivedere) e lo stato della checklist del piano vengono salvati tramite `localStorage`, con un fallback in memoria per la scheda corrente se lo storage è bloccato.
-- **Zero dipendenze** — puro JS/CSS/SVG in un unico file; le uniche chiamate esterne sono verso Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+- **Zero dipendenze** — puro JS/CSS/SVG, senza framework né strumenti di build; le uniche chiamate esterne sono verso Google Fonts (Space Grotesk, Inter, JetBrains Mono).
 - **Supporto facoltativo** — un pulsante "☕ Offrimi un caffè" (sempre visibile nella barra di navigazione superiore, con un promemoria dopo aver completato un esame di pratica) apre una finestra con codici QR per alcuni metodi di pagamento; completamente facoltativo e si nasconde automaticamente se non è configurata alcuna immagine QR.
 
 ## Avvertenza

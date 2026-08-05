@@ -4,11 +4,11 @@
 
 🔗 **Wersja demonstracyjna na żywo:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Samodzielny plik HTML do nauki przed egzaminem certyfikacyjnym Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Brak kroku budowania, brak serwera, brak zależności do instalacji — wystarczy otworzyć `index.html` w przeglądarce.
+Samodzielna aplikacja statyczna do nauki przed egzaminem certyfikacyjnym Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Brak kroku budowania, brak serwera, brak zależności do instalacji — wystarczy otworzyć `index.html` w przeglądarce.
 
 ## Jak otworzyć
 
-Kliknij dwukrotnie plik [index.html](index.html) albo udostępnij go za pomocą dowolnego serwera plików statycznych. Postępy są zapisywane lokalnie w przeglądarce (`localStorage`), oddzielnie dla każdego urządzenia/przeglądarki.
+Kliknij dwukrotnie plik [index.html](index.html) albo udostępnij go za pomocą dowolnego serwera plików statycznych. Postępy są zapisywane lokalnie w przeglądarce (`localStorage`), oddzielnie dla każdego urządzenia/przeglądarki. Trzymaj folder `translations/` obok pliku `index.html` — jest on wymagany dla wszystkich języków oprócz angielskiego; otwarty samodzielnie `index.html` działa wyłącznie po angielsku.
 
 ## Co zawiera
 
@@ -32,7 +32,7 @@ Strona to zakładkowa powłoka z czterema narzędziami. Na ekranach o szerokośc
 - **Motywy Light / Dark / System / Sepia** — wybierz stały jasny lub ciemny wygląd, podążaj za ustawieniem systemu operacyjnego albo przełącz się na ciepły, bursztynowo-kremowy motyw Sepia (który również automatycznie dostosowuje się do jasnego/ciemnego trybu); wybór jest zapamiętywany przy kolejnych wizytach.
 - **Automatycznie tagowane słowa kluczowe** — każde pytanie jest sprawdzane pod kątem listy kilkudziesięciu egzaminacyjnych haseł (np. „MCP resource", „stateless", „tool_choice") i pokazuje trafienia jako chipy, dzięki czemu kluczowa fraza rzuca się w oczy, zanim przeczytasz wyjaśnienie.
 - **Lokalna trwałość danych** — postępy nauki (oznaczenia Znane/Do powtórki) oraz stan listy kontrolnej planu są zapisywane za pomocą `localStorage`, z zapasowym mechanizmem w pamięci dla bieżącej karty, jeśli pamięć jest zablokowana.
-- **Zero zależności** — czysty JS/CSS/SVG w jednym pliku; jedynymi zewnętrznymi wywołaniami są Google Fonts (Space Grotesk, Inter, JetBrains Mono).
+- **Zero zależności** — czysty JS/CSS/SVG bez frameworka i narzędzi do budowania; jedynymi zewnętrznymi wywołaniami są Google Fonts (Space Grotesk, Inter, JetBrains Mono).
 - **Opcjonalne wsparcie** — przycisk „☕ Postaw mi kawę" (zawsze widoczny w górnym pasku nawigacji, a dodatkowo przypomnienie po ukończeniu egzaminu próbnego) otwiera okno modalne z kodami QR i kilkoma opcjami płatności; jest całkowicie opcjonalny i automatycznie ukrywany, jeśli nie skonfigurowano żadnych obrazów QR.
 
 ## Zastrzeżenie

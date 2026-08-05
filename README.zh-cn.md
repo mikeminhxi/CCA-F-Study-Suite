@@ -4,11 +4,11 @@
 
 🔗 **在线演示：** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-一个用于备考 Anthropic **Claude Certified Architect — Foundations（CCA-F）** 认证考试的单文件 HTML 学习应用。无需构建、无需服务器、无需安装任何依赖——只需在浏览器中打开 `index.html` 即可使用。
+一个用于备考 Anthropic **Claude Certified Architect — Foundations（CCA-F）** 认证考试的自包含静态应用。无需构建、无需服务器、无需安装任何依赖——只需在浏览器中打开 `index.html` 即可使用。
 
 ## 打开方式
 
-双击 [index.html](index.html),或用任意静态文件服务器托管它。学习进度会通过 `localStorage` 保存在本地浏览器中,按设备/浏览器区分。
+双击 [index.html](index.html),或用任意静态文件服务器托管它。学习进度会通过 `localStorage` 保存在本地浏览器中,按设备/浏览器区分。请将 `translations/` 文件夹与 `index.html` 放在一起——除英语外的所有语言都需要它;若单独打开 `index.html`,将只能使用英语。
 
 ## 页面内容
 
@@ -32,7 +32,7 @@
 - **浅色 / 深色 / 跟随系统 / 复古(Sepia)主题**——选择固定的浅色或深色外观、跟随系统设置,或切换到暖色调的琥珀奶油色 Sepia 主题(该主题也会自动适配浅色/深色);所选主题会在下次访问时保留。
 - **自动标注关键词**——每道题都会与数十个考试高频词(例如「MCP resource」「stateless」「tool_choice」)进行比对,匹配到的会以标签形式显示,让关键提示词在你阅读解释之前就先跳出来。
 - **本地持久化**——学习进度(已掌握/待复习标记)与计划清单状态均通过 `localStorage` 保存;若存储被阻止,则为当前标签页提供内存中的临时回退方案。
-- **零外部依赖**——纯原生 JS/CSS/SVG 集于一个文件;唯一的外部请求是 Google Fonts(Space Grotesk、Inter、JetBrains Mono)。
+- **零外部依赖**——纯原生 JS/CSS/SVG,不依赖任何框架或构建工具;唯一的外部请求是 Google Fonts(Space Grotesk、Inter、JetBrains Mono)。
 - **可选的支持功能**——顶部导航栏始终显示的「☕ Buy me a coffee」按钮(完成一次模拟考试后也会出现提示),点击后会弹出包含几种支付方式二维码的弹窗;完全可选,如果未配置二维码图片会自动隐藏。
 
 ## 免责声明
