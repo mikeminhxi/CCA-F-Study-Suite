@@ -699,15 +699,16 @@
 <script>
 (function(){
 "use strict";
-function showLoadError(){
+function showLoadError(missing){
   try{
     var el=document.createElement('div');
     el.setAttribute('role','alert');
     // Inline styles on purpose: style.css may be the file that failed to load.
     el.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;padding:14px 18px;'+
       'background:#7f1d1d;color:#fff;font:14px/1.5 system-ui,-apple-system,sans-serif;text-align:center';
-    el.textContent="This page couldn't load its data files. Keep index.html, style.css, "+
-      "content.js and the translations/ folder together in the same folder.";
+    el.textContent=missing
+      ? "This page couldn't load content.js. Keep index.html, style.css and content.js together in the same folder."
+      : "The page failed to start. Check the browser console for details.";
     (document.body||document.documentElement).appendChild(el);
   }catch(e){}
 }
@@ -1473,7 +1474,7 @@ function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random
   })();
 })();
 
-}catch(err){console.error("[CONSOLE]",err);showLoadError();}
+}catch(err){console.error("[CONSOLE]",err);showLoadError(typeof QDATA==='undefined');}
 })();
 </script>
 <script>
