@@ -254,7 +254,11 @@ for (const c of CODES) {
   const jsPath = path.join(ROOT, 'translations', c + '.js');
   const src = fs.readFileSync(jsPath, 'utf8');
   const sandboxWindow = {};
-  vm.runInNewContext(src, { window: sandboxWindow });
+  // Run in the CURRENT realm (new Function), not vm.runInNewContext (a
+  // separate Realm): assert.deepEqual/deepStrictEqual compares prototype
+  // identity, so cross-realm objects fail deepEqual even when
+  // structurally identical -- confirmed by a minimal repro during Task 1.
+  new Function('window', src)(sandboxWindow);
   const data = sandboxWindow['__LANG_' + c.toUpperCase() + '__'];
   try {
     assert.equal(data.code, c, 'code mismatch');
