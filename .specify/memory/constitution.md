@@ -79,7 +79,7 @@ manual `Edit`/`Write` calls against the raw line.
 
 `CHANGELOG.md` MUST be updated for every user-visible change (new language,
 theme change, layout fix, new feature). The list of supported languages MUST
-never diverge between `CHANGELOG.md`, the six README files, and the app's
+never diverge between `CHANGELOG.md`, all 17 README files, and the app's
 `#lang-select` dropdown.
 
 ## Language & Translation Conventions
