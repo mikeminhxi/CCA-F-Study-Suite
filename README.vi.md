@@ -4,11 +4,11 @@
 
 🔗 **Bản demo trực tuyến:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Một ứng dụng tĩnh độc lập (không cần build, không cần server, không phụ thuộc thư viện ngoài) để ôn thi chứng chỉ **Claude Certified Architect — Foundations (CCA-F)** của Anthropic. Chỉ cần mở `index.html` bằng trình duyệt là dùng được.
+Một ứng dụng tĩnh độc lập (không cần build, không cần server, không phụ thuộc thư viện ngoài) để ôn thi chứng chỉ **Claude Certified Architect — Foundations (CCA-F)** của Anthropic. Chỉ cần tải thư mục về rồi mở `index.html` bằng trình duyệt là dùng được.
 
 ## Cách mở
 
-Nhấp đúp vào [index.html](index.html), hoặc chạy bằng bất kỳ static file server nào. Tiến độ học được lưu cục bộ ngay trên trình duyệt (`localStorage`), theo từng thiết bị/trình duyệt. Giữ thư mục `translations/` nằm cạnh `index.html` — thư mục này cần thiết cho mọi ngôn ngữ trừ tiếng Anh; nếu chỉ mở riêng `index.html`, ứng dụng sẽ chỉ hoạt động bằng tiếng Anh.
+Nhấp đúp vào [index.html](index.html), hoặc chạy bằng bất kỳ static file server nào. Tiến độ học được lưu cục bộ ngay trên trình duyệt (`localStorage`), theo từng thiết bị/trình duyệt. Giữ `style.css` và `content.js` nằm cạnh `index.html` — ứng dụng cần cả hai; nếu chỉ mở riêng `index.html`, trang sẽ hiện lỗi thay vì tải ứng dụng. Ngoài ra, hãy thêm thư mục `translations/` nếu dùng ngôn ngữ khác tiếng Anh — nếu thiếu, ứng dụng sẽ tự động quay về tiếng Anh.
 
 ## Nội dung trang
 

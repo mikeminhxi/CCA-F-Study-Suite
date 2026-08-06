@@ -4,11 +4,11 @@
 
 🔗 **Demo langsung:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Aplikasi statik yang berdiri sendiri untuk belajar bagi peperiksaan pensijilan Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Tiada proses build, tiada pelayan (server), tiada dependency yang perlu dipasang — cukup buka `index.html` dalam pelayar web.
+Aplikasi statik yang berdiri sendiri untuk belajar bagi peperiksaan pensijilan Anthropic **Claude Certified Architect — Foundations (CCA-F)**. Tiada proses build, tiada pelayan (server), tiada dependency yang perlu dipasang — muat turun folder tersebut dan buka `index.html` dalam pelayar web.
 
 ## Cara membuka
 
-Klik dua kali pada [index.html](index.html), atau jalankan melalui mana-mana pelayan fail statik. Kemajuan disimpan secara tempatan dalam pelayar (`localStorage`), mengikut peranti/pelayar. Simpan folder `translations/` bersebelahan dengan `index.html` — ia diperlukan untuk semua bahasa selain bahasa Inggeris; jika `index.html` dibuka sendirian, hanya bahasa Inggeris yang berfungsi.
+Klik dua kali pada [index.html](index.html), atau jalankan melalui mana-mana pelayan fail statik. Kemajuan disimpan secara tempatan dalam pelayar (`localStorage`), mengikut peranti/pelayar. Simpan `style.css` dan `content.js` bersebelahan dengan `index.html` — aplikasi ini memerlukan kedua-duanya; jika `index.html` dibuka sendirian, ralat akan dipaparkan dan bukannya dimuatkan. Tambahkan juga folder `translations/` untuk bahasa selain bahasa Inggeris — jika tiada, aplikasi akan kembali secara senyap kepada bahasa Inggeris.
 
 ## Kandungan Halaman
 

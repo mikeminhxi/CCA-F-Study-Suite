@@ -1,16 +1,14 @@
 <!--
 Sync Impact Report
-- Version change: 1.0.0 → 1.1.1
+- Version change: 1.1.1 → 1.2.0
 - List of modified principles:
-  - I. Zero-Build, First-Party Files (amended: explicitly allows first-party
-    local <script src> files with no build step, alongside index.html;
-    still forbids bundlers/transpilation/third-party scripts)
-  - II. i18n-First UI Copy (amended: describes the translations/<code>.js
-    per-language-file model, replacing the inline window.__I18N_XX__/
-    __SHELL_XX__ + MAPS/SHELLS description)
-  - IV. Safe Large-Dictionary Edits (wording fix: "inline JS dictionary
-    literals" → "per-language translations/<code>.js JS dictionary
-    literals", since Principle II's amendment moved them out of index.html)
+  - I. Zero-Build, First-Party Files (amended: also permits first-party
+    <link rel="stylesheet"> files, and requires every such file to ship
+    alongside index.html — added for style.css/content.js)
+  - IV. Safe Large-Dictionary Edits (re-grounded: the rule now cites
+    escaping correctness across content.js and translations/<code>.js,
+    replacing a stale premise about 30KB single-line literals that stopped
+    being true when the dictionaries were pretty-printed)
 - Added sections: none
 - Removed sections: none
 - Templates requiring updates:
@@ -29,11 +27,13 @@ Sync Impact Report
 The application ships as first-party static files with no build step, no
 server-side code, no package manager, and no bundler — only plain files a
 browser loads directly. `index.html` is the entry point; it may load
-additional same-origin, first-party `<script src>` files (e.g.
+additional same-origin, first-party `<script src>` and
+`<link rel="stylesheet">` files (e.g. `style.css`, `content.js`,
 `languages.config.js`, `translations/<code>.js`) as long as each one is a
-plain committed file requiring no compilation step, and loading uses
-`<script src>` rather than `fetch()` so the app keeps working when
-`index.html` is opened directly via `file://`. The only external network
+plain committed file requiring no compilation step, and loading uses a
+`<script src>`/`<link>` tag rather than `fetch()` so the app keeps working
+when `index.html` is opened directly via `file://`. Every such file MUST
+sit alongside `index.html` and ship in the repo. The only external network
 call is a Google Fonts `<link>`. Any change that would require a bundler,
 package manager, transpilation, or a third-party external script/library
 dependency is out of scope unless the constitution is amended first to
@@ -66,18 +66,20 @@ other is a regression, not a follow-up.
 
 ### IV. Safe Large-Dictionary Edits
 
-Several per-language `translations/<code>.js` JS dictionary literals exceed 30KB on a single line. Edits to
-them MUST go through a throwaway Node script using brace-depth- and
-string-escape-aware JSON boundary detection (never naive string-splitting
-such as `indexOf(';')`, which breaks on embedded semicolons in translated
-text), executed via the shell — not manual `Edit`/`Write` calls against the
-raw line.
+The app's data files (`content.js`, `translations/<code>.js`) hold large JS
+object and array literals — some run to thousands of characters on a single
+line, and their string values embed quotes, apostrophes, backslashes and
+semicolons across many scripts and languages. Edits to them MUST go through
+a throwaway Node script using brace-depth- and string-escape-aware boundary
+detection (never naive string-splitting such as `indexOf(';')`, which breaks
+on embedded semicolons in translated text), executed via the shell — not
+manual `Edit`/`Write` calls against the raw line.
 
 ### V. Documentation Currency
 
 `CHANGELOG.md` MUST be updated for every user-visible change (new language,
 theme change, layout fix, new feature). The list of supported languages MUST
-never diverge between `CHANGELOG.md`, the six README files, and the app's
+never diverge between `CHANGELOG.md`, all 17 README files, and the app's
 `#lang-select` dropdown.
 
 ## Language & Translation Conventions
@@ -122,4 +124,4 @@ not committee review. Any amendment MUST:
    `spec-template.md`, and `tasks-template.md` for consistency (see Sync
    Impact Report above for the current state of that check).
 
-**Version**: 1.1.1 | **Ratified**: 2026-07-24 | **Last Amended**: 2026-08-05
+**Version**: 1.2.0 | **Ratified**: 2026-07-24 | **Last Amended**: 2026-08-06

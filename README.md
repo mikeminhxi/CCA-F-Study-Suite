@@ -4,11 +4,11 @@
 
 🔗 **Live demo:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-A self-contained static app for studying Anthropic's **Claude Certified Architect — Foundations (CCA-F)** exam. No build step, no server, no dependencies to install — just open `index.html` in a browser.
+A self-contained static app for studying Anthropic's **Claude Certified Architect — Foundations (CCA-F)** exam. No build step, no server, no dependencies to install — download the folder and open `index.html` in a browser.
 
 ## Open it
 
-Double-click [index.html](index.html), or serve it with any static file server. Progress is saved locally in the browser (`localStorage`), per device/browser. Keep the `translations/` folder alongside `index.html` — it's required for every language except English; `index.html` opened on its own falls back to English only.
+Double-click [index.html](index.html), or serve it with any static file server. Progress is saved locally in the browser (`localStorage`), per device/browser. Keep `style.css` and `content.js` alongside `index.html` — the app needs both; `index.html` on its own will show an error instead of loading. Add the `translations/` folder too for any language other than English — without it, non-English languages fall back to English.
 
 ## What's inside
 

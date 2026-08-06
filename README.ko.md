@@ -4,11 +4,11 @@
 
 🔗 **라이브 데모:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
-Anthropic의 **Claude Certified Architect — Foundations (CCA-F)** 시험 대비를 위한, 빌드나 서버 없이 그대로 동작하는 정적 앱입니다. 설치할 외부 의존성도 필요 없습니다 — 브라우저에서 `index.html`을 열기만 하면 됩니다.
+Anthropic의 **Claude Certified Architect — Foundations (CCA-F)** 시험 대비를 위한, 빌드나 서버 없이 그대로 동작하는 정적 앱입니다. 설치할 외부 의존성도 필요 없습니다 — 폴더를 내려받아 브라우저에서 `index.html`을 열기만 하면 됩니다.
 
 ## 여는 방법
 
-[index.html](index.html)을 더블클릭하거나, 아무 정적 파일 서버로 제공하세요. 학습 진행 상황은 브라우저의 `localStorage`에 로컬로 저장됩니다(기기·브라우저별로 별도 저장). `translations/` 폴더는 `index.html`과 같은 위치에 두어야 합니다 — 영어를 제외한 모든 언어에 필요하며, `index.html`만 단독으로 열면 영어로만 동작합니다.
+[index.html](index.html)을 더블클릭하거나, 아무 정적 파일 서버로 제공하세요. 학습 진행 상황은 브라우저의 `localStorage`에 로컬로 저장됩니다(기기·브라우저별로 별도 저장). `style.css`와 `content.js`를 `index.html`과 같은 위치에 두어야 합니다 — 앱이 동작하려면 이 두 가지가 모두 필요하며, `index.html`만 단독으로 열면 로드되지 않고 오류가 표시됩니다. 영어가 아닌 언어를 사용하려면 `translations/` 폴더도 함께 두세요 — 이 폴더가 없으면 앱은 조용히 영어로 대체됩니다.
 
 ## 구성
 
