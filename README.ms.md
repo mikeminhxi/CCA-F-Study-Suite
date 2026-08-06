@@ -28,7 +28,7 @@ Halaman ini adalah rangka bertab yang menggabungkan empat alat. Pada skrin lebar
 
 ## Ciri-ciri
 
-- **Penukar bahasa EN / FR / DE / ID / IT / MS / PL / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU / TH** — satu lapisan penggantian teks masa jalan menterjemah kandungan pada skrin antara bahasa Inggeris, Perancis, Jerman, Indonesia, Itali, Melayu, Poland, Portugis, Sepanyol, Vietnam, Cina Ringkas, Cina Tradisional, Jepun, Korea, Hindi, Rusia, dan Thai tanpa perlu memuat semula halaman; bahasa yang dipilih akan kekal pada lawatan seterusnya.
+- **Penukar bahasa EN / FR / DE / ID / IT / MS / PL / PT / ES / VN / ZH / TW / JA / KO / HI / RU / TH** — satu lapisan penggantian teks masa jalan menterjemah kandungan pada skrin antara bahasa Inggeris, Perancis, Jerman, Indonesia, Itali, Melayu, Poland, Portugis, Sepanyol, Vietnam, Cina Ringkas, Cina Tradisional, Jepun, Korea, Hindi, Rusia, dan Thai tanpa perlu memuat semula halaman; bahasa yang dipilih akan kekal pada lawatan seterusnya.
 - **Tema Light / Dark / System / Sepia** — pilih rupa terang atau gelap yang tetap, ikut tetapan OS anda, atau tukar kepada tema Sepia berwarna ambar-krim yang hangat (turut menyesuaikan diri secara automatik dengan terang/gelap); pilihan ini kekal pada lawatan seterusnya.
 - **Kata kunci bertanda automatik** — setiap soalan disemak berbanding senarai berpuluh-puluh istilah popular peperiksaan (cth. "MCP resource", "stateless", "tool_choice") dan memaparkan yang sepadan sebagai cip, supaya frasa penentu terus kelihatan sebelum anda sempat membaca penjelasannya.
 - **Ketekalan tempatan** — kemajuan pembelajaran (tanda Dikuasai/Ulang kaji) dan status senarai semak pelan disimpan melalui `localStorage`, dengan sandaran dalam-memori untuk tab semasa jika storan disekat.

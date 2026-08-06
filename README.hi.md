@@ -28,7 +28,7 @@ Anthropic की **Claude Certified Architect — Foundations (CCA-F)** प्�
 
 ## विशेषताएँ (Features)
 
-- **EN / FR / DE / ID / IT / MS / PL / PT / ES / VN / 简体中文 / 繁體中文 / JA / 한국어 / HI / RU / TH भाषा टॉगल** — एक runtime text-swap layer, पेज को दोबारा लोड किए बिना, ऑन-स्क्रीन कॉपी को अंग्रेज़ी, फ़्रेंच, जर्मन, इंडोनेशियाई, इतालवी, मलय, पोलिश, पुर्तगाली, स्पेनिश, वियतनामी, सरलीकृत चीनी, पारंपरिक चीनी, जापानी, कोरियाई, हिंदी, रूसी और थाई के बीच translate करता है; चुनी गई भाषा आगामी visits में भी बनी रहती है।
+- **EN / FR / DE / ID / IT / MS / PL / PT / ES / VN / ZH / TW / JA / KO / HI / RU / TH भाषा टॉगल** — एक runtime text-swap layer, पेज को दोबारा लोड किए बिना, ऑन-स्क्रीन कॉपी को अंग्रेज़ी, फ़्रेंच, जर्मन, इंडोनेशियाई, इतालवी, मलय, पोलिश, पुर्तगाली, स्पेनिश, वियतनामी, सरलीकृत चीनी, पारंपरिक चीनी, जापानी, कोरियाई, हिंदी, रूसी और थाई के बीच translate करता है; चुनी गई भाषा आगामी visits में भी बनी रहती है।
 - **Light / Dark / System / Sepia थीम** — एक स्थिर light या dark लुक चुनें, अपने OS की सेटिंग फ़ॉलो करें, या गर्माहट भरे amber-cream वाले Sepia थीम पर स्विच करें (यह भी light/dark के अनुसार अपने आप ढल जाता है); चुनी गई थीम आगामी visits में भी बनी रहती है।
 - **स्वतः-टैग किए गए keywords** — हर प्रश्न को दर्जनों आम exam buzzwords की एक सूची (जैसे "MCP resource", "stateless", "tool_choice") के विरुद्ध जाँचा जाता है और मेल खाने वाले शब्दों को chips के रूप में दिखाया जाता है, ताकि explanation पढ़ने से पहले ही निर्णायक संकेत वाक्यांश (giveaway phrase) उभर आए।
 - **Local persistence** — study progress (Known/To review markers) और plan की checklist स्थिति `localStorage` के ज़रिए सहेजी जाती है, और यदि storage blocked हो तो वर्तमान tab के लिए एक in-memory fallback भी उपलब्ध है।
