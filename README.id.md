@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · **🇮🇩 Bahasa Indonesia** · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md) · [🇬🇷 Ελληνικά](README.el.md) · [🇸🇦 العربية](README.ar.md)
+[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · **🇮🇩 Bahasa Indonesia** · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md) · [🇬🇷 Ελληνικά](README.el.md) · [🇸🇦 العربية](README.ar.md) · [🇮🇱 עברית](README.he.md)
 
 🔗 **Demo langsung:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ Halaman ini berupa shell bertab yang menggabungkan empat tool. Pada layar seleba
 
 ## Fitur
 
-- **Pengalih bahasa EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH / EL / AR** — lapisan pergantian teks saat runtime menerjemahkan tampilan layar antara bahasa Inggris, Belanda, Prancis, Jerman, Indonesia, Italia, Melayu, Polandia, Portugis, Spanyol, Swedia, Vietnam, Tionghoa Sederhana, Tionghoa Tradisional, Jepang, Korea, Hindi, Rusia, Ukraina, Thai, Yunani, dan Arab tanpa perlu memuat ulang; bahasa yang dipilih tetap tersimpan pada kunjungan berikutnya.
+- **Pengalih bahasa EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH / EL / AR / HE** — lapisan pergantian teks saat runtime menerjemahkan tampilan layar antara bahasa Inggris, Belanda, Prancis, Jerman, Indonesia, Italia, Melayu, Polandia, Portugis, Spanyol, Swedia, Vietnam, Tionghoa Sederhana, Tionghoa Tradisional, Jepang, Korea, Hindi, Rusia, Ukraina, Thai, Yunani, Arab, dan Ibrani tanpa perlu memuat ulang; bahasa yang dipilih tetap tersimpan pada kunjungan berikutnya.
 - **Tema Light / Dark / System / Sepia** — pilih tampilan terang atau gelap yang tetap, ikuti pengaturan OS Anda, atau beralih ke tema Sepia berwarna amber-krem yang hangat (yang juga otomatis menyesuaikan terang/gelap); pilihan tersebut tetap tersimpan pada kunjungan berikutnya.
 - **Kata kunci bertanda otomatis** — setiap pertanyaan dicocokkan dengan daftar puluhan istilah umum ujian (mis. "MCP resource", "stateless", "tool_choice") dan menampilkan yang cocok sebagai chip, sehingga frasa penentu langsung terlihat sebelum Anda membaca penjelasannya.
 - **Persistensi lokal** — progres belajar (tanda Dikuasai/Perlu diulang) dan status checklist rencana disimpan melalui `localStorage`, dengan fallback in-memory untuk tab saat ini jika penyimpanan diblokir.

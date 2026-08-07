@@ -222,9 +222,12 @@ RTL prerequisite, not lower demand):**
       round is translation + wiring only, setting `dir: "rtl"` in
       `translations/ar.js`. Shipped as the app's 22nd language (branch
       `feat/add-arabic-language`).
-- [ ] Hebrew (עברית) — same, RTL layout prerequisite now satisfied; do after
+- [x] Hebrew (עברית) — same, RTL layout prerequisite now satisfied; done after
       Arabic per the maintainer's chosen PR order (RTL foundation → Arabic →
-      Hebrew, three separate PRs).
+      Hebrew, three separate PRs). Shipped as the app's 23rd language (branch
+      `feat/add-hebrew-language`). **Tier 3 is now fully complete** — the RTL
+      layout prerequisite and both RTL languages (Arabic, Hebrew) have all
+      shipped.
 
 **Not yet prioritized / needs a signal to justify** (from the original
 brainstormed list — include if you have a specific reason, e.g. known exam-
