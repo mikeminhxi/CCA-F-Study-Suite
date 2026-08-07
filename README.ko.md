@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · **🇰🇷 한국어** · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md)
+[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · **🇰🇷 한국어** · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md) · [🇬🇷 Ελληνικά](README.el.md)
 
 🔗 **라이브 데모:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ Anthropic의 **Claude Certified Architect — Foundations (CCA-F)** 시험 대�
 
 ## 기능
 
-- **EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH 언어 전환** — 런타임 텍스트 교체 레이어가 새로고침 없이 화면 문구를 영어, 네덜란드어, 프랑스어, 독일어, 인도네시아어, 이탈리아어, 말레이어, 폴란드어, 포르투갈어, 스페인어, 스웨덴어, 베트남어, 간체 중국어, 번체 중국어, 일본어, 한국어, 힌디어, 러시아어, 우크라이나어, 태국어 사이에서 전환합니다. 선택한 언어는 다음 방문 시에도 유지됩니다.
+- **EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH / EL 언어 전환** — 런타임 텍스트 교체 레이어가 새로고침 없이 화면 문구를 영어, 네덜란드어, 프랑스어, 독일어, 인도네시아어, 이탈리아어, 말레이어, 폴란드어, 포르투갈어, 스페인어, 스웨덴어, 베트남어, 간체 중국어, 번체 중국어, 일본어, 한국어, 힌디어, 러시아어, 우크라이나어, 태국어, 그리스어 사이에서 전환합니다. 선택한 언어는 다음 방문 시에도 유지됩니다.
 - **라이트 / 다크 / 시스템 / 세피아 테마** — 고정된 라이트 또는 다크 모습을 선택하거나, OS 설정을 따르거나, 따뜻한 호박색·크림색의 세피아 테마로 전환할 수 있습니다(라이트/다크에도 자동으로 맞춰집니다). 선택한 테마는 다음 방문 시에도 유지됩니다.
 - **자동 키워드 태깅** — 각 문항은 수십 개의 시험 빈출 키워드(예: "MCP resource", "stateless", "tool_choice")와 대조되어 일치하는 항목이 칩으로 표시되므로, 해설을 읽기 전에 결정적인 문구가 한눈에 들어옵니다.
 - **로컬 저장** — 학습 진행 상황(Known/Review 표시)과 계획 체크리스트 상태는 `localStorage`에 저장되며, 저장이 차단된 경우 현재 탭에 한해 메모리 기반으로 대체됩니다.

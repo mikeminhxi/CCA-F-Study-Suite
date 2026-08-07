@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · **🇵🇱 Polski** · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md)
+[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · **🇵🇱 Polski** · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md) · [🇬🇷 Ελληνικά](README.el.md)
 
 🔗 **Wersja demonstracyjna na żywo:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ Strona to zakładkowa powłoka z czterema narzędziami. Na ekranach o szerokośc
 
 ## Funkcje
 
-- **Przełącznik języka EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH** — warstwa podmiany tekstu w czasie działania tłumaczy widoczną na ekranie treść między angielskim, niderlandzkim, francuskim, niemieckim, indonezyjskim, włoskim, malajskim, polskim, portugalskim, hiszpańskim, szwedzkim, wietnamskim, chińskim uproszczonym, chińskim tradycyjnym, japońskim, koreańskim, hindi, rosyjskim, ukraińskim i tajskim bez przeładowania strony; wybrany język jest zapamiętywany przy kolejnych wizytach.
+- **Przełącznik języka EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH / EL** — warstwa podmiany tekstu w czasie działania tłumaczy widoczną na ekranie treść między angielskim, niderlandzkim, francuskim, niemieckim, indonezyjskim, włoskim, malajskim, polskim, portugalskim, hiszpańskim, szwedzkim, wietnamskim, chińskim uproszczonym, chińskim tradycyjnym, japońskim, koreańskim, hindi, rosyjskim, ukraińskim, tajskim i greckim bez przeładowania strony; wybrany język jest zapamiętywany przy kolejnych wizytach.
 - **Motywy Light / Dark / System / Sepia** — wybierz stały jasny lub ciemny wygląd, podążaj za ustawieniem systemu operacyjnego albo przełącz się na ciepły, bursztynowo-kremowy motyw Sepia (który również automatycznie dostosowuje się do jasnego/ciemnego trybu); wybór jest zapamiętywany przy kolejnych wizytach.
 - **Automatycznie tagowane słowa kluczowe** — każde pytanie jest sprawdzane pod kątem listy kilkudziesięciu egzaminacyjnych haseł (np. „MCP resource", „stateless", „tool_choice") i pokazuje trafienia jako chipy, dzięki czemu kluczowa fraza rzuca się w oczy, zanim przeczytasz wyjaśnienie.
 - **Lokalna trwałość danych** — postępy nauki (oznaczenia Znane/Do powtórki) oraz stan listy kontrolnej planu są zapisywane za pomocą `localStorage`, z zapasowym mechanizmem w pamięci dla bieżącej karty, jeśli pamięć jest zablokowana.
