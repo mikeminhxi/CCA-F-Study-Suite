@@ -2,6 +2,12 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Ukrainian (Українська) — 18th supported language
+
+- **Ukrainian (uk)** — added as the app's 18th supported language: `translations/uk.js` (full validated `i18n`/`shell` dictionary, loaded directly by `index.html`'s `loadLang()` — no injection into `index.html` needed post the 1.0.0 lazy-load split) plus the `#lang-select` dropdown option positioned right after Русский, all 17 existing READMEs updated, new `README.uk.md` added.
+- **First round to join an existing script group rather than open a new trailing one**: every prior non-Latin/non-CJK round (Hindi/Devanagari, Russian opening Cyrillic, Thai opening Thai-script) was appended as a brand-new group at the end of the dropdown/READMEs. Ukrainian instead joins the existing Cyrillic group immediately after Русский — same position in the dropdown, every README's switch-link row, and the Features-bullet abbreviation list — reusing the existing `sortHint: 'cyrillic'` value rather than introducing a new one.
+- **Translated from scratch, not derived from Russian**: despite both being Cyrillic-script languages, Ukrainian and Russian are distinct languages with their own vocabulary, grammar, and spelling conventions; the dictionary and all README prose were translated independently rather than lightly adapted from `ru.js`/`README.ru.md`.
+
 ## [1.1.0] - 2026-08-06 - CSS and content split out of index.html
 
 ### Changed

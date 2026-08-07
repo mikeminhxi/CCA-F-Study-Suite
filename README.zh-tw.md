@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · **🇹🇼 繁體中文** · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇹🇭 ไทย](README.th.md)
+[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · **🇹🇼 繁體中文** · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md)
 
 🔗 **線上展示：** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@
 
 ## 功能特性
 
-- **EN / FR / DE / ID / IT / MS / PL / PT / ES / VN / ZH / TW / JA / KO / HI / RU / TH 語言切換**——一層運行時文本替換機制,可將界面文案在英語、法語、德語、印尼語、義大利語、馬來語、波蘭語、葡萄牙語、西班牙語、越南語、簡體中文、繁體中文、日語、韓語、印地語、俄語與泰語之間無需刷新即可切換;所選語言會在下次訪問時保留。
+- **EN / FR / DE / ID / IT / MS / PL / PT / ES / VN / ZH / TW / JA / KO / HI / RU / UK / TH 語言切換**——一層運行時文本替換機制,可將界面文案在英語、法語、德語、印尼語、義大利語、馬來語、波蘭語、葡萄牙語、西班牙語、越南語、簡體中文、繁體中文、日語、韓語、印地語、俄語、烏克蘭語與泰語之間無需刷新即可切換;所選語言會在下次訪問時保留。
 - **淺色 / 深色 / 跟隨系統 / 復古(Sepia)主題**——選擇固定的淺色或深色外觀、跟隨系統設定,或切換到暖色調的琥珀奶油色 Sepia 主題(該主題也會自動適配淺色/深色);所選主題會在下次造訪時保留。
 - **自動標注關鍵詞**——每道題都會與數十個考試高頻詞(例如「MCP resource」「stateless」「tool_choice」)進行比對,匹配到的會以標籤形式顯示,讓關鍵提示詞在你閱讀解釋之前就先跳出來。
 - **本地持久化**——學習進度(已掌握/待複習標記)與計劃清單狀態均通過 `localStorage` 保存;若存儲被阻止,則為當前標籤頁提供內存中的臨時回退方案。
