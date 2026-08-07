@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · **🇸🇪 Svenska** · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md)
+[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · **🇸🇪 Svenska** · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md) · [🇬🇷 Ελληνικά](README.el.md)
 
 🔗 **Live-demo:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ Sidan är ett flikskal som samlar fyra verktyg. På skärmar med desktopbredd (9
 
 ## Funktioner
 
-- **EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH språkväxlare** — ett textbytarlager i realtid översätter skärmtexten mellan engelska, nederländska, franska, tyska, indonesiska, italienska, malajiska, polska, portugisiska, spanska, svenska, vietnamesiska, förenklad kinesiska, traditionell kinesiska, japanska, koreanska, hindi, ryska, ukrainska och thailändska utan omladdning; det valda språket bevaras mellan besök.
+- **EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH / EL språkväxlare** — ett textbytarlager i realtid översätter skärmtexten mellan engelska, nederländska, franska, tyska, indonesiska, italienska, malajiska, polska, portugisiska, spanska, svenska, vietnamesiska, förenklad kinesiska, traditionell kinesiska, japanska, koreanska, hindi, ryska, ukrainska, thailändska och grekiska utan omladdning; det valda språket bevaras mellan besök.
 - **Ljust / Mörkt / System / Sepia-teman** — välj ett fast ljust eller mörkt utseende, följ operativsystemets inställning, eller växla till ett varmt bärnstens- och gräddfärgat Sepia-tema (som också anpassar sig automatiskt till ljust/mörkt); valet bevaras mellan besök.
 - **Automatiskt taggade nyckelord** — varje fråga kontrolleras mot en lista med dussintals vanliga examenstermer (t.ex. "MCP resource", "stateless", "tool_choice") och visar träffarna som chips, så att den avslöjande frasen sticker ut innan du läser förklaringen.
 - **Lokal beständighet** — studieframsteg (Kan/Repetera-markeringar) och planens checklistestatus sparas via `localStorage`, med en reservlösning i minnet för aktuell flik om lagring är blockerad.

@@ -2,6 +2,13 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Greek (Ελληνικά) — 21st supported language
+
+- **Greek (el)** — added as the app's 21st supported language: `translations/el.js` (full validated `i18n`/`shell` dictionary, loaded directly by `index.html`'s `loadLang()` — no injection into `index.html` needed post the 1.0.0 lazy-load split) plus the `#lang-select` dropdown option positioned right after ไทย, all 20 existing READMEs updated, new `README.el.md` added.
+- **New trailing script-family group**: Greek is a new alphabet for this app (not RTL, same mechanics as the Hindi/Russian/Thai rounds), so it opens its own trailing group — `sortHint: 'greek'` — appended after Thai rather than merged into an existing group, following the same script-groups-appended-in-introduction-order precedent set by the Hindi round.
+- Dropdown option and translation dictionary were pre-staged before this pass; this round's work was the remaining mechanical wiring — the switch-link row and Features-bullet language lists across all 20 existing READMEs, plus authoring the new `README.el.md`.
+- **Completes the Tier 2 (remaining) candidates from `SPEC_KIT_INTEGRATION_PLAN.md` §5**: Ukrainian, Dutch, Swedish, and now Greek have all shipped, closing out that tier.
+
 ## Swedish (Svenska) — 20th supported language
 
 - **Swedish (sv)** — added as the app's 20th supported language: `translations/sv.js` (full validated `i18n`/`shell` dictionary, loaded directly by `index.html`'s `loadLang()` — no injection into `index.html` needed post the 1.0.0 lazy-load split) plus the `#lang-select` dropdown option positioned right after Español, all 19 existing READMEs updated, new `README.sv.md` added.

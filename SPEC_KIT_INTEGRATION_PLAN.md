@@ -200,11 +200,12 @@ translation volume):**
       outsized startup/fintech developer scene (Stockholm); Latin script,
       trivial engineering. Shipped as the app's 20th language (branch
       `feat/add-swedish-language`).
-- [ ] Greek (Ελληνικά) — smaller tech market than the above three, and a new
+- [x] Greek (Ελληνικά) — smaller tech market than the above three, and a new
       script family for this app (Greek alphabet) — same engineering shape
       as the Hindi/Russian/Thai rounds (new alphabet, not RTL) rather than
       trivial Latin-script wiring. Ranked last in this tier on cost, not
-      demand.
+      demand. Shipped as the app's 21st language (branch
+      `feat/add-greek-language`).
 
 **Tier 3 — larger markets, but real engineering lift beyond translation
 (ranked after Tier 2 above despite bigger raw population, because of the

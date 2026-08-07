@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · **🇫🇷 Français** · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md)
+[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · **🇫🇷 Français** · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md) · [🇬🇷 Ελληνικά](README.el.md)
 
 🔗 **Démo en ligne :** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ La page est une coquille à onglets regroupant quatre outils. Sur les écrans de
 
 ## Fonctionnalités
 
-- **Sélecteur de langue EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH** — une couche de remplacement de texte en temps réel traduit le contenu affiché entre l'anglais, le néerlandais, le français, l'allemand, l'indonésien, l'italien, le malais, le polonais, le portugais, l'espagnol, le suédois, le vietnamien, le chinois simplifié, le chinois traditionnel, le japonais, le coréen, l'hindi, le russe, l'ukrainien et le thaï sans recharger la page ; la langue choisie est conservée lors des visites futures.
+- **Sélecteur de langue EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH / EL** — une couche de remplacement de texte en temps réel traduit le contenu affiché entre l'anglais, le néerlandais, le français, l'allemand, l'indonésien, l'italien, le malais, le polonais, le portugais, l'espagnol, le suédois, le vietnamien, le chinois simplifié, le chinois traditionnel, le japonais, le coréen, l'hindi, le russe, l'ukrainien, le thaï et le grec sans recharger la page ; la langue choisie est conservée lors des visites futures.
 - **Thèmes Clair / Sombre / Système / Sépia** — choisissez un rendu clair ou sombre fixe, suivez le réglage du système, ou passez à un thème « Sépia » chaleureux ambre et crème (qui s'adapte aussi automatiquement au clair/sombre) ; le choix est conservé lors des visites futures.
 - **Mots-clés auto-détectés** — chaque question est comparée à une liste de dizaines de termes fréquents de l'examen (ex. « MCP resource », « stateless », « tool_choice ») et affiche ceux qui correspondent sous forme de puces, pour que la phrase révélatrice saute aux yeux avant même de lire l'explication.
 - **Persistance locale** — la progression d'étude (marques Acquis/À revoir) et l'état de la checklist du plan sont sauvegardés via `localStorage`, avec une solution de repli en mémoire pour l'onglet actuel si le stockage est bloqué.
