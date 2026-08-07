@@ -184,14 +184,15 @@ mechanics as the languages already shipped):
 against engineering lift, same method as the rest of this list (not just
 translation volume):**
 
-- [ ] Ukrainian (Українська) — one of Europe's largest IT-outsourcing
+- [x] Ukrainian (Українська) — one of Europe's largest IT-outsourcing
       developer populations (EPAM, GitLab, Grammarly, and many other
       outsourcing/product shops trace roots there); at least as strong an
       outsourcing-hub argument as Polski's. Cyrillic script mechanics are
       already solved by the Russian round (PR #17) — joins the existing
       Cyrillic script-family group in the dropdown/READMEs rather than
       opening a new one. No new engineering lift; likely the cheapest
-      remaining round.
+      remaining round. Shipped as the app's 18th language (branch
+      `feat/add-ukrainian-language`).
 - [ ] Dutch (Nederlands) — sizeable Western European tech market (Amsterdam
       hub); Latin script, same trivial mechanics as Tier 1.
 - [ ] Swedish (Svenska) — smaller population than Dutch/Ukrainian but an
