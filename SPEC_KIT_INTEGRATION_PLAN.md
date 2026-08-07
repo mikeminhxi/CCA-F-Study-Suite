@@ -193,8 +193,9 @@ translation volume):**
       opening a new one. No new engineering lift; likely the cheapest
       remaining round. Shipped as the app's 18th language (branch
       `feat/add-ukrainian-language`).
-- [ ] Dutch (Nederlands) — sizeable Western European tech market (Amsterdam
-      hub); Latin script, same trivial mechanics as Tier 1.
+- [x] Dutch (Nederlands) — sizeable Western European tech market (Amsterdam
+      hub); Latin script, same trivial mechanics as Tier 1. Shipped as the
+      app's 19th language (branch `feat/add-dutch-language`).
 - [ ] Swedish (Svenska) — smaller population than Dutch/Ukrainian but an
       outsized startup/fintech developer scene (Stockholm); Latin script,
       trivial engineering.
