@@ -1957,7 +1957,11 @@ try{
     lang=l;
     var sel=document.getElementById('lang-select'); if(sel) sel.value=l;
     try{localStorage.setItem('ccaf_lang',l);}catch(e){}
-    loadLang(l, applyAll);
+    loadLang(l, function(){
+      var isRtl=LANG_DATA[l] && LANG_DATA[l].dir==='rtl';
+      document.documentElement.setAttribute('dir', isRtl?'rtl':'ltr');
+      applyAll();
+    });
   };
   var __langCfg = getLangConfig();
   applyLangVisibility(__langCfg);

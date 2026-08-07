@@ -211,11 +211,19 @@ translation volume):**
 (ranked after Tier 2 above despite bigger raw population, because of the
 RTL prerequisite, not lower demand):**
 
-- [ ] Arabic (العربية) — RTL script. This app has **no RTL layout support
-      today** (nav/tabs/badges assume LTR; no `dir="rtl"` handling anywhere).
-      Adding Arabic means a layout-mirroring pass first, not just a dictionary.
-- [ ] Hebrew (עברית) — same RTL caveat as Arabic; if both are wanted, do the
-      RTL layout work once and cover both languages in the same pass.
+- [x] **RTL layout prerequisite — shipped** (branch
+      `feat/add-rtl-layout-support`). The app previously had **no RTL layout
+      support** (nav/tabs/badges assumed LTR; no `dir="rtl"` handling
+      anywhere) — that gap is now closed via a logical-CSS-properties pass
+      across `style.css` plus `dir`-attribute wiring in `index.html`, shipped
+      as its own PR ahead of either RTL language. Arabic and Hebrew below can
+      now proceed as standard translation + wiring rounds.
+- [ ] Arabic (العربية) — RTL script. Layout prerequisite now satisfied; this
+      round is translation + wiring only, setting `dir: "rtl"` in
+      `translations/ar.js`.
+- [ ] Hebrew (עברית) — same, RTL layout prerequisite now satisfied; do after
+      Arabic per the maintainer's chosen PR order (RTL foundation → Arabic →
+      Hebrew, three separate PRs).
 
 **Not yet prioritized / needs a signal to justify** (from the original
 brainstormed list — include if you have a specific reason, e.g. known exam-
