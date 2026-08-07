@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · **🇮🇹 Italiano** · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md)
+[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · **🇮🇹 Italiano** · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md)
 
 🔗 **Demo live:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ La pagina è un guscio a schede che raggruppa quattro strumenti. Sugli schermi d
 
 ## Funzionalità
 
-- **Selettore di lingua EN / FR / DE / ID / IT / MS / PL / PT / ES / VN / ZH / TW / JA / KO / HI / RU / UK / TH** — un livello di sostituzione del testo in tempo reale traduce i contenuti a schermo tra inglese, francese, tedesco, indonesiano, italiano, malese, polacco, portoghese, spagnolo, vietnamita, cinese semplificato, cinese tradizionale, giapponese, coreano, hindi, russo, ucraino e thailandese senza ricaricare la pagina; la lingua scelta viene mantenuta nelle visite successive.
+- **Selettore di lingua EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / VN / ZH / TW / JA / KO / HI / RU / UK / TH** — un livello di sostituzione del testo in tempo reale traduce i contenuti a schermo tra inglese, olandese, francese, tedesco, indonesiano, italiano, malese, polacco, portoghese, spagnolo, vietnamita, cinese semplificato, cinese tradizionale, giapponese, coreano, hindi, russo, ucraino e thailandese senza ricaricare la pagina; la lingua scelta viene mantenuta nelle visite successive.
 - **Temi Chiaro / Scuro / Sistema / Sepia** — scegli un aspetto chiaro o scuro fisso, segui l'impostazione del sistema operativo, oppure passa a un caldo tema Sepia ambra e crema (che si adatta automaticamente anche a chiaro/scuro); la scelta viene mantenuta nelle visite successive.
 - **Parole chiave rilevate automaticamente** — ogni domanda viene confrontata con un elenco di decine di termini frequenti dell'esame (ad es. "MCP resource", "stateless", "tool_choice") e mostra le corrispondenze come chip, così la frase rivelatrice salta all'occhio ancora prima di leggere la spiegazione.
 - **Persistenza locale** — i progressi di studio (contrassegni Conosciuto/Da rivedere) e lo stato della checklist del piano vengono salvati tramite `localStorage`, con un fallback in memoria per la scheda corrente se lo storage è bloccato.
