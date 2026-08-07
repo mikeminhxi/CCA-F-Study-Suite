@@ -1,118 +1,134 @@
-# Implementation Plan: Add Greek (Ελληνικά) Language
+# Implementation Plan: RTL Layout Foundation
 
-**Branch**: `feat/add-greek-language` | **Date**: 2026-08-07 | **Spec**: [spec.md](spec.md)
+**Branch**: `feat/add-rtl-layout-support` | **Date**: 2026-08-07 | **Spec**: [spec.md](spec.md)
 
-**Input**: Feature specification from `specs/001-add-language/spec.md`, scoped to
-Greek (el) — ranked #4 (last) among remaining candidates in
-`SPEC_KIT_INTEGRATION_PLAN.md` §5 (Tier 2 remaining, PR #33), completing that
-tier. Matches User Story 1 (drop-in language) but with a new script family,
-so also touches the ordering rules normally covered by User Story 2's
-non-Latin considerations (without needing RTL, which is User Story 2 proper).
+**Input**: Feature specification from `specs/001-add-language/spec.md`, User Story 2
+(FR-006) — Tier 3 (Arabic, Hebrew) requires layout-mirroring work distinct from the
+standard translation/wiring flow. Per the maintainer's explicit direction, this round
+ships that layout-mirroring work **on its own**, before any RTL language's dictionary —
+a separate PR from Arabic/Hebrew rather than bundled into the first RTL language's PR
+(spec.md's own Assumptions section scopes RTL implementation out of the workflow spec
+itself; this plan is the actual engineering work the maintainer asked for, layered on
+top of that process).
 
-**Note**: Written prospectively, per FR-009 — this plan and `tasks.md` are generated
-and committed *before* `fetch-language-dictionary`/`add-language` run, following the
-same pattern as all prior rounds (most recently Swedish, PR #36).
+**Note**: Unlike every prior round in this feature area, this round adds **no new
+language** — `translations/` gains no new file, `#lang-select` gains no new option, no
+README is touched. It exists purely to make the app capable of rendering right-to-left
+before Arabic/Hebrew build on top of it.
 
 ## Summary
 
-Add Greek as the 21st supported UI language: full dictionary translated
-and written directly to `translations/el.js` via `fetch-language-dictionary`
-(current baseline: 723 `i18n` + 5 `shell` keys + 8 format functions,
-confirmed against `translations/vn.js`, unchanged since the Dutch round),
-then wired into `index.html` (`#lang-select` dropdown only — lazy-loaded via
-`loadLang()`, no `MAPS`/`SHELLS` injection) and all twenty existing READMEs'
-switch-links via `add-language`, plus a new `README.el.md`.
+Add `dir="rtl"`/`dir="ltr"` support to the app shell, driven by a new optional `dir`
+field on each `translations/<code>.js` language object (absent/`"ltr"` = default,
+`"rtl"` = right-to-left). No existing language sets this field. `window.__setLang__`
+in `index.html` sets `document.documentElement`'s `dir` attribute once the language
+dictionary is loaded, mirroring the existing `data-theme` attribute pattern.
 
-**Dropdown/README position**: Greek uses its own script (Greek alphabet) —
-not Latin, not CJK, not Devanagari, not Cyrillic, not Thai. Per the
-established "new script family opens a new trailing group, appended in the
-order the script is first introduced" rule (followed by every non-Latin
-round except Ukrainian, which instead joined the existing Cyrillic group),
-Greek's `<option>`/README entry goes at the very end of the dropdown,
-**after ไทย (th)**, which is currently last. `sortHint: "greek"` (new value
-— first language to use it).
+**CSS strategy**: convert horizontal-axis physical properties in `style.css`
+(`margin-left/right`, `padding-left/right`, `left/right` positioning, `text-align:
+left/right`, `border-left/right`, asymmetric `border-radius` corners) to their CSS
+logical-property equivalents (`margin-inline-start/end`, `padding-inline-start/end`,
+`inset-inline-start/end`, `text-align: start/end`, `border-inline-start/end`,
+`border-start-start-radius` etc.) wherever the property is about inline/horizontal
+layout — not vertical (`margin-top/bottom` etc. are untouched, direction-agnostic).
+Logical properties auto-mirror based on the `dir` attribute with zero `[dir="rtl"]`
+override blocks needed, and are supported in every evergreen browser this app already
+targets (Chrome/Firefox/Safari/Edge, all recent versions) — no new dependency, per
+Principle I.
 
-**Script note**: Greek is LTR (not RTL — User Story 2's RTL-specific work,
-e.g. `dir="rtl"` handling, remains out of scope for this round; that's
-reserved for Arabic/Hebrew, ranked in Tier 3 behind Greek specifically
-because of that prerequisite). Greek alphabet glyphs are covered by standard
-system/web fonts already used across this app — no font work needed.
+**Non-mirroring cases requiring explicit `[dir="rtl"]` overrides**: the `→` arrow
+glyphs used throughout the Cheat & Keywords "IF trigger → THEN pattern" table (both
+the hard-coded `.rule .arrow` divs in `index.html` and the JS-rendered `.rule
+.ans::before{content:"→ "}` in the Study Hub decode table) need to visually flip
+(`transform: scaleX(-1)`) so they still read as pointing from cause to effect in RTL
+reading order, without touching the arrow characters baked into markup/content.
 
-**Quality gate (standing since the Russian round)**: run the English-word-overlap
-diff of the written `el.js` `i18n`/`shell` values against `de.js` *before*
-wiring the dropdown option, and manually spot-check flagged keys against
-the reference sibling directly rather than trusting the translating agent's
-self-report at face value (the lesson from the Italian round).
+**Explicitly out of scope for this round**: mirroring the Neuron Map's internal SVG
+node-graph coordinate layout (a much deeper visualization-specific task); flipping the
+direction progress bars/gauges visually fill (common practice in real-world RTL apps
+is to leave numeric fill indicators LTR-visual regardless of text direction). Both are
+flagged as follow-ups, not blockers — the app must not crash or visibly break for
+these, but perfecting their mirroring is separate work.
+
+**Testing without a real RTL language**: since no RTL language ships in this round,
+verification forces `dir="rtl"` directly (e.g. via a Playwright `page.evaluate` call
+setting `document.documentElement.dir='rtl'`) rather than through the language
+dropdown — there is nothing in the dropdown to select yet.
 
 ## Technical Context
 
 **Language/Version**: Vanilla JS/CSS/HTML — no build step, no framework, per the
 app's zero-dependency constitution (v1.2.0).
 
-**Primary Dependencies**: None. Google Fonts `<link>` unaffected.
+**Primary Dependencies**: None — CSS logical properties are native browser support,
+not a library.
 
-**Storage**: N/A — `translations/el.js` is itself the runtime source (lazily
-loaded via `<script src>` into `LANG_DATA['el']`).
+**Storage**: N/A.
 
-**Testing**: No automated test suite; verification is manual browser use
-(Playwright) plus scripted JS-structural validation.
+**Testing**: No automated test suite; verification is manual browser use (Playwright,
+forcing `dir="rtl"`) plus a full manual review of the `style.css`/`index.html` diff
+(higher risk than a translation-only round — a layout regression could affect all 21
+existing LTR languages too, not just future RTL ones).
 
-**Target Platform**: Any modern browser (client-side single HTML file, must
-also work opened directly via `file://`).
+**Target Platform**: Any modern browser (client-side single HTML file, must also work
+opened directly via `file://`).
 
-**Project Type**: Single self-contained HTML file + first-party sibling
-files — no frontend/backend split.
+**Project Type**: Single self-contained HTML file + first-party sibling files.
 
 **Performance Goals**: N/A.
 
-**Constraints**: Must not add a dependency (Principle I); must reuse the
-existing i18n engine (Principle II). Greek is LTR — no layout changes.
+**Constraints**: Must not add a dependency (Principle I); must not regress the
+existing 21 LTR languages' layout (Principle III's theme-parity spirit extended to
+direction-parity — LTR must look pixel-identical to before this change).
 
-**Scale/Scope**: One language — full `translations/el.js`, all twenty
-existing READMEs updated, one new `README.el.md`.
+**Scale/Scope**: `style.css` (851 lines — full audit for physical horizontal
+properties), `index.html` (the `.rule .arrow` divs' RTL glyph handling, and
+`window.__setLang__`'s new `dir`-attribute-setting logic). No `translations/*.js`
+file is touched (no `dir` field is being *set* to `"rtl"` on any of them yet — that
+happens in the Arabic/Hebrew rounds that build on this).
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- **Principle I (Zero-Build, First-Party Files)**: PASS.
-- **Principle II (i18n-First UI Copy)**: PASS — Greek added as a full
-  `window.__LANG_EL__` object; full current key set covered; dropdown and
-  all twenty READMEs updated in the same pass.
-- **Principle III (Theme Parity)**: N/A — copy-only change.
-- **Principle IV (Safe Large-Dictionary Edits)**: PASS — `translations/el.js`
-  written whole by a script, validated via case-sensitive re-parse, plus
-  the pre-wiring under-translation diff gate.
+- **Principle I (Zero-Build, First-Party Files)**: PASS — CSS logical properties are
+  native, no new file/dependency added.
+- **Principle II (i18n-First UI Copy)**: N/A — no new UI copy this round.
+- **Principle III (Theme Parity)**: Extended check — LTR rendering (all 21 existing
+  languages) must be visually unchanged after the logical-property conversion; this is
+  the primary regression risk of this round and gets explicit verification.
+- **Principle IV (Safe Large-Dictionary Edits)**: N/A — no dictionary touched.
 - **Principle V (Documentation Currency)**: PASS — `CHANGELOG.md` updated;
-  language list kept consistent everywhere.
+  `SPEC_KIT_INTEGRATION_PLAN.md` §5 annotated to note the RTL prerequisite is now
+  satisfied, ahead of Arabic/Hebrew.
 
 No violations — Complexity Tracking not needed.
 
 ## Project Structure
 
-### Documentation (this feature, this language round)
+### Documentation (this feature, this round)
 
 ```text
 specs/001-add-language/
-├── plan.md              # this file, scoped to Greek (overwrites Swedish's)
-└── tasks.md             # Greek-scoped task list (overwrites Swedish's)
+├── plan.md              # this file, scoped to RTL layout foundation (overwrites Greek's)
+└── tasks.md             # RTL-foundation-scoped task list (overwrites Greek's)
 ```
 
 ### Source code (repository root)
 
 ```text
-translations/el.js            # new — window.__LANG_EL__
-index.html                    # #lang-select <option> added only (after
-                               # ไทย, at the very end — new trailing group)
-README.md + 19 other READMEs  # switch-link row + Features bullet updated
-README.el.md                  # new
+style.css                     # physical → logical property conversion, [dir="rtl"]
+                               # overrides for the arrow glyphs
+index.html                    # window.__setLang__ sets document.documentElement's
+                               # dir attribute from the loaded language's `dir` field;
+                               # no dropdown/translations change
 CHANGELOG.md                  # entry added
-SPEC_KIT_INTEGRATION_PLAN.md  # Greek checked off in Tier 2 (remaining)
+SPEC_KIT_INTEGRATION_PLAN.md  # Tier 3 note updated: RTL prerequisite now shipped
 ```
 
-**Structure Decision**: Single-file app (plus first-party sibling files).
-Per-language plan/tasks live on this language's own branch
-(`feat/add-greek-language`).
+**Structure Decision**: Single-file app (plus first-party sibling files). This round's
+plan/tasks live on `feat/add-rtl-layout-support`, its own branch, separate from any
+language's branch.
 
 ## Complexity Tracking
 
