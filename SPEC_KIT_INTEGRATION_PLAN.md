@@ -180,7 +180,32 @@ mechanics as the languages already shipped):
       round's ordering precedent (script groups appended in the order
       introduced, not merged alphabetically). Shipped in PR #27.
 
-**Tier 3 — larger markets, but real engineering lift beyond translation:**
+**Tier 2 (remaining) — next in line, ranked by developer-market size weighed
+against engineering lift, same method as the rest of this list (not just
+translation volume):**
+
+- [ ] Ukrainian (Українська) — one of Europe's largest IT-outsourcing
+      developer populations (EPAM, GitLab, Grammarly, and many other
+      outsourcing/product shops trace roots there); at least as strong an
+      outsourcing-hub argument as Polski's. Cyrillic script mechanics are
+      already solved by the Russian round (PR #17) — joins the existing
+      Cyrillic script-family group in the dropdown/READMEs rather than
+      opening a new one. No new engineering lift; likely the cheapest
+      remaining round.
+- [ ] Dutch (Nederlands) — sizeable Western European tech market (Amsterdam
+      hub); Latin script, same trivial mechanics as Tier 1.
+- [ ] Swedish (Svenska) — smaller population than Dutch/Ukrainian but an
+      outsized startup/fintech developer scene (Stockholm); Latin script,
+      trivial engineering.
+- [ ] Greek (Ελληνικά) — smaller tech market than the above three, and a new
+      script family for this app (Greek alphabet) — same engineering shape
+      as the Hindi/Russian/Thai rounds (new alphabet, not RTL) rather than
+      trivial Latin-script wiring. Ranked last in this tier on cost, not
+      demand.
+
+**Tier 3 — larger markets, but real engineering lift beyond translation
+(ranked after Tier 2 above despite bigger raw population, because of the
+RTL prerequisite, not lower demand):**
 
 - [ ] Arabic (العربية) — RTL script. This app has **no RTL layout support
       today** (nav/tabs/badges assume LTR; no `dir="rtl"` handling anywhere).
@@ -190,7 +215,8 @@ mechanics as the languages already shipped):
 
 **Not yet prioritized / needs a signal to justify** (from the original
 brainstormed list — include if you have a specific reason, e.g. known exam-
-candidate demand): Dutch, Greek, Swedish, Ukrainian.
+candidate demand): none remaining — Dutch, Greek, Swedish, and Ukrainian were
+ranked into Tier 2 above.
 
 ## Workflow note: branch + PR per language
 
