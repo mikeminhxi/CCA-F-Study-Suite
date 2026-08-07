@@ -2,6 +2,12 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Swedish (Svenska) — 20th supported language
+
+- **Swedish (sv)** — added as the app's 20th supported language: `translations/sv.js` (full validated `i18n`/`shell` dictionary, loaded directly by `index.html`'s `loadLang()` — no injection into `index.html` needed post the 1.0.0 lazy-load split) plus the `#lang-select` dropdown option positioned right after Español, all 19 existing READMEs updated, new `README.sv.md` added.
+- **Alphabetical-by-English-name slot inside the Latin group**: "Swedish" sorts immediately after "Spanish" and before "Vietnamese", so it lands between Español and Tiếng Việt in the dropdown, every README's switch-link row, and the Features-bullet abbreviation list — reusing the existing `sortHint: 'latin'` value, same pattern as every other Latin-script round since Dutch opened the front of the group.
+- Dropdown option and translation dictionary were pre-staged before this pass; this round's work was the remaining mechanical wiring — the switch-link row and Features-bullet language lists across all 19 existing READMEs, plus authoring the new `README.sv.md`.
+
 ## Dutch (Nederlands) — 19th supported language
 
 - **Dutch (nl)** — added as the app's 19th supported language: `translations/nl.js` (full validated `i18n`/`shell` dictionary, loaded directly by `index.html`'s `loadLang()` — no injection into `index.html` needed post the 1.0.0 lazy-load split) plus the `#lang-select` dropdown option positioned right after English, all 18 existing READMEs updated, new `README.nl.md` added.
