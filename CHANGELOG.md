@@ -2,6 +2,38 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## RTL layout foundation
+
+- **The app can now render `dir="rtl"` correctly.** Converted every horizontal-axis
+  physical CSS property in `style.css` (`margin-left/right`, `padding-left/right`,
+  `left`/`right` positioning, `text-align: left/right`, `border-left/right`,
+  asymmetric `border-radius` corners) to its CSS logical-property equivalent
+  (`margin-inline-*`, `padding-inline-*`, `inset-inline-*`, `text-align: start/end`,
+  `border-inline-*`, logical corner-radius properties), so the entire shell — nav,
+  tabs, badges, cards, the decision-rule tables, the donate modal — mirrors
+  automatically under `dir="rtl"` with zero manual per-element overrides and zero
+  new dependency.
+- Added two explicit `[dir="rtl"]` overrides for the one thing logical properties
+  can't handle: the literal `→` arrow glyphs in the Cheat & Keywords "IF trigger →
+  THEN pattern" tables (both the hard-coded `.rule .arrow` divs and the JS-rendered
+  `.rule .ans::before` mobile fallback) now flip via `transform: scaleX(-1)` under
+  RTL, without touching the ~64 individual arrow occurrences in `index.html`'s
+  markup.
+- `window.__setLang__` in `index.html` now sets `document.documentElement`'s `dir`
+  attribute from a new optional `dir` field on each `translations/<code>.js`
+  language object (absent/`"ltr"` = default; `"rtl"` for a future RTL language) —
+  mirrors the existing `data-theme`-attribute pattern used for theming.
+- **Ships no new language.** `translations/`, `#lang-select`, and every README are
+  untouched — this is purely the layout engineering Arabic/Hebrew will build on,
+  shipped as its own PR ahead of either language per the maintainer's explicit
+  direction on Tier 3 PR structure (RTL foundation → Arabic → Hebrew, three separate
+  PRs).
+- Verified via Playwright, forcing `document.documentElement.dir='rtl'` directly
+  (no dropdown option exists yet to trigger it through the UI): nav bar, tabs,
+  decision-rule tables, Exam by Domain, 2-Week Plan, and the donate modal all mirror
+  correctly with zero console errors; a separate LTR regression pass confirmed all
+  21 existing languages render pixel-equivalent to before this change.
+
 ## Greek (Ελληνικά) — 21st supported language
 
 - **Greek (el)** — added as the app's 21st supported language: `translations/el.js` (full validated `i18n`/`shell` dictionary, loaded directly by `index.html`'s `loadLang()` — no injection into `index.html` needed post the 1.0.0 lazy-load split) plus the `#lang-select` dropdown option positioned right after ไทย, all 20 existing READMEs updated, new `README.el.md` added.
