@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md) · [🇬🇷 Ελληνικά](README.el.md) · **🇸🇦 العربية**
+[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md) · [🇬🇷 Ελληνικά](README.el.md) · **🇸🇦 العربية** · [🇮🇱 עברית](README.he.md)
 
 <div dir="rtl">
 
@@ -30,7 +30,7 @@
 
 ## الميزات
 
-- **تبديل اللغة EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH / EL / AR** — طبقة استبدال نص في وقت التشغيل تترجم المحتوى الظاهر على الشاشة بين الإنجليزية والهولندية والفرنسية والألمانية والإندونيسية والإيطالية والملايوية والبولندية والبرتغالية والإسبانية والسويدية والفيتنامية والصينية المبسطة والصينية التقليدية واليابانية والكورية والهندية والروسية والأوكرانية والتايلاندية واليونانية والعربية دون إعادة تحميل الصفحة؛ تُحفظ اللغة المختارة عبر الزيارات اللاحقة.
+- **تبديل اللغة EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH / EL / AR / HE** — طبقة استبدال نص في وقت التشغيل تترجم المحتوى الظاهر على الشاشة بين الإنجليزية والهولندية والفرنسية والألمانية والإندونيسية والإيطالية والملايوية والبولندية والبرتغالية والإسبانية والسويدية والفيتنامية والصينية المبسطة والصينية التقليدية واليابانية والكورية والهندية والروسية والأوكرانية والتايلاندية واليونانية والعربية والعبرية دون إعادة تحميل الصفحة؛ تُحفظ اللغة المختارة عبر الزيارات اللاحقة.
 - **سمات فاتح / داكن / النظام / Sepia** — اختر مظهرًا فاتحًا أو داكنًا ثابتًا، أو اتبع إعداد نظام التشغيل لديك، أو بدّل إلى سمة Sepia الدافئة بألوان الكهرمان والكريمي (تتكيف أيضًا تلقائيًا مع الفاتح/الداكن)؛ يُحفظ الاختيار عبر الزيارات اللاحقة.
 - **كلمات مفتاحية موسومة تلقائيًا** — يُقارَن كل سؤال بقائمة من عشرات المصطلحات الشائعة في الامتحان (مثل «MCP resource» و«stateless» و«tool_choice») وتُعرض المطابقات كشرائح، بحيث تبرز العبارة الكاشفة قبل قراءة الشرح.
 - **حفظ محلي** — يُحفظ تقدّم الدراسة (علامات معروف/مراجعة) وحالة قائمة تحقق الخطة عبر `localStorage`، مع حل بديل في الذاكرة للعلامة التبويب الحالية إذا كان التخزين محظورًا.

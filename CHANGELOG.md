@@ -2,6 +2,14 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Hebrew (עברית) — 23rd supported language
+
+- **Hebrew (he)** — added as the app's 23rd supported language: `translations/he.js` (full validated `i18n`/`shell` dictionary, loaded directly by `index.html`'s `loadLang()`) plus the `#lang-select` dropdown option positioned right after العربية, all 22 existing READMEs updated, new `README.he.md` added.
+- **Second language to ship with `dir: "rtl"` set** (after Arabic). `translations/he.js` sets `dir: "rtl"` on its language object, exercising the same `window.__setLang__` / RTL layout plumbing Arabic proved out in the immediately preceding round — no new layout engineering needed.
+- **New trailing script-family group**: Hebrew is a new script for this app, so it opens its own trailing group — `sortHint: 'hebrew-rtl'` — appended after Arabic rather than merged into Arabic's group, following the same script-groups-appended-in-introduction-order precedent set by the Hindi round.
+- Dropdown option and translation dictionary were pre-staged before this pass; this round's work was the remaining mechanical wiring — the switch-link row and Features-bullet language lists across all 22 existing READMEs, plus authoring the new `README.he.md` (its body wrapped in a `<div dir="rtl">` block so it renders right-to-left on GitHub, switch-link row kept LTR for cross-file consistency), following the same approach README.ar.md established.
+- **Completes Tier 3** from `SPEC_KIT_INTEGRATION_PLAN.md` §5 — the RTL layout prerequisite, Arabic, and now Hebrew have all shipped.
+
 ## Arabic (العربية) — 22nd supported language
 
 - **Arabic (ar)** — added as the app's 22nd supported language: `translations/ar.js` (full validated `i18n`/`shell` dictionary, loaded directly by `index.html`'s `loadLang()` — no injection into `index.html` needed post the 1.0.0 lazy-load split) plus the `#lang-select` dropdown option positioned right after Ελληνικά, all 21 existing READMEs updated, new `README.ar.md` added.

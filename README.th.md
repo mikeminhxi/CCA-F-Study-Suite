@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · **🇹🇭 ไทย** · [🇬🇷 Ελληνικά](README.el.md) · [🇸🇦 العربية](README.ar.md)
+[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · [🇲🇾 Bahasa Melayu](README.ms.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · **🇹🇭 ไทย** · [🇬🇷 Ελληνικά](README.el.md) · [🇸🇦 العربية](README.ar.md) · [🇮🇱 עברית](README.he.md)
 
 🔗 **เดโมสด:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@
 
 ## ฟีเจอร์
 
-- **ตัวสลับภาษา EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH / EL / AR** — เลเยอร์แทนที่ข้อความแบบเรียลไทม์ที่แปลเนื้อหาบนหน้าจอระหว่างภาษาอังกฤษ ดัตช์ ฝรั่งเศส เยอรมัน อินโดนีเซีย อิตาลี มลายู โปแลนด์ โปรตุเกส สเปน สวีเดน เวียดนาม จีนตัวย่อ จีนตัวเต็ม ญี่ปุ่น เกาหลี ฮินดี รัสเซีย ยูเครน ไทย กรีก และอาหรับ โดยไม่ต้องโหลดหน้าใหม่; ภาษาที่เลือกไว้จะถูกจดจำในการเข้าชมครั้งถัดไป
+- **ตัวสลับภาษา EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH / EL / AR / HE** — เลเยอร์แทนที่ข้อความแบบเรียลไทม์ที่แปลเนื้อหาบนหน้าจอระหว่างภาษาอังกฤษ ดัตช์ ฝรั่งเศส เยอรมัน อินโดนีเซีย อิตาลี มลายู โปแลนด์ โปรตุเกส สเปน สวีเดน เวียดนาม จีนตัวย่อ จีนตัวเต็ม ญี่ปุ่น เกาหลี ฮินดี รัสเซีย ยูเครน ไทย กรีก อาหรับ และฮีบรู โดยไม่ต้องโหลดหน้าใหม่; ภาษาที่เลือกไว้จะถูกจดจำในการเข้าชมครั้งถัดไป
 - **ธีม Light / Dark / System / Sepia** — เลือกโทนสว่างหรือมืดแบบตายตัว ใช้ตามการตั้งค่าของระบบปฏิบัติการ หรือเปลี่ยนไปใช้ธีม Sepia โทนอำพัน-ครีมที่อบอุ่น (ซึ่งก็ปรับตามสว่าง/มืดโดยอัตโนมัติเช่นกัน); ตัวเลือกจะถูกจดจำในการเข้าชมครั้งถัดไป
 - **คำสำคัญที่ติดแท็กอัตโนมัติ** — แต่ละคำถามจะถูกตรวจสอบกับรายการคำศัพท์เฉพาะของข้อสอบหลายสิบคำ (เช่น "MCP resource", "stateless", "tool_choice") และแสดงคำที่ตรงกันเป็นชิป เพื่อให้วลีที่เป็นตัวชี้เบาะแสโดดเด่นขึ้นมาก่อนที่คุณจะอ่านคำอธิบาย
 - **การบันทึกข้อมูลในเครื่อง** — ความคืบหน้าการเรียน (เครื่องหมาย known/review) และสถานะเช็กลิสต์ของแผนจะถูกบันทึกผ่าน `localStorage` พร้อมระบบสำรองแบบเก็บในหน่วยความจำสำหรับแท็บปัจจุบัน หากระบบจัดเก็บถูกบล็อก
