@@ -1,134 +1,142 @@
-# Implementation Plan: RTL Layout Foundation
+# Implementation Plan: Add Arabic (العربية) Language
 
-**Branch**: `feat/add-rtl-layout-support` | **Date**: 2026-08-07 | **Spec**: [spec.md](spec.md)
+**Branch**: `feat/add-arabic-language` | **Date**: 2026-08-08 | **Spec**: [spec.md](spec.md)
 
 **Input**: Feature specification from `specs/001-add-language/spec.md`, User Story 2
-(FR-006) — Tier 3 (Arabic, Hebrew) requires layout-mirroring work distinct from the
-standard translation/wiring flow. Per the maintainer's explicit direction, this round
-ships that layout-mirroring work **on its own**, before any RTL language's dictionary —
-a separate PR from Arabic/Hebrew rather than bundled into the first RTL language's PR
-(spec.md's own Assumptions section scopes RTL implementation out of the workflow spec
-itself; this plan is the actual engineering work the maintainer asked for, layered on
-top of that process).
+(Tier 3 candidate). Arabic is the first RTL language shipped — first among the two
+Tier 3 candidates (Arabic, Hebrew) per `SPEC_KIT_INTEGRATION_PLAN.md` §5. Unlike the
+prior RTL work, this round adds **no new layout engineering**: the RTL layout
+foundation (`feat/add-rtl-layout-support`, merged to `main`) already made the app
+capable of rendering `dir="rtl"` correctly. This round is a **standard translation +
+wiring round**, matching User Story 1's mechanics, plus one new field
+(`dir: "rtl"`) that the foundation round built specifically for this moment.
 
-**Note**: Unlike every prior round in this feature area, this round adds **no new
-language** — `translations/` gains no new file, `#lang-select` gains no new option, no
-README is touched. It exists purely to make the app capable of rendering right-to-left
-before Arabic/Hebrew build on top of it.
+**Note**: Written prospectively, per FR-009 — this plan and `tasks.md` are generated
+and committed *before* `fetch-language-dictionary`/`add-language` run, following the
+same pattern as every prior round (most recently the RTL foundation round, before
+that Greek, PR #37).
 
 ## Summary
 
-Add `dir="rtl"`/`dir="ltr"` support to the app shell, driven by a new optional `dir`
-field on each `translations/<code>.js` language object (absent/`"ltr"` = default,
-`"rtl"` = right-to-left). No existing language sets this field. `window.__setLang__`
-in `index.html` sets `document.documentElement`'s `dir` attribute once the language
-dictionary is loaded, mirroring the existing `data-theme` attribute pattern.
+Add Arabic as the 22nd supported UI language: full dictionary translated and written
+directly to `translations/ar.js` via `fetch-language-dictionary` (current baseline:
+723 `i18n` + 5 `shell` keys + 8 format functions, confirmed against `translations/
+vn.js`, unchanged since the Dutch round), **plus** a new `dir: "rtl"` field — the
+first language to set it — then wired into `index.html` (`#lang-select` dropdown
+only — lazy-loaded via `loadLang()`, no injection) and all 21 existing READMEs'
+switch-links via `add-language`, plus a new `README.ar.md` (itself written
+right-to-left).
 
-**CSS strategy**: convert horizontal-axis physical properties in `style.css`
-(`margin-left/right`, `padding-left/right`, `left/right` positioning, `text-align:
-left/right`, `border-left/right`, asymmetric `border-radius` corners) to their CSS
-logical-property equivalents (`margin-inline-start/end`, `padding-inline-start/end`,
-`inset-inline-start/end`, `text-align: start/end`, `border-inline-start/end`,
-`border-start-start-radius` etc.) wherever the property is about inline/horizontal
-layout — not vertical (`margin-top/bottom` etc. are untouched, direction-agnostic).
-Logical properties auto-mirror based on the `dir` attribute with zero `[dir="rtl"]`
-override blocks needed, and are supported in every evergreen browser this app already
-targets (Chrome/Firefox/Safari/Edge, all recent versions) — no new dependency, per
-Principle I.
+**Dropdown/README position**: Arabic is a new script family (Arabic alphabet, RTL)
+— not Latin, CJK, Devanagari, Cyrillic, Thai, or Greek. Per the established "new
+script family opens a new trailing group, appended in the order the script is first
+introduced" rule, Arabic's `<option>`/README entry goes at the very end of the
+dropdown, **after Ελληνικά (el)**, which is currently last. `sortHint: "arabic-rtl"`
+(new value — first language to use it; distinguishing it from a hypothetical future
+non-RTL "arabic" grouping is unnecessary since there is only one, but the suffix
+makes the RTL-ness self-documenting at a glance in the dictionary file).
 
-**Non-mirroring cases requiring explicit `[dir="rtl"]` overrides**: the `→` arrow
-glyphs used throughout the Cheat & Keywords "IF trigger → THEN pattern" table (both
-the hard-coded `.rule .arrow` divs in `index.html` and the JS-rendered `.rule
-.ans::before{content:"→ "}` in the Study Hub decode table) need to visually flip
-(`transform: scaleX(-1)`) so they still read as pointing from cause to effect in RTL
-reading order, without touching the arrow characters baked into markup/content.
+**RTL mechanics**: `translations/ar.js` sets `dir: "rtl"` in its language object.
+`window.__setLang__` (already wired in the RTL foundation round) reads this field and
+sets `document.documentElement`'s `dir` attribute accordingly — no further
+`index.html`/`style.css` change should be required. If one *is* required during this
+round's implementation or verification, that's a signal the foundation round's audit
+missed something, and should be fixed here with a note back to that round's
+`plan.md`/`tasks.md` history (recoverable via `git log`), not worked around locally.
 
-**Explicitly out of scope for this round**: mirroring the Neuron Map's internal SVG
-node-graph coordinate layout (a much deeper visualization-specific task); flipping the
-direction progress bars/gauges visually fill (common practice in real-world RTL apps
-is to leave numeric fill indicators LTR-visual regardless of text direction). Both are
-flagged as follow-ups, not blockers — the app must not crash or visibly break for
-these, but perfecting their mirroring is separate work.
+**README.ar.md itself is RTL**: unlike every other language-specific README, this one
+needs `<div dir="rtl">` (or equivalent) around its body content so it *reads*
+correctly on GitHub, since GitHub-flavored Markdown doesn't auto-detect direction
+from language content alone reliably for mixed English/Arabic (code spans, links,
+and the switch-link header row itself should likely stay LTR-ordered for consistency
+with every other README's switch-link row — this is a content decision to make
+during implementation, not a layout-engineering one).
 
-**Testing without a real RTL language**: since no RTL language ships in this round,
-verification forces `dir="rtl"` directly (e.g. via a Playwright `page.evaluate` call
-setting `document.documentElement.dir='rtl'`) rather than through the language
-dropdown — there is nothing in the dropdown to select yet.
+**Quality gate (standing since the Russian round)**: run the English-word-overlap
+diff of the written `ar.js` `i18n`/`shell` values against `de.js` *before* wiring the
+dropdown option, and manually spot-check flagged keys against the reference sibling
+directly rather than trusting the translating agent's self-report at face value (the
+lesson from the Italian round). For Arabic specifically, this quality gate cannot
+rely on Latin-character-overlap heuristics working automatically the way they did for
+Latin-script languages — a human (agent) pass reading actual Arabic is required, not
+just a leftover-English-word regex.
 
 ## Technical Context
 
 **Language/Version**: Vanilla JS/CSS/HTML — no build step, no framework, per the
 app's zero-dependency constitution (v1.2.0).
 
-**Primary Dependencies**: None — CSS logical properties are native browser support,
-not a library.
+**Primary Dependencies**: None. Google Fonts `<link>` unaffected — Arabic script
+rendering relies on system/browser default fonts, same as every other non-Latin
+script this app already supports (CJK, Devanagari, Cyrillic, Thai, Greek all render
+via system fonts with no explicit `@font-face`).
 
-**Storage**: N/A.
+**Storage**: N/A — `translations/ar.js` is itself the runtime source.
 
-**Testing**: No automated test suite; verification is manual browser use (Playwright,
-forcing `dir="rtl"`) plus a full manual review of the `style.css`/`index.html` diff
-(higher risk than a translation-only round — a layout regression could affect all 21
-existing LTR languages too, not just future RTL ones).
+**Testing**: No automated test suite; verification is manual browser use
+(Playwright) plus scripted JS-structural validation. Unlike the RTL foundation
+round, this round CAN verify RTL rendering through the actual dropdown/UI flow
+(select Arabic → `dir="rtl"` applies automatically), not by forcing the attribute.
 
-**Target Platform**: Any modern browser (client-side single HTML file, must also work
-opened directly via `file://`).
+**Target Platform**: Any modern browser (client-side single HTML file, must also
+work opened directly via `file://`).
 
 **Project Type**: Single self-contained HTML file + first-party sibling files.
 
 **Performance Goals**: N/A.
 
-**Constraints**: Must not add a dependency (Principle I); must not regress the
-existing 21 LTR languages' layout (Principle III's theme-parity spirit extended to
-direction-parity — LTR must look pixel-identical to before this change).
+**Constraints**: Must not add a dependency (Principle I); must reuse the existing
+i18n engine and the now-merged RTL layout foundation (Principle II).
 
-**Scale/Scope**: `style.css` (851 lines — full audit for physical horizontal
-properties), `index.html` (the `.rule .arrow` divs' RTL glyph handling, and
-`window.__setLang__`'s new `dir`-attribute-setting logic). No `translations/*.js`
-file is touched (no `dir` field is being *set* to `"rtl"` on any of them yet — that
-happens in the Arabic/Hebrew rounds that build on this).
+**Scale/Scope**: One language — full `translations/ar.js` (with `dir: "rtl"`), all
+21 existing READMEs updated, one new `README.ar.md`.
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- **Principle I (Zero-Build, First-Party Files)**: PASS — CSS logical properties are
-  native, no new file/dependency added.
-- **Principle II (i18n-First UI Copy)**: N/A — no new UI copy this round.
-- **Principle III (Theme Parity)**: Extended check — LTR rendering (all 21 existing
-  languages) must be visually unchanged after the logical-property conversion; this is
-  the primary regression risk of this round and gets explicit verification.
-- **Principle IV (Safe Large-Dictionary Edits)**: N/A — no dictionary touched.
+- **Principle I (Zero-Build, First-Party Files)**: PASS.
+- **Principle II (i18n-First UI Copy)**: PASS — Arabic added as a full
+  `window.__LANG_AR__` object; full current key set covered; dropdown and all 21
+  READMEs updated in the same pass.
+- **Principle III (Theme Parity)**: PASS — this round doesn't touch CSS; RTL layout
+  correctness was already verified for LTR-regression-safety in the foundation
+  round. This round's own verification confirms Arabic specifically renders
+  correctly through the real dropdown/UI path.
+- **Principle IV (Safe Large-Dictionary Edits)**: PASS — `translations/ar.js`
+  written whole by a script, validated via case-sensitive re-parse, plus the
+  pre-wiring under-translation diff gate (adapted for a non-Latin script — see
+  Summary).
 - **Principle V (Documentation Currency)**: PASS — `CHANGELOG.md` updated;
-  `SPEC_KIT_INTEGRATION_PLAN.md` §5 annotated to note the RTL prerequisite is now
-  satisfied, ahead of Arabic/Hebrew.
+  `SPEC_KIT_INTEGRATION_PLAN.md` §5 Tier 3 Arabic line checked off.
 
 No violations — Complexity Tracking not needed.
 
 ## Project Structure
 
-### Documentation (this feature, this round)
+### Documentation (this feature, this language round)
 
 ```text
 specs/001-add-language/
-├── plan.md              # this file, scoped to RTL layout foundation (overwrites Greek's)
-└── tasks.md             # RTL-foundation-scoped task list (overwrites Greek's)
+├── plan.md              # this file, scoped to Arabic (overwrites RTL foundation's)
+└── tasks.md             # Arabic-scoped task list (overwrites RTL foundation's)
 ```
 
 ### Source code (repository root)
 
 ```text
-style.css                     # physical → logical property conversion, [dir="rtl"]
-                               # overrides for the arrow glyphs
-index.html                    # window.__setLang__ sets document.documentElement's
-                               # dir attribute from the loaded language's `dir` field;
-                               # no dropdown/translations change
+translations/ar.js            # new — window.__LANG_AR__, including dir: "rtl"
+index.html                    # #lang-select <option> added only (after
+                               # Ελληνικά, at the very end — new trailing RTL group)
+README.md + 21 other READMEs  # switch-link row + Features bullet updated
+README.ar.md                  # new — written RTL
 CHANGELOG.md                  # entry added
-SPEC_KIT_INTEGRATION_PLAN.md  # Tier 3 note updated: RTL prerequisite now shipped
+SPEC_KIT_INTEGRATION_PLAN.md  # Arabic checked off in Tier 3
 ```
 
-**Structure Decision**: Single-file app (plus first-party sibling files). This round's
-plan/tasks live on `feat/add-rtl-layout-support`, its own branch, separate from any
-language's branch.
+**Structure Decision**: Single-file app (plus first-party sibling files).
+Per-language plan/tasks live on this language's own branch
+(`feat/add-arabic-language`).
 
 ## Complexity Tracking
 
