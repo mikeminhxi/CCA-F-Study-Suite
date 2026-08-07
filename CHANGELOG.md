@@ -2,6 +2,13 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Arabic (العربية) — 22nd supported language
+
+- **Arabic (ar)** — added as the app's 22nd supported language: `translations/ar.js` (full validated `i18n`/`shell` dictionary, loaded directly by `index.html`'s `loadLang()` — no injection into `index.html` needed post the 1.0.0 lazy-load split) plus the `#lang-select` dropdown option positioned right after Ελληνικά, all 21 existing READMEs updated, new `README.ar.md` added.
+- **First language to ship with `dir: "rtl"` set.** `translations/ar.js` sets `dir: "rtl"` on its language object, which `window.__setLang__` picks up (per the RTL layout foundation shipped in the immediately preceding round) to flip `document.documentElement`'s `dir` attribute — the first real exercise of that plumbing beyond the Playwright-forced verification it shipped with.
+- **New trailing script-family group**: Arabic is a new script for this app (and the first RTL one), so it opens its own trailing group — `sortHint: 'arabic-rtl'` — appended after Greek rather than merged into an existing group, following the same script-groups-appended-in-introduction-order precedent set by the Hindi round.
+- Dropdown option and translation dictionary were pre-staged before this pass; this round's work was the remaining mechanical wiring — the switch-link row and Features-bullet language lists across all 21 existing READMEs, plus authoring the new `README.ar.md` (its body wrapped in a `<div dir="rtl">` block so it renders right-to-left on GitHub, switch-link row kept LTR for cross-file consistency).
+
 ## RTL layout foundation
 
 - **The app can now render `dir="rtl"` correctly.** Converted every horizontal-axis
