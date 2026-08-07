@@ -1,6 +1,6 @@
 # CCA-F Study Suite
 
-[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · **🇲🇾 Bahasa Melayu** · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md)
+[🇺🇸 English](README.md) · [🇳🇱 Nederlands](README.nl.md) · [🇫🇷 Français](README.fr.md) · [🇩🇪 Deutsch](README.de.md) · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇮🇹 Italiano](README.it.md) · **🇲🇾 Bahasa Melayu** · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português](README.pt.md) · [🇪🇸 Español](README.es.md) · [🇸🇪 Svenska](README.sv.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-cn.md) · [🇹🇼 繁體中文](README.zh-tw.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇭 ไทย](README.th.md)
 
 🔗 **Demo langsung:** https://mikeminhxi.github.io/CCA-F-Study-Suite/
 
@@ -28,7 +28,7 @@ Halaman ini adalah rangka bertab yang menggabungkan empat alat. Pada skrin lebar
 
 ## Ciri-ciri
 
-- **Penukar bahasa EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / VN / ZH / TW / JA / KO / HI / RU / UK / TH** — satu lapisan penggantian teks masa jalan menterjemah kandungan pada skrin antara bahasa Inggeris, Belanda, Perancis, Jerman, Indonesia, Itali, Melayu, Poland, Portugis, Sepanyol, Vietnam, Cina Ringkas, Cina Tradisional, Jepun, Korea, Hindi, Rusia, Ukraine, dan Thai tanpa perlu memuat semula halaman; bahasa yang dipilih akan kekal pada lawatan seterusnya.
+- **Penukar bahasa EN / NL / FR / DE / ID / IT / MS / PL / PT / ES / SV / VN / ZH / TW / JA / KO / HI / RU / UK / TH** — satu lapisan penggantian teks masa jalan menterjemah kandungan pada skrin antara bahasa Inggeris, Belanda, Perancis, Jerman, Indonesia, Itali, Melayu, Poland, Portugis, Sepanyol, Sweden (bahasa Sweden), Vietnam, Cina Ringkas, Cina Tradisional, Jepun, Korea, Hindi, Rusia, Ukraine, dan Thai tanpa perlu memuat semula halaman; bahasa yang dipilih akan kekal pada lawatan seterusnya.
 - **Tema Light / Dark / System / Sepia** — pilih rupa terang atau gelap yang tetap, ikut tetapan OS anda, atau tukar kepada tema Sepia berwarna ambar-krim yang hangat (turut menyesuaikan diri secara automatik dengan terang/gelap); pilihan ini kekal pada lawatan seterusnya.
 - **Kata kunci bertanda automatik** — setiap soalan disemak berbanding senarai berpuluh-puluh istilah popular peperiksaan (cth. "MCP resource", "stateless", "tool_choice") dan memaparkan yang sepadan sebagai cip, supaya frasa penentu terus kelihatan sebelum anda sempat membaca penjelasannya.
 - **Ketekalan tempatan** — kemajuan pembelajaran (tanda Dikuasai/Ulang kaji) dan status senarai semak pelan disimpan melalui `localStorage`, dengan sandaran dalam-memori untuk tab semasa jika storan disekat.

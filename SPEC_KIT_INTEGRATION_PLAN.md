@@ -196,9 +196,10 @@ translation volume):**
 - [x] Dutch (Nederlands) — sizeable Western European tech market (Amsterdam
       hub); Latin script, same trivial mechanics as Tier 1. Shipped as the
       app's 19th language (branch `feat/add-dutch-language`).
-- [ ] Swedish (Svenska) — smaller population than Dutch/Ukrainian but an
+- [x] Swedish (Svenska) — smaller population than Dutch/Ukrainian but an
       outsized startup/fintech developer scene (Stockholm); Latin script,
-      trivial engineering.
+      trivial engineering. Shipped as the app's 20th language (branch
+      `feat/add-swedish-language`).
 - [ ] Greek (Ελληνικά) — smaller tech market than the above three, and a new
       script family for this app (Greek alphabet) — same engineering shape
       as the Hindi/Russian/Thai rounds (new alphabet, not RTL) rather than
