@@ -218,9 +218,10 @@ RTL prerequisite, not lower demand):**
       across `style.css` plus `dir`-attribute wiring in `index.html`, shipped
       as its own PR ahead of either RTL language. Arabic and Hebrew below can
       now proceed as standard translation + wiring rounds.
-- [ ] Arabic (العربية) — RTL script. Layout prerequisite now satisfied; this
+- [x] Arabic (العربية) — RTL script. Layout prerequisite now satisfied; this
       round is translation + wiring only, setting `dir: "rtl"` in
-      `translations/ar.js`.
+      `translations/ar.js`. Shipped as the app's 22nd language (branch
+      `feat/add-arabic-language`).
 - [ ] Hebrew (עברית) — same, RTL layout prerequisite now satisfied; do after
       Arabic per the maintainer's chosen PR order (RTL foundation → Arabic →
       Hebrew, three separate PRs).
