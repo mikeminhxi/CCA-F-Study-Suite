@@ -426,6 +426,8 @@
 #tool-console .rt-opt.reveal-correct:not(.pick-good){border-color:var(--teal)}
 #tool-console .rt-opt.reveal-correct:not(.pick-good) .rt-lt{border-color:var(--teal);color:var(--teal)}
 #tool-console .rt-opt.dim{opacity:.55}
+#tool-console .rt-opt.selected{border-color:var(--indigo);background:var(--indigo-soft)}
+#tool-console .rt-opt.selected .rt-lt{border-color:var(--indigo);background:var(--indigo);color:var(--paper)}
 #tool-console .rt-result{display:flex;align-items:center;gap:8px;margin:18px 0 4px;font-weight:700;font-size:14px}
 #tool-console .rt-result.good{color:var(--teal)}
 #tool-console .rt-result.bad{color:var(--rose)}
