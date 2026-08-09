@@ -62,6 +62,23 @@ Given three options (A: formalize "add a new language"; B: split the single HTML
 
 Ran the full **constitution → specify → plan → tasks → implement** cycle a second time, this time for a genuinely new feature rather than the language-addition spec: `specs/002-blueprint-taxonomy/` — restructuring the app's navigation around the official CCA-F exam blueprint (5 domains → 30 task statements → 59 concepts), replacing the earlier ad-hoc 7-phase/14-module structure. All artifacts (`spec.md`, `plan.md`, `tasks.md`, `data-model.md`, `research.md`, `quickstart.md`, `contracts/`, `checklists/`) landed in the repo and the feature shipped across PR #3 (restructure) and PR #4 (translate the new taxonomy into all 6 languages at the time). This confirms the spec-kit workflow generalizes beyond the language-addition use case it was first exercised on.
 
+### 3d. Third feature cycle — done, via Claude Code plan mode instead of the speckit skills
+
+A third genuinely-new feature — retesting **skipped** (not just incorrect) exam
+questions, plus a Standard/Instant-reveal feedback-style toggle applying to both
+fresh exams and retakes (see `CHANGELOG.md`'s "Retest skipped questions + exam
+feedback-style toggle" entry for the full behavior) — went through Claude Code's
+native **plan mode** (research → a written implementation plan reviewed and
+explicitly approved by the maintainer → implementation) rather than the formal
+`/speckit-specify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-implement`
+skill sequence used for §3b/§3c. No `specs/003-.../` directory was created for
+this round; the durable planning record is this section plus the `CHANGELOG.md`
+entry rather than `.specify/specs/**` artifacts. Branch:
+`feat/retest-skipped-and-exam-mode-toggle`. This shows the project's spec-kit
+convention is a strong default for feature work, not a hard requirement enforced
+by tooling — either workflow is acceptable as long as the change gets a written,
+reviewed plan before implementation and its own branch + PR.
+
 ## 4. Expected outcome
 
 After steps 1–3, this repo gained:

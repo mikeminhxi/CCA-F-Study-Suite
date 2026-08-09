@@ -2,6 +2,32 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Retest skipped questions + exam feedback-style toggle
+
+- **Retesting skipped questions.** The exam results screen previously offered only
+  a "Questions you missed" retake button, filtering to answered-but-wrong questions
+  — skipped (never-answered) questions had no retest path. Added a sibling
+  "Questions you skipped" button, shown whenever the finished exam has any skipped
+  questions, starting a retake scoped to exactly that set.
+- **Feedback-style toggle (Standard vs. Instant reveal).** A new two-way toggle —
+  on both the exam setup screen and the exam results screen — lets you choose
+  between the app's original blind behavior (`Standard`: no correctness feedback
+  until you finish) and the retake flow's existing immediate reveal (`Instant
+  reveal`: the picked option is colored correct/incorrect the moment you click,
+  with the explanation shown inline), and applies uniformly to fresh exams and to
+  retakes alike, not just retakes as before. The choice persists across sessions
+  via `localStorage` (`ccaf_exam_mode`), defaulting to `Standard` so existing users
+  see no behavior change unless they opt in.
+- **Blind-mode retakes gained Previous/Next navigation.** Retakes previously always
+  forced an answer before advancing (a consequence of always running in reveal
+  mode). Retakes now started in Standard mode behave like a fresh exam over their
+  question subset — skippable, revisitable — and can themselves produce further
+  skips, so the round-complete screen's retry options now split into "Retake just
+  the N missed" and "Retake just the N skipped" instead of one combined bucket.
+- New UI strings ("Questions you skipped", "Feedback style", "Standard", "Instant
+  reveal", and the `retakeSkippedFmt` pattern) translated into all 22 non-English
+  supported languages.
+
 ## Hebrew (עברית) — 23rd supported language
 
 - **Hebrew (he)** — added as the app's 23rd supported language: `translations/he.js` (full validated `i18n`/`shell` dictionary, loaded directly by `index.html`'s `loadLang()`) plus the `#lang-select` dropdown option positioned right after العربية, all 22 existing READMEs updated, new `README.he.md` added.

@@ -1024,6 +1024,20 @@ function renderConcepts(){
 
 /* ---------- exam by domain ---------- */
 let quiz=null;
+let examMode='blind'; try{examMode=localStorage.getItem('ccaf_exam_mode')||'blind';}catch(e){}
+function setExamMode(m){ examMode=m; try{localStorage.setItem('ccaf_exam_mode',m);}catch(e){} }
+function examModeToggleHtml(){
+  return `<div class="chips" id="exam-mode-toggle">
+    <button type="button" class="chip${examMode==='blind'?' on':''}" data-m="blind">Standard</button>
+    <button type="button" class="chip${examMode==='reveal'?' on':''}" data-m="reveal">Instant reveal</button>
+  </div>`;
+}
+function wireExamModeToggle(root){
+  const tc=root.querySelector('#exam-mode-toggle'); if(!tc)return;
+  tc.querySelectorAll('.chip').forEach(b=>{
+    b.onclick=()=>{ setExamMode(b.dataset.m); tc.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b)); };
+  });
+}
 function quizSetup(){
   const cats=TASK_STATEMENTS.map(t=>t.id).concat([MIXED_KEY]);
   const root=document.getElementById('quiz-root');
@@ -1039,6 +1053,8 @@ function quizSetup(){
       </div>
       <h3 style="margin-top:16px">Length</h3>
       <div class="chips" id="qlen"></div>
+      <h3 style="margin-top:16px">Feedback style</h3>
+      ${examModeToggleHtml()}
       <div class="row" style="margin-top:16px"><button class="btn" id="qstart">Start exam</button>
       <span class="ph-prog" id="qavail">0 questions available</span></div>
       <div id="qgroups" style="margin-top:16px"></div>
@@ -1095,10 +1111,11 @@ function quizSetup(){
   };
   const updAvail=()=>{root.querySelector('#qavail').textContent=pool().length+' questions available';};
   updAvail();
+  wireExamModeToggle(root);
   root.querySelector('#qstart').onclick=()=>{
     let p=pool(); if(!p.length)return;
     p=shuffle(p.slice()); const n=len==='All'?p.length:Math.min(len,p.length);
-    quiz={items:p.slice(0,n),i:0,answers:{},flagged:new Set(),startedAt:Date.now()}; quizQ();
+    quiz={items:p.slice(0,n),i:0,answers:{},flagged:new Set(),startedAt:Date.now(),mode:examMode}; quizQ();
   };
 }
 function goToQuestion(idx){
@@ -1184,6 +1201,7 @@ function quizQ(){
       <div class="card">
         <div class="qtext">${esc(q.q)}</div>
         <div class="opts"></div>
+        <div class="qresult"></div>
       </div>
       <div class="exam-bottomnav">
         <button class="btn ghost" id="qprev"${quiz.i===0?' disabled':''}>← Previous</button>
@@ -1193,12 +1211,24 @@ function quizQ(){
   </div>`;
   const grid=root.querySelector('.exam-qgrid'); if(grid)grid.scrollTop=prevGridScroll;
   const ob=root.querySelector('.opts');
+  const chosen=quiz.answers[q.id];
+  const reveal=quiz.mode==='reveal'&&chosen!=null;
   ['A','B','C','D'].forEach(L=>{ if(!q.o[L])return;
-    const o=document.createElement('button'); o.className='opt quiz-opt'+(quiz.answers[q.id]===L?' selected':''); o.dataset.l=L;
+    const o=document.createElement('button'); o.dataset.l=L;
+    let cls='opt quiz-opt';
+    if(reveal){ cls+=L===q.a?' correct':(L===chosen?' wrong':''); o.disabled=true; }
+    else cls+=chosen===L?' selected':'';
+    o.className=cls;
     o.innerHTML=`<span class="lt">${L}</span><span>${esc(q.o[L])}</span>`;
     o.onclick=()=>{ quiz.answers[q.id]=L; quizQ(); };
     ob.appendChild(o);
   });
+  if(reveal){
+    const isGood=chosen===q.a;
+    const rb=root.querySelector('.qresult');
+    rb.innerHTML=`<div class="rt-result ${isGood?'good':'bad'}"><span class="rt-dot"></span>${isGood?'Correct.':'Not this time — correct answer is '+q.a+'.'}</div>`
+      +(q.w?`<div class="rt-why">${esc(q.w)}</div>`:`<div class="rt-why empty">No saved explanation for this one.</div>`);
+  }
   root.querySelectorAll('.exam-qnum').forEach(b=>{ b.onclick=()=>goToQuestion(+b.dataset.idx); });
   root.querySelector('#qflag').onclick=toggleFlag;
   root.querySelector('#qexpand').onclick=toggleExamFullscreen;
@@ -1305,7 +1335,9 @@ function quizScore(){
     <div class="row" style="justify-content:center;margin:22px 0">
       <button class="btn" id="qagain">New exam</button>
       ${incorrect>0?`<button class="btn ghost" id="qretake">Questions you missed</button>`:''}
+      ${skipped>0?`<button class="btn ghost" id="qretake-skip">Questions you skipped</button>`:''}
     </div>
+    ${(incorrect>0||skipped>0)?`<div class="row" style="justify-content:center;margin:0 0 22px">${examModeToggleHtml()}</div>`:''}
     <div class="exam-review">
       <h3>Review Questions</h3>
       <div class="chips" id="rq-filter">
@@ -1320,8 +1352,15 @@ function quizScore(){
   if(qretake)qretake.onclick=()=>{
     const missed=quiz.items.filter(q=>quiz.answers[q.id]&&quiz.answers[q.id]!==q.a);
     if(!missed.length)return;
-    startRetake(missed);
+    startRetake(missed,'Questions you missed');
   };
+  const qretakeSkip=root.querySelector('#qretake-skip');
+  if(qretakeSkip)qretakeSkip.onclick=()=>{
+    const skippedQs=quiz.items.filter(q=>!quiz.answers[q.id]);
+    if(!skippedQs.length)return;
+    startRetake(skippedQs,'Questions you skipped');
+  };
+  wireExamModeToggle(root);
   wireDonateModal(root,'rdonate');
   root.querySelectorAll('#rq-filter .chip').forEach(b=>{
     b.onclick=()=>{
@@ -1335,8 +1374,12 @@ function quizScore(){
 
 /* ---------- retake missed questions ---------- */
 let retake=null;
-function startRetake(items){
-  retake={items:shuffle(items.slice()),i:0,answers:{},startedAt:Date.now()};
+function startRetake(items,label){
+  retake={items:shuffle(items.slice()),i:0,answers:{},startedAt:Date.now(),mode:examMode,label:label||'Questions you missed'};
+  retakeQ();
+}
+function goToRetakeQuestion(idx){
+  retake.i=Math.max(0,Math.min(idx,retake.items.length-1));
   retakeQ();
 }
 function retakeScoreSoFar(){
@@ -1355,7 +1398,7 @@ function retakeHeaderHtml(){
   }).join('');
   return `<div class="rt-top">
     <div class="rt-toprow">
-      <h3 class="rt-title"><span class="rt-tag">Retake</span> Questions you missed</h3>
+      <h3 class="rt-title"><span class="rt-tag">Retake</span> ${retake.label}</h3>
       <span class="rt-score">${s.answered?s.correct+' / '+s.answered+' correct so far':''}</span>
     </div>
     <div class="rt-progress">${track}</div>
@@ -1365,23 +1408,27 @@ function retakeQ(){
   const q=retake.items[retake.i]; const root=document.getElementById('quiz-root');
   const chosen=retake.answers[q.id]; const answered=chosen!==undefined;
   const isLast=retake.i===retake.items.length-1;
+  const reveal=retake.mode!=='blind';
   const optsHtml=['A','B','C','D'].filter(L=>q.o[L]).map(L=>{
     let cls='rt-opt';
-    if(answered){
+    if(reveal&&answered){
       if(L===chosen&&L===q.a)cls+=' pick-good';
       else if(L===chosen&&L!==q.a)cls+=' pick-bad';
       else if(L===q.a)cls+=' reveal-correct';
       else cls+=' dim';
-    }
-    return `<button type="button" class="${cls}" data-l="${L}"${answered?' disabled':''}><span class="rt-lt">${L}</span><span class="rt-ot">${esc(q.o[L])}</span></button>`;
+    } else if(!reveal&&L===chosen)cls+=' selected';
+    const disabled=reveal&&answered;
+    return `<button type="button" class="${cls}" data-l="${L}"${disabled?' disabled':''}><span class="rt-lt">${L}</span><span class="rt-ot">${esc(q.o[L])}</span></button>`;
   }).join('');
   let resultHtml='';
-  if(answered){
+  if(reveal&&answered){
     const isGood=chosen===q.a;
     resultHtml=`<div class="rt-result ${isGood?'good':'bad'}"><span class="rt-dot"></span>${isGood?'Correct.':'Not this time — correct answer is '+q.a+'.'}</div>`;
     resultHtml+=q.w?`<div class="rt-why">${esc(q.w)}</div>`:`<div class="rt-why empty">No saved explanation for this one.</div>`;
   }
-  const footHtml=answered?`<div class="rt-foot"><button class="btn" id="rtnext">${isLast?'See results':'Next question'}</button></div>`:'';
+  const footHtml=reveal
+    ? (answered?`<div class="rt-foot"><button class="btn" id="rtnext">${isLast?'See results':'Next question'}</button></div>`:'')
+    : `<div class="rt-foot" style="justify-content:space-between"><button class="btn ghost" id="rtprev"${retake.i===0?' disabled':''}>← Previous</button><button class="btn" id="rtnext">${isLast?'See results':'Next →'}</button></div>`;
   root.innerHTML=retakeHeaderHtml()+`
     <div class="rt-card">
       <div class="rt-cardhead"><span class="rt-qn">Question ${retake.i+1} of ${retake.items.length}</span><span class="rt-domain">${esc(q.c||'')}</span></div>
@@ -1390,16 +1437,24 @@ function retakeQ(){
       ${resultHtml}
       ${footHtml}
     </div>`;
-  if(!answered){
-    root.querySelectorAll('.rt-opt').forEach(btn=>{ btn.onclick=()=>{ retake.answers[q.id]=btn.dataset.l; retakeQ(); }; });
+  if(reveal){
+    if(!answered){
+      root.querySelectorAll('.rt-opt').forEach(btn=>{ btn.onclick=()=>{ retake.answers[q.id]=btn.dataset.l; retakeQ(); }; });
+    } else {
+      const nb=root.querySelector('#rtnext');
+      if(nb)nb.onclick=()=>{ if(isLast){ retakeScore(); } else { retake.i++; retakeQ(); } };
+    }
   } else {
-    const nb=root.querySelector('#rtnext');
-    if(nb)nb.onclick=()=>{ if(isLast){ retakeScore(); } else { retake.i++; retakeQ(); } };
+    root.querySelectorAll('.rt-opt').forEach(btn=>{ btn.onclick=()=>{ retake.answers[q.id]=btn.dataset.l; retakeQ(); }; });
+    root.querySelector('#rtprev').onclick=()=>goToRetakeQuestion(retake.i-1);
+    root.querySelector('#rtnext').onclick=()=>{ isLast?retakeScore():goToRetakeQuestion(retake.i+1); };
   }
 }
 function retakeScore(){
   const s=retakeScoreSoFar();
-  const misses=retake.items.filter(q=>retake.answers[q.id]!==q.a);
+  const wrong=retake.items.filter(q=>retake.answers[q.id]!==undefined&&retake.answers[q.id]!==q.a);
+  const stillSkipped=retake.items.filter(q=>retake.answers[q.id]===undefined);
+  const misses=wrong.concat(stillSkipped);
   const pct=Math.round(s.correct/retake.items.length*100);
   const root=document.getElementById('quiz-root');
   const missHtml=misses.length
@@ -1411,13 +1466,16 @@ function retakeScore(){
     ${missHtml}
     <div class="rt-foot" style="justify-content:flex-start">
       <button class="btn" id="rtRetryAll">Retake all ${retake.items.length}</button>
-      ${misses.length?`<button class="btn ghost" id="rtRetryMissed">Retake just the ${misses.length} missed</button>`:''}
+      ${wrong.length?`<button class="btn ghost" id="rtRetryMissed">Retake just the ${wrong.length} missed</button>`:''}
+      ${stillSkipped.length?`<button class="btn ghost" id="rtRetrySkipped">Retake just the ${stillSkipped.length} skipped</button>`:''}
       <button class="btn ghost" id="rtBackToExam">Back to exam results</button>
     </div>
   </div>`;
-  root.querySelector('#rtRetryAll').onclick=()=>startRetake(retake.items);
+  root.querySelector('#rtRetryAll').onclick=()=>startRetake(retake.items,retake.label);
   const rm=root.querySelector('#rtRetryMissed');
-  if(rm)rm.onclick=()=>startRetake(misses);
+  if(rm)rm.onclick=()=>startRetake(wrong,'Questions you missed');
+  const rs=root.querySelector('#rtRetrySkipped');
+  if(rs)rs.onclick=()=>startRetake(stillSkipped,'Questions you skipped');
   root.querySelector('#rtBackToExam').onclick=quizScore;
 }
 
@@ -1887,6 +1945,10 @@ try{
     if(tr==null){
       var rmf=key.match(/^Retake just the\s+(\d+)\s+missed$/);
       if(rmf && d.retakeMissedFmt) tr=d.retakeMissedFmt(rmf[1]);
+    }
+    if(tr==null){
+      var rsf=key.match(/^Retake just the\s+(\d+)\s+skipped$/);
+      if(rsf && d.retakeSkippedFmt) tr=d.retakeSkippedFmt(rsf[1]);
     }
     if(tr==null){
       var ntf=key.match(/^Not this time — correct answer is\s+([A-D])\.$/);
