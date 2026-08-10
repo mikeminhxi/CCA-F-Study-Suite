@@ -2,7 +2,10 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
-## Retest skipped questions + exam feedback-style toggle
+## Internal refactor: extract inline scripts to script.js
+
+- **No user-facing change.** All JavaScript that previously lived inline across eight `<script>` blocks at the end of `index.html` (nav/localStorage helpers, shell tab switching, the QDATA-driven exam engine, hub/decoder table builder, neuron map SVG builder, 2-week plan progress tracker, lazy language loader, and theme toggle) has been moved verbatim into a new `script.js`, loaded via `<script src="script.js"></script>` in the same position — mirroring the `style.css`/`content.js` split from the earlier CSS/content-split refactor. `index.html` dropped from ~2,046 to ~673 lines.
+- Verified behavior-identical via a live in-browser walkthrough (tab navigation, exam flow, hub search, neuron map, plan persistence, language switching including RTL, theme toggle) with zero new console errors.
 
 - **Retesting skipped questions.** The exam results screen previously offered only
   a "Questions you missed" retake button, filtering to answered-but-wrong questions
