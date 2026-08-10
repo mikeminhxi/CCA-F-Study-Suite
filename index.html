@@ -669,6 +669,13 @@
 </div>
 
 <script>
+function safeGet(key,fallback){ try{ var v=localStorage.getItem(key); return v==null?fallback:v; }catch(e){ return fallback; } }
+function safeSet(key,val){ try{ localStorage.setItem(key,val); }catch(e){} }
+function navIsCollapsed(nav,toggle){ return !!(toggle && getComputedStyle(toggle).display!=='none' && !nav.classList.contains('nav-expanded')); }
+function expandNav(nav,toggle){ nav.classList.add('nav-expanded'); if(toggle)toggle.setAttribute('aria-expanded','true'); }
+function collapseNav(nav,toggle){ nav.classList.remove('nav-expanded'); if(toggle)toggle.setAttribute('aria-expanded','false'); }
+</script>
+<script>
 (function(){
   var tabs=document.querySelectorAll('.shell-tab');
   var panes=document.querySelectorAll('.shell-pane');
@@ -676,10 +683,8 @@
   var toggle=document.getElementById('shell-nav-toggle');
   tabs.forEach(function(t){
     t.addEventListener('click',function(){
-      var collapsed=toggle && getComputedStyle(toggle).display!=='none' && !nav.classList.contains('nav-expanded');
-      if(collapsed){
-        nav.classList.add('nav-expanded');
-        toggle.setAttribute('aria-expanded','true');
+      if(navIsCollapsed(nav,toggle)){
+        expandNav(nav,toggle);
         return;
       }
       tabs.forEach(function(x){x.classList.remove('on');});
@@ -689,8 +694,7 @@
       activePane.classList.add('on');
       activePane.scrollTop = 0;
       window.scrollTo(0,0);
-      nav.classList.remove('nav-expanded');
-      if(toggle)toggle.setAttribute('aria-expanded','false');
+      collapseNav(nav,toggle);
     });
   });
   if(toggle){
@@ -726,6 +730,12 @@ function domainBadge(code){
   const info=DOMAIN_INFO[code]; if(!info) return '';
   return `<span class="domchip" style="color:${info.color};border-color:${info.color}">${code}</span>`;
 }
+function optionRow(L,text){
+  return `<span class="lt">${L}</span><span>${esc(text)}</span>`;
+}
+function codeChip(code,color){
+  return `<span class="qdcode" style="color:${color};border-color:${color}">${code}</span>`;
+}
 
 
 /* ---------- persistence: localStorage (works when this file is opened directly in a browser) ---------- */
@@ -754,6 +764,7 @@ const MIXED_KEY='__mixed__';
 const MIXED_Q=QDATA.filter(q=>q.c==='Mixed / Applied Scenarios'); // cross-cutting, exam-style
 const tsKnown=id=>(Q_BY_TS[id]||[]).filter(q=>STATE[q.id]==='known').length;
 const tsTitle=id=>{ const t=TS_BY_ID[id]; return t?t.title:id; };
+function forEachDomain(cb){ DOMAIN_ORDER.forEach((code,i)=>cb(code,DOMAIN_INFO[code],TS_BY_DOMAIN[code]||[],i)); }
 
 /* ---------- tabs ---------- */
 const views={path:'v-path',cheat:'v-cheat',study:'v-study',quiz:'v-quiz',concepts:'v-concepts'};
@@ -766,19 +777,15 @@ document.getElementById('tabs').addEventListener('click',e=>{
   }
   const b=e.target.closest('.tab'); if(!b)return;
   const tabsNav=document.getElementById('tabs');
-  const innerToggle0=document.getElementById('console-tabs-toggle');
-  const collapsed=innerToggle0 && getComputedStyle(innerToggle0).display!=='none' && !tabsNav.classList.contains('nav-expanded');
-  if(collapsed){
-    tabsNav.classList.add('nav-expanded');
-    innerToggle0.setAttribute('aria-expanded','true');
+  const innerToggle=document.getElementById('console-tabs-toggle');
+  if(navIsCollapsed(tabsNav,innerToggle)){
+    expandNav(tabsNav,innerToggle);
     return;
   }
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t===b));
   Object.values(views).forEach(id=>document.getElementById(id).classList.remove('on'));
   document.getElementById(views[b.dataset.v]).classList.add('on');
-  document.getElementById('tabs').classList.remove('nav-expanded');
-  const innerToggle=document.getElementById('console-tabs-toggle');
-  if(innerToggle)innerToggle.setAttribute('aria-expanded','false');
+  collapseNav(tabsNav,innerToggle);
   if(b.dataset.v==='path')renderPath();
   if(b.dataset.v==='concepts')renderConcepts();
 });
@@ -786,9 +793,7 @@ document.getElementById('tabs').addEventListener('click',e=>{
 /* ---------- learning path (domains → task statements, blueprint weight order) ---------- */
 function renderPath(){
   const sp=document.getElementById('spine'); sp.innerHTML='';
-  DOMAIN_ORDER.forEach((code,i)=>{
-    const info=DOMAIN_INFO[code];
-    const tsList=TS_BY_DOMAIN[code]||[];
+  forEachDomain((code,info,tsList,i)=>{
     const total=tsList.reduce((a,t)=>a+((Q_BY_TS[t.id]||[]).length),0);
     const known=tsList.reduce((a,t)=>a+tsKnown(t.id),0);
     const done=total>0&&known===total;
@@ -871,9 +876,7 @@ function renderRail(){
     tsOrMixed(body);
     r.appendChild(body);
   };
-  DOMAIN_ORDER.forEach(code=>{
-    const info=DOMAIN_INFO[code];
-    const tsList=TS_BY_DOMAIN[code]||[];
+  forEachDomain((code,info,tsList)=>{
     if(!tsList.length) return;
     addGroup(code, `${domainBadge(code)} ${info.label}`, body=>{
       tsList.forEach(t=>{
@@ -960,7 +963,7 @@ function studyCard(q){
   const ob=el.querySelector('.opts');
   ['A','B','C','D'].forEach(L=>{ if(!q.o[L])return;
     const o=document.createElement('div'); o.className='opt'; o.dataset.l=L;
-    o.innerHTML=`<span class="lt">${L}</span><span>${esc(q.o[L])}</span>`;
+    o.innerHTML=optionRow(L,q.o[L]);
     ob.appendChild(o);
   });
   const reveal=()=>{
@@ -999,12 +1002,10 @@ function renderConcepts(){
   let html='<div class="eyebrow">Concept library</div>'
     +'<h2 class="vt">59 concepts across the 5 domains</h2>'
     +'<p class="lede">Every testable concept from the official blueprint, grouped by domain and task statement. Each shows its core insight and a difficulty level.</p>';
-  DOMAIN_ORDER.forEach(code=>{
-    const info=DOMAIN_INFO[code];
-    const tsList=TS_BY_DOMAIN[code]||[];
+  forEachDomain((code,info,tsList)=>{
     const nConc=tsList.reduce((a,t)=>a+((CONCEPTS_BY_TS[t.id]||[]).length),0);
     html+=`<section class="conc-domain"><div class="conc-dhead" style="border-color:${info.color}">`
-      +`<span class="qdcode" style="color:${info.color};border-color:${info.color}">${code}</span>`
+      +codeChip(code,info.color)
       +`<span class="qdlabel">${info.label}</span><span class="qdweight">${info.weight} \u00b7 ${nConc} concepts</span></div>`;
     tsList.forEach(t=>{
       const cs=CONCEPTS_BY_TS[t.id]||[];
@@ -1024,8 +1025,8 @@ function renderConcepts(){
 
 /* ---------- exam by domain ---------- */
 let quiz=null;
-let examMode='blind'; try{examMode=localStorage.getItem('ccaf_exam_mode')||'blind';}catch(e){}
-function setExamMode(m){ examMode=m; try{localStorage.setItem('ccaf_exam_mode',m);}catch(e){} }
+let examMode=safeGet('ccaf_exam_mode','blind');
+function setExamMode(m){ examMode=m; safeSet('ccaf_exam_mode',m); }
 function examModeToggleHtml(){
   return `<div class="chips" id="exam-mode-toggle">
     <button type="button" class="chip${examMode==='blind'?' on':''}" data-m="blind">Standard</button>
@@ -1066,12 +1067,10 @@ function quizSetup(){
     b.onclick=()=>{b.classList.toggle('on'); if(sel.has(key))sel.delete(key); else sel.add(key); updAvail();};
     allChipBtns.push(b); return b;
   };
-  DOMAIN_ORDER.forEach(code=>{
-    const info=DOMAIN_INFO[code];
-    const tsList=TS_BY_DOMAIN[code]||[];
+  forEachDomain((code,info,tsList)=>{
     const grp=document.createElement('div'); grp.className='qdgroup';
     grp.innerHTML=`<div class="qdhead" style="border-color:${info.color}">
-        <span class="qdcode" style="color:${info.color};border-color:${info.color}">${code}</span>
+        ${codeChip(code,info.color)}
         <span class="qdlabel">${info.label}</span>
         <span class="qdweight">${info.weight}</span>
       </div><div class="chips qdchips"></div>`;
@@ -1092,7 +1091,7 @@ function quizSetup(){
   });
   const mgrp=document.createElement('div'); mgrp.className='qdgroup';
   mgrp.innerHTML=`<div class="qdhead" style="border-color:${MIXED_COLOR}">
-      <span class="qdcode" style="color:${MIXED_COLOR};border-color:${MIXED_COLOR}">MIX</span>
+      ${codeChip('MIX',MIXED_COLOR)}
       <span class="qdlabel">Mixed / Applied</span>
       <span class="qdweight">cross-cutting</span>
     </div><div class="chips qdchips"></div>`;
@@ -1219,7 +1218,7 @@ function quizQ(){
     if(reveal){ cls+=L===q.a?' correct':(L===chosen?' wrong':''); o.disabled=true; }
     else cls+=chosen===L?' selected':'';
     o.className=cls;
-    o.innerHTML=`<span class="lt">${L}</span><span>${esc(q.o[L])}</span>`;
+    o.innerHTML=optionRow(L,q.o[L]);
     o.onclick=()=>{ quiz.answers[q.id]=L; quizQ(); };
     ob.appendChild(o);
   });
@@ -1292,7 +1291,7 @@ function renderReviewList(){
       const ob=el.querySelector('.opts');
       ['A','B','C','D'].forEach(L=>{ if(!q.o[L])return;
         const o=document.createElement('div'); o.className='opt'+(L===q.a?' correct':(L===a?' wrong':''));
-        o.innerHTML=`<span class="lt">${L}</span><span>${esc(q.o[L])}</span>`;
+        o.innerHTML=optionRow(L,q.o[L]);
         ob.appendChild(o);
       });
     }
@@ -1912,6 +1911,18 @@ try{
 
   var lang='en', busy=false;
   function norm(s){ return s.trim().replace(/\s+/g,' '); }
+  var DYNAMIC_PATTERNS=[
+    [/^(\d+)\s+Qs$/, function(m,d){ return d.qsUnit ? m[1]+(d.noSpaceBeforeUnit?'':' ')+d.qsUnit : null; }],
+    [/^Question\s+(\d+)\s+of\s+(\d+)$/, function(m,d){ return d.questionFmt ? d.questionFmt(m[1],m[2]) : null; }],
+    [/^(\d+)\s*\/\s*(\d+)\s+correct so far$/, function(m,d){ return d.scoreSoFarFmt ? d.scoreSoFarFmt(m[1],m[2]) : null; }],
+    [/^\/\s*(\d+)\s+correct\s*·\s*(\d+)%$/, function(m,d){ return d.bigScoreFmt ? d.bigScoreFmt(m[1],m[2]) : null; }],
+    [/^All\s+(\d+)\s+correct this round\.$/, function(m,d){ return d.allCorrectFmt ? d.allCorrectFmt(m[1]) : null; }],
+    [/^Retake all\s+(\d+)$/, function(m,d){ return d.retakeAllFmt ? d.retakeAllFmt(m[1]) : null; }],
+    [/^Retake just the\s+(\d+)\s+missed$/, function(m,d){ return d.retakeMissedFmt ? d.retakeMissedFmt(m[1]) : null; }],
+    [/^Retake just the\s+(\d+)\s+skipped$/, function(m,d){ return d.retakeSkippedFmt ? d.retakeSkippedFmt(m[1]) : null; }],
+    [/^Not this time — correct answer is\s+([A-D])\.$/, function(m,d){ return d.notThisTimeFmt ? d.notThisTimeFmt(m[1]) : null; }],
+    [/^(\d+)\s+questions available$/, function(m,d){ return d.questionsAvailableFmt ? d.questionsAvailableFmt(m[1]) : null; }]
+  ];
   function translateNode(n){
     var raw=(n.__en!=null)?n.__en:n.nodeValue;
     if(!raw||!raw.trim())return;
@@ -1919,44 +1930,10 @@ try{
     var map=d.i18n||{};
     var key=norm(raw), tr=map[key];
     if(tr==null){
-      var qm=key.match(/^(\d+)\s+Qs$/);
-      if(qm && d.qsUnit) tr=qm[1]+(d.noSpaceBeforeUnit?'':' ')+d.qsUnit;
-    }
-    if(tr==null){
-      var qn=key.match(/^Question\s+(\d+)\s+of\s+(\d+)$/);
-      if(qn && d.questionFmt) tr=d.questionFmt(qn[1],qn[2]);
-    }
-    if(tr==null){
-      var ssf=key.match(/^(\d+)\s*\/\s*(\d+)\s+correct so far$/);
-      if(ssf && d.scoreSoFarFmt) tr=d.scoreSoFarFmt(ssf[1],ssf[2]);
-    }
-    if(tr==null){
-      var bsf=key.match(/^\/\s*(\d+)\s+correct\s*·\s*(\d+)%$/);
-      if(bsf && d.bigScoreFmt) tr=d.bigScoreFmt(bsf[1],bsf[2]);
-    }
-    if(tr==null){
-      var acf=key.match(/^All\s+(\d+)\s+correct this round\.$/);
-      if(acf && d.allCorrectFmt) tr=d.allCorrectFmt(acf[1]);
-    }
-    if(tr==null){
-      var raf=key.match(/^Retake all\s+(\d+)$/);
-      if(raf && d.retakeAllFmt) tr=d.retakeAllFmt(raf[1]);
-    }
-    if(tr==null){
-      var rmf=key.match(/^Retake just the\s+(\d+)\s+missed$/);
-      if(rmf && d.retakeMissedFmt) tr=d.retakeMissedFmt(rmf[1]);
-    }
-    if(tr==null){
-      var rsf=key.match(/^Retake just the\s+(\d+)\s+skipped$/);
-      if(rsf && d.retakeSkippedFmt) tr=d.retakeSkippedFmt(rsf[1]);
-    }
-    if(tr==null){
-      var ntf=key.match(/^Not this time — correct answer is\s+([A-D])\.$/);
-      if(ntf && d.notThisTimeFmt) tr=d.notThisTimeFmt(ntf[1]);
-    }
-    if(tr==null){
-      var qav=key.match(/^(\d+)\s+questions available$/);
-      if(qav && d.questionsAvailableFmt) tr=d.questionsAvailableFmt(qav[1]);
+      for(var i=0;i<DYNAMIC_PATTERNS.length && tr==null;i++){
+        var m=key.match(DYNAMIC_PATTERNS[i][0]);
+        if(m) tr=DYNAMIC_PATTERNS[i][1](m,d);
+      }
     }
     if(tr!=null){
       if(n.__en==null)n.__en=n.nodeValue;
@@ -2020,7 +1997,7 @@ try{
   window.__setLang__=function(l){
     lang=l;
     var sel=document.getElementById('lang-select'); if(sel) sel.value=l;
-    try{localStorage.setItem('ccaf_lang',l);}catch(e){}
+    safeSet('ccaf_lang',l);
     loadLang(l, function(){
       var isRtl=LANG_DATA[l] && LANG_DATA[l].dir==='rtl';
       document.documentElement.setAttribute('dir', isRtl?'rtl':'ltr');
@@ -2031,13 +2008,13 @@ try{
   applyLangVisibility(__langCfg);
   window.addEventListener('load',function(){
     var cfg=__langCfg;
-    var saved='en'; try{saved=localStorage.getItem('ccaf_lang')||'en';}catch(e){}
+    var saved=safeGet('ccaf_lang','en');
     var original=saved;
     if(cfg[saved]===false) saved='en';
     setTimeout(function(){
       startObserver();
       try { window.__setLang__(saved); }
-      finally { if(saved!==original){ try{localStorage.setItem('ccaf_lang',original);}catch(e){} } }
+      finally { if(saved!==original){ safeSet('ccaf_lang',original); } }
     },150);
   });
 })();
@@ -2052,16 +2029,16 @@ try{
   function apply(pref){
     document.documentElement.setAttribute('data-theme', resolve(pref));
     document.querySelectorAll('#theme-toggle button').forEach(function(b){b.classList.toggle('on',b.dataset.theme===pref);});
-    try{localStorage.setItem('ccaf_theme',pref);}catch(e){}
+    safeSet('ccaf_theme',pref);
   }
   window.__setTheme__=function(t){ apply(t); };
   if(mq&&mq.addEventListener){
     mq.addEventListener('change',function(){
-      var saved='system'; try{saved=localStorage.getItem('ccaf_theme')||'system';}catch(e){}
+      var saved=safeGet('ccaf_theme','system');
       if(saved==='system') apply('system');
     });
   }
-  var saved='dark'; try{saved=localStorage.getItem('ccaf_theme')||'dark';}catch(e){}
+  var saved=safeGet('ccaf_theme','dark');
   apply(saved);
 })();
 </script>
