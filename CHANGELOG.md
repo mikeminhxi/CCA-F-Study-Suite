@@ -2,6 +2,12 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Internal refactor: build the language dropdown from data instead of hard-coded markup
+
+- **No user-facing change.** `#lang-select`'s 23 `<option>` elements were previously hand-listed in `index.html`. They're now generated at runtime by `script.js` from a new `languages.meta.js` (native display name per language code, in dropdown order), filtered against the existing `languages.config.js` enable/disable map — `index.html` now only hard-codes the `en` fallback option. Adding a language going forward means adding one line to `languages.meta.js` instead of hand-editing the `<select>`.
+- Fixed a deploy bug found along the way: `.github/workflows/deploy-pages.yml` never picked up `script.js` when it was extracted out of `index.html` in a prior refactor, so the live GitHub Pages site was shipping without its JavaScript. The deploy step now also copies `script.js` and the new `languages.meta.js`.
+- Verified via a headless-browser DOM dump that the rendered dropdown is option-for-option identical to the previous hard-coded list, and that disabling a language in `languages.config.js` still correctly removes it.
+
 ## Internal refactor: extract inline scripts to script.js
 
 - **No user-facing change.** All JavaScript that previously lived inline across eight `<script>` blocks at the end of `index.html` (nav/localStorage helpers, shell tab switching, the QDATA-driven exam engine, hub/decoder table builder, neuron map SVG builder, 2-week plan progress tracker, lazy language loader, and theme toggle) has been moved verbatim into a new `script.js`, loaded via `<script src="script.js"></script>` in the same position — mirroring the `style.css`/`content.js` split from the earlier CSS/content-split refactor. `index.html` dropped from ~2,046 to ~673 lines.

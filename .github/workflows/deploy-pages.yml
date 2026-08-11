@@ -25,7 +25,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p site/translations site/donate-qr
-          cp index.html style.css content.js languages.config.js site/
+          cp index.html style.css content.js script.js languages.config.js languages.meta.js site/
           cp translations/*.js site/translations/
           cp donate-qr/* site/donate-qr/
           touch site/.nojekyll

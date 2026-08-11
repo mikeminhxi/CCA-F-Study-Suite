@@ -1310,10 +1310,16 @@ try{
     cfg.en=true;
     return cfg;
   }
-  function applyLangVisibility(cfg){
+  function buildLangOptions(cfg){
     var sel=document.getElementById('lang-select'); if(!sel)return;
-    Array.prototype.slice.call(sel.options).forEach(function(opt){
-      if(cfg[opt.value]===false) opt.remove();
+    var meta=(window.CCAF_LANG_META&&typeof window.CCAF_LANG_META==='object')?window.CCAF_LANG_META:{en:{nativeName:'English'}};
+    sel.innerHTML='';
+    Object.keys(meta).forEach(function(code){
+      if(cfg[code]===false)return;
+      var opt=document.createElement('option');
+      opt.value=code;
+      opt.textContent=meta[code].nativeName||code;
+      sel.appendChild(opt);
     });
   }
   window.__setLang__=function(l){
@@ -1327,7 +1333,7 @@ try{
     });
   };
   var __langCfg = getLangConfig();
-  applyLangVisibility(__langCfg);
+  buildLangOptions(__langCfg);
   window.addEventListener('load',function(){
     var cfg=__langCfg;
     var saved=safeGet('ccaf_lang','en');
