@@ -48,15 +48,21 @@ already validates key parity against the baseline at generation time, so no
 re-validation is needed here; `translations/<code>.js` is loaded directly by
 `index.html`'s `loadLang()` function with no further wiring.
 
-## Step 2 — Add the dropdown option
+## Step 2 — Add the dropdown entry
 
-`#lang-select` in the HTML — add
-`<option value="<code>"><nativeName></option>` (from `translations/<code>.js`'s
+`#lang-select`'s options are generated at runtime by `script.js` from
+`languages.meta.js` (filtered against `languages.config.js`) — the HTML
+itself only hard-codes the `en` fallback option. Add a line to
+`languages.meta.js`:
+`<code>: { nativeName: "<nativeName>" },` (from `translations/<code>.js`'s
 `nativeName` field) in the agreed position per that file's `sortHint` field:
 **Latin-script languages first, alphabetical by English name** — English,
 Español, Tiếng Việt — **then CJK languages grouped together** — 简体中文,
-繁體中文, 日本語. Ask before assuming a different grouping if `sortHint` is
-ambiguous or absent, since this ordering has been revisited multiple times.
+繁體中文, 日本語 — then Cyrillic/other scripts — then RTL languages last.
+Ask before assuming a different grouping if `sortHint` is ambiguous or
+absent, since this ordering has been revisited multiple times. Object key
+order in `languages.meta.js` is what determines dropdown order, so insert
+the new line in place rather than appending at the end.
 
 ## Step 3 — Update every README
 
@@ -71,7 +77,9 @@ is new (not just a script variant sharing a link target).
 1. Load `translations/<code>.js` via `vm.runInNewContext` and confirm it
    parses with the expected key counts (this is also enforced automatically
    by CI's keyset-parity check, but verify locally before committing).
-2. Confirm the dropdown `<option value="<code>">` is present in `index.html`.
+2. Confirm the `<code>: { nativeName: ... }` entry is present in
+   `languages.meta.js` and the code isn't set to `false` in
+   `languages.config.js` (a code missing from that file is enabled by default).
 3. Open the file in a browser (`powershell -c "Start-Process '<path>'"` on
    Windows) and manually switch to the new language — check the CORE cards,
    the decision-rules table, and a few quiz categories, since those have
