@@ -296,13 +296,11 @@ function studyCard(q){
     el.querySelectorAll('.opt').forEach(o=>{
       if(o.dataset.l===q.a)o.classList.add('correct');
     });
-    if(q.w && !el.querySelector('.why')){
+    if(!el.querySelector('.why')){
       const w=document.createElement('div'); w.className='why';
-      w.innerHTML=`<b>Why</b><br>${esc(q.w)}`;
-      el.querySelector('.qactions').before(w);
-    } else if(!q.w && !el.querySelector('.why')){
-      const w=document.createElement('div'); w.className='why';
-      w.innerHTML=`<b>Answer</b><br>Correct choice: <b style="font-family:var(--mono)">${q.a}</b>. (No written explanation in the source for this one.)`;
+      w.innerHTML=q.w
+        ? `<b>Why</b><br>${esc(q.w)}`
+        : `<b>Answer</b><br>Correct choice: <b style="font-family:var(--mono)">${q.a}</b>. (No written explanation in the source for this one.)`;
       el.querySelector('.qactions').before(w);
     }
   };
