@@ -76,6 +76,96 @@ function checkLanguageFileParity(repoRoot) {
   return errors;
 }
 
+// Language codes whose README filename suffix differs from the internal
+// code used in translations/<code>.js and languages.meta.js.
+const README_CODE_EXCEPTIONS = { vn: 'vi', zh: 'zh-cn', tw: 'zh-tw' };
+function readmeSuffixFor(code) { return README_CODE_EXCEPTIONS[code] || code; }
+function codeFromReadmeSuffix(suffix) {
+  for (const code in README_CODE_EXCEPTIONS) {
+    if (README_CODE_EXCEPTIONS[code] === suffix) return code;
+  }
+  return suffix;
+}
+
+function loadMeta(repoRoot) {
+  const metaPath = path.join(repoRoot, 'languages.meta.js');
+  const src = fs.readFileSync(metaPath, 'utf8');
+  const sandboxWindow = {};
+  const fn = new Function('window', src);
+  fn(sandboxWindow);
+  const meta = sandboxWindow.CCAF_LANG_META;
+  if (!meta || typeof meta !== 'object' || Array.isArray(meta)) {
+    throw new Error('languages.meta.js did not set window.CCAF_LANG_META to an object');
+  }
+  return meta;
+}
+
+// Cross-checks the three places Constitution Principle V says the language
+// list must never diverge: languages.meta.js (dropdown source of truth),
+// translations/<code>.js files, and the README.md switch-link row (plus
+// each language's own README.<suffix>.md existing).
+function checkLanguageMetaConsistency(repoRoot) {
+  const errors = [];
+  const meta = loadMeta(repoRoot);
+  const metaCodes = Object.keys(meta);
+  if (metaCodes[0] !== 'en') {
+    errors.push('languages.meta.js: "en" must be the first entry');
+  }
+  metaCodes.forEach(function (code) {
+    if (!meta[code] || typeof meta[code].nativeName !== 'string' || !meta[code].nativeName) {
+      errors.push('languages.meta.js: "' + code + '" is missing a non-empty nativeName');
+    }
+  });
+  const nonEnMetaCodes = metaCodes.filter(function (c) { return c !== 'en'; });
+  const metaSet = new Set(nonEnMetaCodes);
+
+  const translationsDir = path.join(repoRoot, 'translations');
+  const translationCodes = fs.readdirSync(translationsDir)
+    .filter(function (f) { return f.endsWith('.js'); })
+    .map(function (f) { return f.replace(/\.js$/, ''); });
+  const translationSet = new Set(translationCodes);
+  nonEnMetaCodes.forEach(function (code) {
+    if (!translationSet.has(code)) {
+      errors.push('languages.meta.js: "' + code + '" has no matching translations/' + code + '.js');
+    }
+  });
+  translationCodes.forEach(function (code) {
+    if (!metaSet.has(code)) {
+      errors.push('translations/' + code + '.js: has no matching entry in languages.meta.js');
+    }
+  });
+
+  const readmePath = path.join(repoRoot, 'README.md');
+  const readmeLines = fs.readFileSync(readmePath, 'utf8').split('\n');
+  const switchLine = readmeLines.find(function (l) {
+    return l.indexOf('English') !== -1 && l.indexOf('](README.') !== -1;
+  });
+  if (!switchLine) {
+    errors.push('README.md: could not find the language switch-link row (a line mentioning "English" with "](README." links)');
+    return errors;
+  }
+  const suffixes = [];
+  const re = /\]\(README\.([a-zA-Z0-9-]+)\.md\)/g;
+  let m;
+  while ((m = re.exec(switchLine))) suffixes.push(m[1]);
+  const readmeCodes = suffixes.map(codeFromReadmeSuffix);
+  if (JSON.stringify(readmeCodes) !== JSON.stringify(nonEnMetaCodes)) {
+    errors.push(
+      'README.md switch-link row (' + readmeCodes.join(',') + ') does not match ' +
+      'languages.meta.js order (' + nonEnMetaCodes.join(',') + ')'
+    );
+  }
+  nonEnMetaCodes.forEach(function (code) {
+    const suffix = readmeSuffixFor(code);
+    const p = path.join(repoRoot, 'README.' + suffix + '.md');
+    if (!fs.existsSync(p)) {
+      errors.push('README.' + suffix + '.md: missing for language "' + code + '" declared in languages.meta.js');
+    }
+  });
+
+  return errors;
+}
+
 function main() {
   const repoRoot = path.resolve(__dirname, '..', '..');
   const config = loadConfig(repoRoot);
@@ -91,10 +181,23 @@ function main() {
     process.exitCode = 1;
     return;
   }
+  const metaErrors = checkLanguageMetaConsistency(repoRoot);
+  if (metaErrors.length) {
+    console.error('Language meta/README consistency errors:\n' + metaErrors.join('\n'));
+    process.exitCode = 1;
+    return;
+  }
   console.log('languages.config.js is valid (' + Object.keys(config).length + ' entries checked).');
 }
 
-module.exports = { validateConfig: validateConfig, loadConfig: loadConfig, getValidCodes: getValidCodes, checkLanguageFileParity: checkLanguageFileParity };
+module.exports = {
+  validateConfig: validateConfig,
+  loadConfig: loadConfig,
+  getValidCodes: getValidCodes,
+  checkLanguageFileParity: checkLanguageFileParity,
+  loadMeta: loadMeta,
+  checkLanguageMetaConsistency: checkLanguageMetaConsistency
+};
 
 if (require.main === module) {
   main();
