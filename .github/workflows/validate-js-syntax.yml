@@ -1,0 +1,32 @@
+# .github/workflows/validate-js-syntax.yml
+# Catches a plain JS syntax error in the app's own scripts before it ships
+# via deploy-pages.yml -- these files aren't Node modules and have no
+# build step, so nothing else parses them on a PR.
+name: Validate JS syntax
+
+on:
+  pull_request:
+    paths:
+      - 'script.js'
+      - 'content.js'
+      - 'languages.config.js'
+      - 'languages.meta.js'
+      - '.github/workflows/validate-js-syntax.yml'
+
+jobs:
+  syntax-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: node --check the app scripts
+        run: |
+          set -euo pipefail
+          for f in script.js content.js languages.config.js languages.meta.js; do
+            echo "checking $f"
+            node --check "$f"
+          done
