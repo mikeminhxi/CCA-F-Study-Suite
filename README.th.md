@@ -23,7 +23,7 @@
 
 ## เนื้อหา
 
-- **คำถามฝึกฝน 156 ข้อ** นำมาจาก `CCA-F_Study_Guide.md` มีคู่คำถามหนึ่งคู่ที่คำตอบในต้นฉบับขัดแย้งกันจริง ๆ ซึ่งจะถูกทำเครื่องหมายด้วยแบดจ์ ⚠ ในโหมด Study
+- **คำถามฝึกฝน 155 ข้อ** นำมาจาก `CCA-F_Study_Guide.md` มีคู่คำถามหนึ่งคู่ที่คำตอบในต้นฉบับขัดแย้งกันจริง ๆ ซึ่งจะถูกทำเครื่องหมายด้วยแบดจ์ ⚠ ในโหมด Study
 - แอปนี้จัดโครงสร้างตาม **blueprint อย่างเป็นทางการของ CCA-F**: **5 โดเมน → 30 task statement → 59 concept** ทุกคำถามจะถูกแท็กไปยัง task statement เดียว และโดเมนของมันก็มาจากแท็กนั้น ห้าโดเมนเรียงตามลำดับน้ำหนักข้อสอบ ได้แก่ Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%) และ Context & Reliability (15%) (อนุกรมวิธานของ blueprint จาก [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn))
 
 ## ฟีเจอร์

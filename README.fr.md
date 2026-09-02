@@ -23,7 +23,7 @@ La page est une coquille à onglets regroupant quatre outils. Sur les écrans de
 
 ## Contenu pédagogique
 
-- **156 questions d'entraînement**, tirées de `CCA-F_Study_Guide.md`. Une paire dont la réponse correcte est réellement contradictoire dans la source est signalée par un badge ⚠ en mode Study.
+- **155 questions d'entraînement**, tirées de `CCA-F_Study_Guide.md`. Une paire dont la réponse correcte est réellement contradictoire dans la source est signalée par un badge ⚠ en mode Study.
 - L'application est organisée autour du **blueprint officiel du CCA-F** : **5 domaines → 30 task statements → 59 concepts**. Chaque question est rattachée à un task statement, et son domaine en découle. Les cinq domaines, dans l'ordre de poids de l'examen : Agentic Architecture (27 %), Tool Design & MCP (18 %), Claude Code & Workflows (20 %), Prompt Engineering & Output (20 %), et Context & Reliability (15 %). (Taxonomie du blueprint tirée de [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Fonctionnalités

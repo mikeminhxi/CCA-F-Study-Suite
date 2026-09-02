@@ -23,7 +23,7 @@ Anthropic की **Claude Certified Architect — Foundations (CCA-F)** प्�
 
 ## अध्ययन सामग्री
 
-- **156 अभ्यास प्रश्न**, `CCA-F_Study_Guide.md` से लिए गए हैं। एक जोड़ी जिसका सही उत्तर स्रोत में वास्तव में परस्पर विरोधी है, उसे Study मोड में एक ⚠ badge के साथ चिह्नित किया गया है।
+- **155 अभ्यास प्रश्न**, `CCA-F_Study_Guide.md` से लिए गए हैं। एक जोड़ी जिसका सही उत्तर स्रोत में वास्तव में परस्पर विरोधी है, उसे Study मोड में एक ⚠ badge के साथ चिह्नित किया गया है।
 - यह ऐप **आधिकारिक CCA-F blueprint** के इर्द-गिर्द व्यवस्थित है: **5 domains → 30 task statements → 59 concepts**। हर प्रश्न एक task statement से जुड़ा है, जिससे उसका domain तय होता है। परीक्षा के weight क्रम में पाँच domains: Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%), और Context & Reliability (15%)। (Blueprint taxonomy [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn) से ली गई है।)
 
 ## विशेषताएँ (Features)

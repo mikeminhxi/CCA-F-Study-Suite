@@ -23,7 +23,7 @@ Strona to zakładkowa powłoka z czterema narzędziami. Na ekranach o szerokośc
 
 ## Zawartość
 
-- **156 pytań ćwiczeniowych** pochodzących z `CCA-F_Study_Guide.md`. Jedna para pytań, w której poprawna odpowiedź w źródle jest wewnętrznie sprzeczna, jest oznaczona odznaką ⚠ w trybie Study.
+- **155 pytań ćwiczeniowych** pochodzących z `CCA-F_Study_Guide.md`. Jedna para pytań, w której poprawna odpowiedź w źródle jest wewnętrznie sprzeczna, jest oznaczona odznaką ⚠ w trybie Study.
 - Aplikacja jest zorganizowana wokół **oficjalnego blueprintu CCA-F**: **5 domen → 30 task statements → 59 koncepcji**. Każde pytanie jest przypisane do jednego task statement, a jego domena wynika z tego przypisania. Pięć domen, w kolejności wag egzaminu: Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%) oraz Context & Reliability (15%). (Taksonomia blueprintu z [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Funkcje

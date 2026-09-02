@@ -23,7 +23,7 @@ La pagina è un guscio a schede che raggruppa quattro strumenti. Sugli schermi d
 
 ## Contenuto didattico
 
-- **156 domande di pratica**, tratte da `CCA-F_Study_Guide.md`. Una coppia la cui risposta corretta è effettivamente contraddittoria nella fonte è contrassegnata con un badge ⚠ in modalità Study.
+- **155 domande di pratica**, tratte da `CCA-F_Study_Guide.md`. Una coppia la cui risposta corretta è effettivamente contraddittoria nella fonte è contrassegnata con un badge ⚠ in modalità Study.
 - L'app è organizzata attorno al **blueprint ufficiale del CCA-F**: **5 domini → 30 task statement → 59 concetti**. Ogni domanda è collegata a un task statement, da cui deriva il suo dominio. I cinque domini, nell'ordine di peso dell'esame: Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%) e Context & Reliability (15%). (Tassonomia del blueprint tratta da [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Funzionalità

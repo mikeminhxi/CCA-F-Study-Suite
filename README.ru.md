@@ -23,7 +23,7 @@
 
 ## Учебные материалы
 
-- **156 практических вопросов**, взятых из `CCA-F_Study_Guide.md`. Пара, чей правильный ответ в источнике действительно противоречив, отмечена значком ⚠ в режиме Study.
+- **155 практических вопросов**, взятых из `CCA-F_Study_Guide.md`. Пара, чей правильный ответ в источнике действительно противоречив, отмечена значком ⚠ в режиме Study.
 - Приложение организовано вокруг **официального blueprint CCA-F**: **5 доменов → 30 task statements → 59 концепций**. Каждый вопрос привязан к task statement, из которого следует его домен. Пять доменов в порядке веса на экзамене: Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%) и Context & Reliability (15%). (Таксономия blueprint взята с [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Возможности

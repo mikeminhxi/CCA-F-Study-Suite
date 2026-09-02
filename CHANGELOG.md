@@ -2,6 +2,12 @@
 
 All notable changes to the CCA-F Study Suite are recorded here.
 
+## Duplicate question removed (156 → 155)
+
+- **Removed `ts-4.6-01`**, a garbled near-duplicate of `ts-1.7-04` (same scenario: independently developing two testing strategies from one analysis session — the correct pattern is `fork_session`). Found while auditing whether the Study Hub's decision-rules/traps content covers every question category in `content.js`. `ts-4.6-01`'s question stem was corrupted mid-sentence ("Something is not completely right with technical details or the data, and it negative impacts expected outputs...") and its `w` (answer explanation) field was empty — same defect pattern as the prior `ts-1.2-06` removal below.
+- Total question count is now **155**, corrected everywhere it was hardcoded: the Study Console badge, source lines, Learning Path/Study Hub/2-Week Plan copy (English + all 22 translated dictionaries), and every `README*.md`.
+- Confirmed the remaining `Evaluation & Testing`-tagged questions (the category both duplicates shared) are otherwise well covered by the Study Hub's existing decision rules, just under different trigger phrasing than the `content.js` category label — no other content gap found.
+
 ## Internal refactor: build the language dropdown from data instead of hard-coded markup
 
 - **No user-facing change.** `#lang-select`'s 23 `<option>` elements were previously hand-listed in `index.html`. They're now generated at runtime by `script.js` from a new `languages.meta.js` (native display name per language code, in dropdown order), filtered against the existing `languages.config.js` enable/disable map — `index.html` now only hard-codes the `en` fallback option. Adding a language going forward means adding one line to `languages.meta.js` instead of hand-editing the `<select>`.

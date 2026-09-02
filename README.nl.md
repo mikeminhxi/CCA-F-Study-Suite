@@ -23,7 +23,7 @@ De pagina is een tabbladschil die vier tools samenbrengt. Op schermen met deskto
 
 ## Leerinhoud
 
-- **156 oefenvragen**, afkomstig uit `CCA-F_Study_Guide.md`. Eén paar waarvan het juiste antwoord in de bron daadwerkelijk tegenstrijdig is, wordt in de Study-modus gemarkeerd met een ⚠-badge.
+- **155 oefenvragen**, afkomstig uit `CCA-F_Study_Guide.md`. Eén paar waarvan het juiste antwoord in de bron daadwerkelijk tegenstrijdig is, wordt in de Study-modus gemarkeerd met een ⚠-badge.
 - De app is georganiseerd rond de **officiële CCA-F-blueprint**: **5 domeinen → 30 task statements → 59 concepten**. Elke vraag is gekoppeld aan één task statement, waaruit het domein volgt. De vijf domeinen, in de gewichtsvolgorde van het examen: Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%), en Context & Reliability (15%). (Blueprint-taxonomie afkomstig van [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Functies

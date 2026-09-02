@@ -23,7 +23,7 @@ Die Seite ist eine Tab-Hülle, die vier Tools zusammenfasst. Auf Desktop-breiten
 
 ## Lerninhalt
 
-- **156 Übungsfragen**, entnommen aus `CCA-F_Study_Guide.md`. Ein Paar, dessen korrekte Antwort in der Quelle tatsächlich widersprüchlich ist, wird im Study-Modus mit einem ⚠-Badge gekennzeichnet.
+- **155 Übungsfragen**, entnommen aus `CCA-F_Study_Guide.md`. Ein Paar, dessen korrekte Antwort in der Quelle tatsächlich widersprüchlich ist, wird im Study-Modus mit einem ⚠-Badge gekennzeichnet.
 - Die App ist um den **offiziellen CCA-F-Blueprint** herum organisiert: **5 Domänen → 30 Task Statements → 59 Konzepte**. Jede Frage ist einem Task Statement zugeordnet, aus dem sich ihre Domäne ergibt. Die fünf Domänen, in der Gewichtungsreihenfolge der Prüfung: Agentic Architecture (27 %), Tool Design & MCP (18 %), Claude Code & Workflows (20 %), Prompt Engineering & Output (20 %) und Context & Reliability (15 %). (Blueprint-Taxonomie entnommen aus [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Funktionen

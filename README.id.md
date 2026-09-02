@@ -23,7 +23,7 @@ Halaman ini berupa shell bertab yang menggabungkan empat tool. Pada layar seleba
 
 ## Konten
 
-- **156 soal latihan**, bersumber dari `CCA-F_Study_Guide.md`. Satu pasang soal yang jawaban benarnya memang saling bertentangan di sumber asli ditandai dengan badge ⚠ pada mode Study.
+- **155 soal latihan**, bersumber dari `CCA-F_Study_Guide.md`. Satu pasang soal yang jawaban benarnya memang saling bertentangan di sumber asli ditandai dengan badge ⚠ pada mode Study.
 - Aplikasi ini disusun berdasarkan **blueprint resmi CCA-F**: **5 domain → 30 task statement → 59 konsep**. Setiap pertanyaan ditandai ke satu task statement, dan domainnya mengikuti dari tanda tersebut. Lima domain, dalam urutan bobot ujian: Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%), dan Context & Reliability (15%). (Taksonomi blueprint dari [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Fitur

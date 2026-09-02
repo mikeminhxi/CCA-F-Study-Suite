@@ -23,7 +23,7 @@ Sidan är ett flikskal som samlar fyra verktyg. På skärmar med desktopbredd (9
 
 ## Innehåll
 
-- **156 övningsfrågor**, hämtade från `CCA-F_Study_Guide.md`. Ett par vars korrekta svar verkligen är motstridigt i källmaterialet är markerat med en ⚠-badge i Study-läget.
+- **155 övningsfrågor**, hämtade från `CCA-F_Study_Guide.md`. Ett par vars korrekta svar verkligen är motstridigt i källmaterialet är markerat med en ⚠-badge i Study-läget.
 - Appen är organiserad kring den **officiella CCA-F-blueprinten**: **5 domäner → 30 task statements → 59 koncept**. Varje fråga är taggad till ett task statement, och dess domän följer av den taggen. De fem domänerna, i examensviktordning: Agentic Architecture (27 %), Tool Design & MCP (18 %), Claude Code & Workflows (20 %), Prompt Engineering & Output (20 %), och Context & Reliability (15 %). (Blueprint-taxonomi från [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Funktioner

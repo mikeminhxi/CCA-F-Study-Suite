@@ -25,7 +25,7 @@
 
 ## المحتوى
 
-- **156 سؤال تدريبي**، مأخوذة من `CCA-F_Study_Guide.md`. زوج واحد له إجابة مصدر متضاربة فعليًا مُعلَّم بشارة ⚠ في وضع Study.
+- **155 سؤال تدريبي**، مأخوذة من `CCA-F_Study_Guide.md`. زوج واحد له إجابة مصدر متضاربة فعليًا مُعلَّم بشارة ⚠ في وضع Study.
 - التطبيق منظَّم حول **المخطط التفصيلي الرسمي لـCCA-F**: **5 مجالات ← 30 بيان مهمة ← 59 مفهومًا**. كل سؤال موسوم ببيان مهمة واحد، ومجاله ينبع من هذا الوسم. المجالات الخمسة، بترتيب وزن الامتحان: Agentic Architecture ‏(27%)، وTool Design & MCP ‏(18%)، وClaude Code & Workflows ‏(20%)، وPrompt Engineering & Output ‏(20%)، وContext & Reliability ‏(15%). (تصنيف المخطط التفصيلي من [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## الميزات
