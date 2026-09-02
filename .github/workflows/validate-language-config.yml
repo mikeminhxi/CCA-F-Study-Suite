@@ -5,7 +5,10 @@ on:
   pull_request:
     paths:
       - 'languages.config.js'
+      - 'languages.meta.js'
       - 'translations/**'
+      - 'README.md'
+      - 'README.*.md'
       - '.github/scripts/validate-language-config.js'
       - '.github/scripts/validate-language-config.test.js'
       - '.github/scripts/sync-language-config.js'
@@ -24,5 +27,5 @@ jobs:
           node-version: '20'
       - name: Run unit tests
         run: node --test .github/scripts/validate-language-config.test.js
-      - name: Validate languages.config.js
+      - name: Validate languages.config.js, languages.meta.js and README language lists
         run: node .github/scripts/validate-language-config.js
