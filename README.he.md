@@ -25,7 +25,7 @@
 
 ## תוכן
 
-- **156 שאלות תרגול**, מקורן ב-`CCA-F_Study_Guide.md`. זוג אחד עם תשובת מקור סותרת בפועל מסומן בתג ⚠ במצב Study.
+- **155 שאלות תרגול**, מקורן ב-`CCA-F_Study_Guide.md`. זוג אחד עם תשובת מקור סותרת בפועל מסומן בתג ⚠ במצב Study.
 - האפליקציה מאורגנת סביב **התוכנית הרשמית של CCA-F**: **5 תחומים ← 30 הצהרות משימה ← 59 מושגים**. כל שאלה מתויגת להצהרת משימה אחת, והתחום שלה נגזר מתיוג זה. חמשת התחומים, בסדר משקל המבחן: Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%), ו-Context & Reliability (15%). (טקסונומיית התוכנית מתוך [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## תכונות

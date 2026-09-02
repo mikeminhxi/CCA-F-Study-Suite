@@ -23,7 +23,7 @@ Halaman ini adalah rangka bertab yang menggabungkan empat alat. Pada skrin lebar
 
 ## Kandungan Soalan
 
-- **156 soalan latihan**, diambil daripada `CCA-F_Study_Guide.md`. Satu pasangan yang jawapan betulnya benar-benar bercanggah dalam sumber asal ditandakan dengan lencana ⚠ dalam mod Study.
+- **155 soalan latihan**, diambil daripada `CCA-F_Study_Guide.md`. Satu pasangan yang jawapan betulnya benar-benar bercanggah dalam sumber asal ditandakan dengan lencana ⚠ dalam mod Study.
 - Aplikasi ini disusun berdasarkan **blueprint rasmi CCA-F**: **5 domain → 30 task statement → 59 konsep**. Setiap soalan ditanda kepada satu task statement, dan domainnya diperoleh daripada tanda tersebut. Lima domain, mengikut turutan berat peperiksaan: Agentic Architecture (27%), Tool Design & MCP (18%), Claude Code & Workflows (20%), Prompt Engineering & Output (20%), dan Context & Reliability (15%). (Taksonomi blueprint daripada [prepgenaicerts.com/learn](https://www.prepgenaicerts.com/learn).)
 
 ## Ciri-ciri
